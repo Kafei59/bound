@@ -1,0 +1,16 @@
+/* 
+* @Author: gicque_p
+* @Date:   2015-10-12 18:22:11
+* @Last Modified by:   gicque_p
+* @Last Modified time: 2015-10-12 18:34:04
+*/
+
+body {
+    font-family: "Open Sans";
+    font-weight: 100;
+}
+
+header {
+    background-color: #1976D2;
+    color: #FFFFFF;
+}

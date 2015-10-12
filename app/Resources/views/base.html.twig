@@ -2,10 +2,13 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Bound{% endblock %}</title>
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <link rel="stlysheet" href="{{ asset('bundles/boundcore/css/bootstrap.min.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/boundcore/css/vendor/bootstrap.min.css') }}" />
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        
         {% block stylesheets %}{% endblock %}
     </head>
 

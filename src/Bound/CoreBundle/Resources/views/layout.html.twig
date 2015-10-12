@@ -1,5 +1,26 @@
 {% extends '::base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/boundcore/css/app.css') }}" />
+{% endblock %}
+
+{% block header %}
+    <section class="container">
+        <div class="col-md-4 text-left">
+            <h4> Logo Spot </h4>
+        </div>
+
+        <div class="col-md-4 text-center">
+            <h4> Search Bar </h4>
+        </div>
+
+        <div class="col-md-4 text-right">
+            <h4> Mini Nav </h4>
+        </div>
+
+    </section>
+{% endblock %}
+
 {% block content %}
     <div ng-controller="MainController">
         <div class="row">
