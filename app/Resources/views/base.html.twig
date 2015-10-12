@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Bound{% endblock %}</title>
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stlysheet" href="{{ asset('bundles/boundcore/css/bootstrap.min.css') }}" />
+        {% block stylesheets %}{% endblock %}
+    </head>
+
+    <body ng-app="BoundApp">
+        <header>
+            <section class="container-fluid">{% block header %}{% endblock %}</section>
+        </header>
+
+        <section id="content" class="container-fluid">{% block content %}{% endblock %}</section>
+
+        <footer>
+            <section class="container-fluid">{% block footer %}{% endblock %}</section>
+        </footer>
+
+        <script src="{{ asset('bundles/boundcore/js/vendor/angular.min.js') }}"></script>
+        <script src="{{ asset('bundles/boundcore/js/vendor/angular-route.min.js') }}"></script>
+        <script src="{{ asset('bundles/boundcore/js/vendor/angular-resource.min.js') }}"></script>
+
+        <script src="{{ asset('bundles/boundcore/js/app.js') }}"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

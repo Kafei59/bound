@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+    <div ng-controller="MainController">
+        <div class="row">
+            <div class="col-md-2" ng-repeat="app in apps">
+                <p> [[ app.title ]] </p>
+                <p> [[ app.description ]] </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/boundcore/js/controllers/mainController.js') }}"></script>
+    <script src="{{ asset('bundles/boundcore/js/directives/appInfo.js') }}"></script>
+{% endblock %}

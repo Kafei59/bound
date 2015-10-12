@@ -1,0 +1,15 @@
+bound_back_office:
+    resource: "@BoundBackOfficeBundle/Resources/config/routing.yml"
+    prefix:   /
+
+bound_api:
+    resource: "@BoundApiBundle/Resources/config/routing.yml"
+    prefix:   /
+
+bound_core:
+    resource: "@BoundCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

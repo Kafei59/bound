@@ -1,0 +1,4 @@
+services:
+#    bound_back_office.example:
+#        class: Bound\BackOfficeBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
