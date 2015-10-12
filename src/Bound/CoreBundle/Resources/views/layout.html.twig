@@ -3,10 +3,7 @@
 {% block content %}
     <div ng-controller="MainController">
         <div class="row">
-            <div class="col-md-2" ng-repeat="app in apps">
-                <p> [[ app.title ]] </p>
-                <p> [[ app.description ]] </p>
-            </div>
+            {% include('BoundCoreBundle:directives:appInfo.html.twig') %}
         </div>
     </div>
 {% endblock %}
