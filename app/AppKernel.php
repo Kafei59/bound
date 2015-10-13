@@ -21,6 +21,8 @@ class AppKernel extends Kernel
             new Bound\ApiBundle\BoundApiBundle(),
             new Bound\BackOfficeBundle\BoundBackOfficeBundle(),
             new Bound\FrontBundle\BoundFrontBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new Bound\UserBundle\BoundUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
