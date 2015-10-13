@@ -3,7 +3,7 @@
 namespace Bound\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use FOS\UserBundle\Document\User as BaseUser;
+use FOS\UserBundle\Entity\User as BaseUser;
 
 /**
  * User
@@ -30,4 +30,3 @@ class User extends BaseUser {
         return $this->id;
     }
 }
-
