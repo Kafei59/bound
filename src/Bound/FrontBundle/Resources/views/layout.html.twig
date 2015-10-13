@@ -27,11 +27,9 @@
             {% include('BoundFrontBundle:directives:appInfo.html.twig') %}
         </div>
 
-        <div class="row">
-            <p> [[ news.response ]] </p>
-            <p> [[ news.data.title ]] </p>
-            <p> [[ news.data.content ]] </p>
-            <p> [[ news.data.author ]] </p>
+        <div class="row" ng-repeat="user in users">
+            <p> [[ user.username ]] </p>
+            <p> [[ user.email ]] </p>
         </div>
     </div>
 {% endblock %}
@@ -39,5 +37,5 @@
 {% block javascripts %}
     <script src="{{ asset('bundles/boundfront/js/controllers/mainController.js') }}"></script>
     <script src="{{ asset('bundles/boundfront/js/directives/appInfo.js') }}"></script>
-    <script src="{{ asset('bundles/boundfront/js/services/showNews.js') }}"></script>
+    <script src="{{ asset('bundles/boundfront/js/services/httpResponse.js') }}"></script>
 {% endblock %}

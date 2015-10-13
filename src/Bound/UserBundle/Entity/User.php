@@ -21,6 +21,13 @@ class User extends BaseUser {
      */
     protected $id;
 
+    public function toArray() {
+        return array (
+            'username' => $this->username,
+            'email' => $this->email
+        );
+    }
+
     /**
      * Get id
      *
@@ -29,4 +36,5 @@ class User extends BaseUser {
     public function getId() {
         return $this->id;
     }
+
 }
