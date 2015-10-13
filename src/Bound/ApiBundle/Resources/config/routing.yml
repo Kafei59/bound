@@ -1,3 +1,3 @@
-bound_api_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: BoundApiBundle:Default:index }
+bound_api_news_add:
+    path:     /api/show/{title}/{content}/{author}
+    defaults: { _controller: BoundApiBundle:Default:show }

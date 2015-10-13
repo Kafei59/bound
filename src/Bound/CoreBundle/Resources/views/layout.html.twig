@@ -26,10 +26,18 @@
         <div class="row">
             {% include('BoundCoreBundle:directives:appInfo.html.twig') %}
         </div>
+
+        <div class="row">
+            <p> [[ news.response ]] </p>
+            <p> [[ news.data.title ]] </p>
+            <p> [[ news.data.content ]] </p>
+            <p> [[ news.data.author ]] </p>
+        </div>
     </div>
 {% endblock %}
 
 {% block javascripts %}
     <script src="{{ asset('bundles/boundcore/js/controllers/mainController.js') }}"></script>
     <script src="{{ asset('bundles/boundcore/js/directives/appInfo.js') }}"></script>
+    <script src="{{ asset('bundles/boundcore/js/services/showNews.js') }}"></script>
 {% endblock %}
