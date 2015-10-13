@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Bound\CoreBundle\BoundCoreBundle(),
             new Bound\ApiBundle\BoundApiBundle(),
             new Bound\BackOfficeBundle\BoundBackOfficeBundle(),
+            new Bound\FrontBundle\BoundFrontBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

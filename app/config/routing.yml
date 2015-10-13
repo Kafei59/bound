@@ -1,3 +1,7 @@
+bound_front:
+    resource: "@BoundFrontBundle/Resources/config/routing.yml"
+    prefix:   /
+
 bound_back_office:
     resource: "@BoundBackOfficeBundle/Resources/config/routing.yml"
     prefix:   /

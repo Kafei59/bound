@@ -6,7 +6,7 @@
         <title>{% block title %}Bound{% endblock %}</title>
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/boundcore/css/vendor/bootstrap.min.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/boundfront/css/vendor/bootstrap.min.css') }}" />
         <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         
         {% block stylesheets %}{% endblock %}
@@ -23,11 +23,11 @@
             <section class="container-fluid">{% block footer %}{% endblock %}</section>
         </footer>
 
-        <script src="{{ asset('bundles/boundcore/js/vendor/angular.min.js') }}"></script>
-        <script src="{{ asset('bundles/boundcore/js/vendor/angular-route.min.js') }}"></script>
-        <script src="{{ asset('bundles/boundcore/js/vendor/angular-resource.min.js') }}"></script>
+        <script src="{{ asset('bundles/boundfront/js/vendor/angular.min.js') }}"></script>
+        <script src="{{ asset('bundles/boundfront/js/vendor/angular-route.min.js') }}"></script>
+        <script src="{{ asset('bundles/boundfront/js/vendor/angular-resource.min.js') }}"></script>
 
-        <script src="{{ asset('bundles/boundcore/js/app.js') }}"></script>
+        <script src="{{ asset('bundles/boundfront/js/app.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

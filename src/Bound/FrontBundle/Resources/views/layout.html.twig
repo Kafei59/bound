@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/boundcore/css/app.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/boundfront/css/app.css') }}" />
 {% endblock %}
 
 {% block header %}
@@ -24,7 +24,7 @@
 {% block content %}
     <div ng-controller="MainController">
         <div class="row">
-            {% include('BoundCoreBundle:directives:appInfo.html.twig') %}
+            {% include('BoundFrontBundle:directives:appInfo.html.twig') %}
         </div>
 
         <div class="row">
@@ -37,7 +37,7 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('bundles/boundcore/js/controllers/mainController.js') }}"></script>
-    <script src="{{ asset('bundles/boundcore/js/directives/appInfo.js') }}"></script>
-    <script src="{{ asset('bundles/boundcore/js/services/showNews.js') }}"></script>
+    <script src="{{ asset('bundles/boundfront/js/controllers/mainController.js') }}"></script>
+    <script src="{{ asset('bundles/boundfront/js/directives/appInfo.js') }}"></script>
+    <script src="{{ asset('bundles/boundfront/js/services/showNews.js') }}"></script>
 {% endblock %}
