@@ -10,14 +10,22 @@ use Symfony\Component\HttpFoundation\Request;
 class UserController extends Controller {
 
     public function getAction(Request $request) {
+        $resp = array();
         $entities = $this->getDoctrine()->getRepository('BoundUserBundle:User')->findAll();
 
-        $users = array();
-        foreach ($entities as $entity) {
-            $users[$entity->getSalt()] = $entity->toArray();
+        if (!empty($entities)) {        
+            $users = array();
+            foreach ($entities as $entity) {
+                $users[$entity->getSalt()] = $entity->toArray();
+            }
+
+            $resp['response'] = 200;
+            $resp['users'] = $users;
+        } else {
+            $resp['response'] = 400;
         }
 
-        $response = new Response(json_encode($users, JSON_PRETTY_PRINT));
+        $response = new Response(json_encode($resp, JSON_PRETTY_PRINT));
         $response->headers->set('Content-Type', "application/json");
 
         return $response;

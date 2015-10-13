@@ -2,18 +2,14 @@
 * @Author: gicque_p
 * @Date:   2015-10-12 13:32:03
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2015-10-13 18:19:08
+* @Last Modified time: 2015-10-13 18:29:24
 */
 
 app.controller('MainController', ['$scope', 'httpResponse', function($scope) {
 
-    httpResponse.get('api/user/get')
-    .success(function(data) {
+    httpResponse.get('api/user/get').success(function(data) {
         $scope.users = data;
     })
-    .error(function(err) {
-        $scope.status = 'Unable to load news data: ' + err.message;
-    });
 
     $scope.apps = [
         {

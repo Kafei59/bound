@@ -27,7 +27,7 @@
             {% include('BoundFrontBundle:directives:appInfo.html.twig') %}
         </div>
 
-        <div class="row" ng-repeat="user in users">
+        <div class="row" ng-repeat="user in users.users">
             <p> [[ user.username ]] </p>
             <p> [[ user.email ]] </p>
         </div>
