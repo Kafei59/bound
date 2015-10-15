@@ -1,0 +1,3 @@
+bound_api_user_get:
+    path:     /get
+    defaults: { _controller: BoundApiBundle:User:get }

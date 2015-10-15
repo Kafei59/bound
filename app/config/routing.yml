@@ -8,11 +8,11 @@ bound_front:
 
 bound_back_office:
     resource: "@BoundBackOfficeBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /admin
 
 bound_api:
     resource: "@BoundApiBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /api
 
 bound_core:
     resource: "@BoundCoreBundle/Resources/config/routing.yml"

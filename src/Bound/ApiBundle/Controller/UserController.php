@@ -22,7 +22,7 @@ class UserController extends Controller {
             $resp['response'] = 200;
             $resp['users'] = $users;
         } else {
-            $resp['response'] = 400;
+            $resp['response'] = 500;
         }
 
         $response = new Response(json_encode($resp, JSON_PRETTY_PRINT));
