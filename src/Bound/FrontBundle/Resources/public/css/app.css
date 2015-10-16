@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2015-10-12 18:22:11
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2015-10-16 12:52:08
+* @Last Modified time: 2015-10-16 12:58:02
 */
 
 body {
@@ -19,10 +19,15 @@ body {
 }
 
 header {
-    background-color: #935347;
+    background-color: #FF5252;
     color: #FFFFFF;
 
     font-weight: bold;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+#content {
+    padding-top: 2vh;
 }
 
 .sidebar {
@@ -32,7 +37,8 @@ header {
     min-height: 100vh;
     min-width: 15vw;
 
-    background-color: red;
+    background-color: #448AFF;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 
     -webkit-transition: all 0 cubic-bezier(.34,.85,1,1);
     -moz-transition: all 0 cubic-bezier(.34,.85,1,1);
