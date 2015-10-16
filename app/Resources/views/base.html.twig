@@ -17,7 +17,7 @@
             <section class="container-fluid">{% block header %}{% endblock %}</section>
         </header>
 
-        <section id="content" class="container-fluid">{% block content %}{% endblock %}</section>
+        <section id="main" class="container-fluid" ng-controller="MainController">{% block main %}{% endblock %}</section>
 
         <footer>
             <section class="container-fluid">{% block footer %}{% endblock %}</section>
@@ -26,6 +26,7 @@
         <script src="{{ asset('bundles/boundfront/js/vendor/angular.min.js') }}"></script>
         <script src="{{ asset('bundles/boundfront/js/vendor/angular-route.min.js') }}"></script>
         <script src="{{ asset('bundles/boundfront/js/vendor/angular-resource.min.js') }}"></script>
+        <script src="{{ asset('bundles/boundfront/js/vendor/angular-animate.min.js') }}"></script>
 
         <script src="{{ asset('bundles/boundfront/js/app.js') }}"></script>
         {% block javascripts %}{% endblock %}

@@ -21,15 +21,22 @@
     </section>
 {% endblock %}
 
-{% block content %}
-    <div ng-controller="MainController">
-        <div class="row">
-            {% include('BoundFrontBundle:directives:appInfo.html.twig') %}
-        </div>
+{% block main %}
 
-        <div class="row" ng-repeat="user in users">
-            <p> [[ user.username ]] </p>
-            <p> [[ user.email ]] </p>
+    <nav class="sidebar" ng-show="isShow" ng-class="animation"></nav>
+
+    <div id="content" class="container">
+        <button ng-click="toggle()">Toggle</button>
+
+        <div>
+{#             <div class="row">
+                {% include('BoundFrontBundle:directives:appInfo.html.twig') %}
+            </div>
+ #}
+            <div class="row" ng-repeat="user in users">
+                <p> [[ user.username ]] </p>
+                <p> [[ user.email ]] </p>
+            </div>
         </div>
     </div>
 {% endblock %}
