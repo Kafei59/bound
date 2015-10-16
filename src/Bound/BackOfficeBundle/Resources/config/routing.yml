@@ -1,3 +1,3 @@
 bound_back_office_homepage:
-    path:     /hello/{name}
+    path:     /
     defaults: { _controller: BoundBackOfficeBundle:Default:index }

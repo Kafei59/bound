@@ -1,7 +1,3 @@
-bound_user:
-    resource: "@BoundUserBundle/Resources/config/routing.yml"
-    prefix:   /
-
 bound_front:
     resource: "@BoundFrontBundle/Resources/config/routing.yml"
     prefix:   /
@@ -14,12 +10,8 @@ bound_api:
     resource: "@BoundApiBundle/Resources/config/routing.yml"
     prefix:   /api
 
-bound_core:
-    resource: "@BoundCoreBundle/Resources/config/routing.yml"
-    prefix:   /
-
 app:
-    resource: "@AppBundle/Controller/"
+    resource: "@BoundFrontBundle/Controller/"
     type:     annotation
 
 fos_user_security:
