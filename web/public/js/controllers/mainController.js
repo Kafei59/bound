@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2015-10-12 13:32:03
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2015-10-16 13:59:14
+* @Last Modified time: 2015-10-17 11:53:32
 */
 
 app.controller('MainController', ['$scope', 'httpResponse', function($scope) {
@@ -13,7 +13,11 @@ app.controller('MainController', ['$scope', 'httpResponse', function($scope) {
 
     $scope.isShow = true;
 
-    $scope.toggle = function () {
+    $scope.toggleSidebar = function () {
         $scope.isShow = !$scope.isShow;
+    }
+
+    $scope.showSidebar = function () {
+        $scope.isShow = true;
     }
 }]);

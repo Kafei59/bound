@@ -1,48 +1,70 @@
 {% extends '::base.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/boundfront/css/app.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('public//css/app.css') }}" />
 {% endblock %}
 
 {% block header %}
-    <section class="container">
-        <div class="col-md-4 text-left">
+    <div class="header container">
+        <div class="col-xs-12 col-md-4 text-left">
             <h4> Logo Spot </h4>
         </div>
 
-        <div class="col-md-4 text-center">
+        <div class="col-xs-12 col-md-4 text-center">
+            <h4> Bound </h4>
+        </div>
+
+        <div class="col-xs-12 col-md-4 text-right">
             <h4> Search Bar </h4>
-        </div>
-
-        <div class="col-md-4 text-right">
-            <h4> Mini Nav </h4>
-        </div>
-
-    </section>
-{% endblock %}
-
-{% block main %}
-
-    <nav class="sidebar" ng-show="isShow" ng-class="animation"></nav>
-
-    <div id="content" class="container">
-        <button ng-click="toggle()">Toggle</button>
-
-        <div>
-{#             <div class="row">
-                {% include('BoundFrontBundle:directives:appInfo.html.twig') %}
-            </div>
- #}
-            <div class="row" ng-repeat="user in users">
-                <p> [[ user.username ]] </p>
-                <p> [[ user.email ]] </p>
-            </div>
         </div>
     </div>
 {% endblock %}
 
+{% block main %}
+    <nav class="sidebar col-xs-4 col-md-2 pull-left" ng-show="isShow" ng-class="animation">        
+        <div class="sidebar-background col-xs-12 col-md-12">
+            <div class="col-xs-10 col-md-5">
+                <img src="{{ asset('public/images/avatar.png') }}" class="img-responsive img-circle" />
+            </div>
+
+            <div class="toggle-container col-md-1 pull-right" ng-click="toggleSidebar()" >
+                <div id="sidebar-toggle" ng-class="isShow ? 'active' : ''">
+                    <span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-nav col-xs-12 col-md-12" ng-click="showSidebar()">
+            <div class="list-group">
+                <a href="#/" class="list-group-item" angular-ripple>
+                    <span class="glyphicon glyphicon-home"></span>Index
+                    <span class="badge">14</span>
+                </a>
+            
+                <a href="#dashboard" class="list-group-item" angular-ripple>
+                    <span class="glyphicon glyphicon-user"></span>Mon compte
+                </a>
+            
+                <a href="#/achievements" class="list-group-item" angular-ripple>
+                    <span class="glyphicon glyphicon-star"></span>Haut-faits
+                </a>
+
+                <a href="#/friends" class="list-group-item" angular-ripple>
+                    <span class="glyphicon glyphicon-heart-empty"></span>Mes amis
+                </a>
+            
+                <a href="#/crew" class="list-group-item" angular-ripple>
+                    <span class="glyphicon glyphicon-globe"></span>Ma Crew
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="content" class="container text-center" ng-view></div>
+{% endblock %}
+
 {% block javascripts %}
-    <script src="{{ asset('bundles/boundfront/js/controllers/mainController.js') }}"></script>
-    <script src="{{ asset('bundles/boundfront/js/directives/appInfo.js') }}"></script>
-    <script src="{{ asset('bundles/boundfront/js/services/httpResponse.js') }}"></script>
+    <script src="{{ asset('public/js/controllers/mainController.js') }}"></script>
+    <script src="{{ asset('public/js/directives/appInfo.js') }}"></script>
+    <script src="{{ asset('public/js/services/httpResponse.js') }}"></script>
 {% endblock %}
