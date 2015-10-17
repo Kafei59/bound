@@ -1,0 +1,3 @@
+bound_api_achievement_all:
+    path:     /all
+    defaults: { _controller: BoundApiBundle:Achievement:all }

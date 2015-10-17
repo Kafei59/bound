@@ -23,15 +23,18 @@
 {% block main %}
     <nav class="sidebar col-xs-4 col-md-2 pull-left" ng-show="isShow" ng-class="animation">        
         <div class="sidebar-background col-xs-12 col-md-12">
-            <div class="col-xs-10 col-md-5">
+            <div class="col-xs-10 col-md-5 pull-left">
                 <img src="{{ asset('public/images/avatar.png') }}" class="img-responsive img-circle" />
             </div>
 
-            <div class="toggle-container col-md-1 pull-right" ng-click="toggleSidebar()" >
+            <h3 class="col-md-5 pull-left">Pierrick Gicquelais</h3>
+
+            <div class="toggle-container pull-right" ng-click="toggleSidebar()" >
                 <div id="sidebar-toggle" ng-class="isShow ? 'active' : ''">
                     <span></span>
                 </div>
             </div>
+
         </div>
 
         <div class="sidebar-nav col-xs-12 col-md-12" ng-click="showSidebar()">
@@ -45,7 +48,7 @@
                     <span class="glyphicon glyphicon-user"></span>Mon compte
                 </a>
             
-                <a href="#/achievements" class="list-group-item" angular-ripple>
+                <a href="#/achievement" class="list-group-item" angular-ripple>
                     <span class="glyphicon glyphicon-star"></span>Haut-faits
                 </a>
 

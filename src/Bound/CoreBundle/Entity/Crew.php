@@ -36,6 +36,13 @@ class Crew
     private $members;
 
 
+    public function toArray() {
+        return array(
+            'title' => $this->title,
+            'members' => $this->members
+        );
+    }
+
     /**
      * Get id
      *

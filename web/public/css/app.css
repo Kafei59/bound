@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2015-10-12 18:22:11
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2015-10-17 15:42:41
+* @Last Modified time: 2015-10-17 19:09:55
 */
 
 body {
@@ -38,14 +38,14 @@ header {
 }
 
 #content {
-    margin-top: 20vh;
+    margin-top: 15vh;
     min-height: 3000px;
 }
 
 .sidebar {
     position: fixed;
     padding: 0;
-    top: 7vh;
+    top: 6vh;
     z-index: 1;
 
     min-height: 92vh;
@@ -65,7 +65,13 @@ header {
 }
 
 .toggle-container {
-    right: 2vw;
+    padding-top: 15px;
+    padding-right: 2.2vw;
+}
+
+.sidebar-background h3 {
+    color: #FFFFFF;
+    overflow: hidden;
 }
 
 .sidebar-background {
@@ -87,6 +93,10 @@ header {
     padding: 2.5vh;
     color: #455A64;
     text-decoration: none;
+}
+
+.sidebar-nav a:hover {
+    color: #212121;
 }
 
 .sidebar-nav span.glyphicon {

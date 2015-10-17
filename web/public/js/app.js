@@ -2,12 +2,12 @@
 * @Author: gicque_p
 * @Date:   2015-10-12 13:24:59
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2015-10-17 13:46:51
+* @Last Modified time: 2015-10-17 19:11:43
 */
 
 var origin = document.location.origin;
 var folder = document.location.pathname.split('/')[1] + '/' + document.location.pathname.split('/')[2];
-var path = origin + '/' + folder + '/web/bundles/boundfront/views/';
+var path = origin + '/' + folder + '/web/public/views/';
 
 var app = angular.module('BoundApp', ['ngAnimate', 'ngRoute', 'angularRipple']);
 
@@ -25,6 +25,21 @@ app.config(function($routeProvider) {
         .when('/dashboard', {
             controller: 'MainController',
             templateUrl: path + 'dashboard.html'
+        })
+
+        .when('/achievement', {
+            controller: 'MainController',
+            templateUrl: path + 'achievement.html'
+        })
+
+        .when('/crew', {
+            controller: 'MainController',
+            templateUrl: path + 'crew.html'
+        })
+
+        .when('/friends', {
+            controller: 'MainController',
+            templateUrl: path + 'friends.html'
         })
 
         .otherwise({

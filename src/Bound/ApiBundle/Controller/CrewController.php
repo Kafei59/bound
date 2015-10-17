@@ -8,15 +8,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class UserController extends Controller {
+class CrewController extends Controller {
 
     public function allAction(Request $request) {
-        $entities = $this->getDoctrine()->getRepository('BoundUserBundle:User')->findAll();
+        $entities = $this->getDoctrine()->getRepository('BoundCoreBundle:Crew')->findAll();
 
-        $users = array();
+        $crews = array();
         if (!empty($entities)) {
             foreach ($entities as $entity) {
-                $users[$entity->getSalt()] = $entity->toArray();
+                $crews[$entity->getId()] = $entity->toArray();
             }
 
             $status = 200;
@@ -24,7 +24,7 @@ class UserController extends Controller {
             $status = 500;
         }
 
-        $response = new JsonResponse($users, $status);
+        $response = new JsonResponse($crews, $status);
         $response->setEncodingOptions(JSON_PRETTY_PRINT);
 
         return $response;

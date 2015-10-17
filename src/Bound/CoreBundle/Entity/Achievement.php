@@ -43,6 +43,14 @@ class Achievement
     private $points;
 
 
+    public function toArray() {
+        return array(
+            'title' => $this->title,
+            'content' => $this->content,
+            'points' => $this->points
+        );
+    }
+
     /**
      * Get id
      *

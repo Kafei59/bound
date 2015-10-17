@@ -1,3 +1,11 @@
 bound_api_user:
     resource: "@BoundApiBundle/Resources/config/routing/user.yml"
     prefix:   /user
+
+bound_api_achievement:
+    resource: "@BoundApiBundle/Resources/config/routing/achievement.yml"
+    prefix:   /achievement
+
+bound_api_crew:
+    resource: "@BoundApiBundle/Resources/config/routing/crew.yml"
+    prefix:   /crew

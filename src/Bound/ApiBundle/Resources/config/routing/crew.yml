@@ -1,0 +1,3 @@
+bound_api_crew_all:
+    path:     /all
+    defaults: { _controller: BoundApiBundle:Crew:all }
