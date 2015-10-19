@@ -8,6 +8,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+
+use Bound\UserBundle\Entity\User;
+
 class UserController extends Controller {
 
     public function allAction(Request $request) {
@@ -25,6 +29,17 @@ class UserController extends Controller {
         }
 
         $response = new JsonResponse($users, $status);
+        $response->setEncodingOptions(JSON_PRETTY_PRINT);
+
+        return $response;
+    }
+
+
+    /**
+     * @ParamConverter("user", options={"mapping": {"username": "username"}})
+     */
+    public function getAction(User $user, Request $request) {
+        $response = new JsonResponse($user->toArray(), 200);
         $response->setEncodingOptions(JSON_PRETTY_PRINT);
 
         return $response;

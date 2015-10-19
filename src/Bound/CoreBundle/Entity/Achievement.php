@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Bound\CoreBundle\Entity\AchievementRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Achievement
 {
@@ -31,6 +32,13 @@ class Achievement
     /**
      * @var string
      *
+     * @ORM\Column(name="salt", type="string", length=255)
+     */
+    private $salt;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="content", type="text")
      */
     private $content;
@@ -49,6 +57,16 @@ class Achievement
             'content' => $this->content,
             'points' => $this->points
         );
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function saltifyTitle() {
+        $salt = str_replace(' ', '+', $this->title);
+        $salt = mb_strtolower($salt, "utf-8");
+
+        $this->salt = $salt;
     }
 
     /**
@@ -132,5 +150,28 @@ class Achievement
     {
         return $this->points;
     }
-}
 
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     *
+     * @return Achievement
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
+    /**
+     * Get salt
+     *
+     * @return string
+     */
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+}

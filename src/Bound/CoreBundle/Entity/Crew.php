@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Bound\CoreBundle\Entity\CrewRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Crew
 {
@@ -29,6 +30,13 @@ class Crew
     private $title;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="salt", type="string", length=255)
+     */
+    private $salt;
+
+    /**
      * @var array
      *
      * @ORM\Column(name="members", type="array")
@@ -41,6 +49,16 @@ class Crew
             'title' => $this->title,
             'members' => $this->members
         );
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function saltifyTitle() {
+        $salt = str_replace(' ', '+', $this->title);
+        $salt = mb_strtolower($salt, "utf-8");
+
+        $this->salt = $salt;
     }
 
     /**
@@ -100,5 +118,28 @@ class Crew
     {
         return $this->members;
     }
-}
 
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     *
+     * @return Crew
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
+    /**
+     * Get salt
+     *
+     * @return string
+     */
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+}

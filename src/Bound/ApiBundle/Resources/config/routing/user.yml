@@ -1,3 +1,7 @@
 bound_api_user_all:
     path:     /all
     defaults: { _controller: BoundApiBundle:User:all }
+
+bound_api_user_get:
+    path:     /get/{username}
+    defaults: { _controller: BoundApiBundle:User:get }

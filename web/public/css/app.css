@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2015-10-12 18:22:11
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2015-10-17 19:09:55
+* @Last Modified time: 2015-10-19 11:18:23
 */
 
 body {
@@ -48,7 +48,7 @@ header {
     top: 6vh;
     z-index: 1;
 
-    min-height: 92vh;
+    min-height: 94vh;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 
     -webkit-transition: all 0 cubic-bezier(.34,.85,1,1);

@@ -8,6 +8,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+
+use Bound\CoreBundle\Entity\Crew;
+
 class CrewController extends Controller {
 
     public function allAction(Request $request) {
@@ -25,6 +29,16 @@ class CrewController extends Controller {
         }
 
         $response = new JsonResponse($crews, $status);
+        $response->setEncodingOptions(JSON_PRETTY_PRINT);
+
+        return $response;
+    }
+
+    /**
+     * @ParamConverter("crew", options={"mapping": {"salt": "salt"}})
+     */
+    public function getAction(Crew $crew, Request $request) {
+        $response = new JsonResponse($crew->toArray(), 200);
         $response->setEncodingOptions(JSON_PRETTY_PRINT);
 
         return $response;
