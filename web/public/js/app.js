@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2015-10-12 13:24:59
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2015-10-19 18:15:17
+* @Last Modified time: 2015-10-19 19:00:02
 */
 
 var origin = document.location.origin;
@@ -35,6 +35,11 @@ app.config(function($routeProvider) {
         .when('/achievement/:salt', {
             controller: 'MainController',
             templateUrl: path + 'achievementTest.html'
+        })
+
+        .when('/crew', {
+            controller: 'MainController',
+            templateUrl: path + 'crew.html'
         })
 
         .when('/friends', {
