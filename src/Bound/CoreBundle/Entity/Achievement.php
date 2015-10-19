@@ -54,6 +54,7 @@ class Achievement
     public function toArray() {
         return array(
             'title' => $this->title,
+            'salt' => $this->salt,
             'content' => $this->content,
             'points' => $this->points
         );

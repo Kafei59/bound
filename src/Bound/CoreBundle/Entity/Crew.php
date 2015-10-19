@@ -47,6 +47,7 @@ class Crew
     public function toArray() {
         return array(
             'title' => $this->title,
+            'salt' => $this->salt,
             'members' => $this->members
         );
     }
