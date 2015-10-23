@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2015-10-12 13:24:59
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2015-10-23 15:51:50
+* @Last Modified time: 2015-10-23 16:02:07
 */
 
 var path = '../public/views/';
@@ -21,23 +21,33 @@ app.config(function($routeProvider) {
         })
 
         .when('/dashboard', {
-            controller: 'MainController',
+            controller: 'AllUserController',
             templateUrl: path + 'dashboard.html'
         })
 
+        .when('/user/:username', {
+            controller: 'GetUserController',
+            templateUrl: path + 'user.html'
+        })
+
         .when('/achievement', {
-            controller: 'MainController',
+            controller: 'AllAchievementController',
             templateUrl: path + 'achievement.html'
         })
 
         .when('/achievement/:salt', {
-            controller: 'MainController',
+            controller: 'GetAchievementController',
             templateUrl: path + 'achievementTest.html'
         })
 
         .when('/crew', {
-            controller: 'MainController',
+            controller: 'AllCrewController',
             templateUrl: path + 'crew.html'
+        })
+
+        .when('/crew/:salt', {
+            controller: 'GetCrewController',
+            templateUrl: path + 'crewTest.html'
         })
 
         .when('/friends', {
