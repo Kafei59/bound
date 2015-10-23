@@ -2,12 +2,10 @@
 * @Author: gicque_p
 * @Date:   2015-10-12 13:24:59
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2015-10-19 19:00:02
+* @Last Modified time: 2015-10-23 15:51:50
 */
 
-var origin = document.location.origin;
-var folder = document.location.pathname.split('/')[1] + '/' + document.location.pathname.split('/')[2];
-var path = origin + '/' + folder + '/web/public/views/';
+var path = '../public/views/';
 
 var app = angular.module('BoundApp', ['ngAnimate', 'ngRoute', 'angularRipple']);
 
@@ -50,5 +48,6 @@ app.config(function($routeProvider) {
         .otherwise({
             controller: 'MainController',
             templateUrl: path + 'index.html'
-        });
+        })
+    ;
 });
