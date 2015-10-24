@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2015-10-12 13:24:59
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2015-10-24 15:51:27
+* @Last Modified time: 2015-10-24 18:02:34
 */
 
 var path = '../public/views/';
