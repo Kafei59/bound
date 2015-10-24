@@ -27,7 +27,7 @@
                 <img src="{{ asset('public/images/avatar.png') }}" class="img-responsive img-circle" />
             </div>
 
-            <h3 class="col-md-5 pull-left">Pierrick Gicquelais</h3>
+            <h3 class="col-xs-12 col-md-5 pull-left">Pierrick Gicquelais</h3>
 
             <div class="toggle-container pull-right" ng-click="toggleSidebar()" >
                 <div id="sidebar-toggle" ng-class="isShow ? 'active' : ''">
@@ -64,15 +64,15 @@
                     <i class="fa fa-users"></i>Ma Crew
                 </a>
 
-                <a href="{{ path('fos_user_security_logout') }}" class="list-group-item" angular-ripple>
+                <a href="{{ path('fos_user_security_logout') }}" class="list-group-item logout" angular-ripple>
                     <i class="fa fa-power-off"></i>Se déconnecter
                 </a>
             </div>
         </div>
     </nav>
 
-    <div class="content container text-center ng-hide" ng-show="!isShow" ng-class="animation">
-        <div id="content" ng-view></div>
+    <div class="content col-xs-6 col-xs-offset-4 col-md-8 col-md-offset-2 ng-hide" ng-show="!isShow" ng-class="animation">
+        <div id="content" class="text-center" ng-view></div>
     </div>
 {% endblock %}
 

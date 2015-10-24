@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2015-10-23 15:18:42
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2015-10-23 16:01:17
+* @Last Modified time: 2015-10-24 17:12:01
 */
 
 app.controller('MainController', ['$scope', '$routeParams', 'httpResponse', function($scope, $routeParams) {
@@ -15,6 +15,16 @@ app.controller('MainController', ['$scope', '$routeParams', 'httpResponse', func
     $scope.showSidebar = function () {
         $scope.isShow = true;
     }
+
+    $scope.animateElementIn = function($el) {
+        $el.removeClass('hidden');
+        $el.addClass('animated fadeIn');
+    };
+ 
+    $scope.animateElementOut = function($el) {
+        $el.addClass('hidden');
+        $el.removeClass('animated fadeIn');
+    };
 }]);
 
 app.controller('AllAchievementController', ['$scope', '$routeParams', 'httpResponse', function($scope, $routeParams) {

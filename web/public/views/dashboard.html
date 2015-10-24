@@ -1,4 +1,9 @@
-<div class="row" ng-repeat="user in users">
-    <p> <a href="#/user/[[user.username]]">[[ user.username ]]</a> </p>
-    <p> [[ user.email ]] </p>
+<div class="card hidden" ng-repeat="user in users" when-visible="animateElementIn" when-not-visible="animateElementOut">
+    <div class="row-user">
+        <h1>[[user.username]]</h1>
+        <p>@<a href="#/user/[[user.username]]">[[user.username]]</a></p>
+        <p> [[user.email]] </p>
+        <p> (Autres infos...) </p>
+        <div class="fab">175</div>
+    </div>
 </div>

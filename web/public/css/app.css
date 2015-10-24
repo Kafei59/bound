@@ -2,11 +2,11 @@
 * @Author: gicque_p
 * @Date:   2015-10-12 18:22:11
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2015-10-24 12:47:10
+* @Last Modified time: 2015-10-24 17:48:18
 */
 
 body {
-    font-family: "Open Sans";
+    font-family: "Roboto";
     font-weight: 100;
     background-color: #FFFFFF;
     color: #212121;
@@ -37,21 +37,9 @@ header {
     padding: 0;
 }
 
-#content {
-    margin-top: 15vh;
-    min-height: 3000px;
-
-    -webkit-transition: all 0 cubic-bezier(.34,.85,1,1);
-    -moz-transition: all 0 cubic-bezier(.34,.85,1,1);
-    -ms-transition: all 0 cubic-bezier(.34,.85,1,1);
-    -o-transition: all 0 cubic-bezier(.34,.85,1,1);
-    transition: all 0 cubic-bezier(.34,.85,1,1);
-
-    -webkit-transition-timing-function: cubic-bezier(.34,.85,1,1);
-    -moz-transition-timing-function: cubic-bezier(.34,.85,1,1);
-    -ms-transition-timing-function: cubic-bezier(.34,.85,1,1);
-    -o-transition-timing-function: cubic-bezier(.34,.85,1,1);
-    transition-timing-function: cubic-bezier(.34,.85,1,1);
+.hidden {
+    visibility: hidden;
+    display: block !important;
 }
 
 .sidebar {
@@ -115,6 +103,10 @@ header {
     padding-right: 1vw;
 }
 
+.sidebar .logout:hover {
+    color: red;
+}
+
 .sidebar.ng-hide i {
     float: right;
     padding-left: 2vw;
@@ -123,6 +115,89 @@ header {
 
 .list-group-item:first-child, .list-group-item:last-child {
     border-radius: 0;
+}
+
+#content {
+    margin-top: 15vh;
+    /*min-height: 3000px;*/
+
+    -webkit-transition: all 0 cubic-bezier(.34,.85,1,1);
+    -moz-transition: all 0 cubic-bezier(.34,.85,1,1);
+    -ms-transition: all 0 cubic-bezier(.34,.85,1,1);
+    -o-transition: all 0 cubic-bezier(.34,.85,1,1);
+    transition: all 0 cubic-bezier(.34,.85,1,1);
+
+    -webkit-transition-timing-function: cubic-bezier(.34,.85,1,1);
+    -moz-transition-timing-function: cubic-bezier(.34,.85,1,1);
+    -ms-transition-timing-function: cubic-bezier(.34,.85,1,1);
+    -o-transition-timing-function: cubic-bezier(.34,.85,1,1);
+    transition-timing-function: cubic-bezier(.34,.85,1,1);
+}
+
+.row {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin-bottom: 10vh;
+}
+
+.row-background {
+    height: 25vh;
+    background: url('../images/pink-background.png') no-repeat bottom;
+    background-position: 10% 50%;
+}
+
+.row-content {
+    padding: 5vh;
+}
+
+.card {
+    background: url('../images/pink-background.png') no-repeat right;
+    background-position: 75% 50%;
+
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.row-user {
+    border-bottom: 40vh solid #00BFA5;
+    border-right: 8vw solid transparent;
+    height: 0;
+    width: 40vw;
+
+    color: #FFFFFF;
+    font-weight: 300;
+}
+
+.row-user h1 {
+    text-transform: uppercase;
+    padding-top: 8vh;
+}
+
+.row-user a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.row-user a:hover {
+    color: #E53935;
+}
+
+.row-user .fab {
+    position: absolute;
+    left: 33vw;
+    bottom: 20vh;
+
+    width: 5vw;
+    height: 13vh;
+
+    text-align: center;
+    border-radius: 60px;
+    line-height: 90px;
+
+    font-size: 2em;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.7);
+
+    background-color: #FFEB3B;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 /* --- ANIMATIONS --- */

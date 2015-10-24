@@ -2,12 +2,12 @@
 * @Author: gicque_p
 * @Date:   2015-10-12 13:24:59
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2015-10-23 16:02:07
+* @Last Modified time: 2015-10-24 15:51:27
 */
 
 var path = '../public/views/';
 
-var app = angular.module('BoundApp', ['ngAnimate', 'ngRoute', 'angularRipple']);
+var app = angular.module('BoundApp', ['ngAnimate', 'ngRoute', 'angularRipple', 'angular-scroll-animate']);
 
 app.config(function($interpolateProvider) {
     $interpolateProvider.startSymbol('[[').endSymbol(']]');
