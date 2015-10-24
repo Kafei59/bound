@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2015-10-12 18:22:11
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2015-10-19 19:32:31
+* @Last Modified time: 2015-10-24 12:47:10
 */
 
 body {
@@ -40,6 +40,18 @@ header {
 #content {
     margin-top: 15vh;
     min-height: 3000px;
+
+    -webkit-transition: all 0 cubic-bezier(.34,.85,1,1);
+    -moz-transition: all 0 cubic-bezier(.34,.85,1,1);
+    -ms-transition: all 0 cubic-bezier(.34,.85,1,1);
+    -o-transition: all 0 cubic-bezier(.34,.85,1,1);
+    transition: all 0 cubic-bezier(.34,.85,1,1);
+
+    -webkit-transition-timing-function: cubic-bezier(.34,.85,1,1);
+    -moz-transition-timing-function: cubic-bezier(.34,.85,1,1);
+    -ms-transition-timing-function: cubic-bezier(.34,.85,1,1);
+    -o-transition-timing-function: cubic-bezier(.34,.85,1,1);
+    transition-timing-function: cubic-bezier(.34,.85,1,1);
 }
 
 .sidebar {
@@ -99,11 +111,11 @@ header {
     color: #212121;
 }
 
-.sidebar-nav span.glyphicon {
+.sidebar-nav i {
     padding-right: 1vw;
 }
 
-.sidebar.ng-hide span.glyphicon {
+.sidebar.ng-hide i {
     float: right;
     padding-left: 2vw;
     padding-right: 0;
@@ -139,20 +151,6 @@ header {
     }
 }
 
-.sidebar.ng-enter {
-    transform: translateX(-13vw);
-    -ms-transform: translateX(-13vw);
-    -webkit-transform: translateX(-13vw);
-    transition-duration: 650ms;
-    -webkit-transition-duration: 650ms;
-}
-
-.sidebar.ng-enter-active {
-  transform: translateX(0);
-  -ms-transform: translateX(0);
-  -webkit-transform: translateX(0);
-}
-
 .sidebar.ng-leave {
   transform: translateX(0);
   -ms-transform: translateX(0);
@@ -161,28 +159,8 @@ header {
   -webkit-transition-duration: 650ms;
 }
 
-.sidebar.ng-leave-active {
-  transform: translateX(-13vw);
-  -ms-transform: translateX(-13vw);
-  -webkit-transform: translateX(-13vw);
-}
-
-.sidebar.ng-hide-add {
-  transform: translateX(0);
-  -ms-transform: translateX(0);
-  -webkit-transform: translateX(0);
-  transition-duration: 650ms;
-  -webkit-transition-duration: 650ms;
-}
-
-.sidebar.ng-hide-add.ng-hide-add-active {
-  transform: translateX(-13vw);
-  -ms-transform: translateX(-13vw);
-  -webkit-transform: translateX(-13vw);
-}
-
 .sidebar.ng-hide {
-    transform: translateX(13vw);
+    transform: translateX(-13vw);
     -ms-transform: translateX(-13vw);
     -webkit-transform: translateX(-13vw);
     transition-duration: 650ms;
@@ -191,7 +169,7 @@ header {
 }
 
 .sidebar.ng-hide-remove {
-    transform: translateX(13vw);
+    transform: translateX(-13vw);
     -ms-transform: translateX(-13vw);
     -webkit-transform: translateX(-13vw);
     transition-duration: 650ms;
@@ -203,6 +181,31 @@ header {
   transform: translateX(0);
   -ms-transform: translateX(0);
   -webkit-transform: translateX(0);
+}
+
+.content {
+    transform: translateX(0vw);
+    -ms-transform: translateX(0vw);
+    -webkit-transform: translateX(0vw);
+    transition-duration: 650ms;
+    -webkit-transition-duration: 650ms;
+}
+
+.content.ng-leave {
+    transform: translateX(0vw);
+    -ms-transform: translateX(0vw);
+    -webkit-transform: translateX(0vw);
+    transition-duration: 650ms;
+    -webkit-transition-duration: 650ms;
+}
+
+.content.ng-hide {
+    transform: translateX(13vw);
+    -ms-transform: translateX(13vw);
+    -webkit-transform: translateX(13vw);
+    transition-duration: 650ms;
+    -webkit-transition-duration: 650ms;
+    display: block !important;
 }
 
 #sidebar-toggle span, #sidebar-toggle span:before, #sidebar-toggle span:after {
