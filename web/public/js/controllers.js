@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2015-10-23 15:18:42
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2015-10-24 17:12:01
+* @Last Modified time: 2015-10-24 18:41:29
 */
 
 app.controller('MainController', ['$scope', '$routeParams', 'httpResponse', function($scope, $routeParams) {
@@ -60,5 +60,11 @@ app.controller('AllUserController', ['$scope', '$routeParams', 'httpResponse', f
 app.controller('GetUserController', ['$scope', '$routeParams', 'httpResponse', function($scope, $routeParams) {
     httpResponse.get('api/user/get/' + $routeParams.username).success(function(data) {
         $scope.user = data;
+    })
+}]);
+
+app.controller('FriendsUserController', ['$scope', '$routeParams', 'httpResponse', function($scope, $routeParams) {
+    httpResponse.get('api/user/friends/' + $routeParams.username).success(function(data) {
+        $scope.friends = data;
     })
 }]);

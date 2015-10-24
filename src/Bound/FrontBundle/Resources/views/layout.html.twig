@@ -45,22 +45,22 @@
                 </a>
             
                 <a href="#/dashboard" class="list-group-item" angular-ripple>
-                    <i class="fa fa-user-plus"></i>Mon compte
+                    <i class="fa fa-user"></i>Mon compte
                 </a>
 
                 <a href="#/" class="list-group-item" angular-ripple>
-                    <i class="fa fa-paper-plane-o"></i>Messagerie
+                    <i class="fa fa-paper-plane-o"></i>Ma messagerie
                 </a>
             
                 <a href="#/achievement" class="list-group-item" angular-ripple>
-                    <i class="fa fa-star"></i>Haut-faits
+                    <i class="fa fa-star"></i>Mes haut-faits
                 </a>
 
-                <a href="#/friends" class="list-group-item" angular-ripple>
+                <a href="#/friends/{{ app.user.username }}" class="list-group-item" angular-ripple>
                     <i class="fa fa-heart-o"></i>Mes amis
                 </a>
             
-                <a href="#/crew" class="list-group-item" angular-ripple>
+                <a href="#/crew/{{ app.user.crew.salt }}" class="list-group-item" angular-ripple>
                     <i class="fa fa-users"></i>Ma Crew
                 </a>
 

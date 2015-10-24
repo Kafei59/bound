@@ -34,6 +34,14 @@ class User extends BaseUser {
      */
     private $crew;
 
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="achievements", type="array")
+     */
+    private $achievements;
+
     public function toArray() {
         return array (
             'username' => $this->username,
@@ -96,5 +104,29 @@ class User extends BaseUser {
     public function getCrew()
     {
         return $this->crew;
+    }
+
+    /**
+     * Set achievements
+     *
+     * @param array $achievements
+     *
+     * @return User
+     */
+    public function setAchievements($achievements)
+    {
+        $this->achievements = $achievements;
+
+        return $this;
+    }
+
+    /**
+     * Get achievements
+     *
+     * @return array
+     */
+    public function getAchievements()
+    {
+        return $this->achievements;
     }
 }

@@ -44,4 +44,27 @@ class UserController extends Controller {
 
         return $response;
     }
+
+    /**
+     * @ParamConverter("user", options={"mapping": {"username": "username"}})
+     */
+    public function friendsAction(User $user, Request $request) {
+        $entities = $this->getDoctrine()->getRepository('BoundUserBundle:User')->findBy(array('username' => $user->getFriends()));
+
+        $users = array();
+        if (!empty($entities)) {
+            foreach ($entities as $entity) {
+                $users[$entity->getSalt()] = $entity->toArray();
+            }
+
+            $status = 200;
+        } else {
+            $status = 500;
+        }
+
+        $response = new JsonResponse($users, 200);
+        $response->setEncodingOptions(JSON_PRETTY_PRINT);
+
+        return $response;        
+    }
 }
