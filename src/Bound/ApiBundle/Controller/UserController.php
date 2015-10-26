@@ -62,7 +62,7 @@ class UserController extends Controller {
             $status = 500;
         }
 
-        $response = new JsonResponse($users, 200);
+        $response = new JsonResponse($users, $status);
         $response->setEncodingOptions(JSON_PRETTY_PRINT);
 
         return $response;        

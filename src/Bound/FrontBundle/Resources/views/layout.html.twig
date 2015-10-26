@@ -7,15 +7,19 @@
 {% block header %}
     <div class="header container">
         <div class="col-xs-4 col-md-4 text-left">
-            <h4> Logo Spot </h4>
-        </div>
-
-        <div class="col-xs-4 col-md-4 text-center">
-            <h4> Bound </h4>
+            <a href="#/">
+                <img src="{{ asset('public/images/logo.png') }}" class="pull-left">
+                <h4> Bound </h4>
+            </a>
         </div>
 
         <div class="col-xs-4 col-md-4 text-right">
-            <h4> Search Bar </h4>
+            <h4>
+                <form novalidate class="simple-form">
+                    <i class="fa fa-search"></i>
+                    <input type="text" placeholder="Rechercher">
+                </form>
+            </h4>
         </div>
     </div>
 {% endblock %}
