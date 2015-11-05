@@ -1,3 +1,3 @@
-Bound_front_index:
+bound_front_index:
     path:     /
     defaults: { _controller: BoundFrontBundle:Default:index }

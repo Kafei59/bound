@@ -2,10 +2,14 @@
 * @Author: gicque_p
 * @Date:   2015-10-12 13:24:59
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2015-10-24 18:54:47
+* @Last Modified time: 2015-10-28 12:41:02
 */
 
-var path = '../public/views/';
+if (window.location.href.indexOf('app_dev') > -1) {
+    var path = '../public/views/';
+} else {
+    var path = 'public/views/';
+}
 
 var app = angular.module('BoundApp', ['ngAnimate', 'ngRoute', 'angularRipple', 'angular-scroll-animate']);
 

@@ -63,10 +63,12 @@
                 <a href="#/friends/{{ app.user.username }}" class="list-group-item" angular-ripple>
                     <i class="fa fa-heart-o"></i>Mes amis
                 </a>
-            
-                <a href="#/crew/{{ app.user.crew.salt }}" class="list-group-item" angular-ripple>
-                    <i class="fa fa-users"></i>Ma Crew
-                </a>
+
+                {% if app.user.crew is not null %}
+                    <a href="#/crew/{{ app.user.crew.salt }}" class="list-group-item" angular-ripple>
+                        <i class="fa fa-users"></i>Ma Crew
+                    </a>
+                {% endif %}
 
                 <a href="{{ path('fos_user_security_logout') }}" class="list-group-item logout" angular-ripple>
                     <i class="fa fa-power-off"></i>Se déconnecter
@@ -81,6 +83,14 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{{ asset('public/js/vendor/angular.min.js') }}"></script>
+    <script src="{{ asset('public/js/vendor/angular-route.min.js') }}"></script>
+    <script src="{{ asset('public/js/vendor/angular-resource.min.js') }}"></script>
+    <script src="{{ asset('public/js/vendor/angular-animate.min.js') }}"></script>
+    <script src="{{ asset('public/js/vendor/angular-ripple.js') }}"></script>
+    <script src="{{ asset('public/js/vendor/angular-scroll-animate.js') }}"></script>
+
+    <script src="{{ asset('public/js/app.js') }}"></script>
     <script src="{{ asset('public/js/controllers.js') }}"></script>
     <script src="{{ asset('public/js/services.js') }}"></script>
 {% endblock %}

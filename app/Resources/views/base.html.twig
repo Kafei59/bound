@@ -4,16 +4,16 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Bound{% endblock %}</title>
-        <base href="{{ path('Bound_front_index') }}">
+        <base href="{{ path('bound_front_index') }}">
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('public/css/vendor/bootstrap.min.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('public/css/vendor/animate.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('public/css/vendor/font-awesome.min.css') }}" />
 
-{#         <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
- #}        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}{% endblock %}
     </head>
 
     <body ng-app="BoundApp" ng-controller="MainController">
@@ -27,14 +27,6 @@
             <section class="container-fluid">{% block footer %}{% endblock %}</section>
         </footer>
 
-        <script src="{{ asset('public/js/vendor/angular.min.js') }}"></script>
-        <script src="{{ asset('public/js/vendor/angular-route.min.js') }}"></script>
-        <script src="{{ asset('public/js/vendor/angular-resource.min.js') }}"></script>
-        <script src="{{ asset('public/js/vendor/angular-animate.min.js') }}"></script>
-        <script src="{{ asset('public/js/vendor/angular-ripple.js') }}"></script>
-        <script src="{{ asset('public/js/vendor/angular-scroll-animate.js') }}"></script>
-
-        <script src="{{ asset('public/js/app.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

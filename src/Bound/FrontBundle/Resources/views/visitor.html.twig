@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/visitor.css') }}" />
+{% endblock %}
+
+{% block main %}
+    <h1> Coucou je suis l'index </h1>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('public/js/vendor/jquery.min.js') }}"></script>
+    <script src="{{ asset('public/js/visitor.js') }}"></script>
+{% endblock %}
