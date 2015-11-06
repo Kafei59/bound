@@ -14,7 +14,7 @@ use Bound\UserBundle\Entity\User;
 
 class UserController extends Controller {
 
-    public function allAction(Request $request) {
+    public function allAction() {
         $entities = $this->getDoctrine()->getRepository('BoundUserBundle:User')->findAll();
 
         $users = array();
@@ -38,7 +38,7 @@ class UserController extends Controller {
     /**
      * @ParamConverter("user", options={"mapping": {"username": "username"}})
      */
-    public function getAction(User $user, Request $request) {
+    public function getAction(User $user) {
         $response = new JsonResponse($user->toArray(), 200);
         $response->setEncodingOptions(JSON_PRETTY_PRINT);
 
@@ -48,7 +48,7 @@ class UserController extends Controller {
     /**
      * @ParamConverter("user", options={"mapping": {"username": "username"}})
      */
-    public function friendsAction(User $user, Request $request) {
+    public function friendsAction(User $user) {
         $entities = $this->getDoctrine()->getRepository('BoundUserBundle:User')->findBy(array('username' => $user->getFriends()));
 
         $users = array();

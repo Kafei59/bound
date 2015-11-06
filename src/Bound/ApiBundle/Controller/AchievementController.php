@@ -14,7 +14,7 @@ use Bound\CoreBundle\Entity\Achievement;
 
 class AchievementController extends Controller {
 
-    public function allAction(Request $request) {
+    public function allAction() {
         $entities = $this->getDoctrine()->getRepository('BoundCoreBundle:Achievement')->findAll();
 
         $achievements = array();
@@ -37,7 +37,7 @@ class AchievementController extends Controller {
     /**
      * @ParamConverter("achievement", options={"mapping": {"salt": "salt"}})
      */
-    public function getAction(Achievement $achievement, Request $request) {
+    public function getAction(Achievement $achievement) {
         $response = new JsonResponse($achievement->toArray(), 200);
         $response->setEncodingOptions(JSON_PRETTY_PRINT);
 

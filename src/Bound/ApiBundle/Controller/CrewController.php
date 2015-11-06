@@ -14,7 +14,7 @@ use Bound\CoreBundle\Entity\Crew;
 
 class CrewController extends Controller {
 
-    public function allAction(Request $request) {
+    public function allAction() {
         $entities = $this->getDoctrine()->getRepository('BoundCoreBundle:Crew')->findAll();
 
         $crews = array();
@@ -37,7 +37,7 @@ class CrewController extends Controller {
     /**
      * @ParamConverter("crew", options={"mapping": {"salt": "salt"}})
      */
-    public function getAction(Crew $crew, Request $request) {
+    public function getAction(Crew $crew) {
         $response = new JsonResponse($crew->toArray(), 200);
         $response->setEncodingOptions(JSON_PRETTY_PRINT);
 
