@@ -6,11 +6,6 @@
                 <source>Symfony2 is great</source>
                 <target>J'aime Symfony2</target>
             </trans-unit>
-
-            <trans-unit id="2">
-                <source>Bad credentials</source>
-                <target>Nom utilisateur / mot de passe fail</target>
-            </trans-unit>
         </body>
     </file>
 </xliff>
