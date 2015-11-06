@@ -1,33 +1,35 @@
 {% extends 'BoundUserBundle::layout.html.twig' %}
 
 {% block fos_user_content %}
-    <div class="register-box col-md-6 col-md-offset-3">
-        <div class="change-form text-center">
-            <span>-</span>
+    <div class="register-box overbox col-xs-12 col-md-6 col-md-offset-3">
+        <div class="animate-button alt">
+            <a href="{{ path('fos_user_security_login') }}">
+                <span class="shape"></span>
+            </a>
         </div>
 
         <h1>Inscription</h1>
         <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
             <div class="input">
-                {{ form_label(form.username) }}
+                {{ form_label(form.username, "Nom d'utilisateur") }}
                 {{ form_widget(form.username) }}
                 <span class="spin"></span>
             </div>
 
             <div class="input">
-                {{ form_label(form.email) }}
+                {{ form_label(form.email, "Adresse E-mail") }}
                 {{ form_widget(form.email) }}
                 <span class="spin"></span>
             </div>
 
             <div class="input">
-                {{ form_label(form.plainPassword.first) }}
+                {{ form_label(form.plainPassword.first, "Mot de passe") }}
                 {{ form_widget(form.plainPassword.first) }}
                 <span class="spin"></span>
             </div>
 
             <div class="input">
-                {{ form_label(form.plainPassword.second) }}
+                {{ form_label(form.plainPassword.second, "Vérification") }}
                 {{ form_widget(form.plainPassword.second) }}
                 <span class="spin"></span>
             </div>

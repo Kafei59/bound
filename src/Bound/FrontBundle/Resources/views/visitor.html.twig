@@ -6,6 +6,8 @@
 
 {% block main %}
     <h1> Coucou je suis l'index </h1>
+    <a href="{{ path('fos_user_security_login') }}">Connexion</a>
+    <a href="{{ path('fos_user_registration_register') }}">Inscription</a>
 {% endblock %}
 
 {% block javascripts %}

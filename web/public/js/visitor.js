@@ -2,125 +2,169 @@
 * @Author: gicque_p
 * @Date:   2015-10-28 13:01:40
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2015-11-05 19:58:55
+* @Last Modified time: 2015-11-06 17:22:33
 */
 
 $(function() {
+
+    var height = $('.overbox').height();
+    var width = $('.overbox').width();
+    var position = $('.overbox').offset();
+
+    $('.offbox').css({
+        'height': height, 
+        'width': width,
+        'left': position.left - 20,
+        'top': position.top + 20
+    });
+
+    $('a').click(function(e) {
+        e.preventDefault();
+        var href = $(this).attr('href');
+        setTimeout(function() {
+            window.location.href = href;
+        }, 600);
+    })
+
+    setTimeout(function() {    
+        $(".input input").each(function() {
+            if ($(this).val() != "" || $(this).hasClass('fill')) {
+                $(this).parent(".input").each(function() {
+                    $("label", this).css({
+                        'line-height': "18px",
+                        'font-size': "1em",
+                        'font-weight': "100",
+                        'top': "0px",
+                    })
+                    
+                    if ($(".login-box").length) {
+                        $("label", this).css({
+                            'color': "#78909C"
+                        })
+                    } else {
+                        $("label", this).css({
+                            'color': "#CFD8DC"
+                        })
+                    }
+
+                    $(".spin", this).css({
+                        'width': "0px"
+                    })
+                })
+            }
+        })
+    }, 100);
+
     $(".input input")
         .focus(function() {
             $(this).parent(".input").each(function() {
                 $("label", this).css({
-                    "line-height": "18px",
-                    "font-size": "1em",
-                    "font-weight": "100",
-                    "top": "0px"
+                    'line-height': "18px",
+                    'font-size': "1em",
+                    'font-weight': "100",
+                    'top': "0px"
                 })
+
+                if ($(".login-box").length) {
+                    $("label", this).css({
+                        'color': "#78909C"
+                    })
+                } else {
+                    $("label", this).css({
+                        'color': "#212121"
+                    })
+                }
                 
                 $(".spin", this).css({
-                    "width": "100%"
+                    'width': "100%"
                 })
             });
         })
 
         .blur(function() {
             $(".spin").css({
-                "width": "0px"
+                'width': "0px"
             })
     
             if ($(this).val() == "") {
                 $(this).parent(".input").each(function() {
                     $("label", this).css({
-                       "line-height": "60px",
-                       "font-size": "1.5em",
-                       "font-weight": "300",
-                       "top": "10px"
+                       'line-height': "60px",
+                       'font-size': "1.5em",
+                       'font-weight': "300",
+                       'top': "10px"
                     })
+
+                    if ($(".login-box").length) {
+                        $("label", this).css({
+                           'color': "#212121"
+                        })
+                    } else {
+                        $("label", this).css({
+                            'color': "#FFFFFF"
+                        })
+                    }
+
                 });
             }
         });
 
-    // $(".button").click(function(e) {
-    //     var pX = e.pageX,
-    //         pY = e.pageY,
-    //         oX = parseInt($(this).offset().left),
-    //         oY = parseInt($(this).offset().top);
+    $('#remember_me').click(function() {
+        if ($(this).is(':checked')) {        
+            $('.remember-me').css({
+                'color': "#ED2553"
+            })
+        } else {
+            $('.remember-me').css({
+                'color': "#212121"
+            })            
+        }
+    })
 
-    //     $(this).append('<span class="click-efect x-' + oX + ' y-' + oY + '" style="margin-left:' + (pX - oX) + 'px;margin-top:' + (pY - oY) + 'px;"></span>')
-    //     $('.x-' + oX + '.y-' + oY + '').animate({
-    //         "width": "500px",
-    //         "height": "500px",
-    //         "top": "-250px",
-    //         "left": "-250px",
-    //     }, 600);
-    // })
+    $(".alt").click(function() {
+        if (!$(this).hasClass('animate-button')) {
+            $(".shape").css({
+                'width': "100%",
+                'height': "100%",
+                'transform': "rotate(0deg)",
+            })
 
-   //      $("button", this).addClass('active');
-   // })
+            setTimeout(function() {
+                $(".overbox").css({"overflow": "initial"})
+            }, 600)
 
-   //  $(".alt-2").click(function() {
-   //      if (!$(this).hasClass('material-button')) {
-   //          $(".shape").css({
-   //              "width": "100%",
-   //              "height": "100%",
-   //              "transform": "rotate(0deg)"
-   //          })
+            $(this).animate({
+                'width': "140px",
+                'height': "140px"
+            }, 500);
+        }
+    })
 
-   //          setTimeout(function() {
-   //              $(".overbox").css({"overflow": "initial"})
-   //          }, 600)
+   $(".animate-button").click(function() {
 
-   //          $(this).animate({
-   //              "width": "140px",
-   //              "height": "140px"
-   //          }, 500, function() {
-   //              $(".box").removeClass("back");
+        if ($(this).hasClass('animate-button')) {
+            setTimeout(function() {
+                $(".overbox").css({
+                    'overflow': "hidden"
+                })
+            }, 200)
 
-   //              $(this).removeClass('active')
-   //          });
+            $(this).addClass('active').animate({
+                'width': "1000px",
+                'height': "1000px"
+            });
 
-   //          $(".overbox .title").fadeOut(300);
-   //          $(".overbox .input").fadeOut(300);
-   //          $(".overbox .button").fadeOut(300);
+            $(".shape").css({
+                'width': "0",
+                'height': "0",
+                'content': "none"
+            })
+        }
 
-   //          $(".alt-2").addClass('material-buton');
-   //      }
-   //  })
-
-   // $(".material-button").click(function() {
-
-   //      if ($(this).hasClass('material-button')) {
-   //          setTimeout(function() {
-   //              $(".overbox").css({
-   //                  "overflow": "hidden"
-   //              })
-            
-   //              $(".box").addClass("back");
-   //          }, 200)
-
-   //          $(this).addClass('active').animate({
-   //              "width": "700px",
-   //              "height": "700px"
-   //          });
-
-   //          setTimeout(function() {
-   //              $(".shape").css({
-   //                  "width": "50%",
-   //                  "height": "50%",
-   //                  "transform": "rotate(45deg)"
-   //              })
-
-   //              $(".overbox .title").fadeIn(300);
-   //              $(".overbox .input").fadeIn(300);
-   //              $(".overbox .button").fadeIn(300);
-   //          }, 700)
-
-   //          $(this).removeClass('material-button');
-   //      }
-
-   //      if ($(".alt-2").hasClass('material-buton')) {
-   //          $(".alt-2").removeClass('material-buton');
-   //          $(".alt-2").addClass('material-button');
-   //      }
-   // });
+        if ($(".alt").hasClass('material-buton')) {
+            $(".alt").removeClass('material-buton');
+            $(".alt").addClass('animate-button');
+        }
+   });
 
 });

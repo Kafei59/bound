@@ -1,9 +1,17 @@
 {% extends 'BoundUserBundle::layout.html.twig' %}
 
+{% if last_username is defined %}
+    {% set class = "fill" %}
+{% else %}
+    {% set class = "" %}
+{% endif %}
+
 {% block fos_user_content %}
-    <div class="login-box col-xs-11 col-md-6 col-md-offset-3">
-        <div class="change-form text-center">
-            <span>+</span>
+    <div class="login-box overbox col-xs-12 col-md-6 col-md-offset-3">
+        <div class="animate-button alt">
+            <a href="{{ path('fos_user_registration_register') }}">
+                <span class="shape"></span>
+            </a>
         </div>
 
         <h1>Connexion</h1>
@@ -12,18 +20,20 @@
 
             <div class="input">
                 <label for="username">Nom d'utilisateur:</label>
-                <input type="text" id="username" name="_username" value="{{ last_username }}" required="required">
+                <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="{{ class }}">
                 <span class="spin"></span>
             </div>
 
             <div class="input">
                 <label for="password">Mot de passe:</label>
-                <input type="password" id="password" name="_password" required="required">
+                <input type="password" id="password" name="_password" required="required" class="{{ class }}">
                 <span class="spin"></span>
             </div>
 
-            <input type="checkbox" id="remember_me" name="_remember_me" value="on">
-            <label for="remember_me">Se souvenir de moi</label>
+            <div class="button">
+                <input type="checkbox" id="remember_me" name="_remember_me" value="on">
+                <label for="remember_me" class="remember-me">Se souvenir de moi</label>
+            </div>
 
             <div class="button text-center">
                 <button type="submit" id="_submit" name="_submit">Se connecter</button>
