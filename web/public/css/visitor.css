@@ -2,52 +2,184 @@
 * @Author: gicque_p
 * @Date:   2015-10-28 13:01:17
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2015-11-06 17:21:28
+* @Last Modified time: 2015-11-12 17:51:52
 */
 
 body {
-    background-image: url(../images/background5.jpg);
+    font-family: 'Roboto';
+    padding: 0;
+    margin: 0;
+}
+
+.btn.btn-circle {
+    padding: 0;
+    border-radius: 50%;
+    border: 2px solid #212121;
+
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+}
+
+.container-fluid {
+    padding: 0;
+    margin: 0;
+}
+
+.header {
+    border-top: 7px solid #ED2253;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+
+    background: #FFFFFF;
+}
+
+.header nav {
+    border: none;
+    margin: 0;
+    margin-top: 4vh;
+}
+
+.header .navbar-header a {
+    font-weight: 300;
+    font-size: 4em;
+    letter-spacing: 1px;
+    color: #212121;
+    text-transform: uppercase;    
+}
+
+.header ul {
+    padding-right: 85px !important;
+}
+
+.header ul li {
+    font-weight: 100;
+    font-size: 2em;
+    text-transform: uppercase;
+
+    border-bottom: 5px solid rgba(237, 34, 83, 0);
+    border-width: 110%;
+
+    transition: border 0.3s ease-in;
+    -o-transition: border 0.3s ease-in;
+    -ms-transition: border 0.3s ease-in;
+    -moz-transition: border 0.3s ease-in;
+    -webkit-transition: border 0.3s ease-in;
+}
+
+.header ul li a {
+    color: #212121;
+    text-decoration: none;
+}
+
+.header ul li.active, .header ul li:hover {
+    border-bottom: 5px solid rgba(237, 34, 83, 1);
+}
+
+.header ul li.active {
+    cursor: not-allowed;
+}
+
+.header ul li.active a {
+    pointer-events: none;
+    font-weight: 400;
+    color: #AAAAAA;
+    background: none !important;
+}
+
+.fab-menu {
+    background-color: #E91E63;
+    border: none !important;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+    position: absolute;
+    right: 30px;
+    top: 25px;
+}
+
+.fab-menu:hover, .fab-menu:focus {
+    background-color: #C2185B;
+}
+
+#welcome, #concept, #design, #contact {
+    min-height: 100vh;
+}
+
+#welcome {
+    background: url('../images/pink-background.png') no-repeat center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+    color: #FFFFFF;
+}
+
+#welcome h1 {
+    font-size: 12em;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+#welcome p {
+    font-size: 2em;
+    font-weight: 100;
+}
+
+#welcome a {
+    color: #FFFFFF;
+}
+
+#welcome a[type="button"] {
+    border: none;
+    border-radius: 2px;
+    font-weight: 300;
+    text-transform: uppercase;
+    padding: 10px 30px;
+    color: #212121;
+
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+/* Forms */
+.form-box {
+    background-image: url(../images/background5.jpg);    
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 100vh;
-    font-family: 'Roboto', sans-serif;
-}
-
-h1 {
-    letter-spacing: 2px;
-    text-transform: uppercase;
-
-    padding-left: 1vw;
-}
-
-a {
-    color: #FFFFFF;
-    text-decoration: none;
-}
-
-a:focus, a:hover {
-    color: #FFFFFF;
-    text-decoration: none;
-}
-
-label {
-    font-size: 1.5em;
-    font-weight: 300;
-    line-height: 60px;
-}
-
-.form-box {
-    margin-top: 20vh;
+    padding-top: 20vh;
 }
 
 .offbox {
-
     background-color: rgba(21, 21, 21, 0.5);
     border-radius: 5px;
 
     position: absolute;
     z-index: 0;
+}
+
+.form-box h1 {
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    padding-left: 1vw;    
+}
+
+.form-box label {
+    font-size: 1.5em;
+    font-weight: 300;
+    line-height: 60px;
+}
+
+.form-box a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.form-box a:focus, .form-box a:hover {
+    color: #FFFFFF;
+    text-decoration: none;
 }
 
 .login-box {
@@ -57,14 +189,14 @@ label {
 }
 
 .register-box {
-    background-color: #ED2553;
+    background-color: #E91E63;
     border-radius: 5px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
 .login-box h1 {
-    color: #ED2553;
-    border-left: 5px solid #ED2553;    
+    color: #E91E63;
+    border-left: 5px solid #E91E63;    
 }
 
 .register-box h1 {
@@ -80,7 +212,7 @@ label {
     color: #FFFFFF;
 }
 
-input {
+.form-box input {
     border: none;
     background: none;
 }
@@ -93,7 +225,7 @@ input {
     color: #FFFFFF;
 }
 
-input:focus {
+.form-box input:focus {
     outline: none;
 }
 
@@ -102,17 +234,17 @@ input:focus {
 }
 
 .register-box input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px #ED2553 inset !important;
+    -webkit-box-shadow: 0 0 0px 1000px #E91E63 inset !important;
 }
 
 .input .spin {
-   background: #ED2553;
+   background: #E91E63;
    z-index: 4;
    width: 0;
 }
 
 .login-box .input .spin {
-    background: #ED2553;
+    background: #E91E63;
 }
 
 .register-box .input .spin {
@@ -134,7 +266,7 @@ input:focus {
     -webkit-transition: 0.3s ease-in;
 }
 
-button {
+.form-box button {
     position: relative;
     padding: 2vh 4vw;
     background: none;
@@ -151,14 +283,14 @@ button {
 }
 
 .login-box button {
-    border: 2px solid #ED2553;    
+    border: 2px solid #E91E63;    
 }
 
 .register-box button {
     border: 2px solid #FFFFFF;    
 }
 
-button:hover {
+.form-box button:hover {
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     font-weight: 700;
 }
@@ -168,10 +300,10 @@ button:hover {
 }
 
 .register-box button:hover {
-    color: #ED2553;
+    color: #E91E63;
 }
 
-button:before {
+.form-box button:before {
     content: "";
     position: absolute;
     bottom: 0;
@@ -185,14 +317,14 @@ button:before {
 }
 
 .login-box button:before {
-    background: #ED2553;
+    background: #E91E63;
 }
 
 .register-box button:before {
     background: #FFFFFF;
 }
 
-button:hover:before {
+.form-box button:hover:before {
     top: 0;
 }
 
@@ -236,7 +368,7 @@ button:hover:before {
 
 .login-box .animate-button,
 .login-box .alt {
-   background: #ED2553;
+   background: #E91E63;
 }
 
 .register-box .animate-button,
@@ -277,7 +409,7 @@ button:hover:before {
 .register-box .alt .shape:before,
 .register-box .animate-button .shape:after,
 .register-box .alt .shape:after {
-    background: #ED2553;
+    background: #E91E63;
 }
 
 .animate-button .shape:before,

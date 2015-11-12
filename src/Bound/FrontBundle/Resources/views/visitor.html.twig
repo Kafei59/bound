@@ -1,16 +1,90 @@
 {% extends '::base.html.twig' %}
 
 {% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/vendor/twemoji-awesome.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/vendor/font-awesome.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('public/css/visitor.css') }}" />
 {% endblock %}
 
+{% block header %}
+    <div class="header">
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <a href="#welcome" class="navbar-brand">Bound</a>
+            </div>
+
+            <div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                        <a href="#welcome">Bienvenue</a>
+                    </li>
+
+                    <li>
+                        <a href="#concept">Concept</a>
+                    </li>
+                    
+                    <li>
+                        <a href="#design">Design</a>
+                    </li>
+
+                    <li>
+                        <a href="#contact">Contact</a>                        
+                    </li>
+                </ul>
+            </div>
+
+            <button type="button" class="btn btn-circle btn-default fab-menu">+</button>
+        </nav>
+    </div>
+{% endblock %}
+
 {% block main %}
-    <h1> Coucou je suis l'index </h1>
-    <a href="{{ path('fos_user_security_login') }}">Connexion</a>
-    <a href="{{ path('fos_user_registration_register') }}">Inscription</a>
+    <div class="sections">
+        <section id="welcome" class="col-md-12" style="display: table; table-layout: fixed;">
+            <div class="text-center" style="display: table-cell !important; vertical-align: middle;">
+                <h1> Bienvenue <i class="twa twa-two-hearts"></i></h1>
+                <p>
+                    Tu es tombé ici par hasard ? <br>
+                    Il me semble que le destin est réussi son coup ! <br>
+                    Madame, Monsieur, bienvenue sur le projet Bound. <br><br>
+
+                    En fait, tu connaissais déjà ? <i class="twa twa-smirk"></i> <br>
+                    <a href="{{ path('fos_user_security_login') }}" type="button" class="btn btn-default">
+                        Connexion
+                    </a>
+                    <br><br>
+
+                    Sinon, tu peux toujours nous rejoindre ! <i class="twa twa-heart-eyes"></i> <br>
+                    <a href="{{ path('fos_user_registration_register') }}" type="button" class="btn btn-default">
+                        Inscription
+                    </a>
+                    <br><br>
+
+                    Ou voir plus ici <br>
+                    <a href="#concept"><i class="fa fa-arrow-down"></i></a>
+                </p>
+            </div>
+        </section>
+
+        <section id="concept" class="col-sm-12 col-md-12">
+            <h1> TATA </h1>
+        </section>
+
+        <section id="design" class="col-sm-12 col-md-12">
+            <h1> TUTU </h1>
+        </section>
+
+        <section id="contact" class="col-sm-12 col-md-12">
+            <h1> TITI </h1>
+        </section>
+    </div>
+{% endblock %}
+
+{% block footer %}
 {% endblock %}
 
 {% block javascripts %}
     <script src="{{ asset('public/js/vendor/jquery.min.js') }}"></script>
+    <script src="{{ asset('public/js/vendor/jquery-smooth-scroll.min.js') }}"></script>
     <script src="{{ asset('public/js/visitor.js') }}"></script>
 {% endblock %}

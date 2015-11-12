@@ -48,7 +48,7 @@
                     <span class="badge">0</span>
                 </a>
             
-                <a href="#/dashboard" class="list-group-item" angular-ripple>
+                <a href="#/dashboard" class="list-group-item" angular-ripple >
                     <i class="fa fa-user"></i>Mon compte
                 </a>
 
@@ -75,14 +75,25 @@
                 </a>
             </div>
         </div>
+
+        <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
     </nav>
 
     <div class="content col-xs-6 col-xs-offset-4 col-md-8 col-md-offset-2 ng-hide" ng-show="!isShow" ng-class="animation">
         <div id="content" class="text-center" ng-view></div>
     </div>
+
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{{ asset('public/js/vendor/jquery.min.js') }}"></script>
+
     <script src="{{ asset('public/js/vendor/angular.min.js') }}"></script>
     <script src="{{ asset('public/js/vendor/angular-route.min.js') }}"></script>
     <script src="{{ asset('public/js/vendor/angular-resource.min.js') }}"></script>

@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2015-10-23 15:18:42
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2015-10-24 18:41:29
+* @Last Modified time: 2015-11-10 12:13:27
 */
 
 app.controller('MainController', ['$scope', '$routeParams', 'httpResponse', function($scope, $routeParams) {
@@ -54,6 +54,7 @@ app.controller('GetCrewController', ['$scope', '$routeParams', 'httpResponse', f
 app.controller('AllUserController', ['$scope', '$routeParams', 'httpResponse', function($scope, $routeParams) {
     httpResponse.get('api/user/all').success(function(data) {
         $scope.users = data;
+        $scope.loading = false;
     })
 }]);
 
