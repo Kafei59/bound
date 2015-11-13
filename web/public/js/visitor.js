@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2015-10-28 13:01:40
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2015-11-12 17:52:24
+* @Last Modified time: 2015-11-12 19:31:23
 */
 
 function isVisible(elementToBeChecked) {

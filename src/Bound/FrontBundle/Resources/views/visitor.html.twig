@@ -40,42 +40,124 @@
 
 {% block main %}
     <div class="sections">
-        <section id="welcome" class="col-md-12" style="display: table; table-layout: fixed;">
-            <div class="text-center" style="display: table-cell !important; vertical-align: middle;">
+        <section id="welcome" class="col-md-12 table-display">
+            <div class="vertical-align text-center">
                 <h1> Bienvenue <i class="twa twa-two-hearts"></i></h1>
-                <p>
+                <p class="col-md-12">
                     Tu es tombé ici par hasard ? <br>
-                    Il me semble que le destin est réussi son coup ! <br>
-                    Madame, Monsieur, bienvenue sur le projet Bound. <br><br>
+                    Il me semble que le destin a réussi son coup ! <br>
+                    Madame ou monsieur, bienvenue à toi sur le projet Bound. <br><br>
+                <p>
 
-                    En fait, tu connaissais déjà ? <i class="twa twa-smirk"></i> <br>
+                <p class="col-md-4 col-md-offset-2 bordered">
+                    <span class="font-bold">En fait, tu connaissais déjà ? <i class="twa twa-smirk"></i></span> <br><br>
                     <a href="{{ path('fos_user_security_login') }}" type="button" class="btn btn-default">
                         Connexion
                     </a>
-                    <br><br>
+                </p>
 
-                    Sinon, tu peux toujours nous rejoindre ! <i class="twa twa-heart-eyes"></i> <br>
+                <p class="col-md-4">
+                    <span class="font-bold">Sinon, viens agrandir la famille ! <i class="twa twa-heart-eyes"></i></span> <br><br>
                     <a href="{{ path('fos_user_registration_register') }}" type="button" class="btn btn-default">
                         Inscription
                     </a>
-                    <br><br>
+                </p>
 
-                    Ou voir plus ici <br>
-                    <a href="#concept"><i class="fa fa-arrow-down"></i></a>
+                <p class="col-md-12">
+                    <br>
+                    Ou alors, tu peux te renseigner sur l'application<br><br>
+                    <a href="#concept"><i class="fa fa-arrow-down arrow animated pulse"></i></a>
                 </p>
             </div>
         </section>
 
-        <section id="concept" class="col-sm-12 col-md-12">
-            <h1> TATA </h1>
+        <section id="concept" class="col-sm-12 col-md-12 table-display">
+            <div class="vertical-align text-center">
+                <h1> Le concept est simple </h1>
+
+                <p>
+                    L'objectif est d'obtenir tous les haut-faits. <i class="twa twa-star"></i><br>
+                    C'est comme dans ton jeu vidéo préféré. <br>
+                    Sauf que là, c'est dans la vraie vie ! <i class="twa twa-muscle"></i><br>
+                </p>
+
+                <p class="col-md-12">
+                    <br>
+                    <span class="font-bold">Inscris-toi, tu verras c'est cool !</span> <br>
+                    <a href="{{ path('fos_user_registration_register') }}" type="button" class="btn btn-default">
+                        Inscription
+                    </a>
+
+                    <br><br>
+                    Tu te poses encore quelques questions ?<br><br>
+                    <a href="#design"><i class="fa fa-arrow-down arrow animated pulse"></i></a>
+                </p>
+            </div>
         </section>
 
-        <section id="design" class="col-sm-12 col-md-12">
-            <h1> TUTU </h1>
+        <div class="col-sm-12 col-md-6 col-md-offset-3 delimiter">
+            <img src="{{ asset('public/images/pink-arrow.png') }}">
+        </div>
+
+        <section id="design" class="col-sm-12 col-md-12 table-display">
+            <div class="vertical-align text-center">
+
+                <div class="col-sm-12 col-md-6">
+                    <h1> Le design reste intuitif </h1>
+
+                    <p>
+                        On veut que tu es envie de jouer. <i class="twa twa-see-no-evil"></i><br>
+                        C'est pourquoi le design est simple et épuré. <br>
+                        On mise tout sur le côté utilisateur ! <i class="twa twa-pray"></i><br>
+                    </p>
+                </div>
+
+                <div class="col-sm-12 col-md-6 pull-right">
+                    <div class="col-sm-12 col-md-4 grid-card">
+                    </div>
+
+                    <div class="col-sm-12 col-md-4 grid-card">
+                    </div>
+
+                    <div class="col-sm-12 col-md-3 grid-card">
+                    </div>
+
+                    <div class="col-sm-12 col-md-3 grid-card">
+                    </div>
+
+                    <div class="col-sm-12 col-md-3 grid-card">
+                    </div>
+
+                    <div class="col-sm-12 col-md-5 grid-card">
+                    </div>
+                </div>
+
+                <p class="col-md-12">
+                    <br>
+                    <span class="font-bold">Alors, on a réussi à te convaincre ? </span> <br>
+                    <a href="{{ path('fos_user_registration_register') }}" type="button" class="btn btn-default">
+                        Inscription
+                    </a>
+
+                    <br><br>
+                    Si tu as d'autres questions ou si tu veux juste aller boire une bière ensemble <br><br>
+                    <a href="#contact"><i class="fa fa-arrow-down arrow animated pulse"></i></a>
+                </p>
+            </div>
         </section>
 
-        <section id="contact" class="col-sm-12 col-md-12">
-            <h1> TITI </h1>
+        <section id="contact" class="col-sm-12 col-md-12 table-display">
+            <div class="vertical-align text-center">
+                <h1> Pour nous contacter </h1>
+
+                <p>
+                    Pierrick GICQUELAIS <i class="twa twa-joy-cat"></i><br>
+                    Etudiant @Epitech Lille - Développeur Web @Pumpkin-app - Auto-entrepreneur @Wulk <br>
+                    06.37.26.95.46 <br>
+                    pierrick.gicquelais@gmail.com <br><br>
+                    (Disponible à toute heure pour boire une bière)
+                </p>
+            </div>
         </section>
     </div>
 {% endblock %}
@@ -85,6 +167,5 @@
 
 {% block javascripts %}
     <script src="{{ asset('public/js/vendor/jquery.min.js') }}"></script>
-    <script src="{{ asset('public/js/vendor/jquery-smooth-scroll.min.js') }}"></script>
     <script src="{{ asset('public/js/visitor.js') }}"></script>
 {% endblock %}
