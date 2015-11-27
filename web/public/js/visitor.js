@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2015-10-28 13:01:40
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2015-11-12 19:31:23
+* @Last Modified time: 2015-11-27 12:12:04
 */
 
 function isVisible(elementToBeChecked) {
@@ -15,7 +15,10 @@ function isVisible(elementToBeChecked) {
 
 $(function() {
     $(document).ready(function () {
-
+        if ($("#map").length) {
+            google.maps.event.addDomListener(window, 'load', initialize);
+        }
+ 
         var height = 0;
         if ($('.sections')) {
             var height = $('.header').height();
@@ -223,3 +226,22 @@ $(function() {
        });
    });
 });
+
+function initialize() {
+    var mapCanvas = document.getElementById('map');
+
+    var mapOptions = {
+        center: new google.maps.LatLng(50.6351722, 3.0620158, 20.5),
+        zoom: 12,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+
+    var map = new google.maps.Map(mapCanvas, mapOptions)
+
+    var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(50.6351722, 3.0620158, 20.5),
+        title: "Je suis ici !"
+    });
+
+    marker.setMap(map);
+}

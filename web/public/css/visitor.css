@@ -2,13 +2,14 @@
 * @Author: gicque_p
 * @Date:   2015-10-28 13:01:17
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2015-11-13 11:32:01
+* @Last Modified time: 2015-11-27 17:15:36
 */
 
 body {
     font-family: 'Roboto';
     padding: 0;
     margin: 0;
+    word-wrap: break-word;
 }
 
 hr {
@@ -45,6 +46,11 @@ hr {
     vertical-align: middle;
 }
 
+.vertical-align-bottom {
+    display: table-cell !important;
+    vertical-align: bottom;
+}
+
 .delimiter {
     border-top: 5px solid #FF80AB;
     text-align: center;
@@ -58,6 +64,30 @@ hr {
 .arrow {
     font-size: 2.5em;
     color: #212121;
+}
+
+.flat-button {
+    border: none;
+    border-radius: 2px;
+    font-weight: 300;
+    text-transform: uppercase;
+    padding: 10px 30px;
+    color: #212121 !important;
+    font-weight: 700;
+
+    background-color: #FFFFFF;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+    transition: 0.3s ease-in;
+    -o-transition: 0.3s ease-in;
+    -ms-transition: 0.3s ease-in;
+    -moz-transition: 0.3s ease-in;
+    -webkit-transition: 0.3s ease-in;
+}
+
+.flat-button:hover {
+    color: #ED2253 !important;
+    background: #FFFFFF;
 }
 
 .header {
@@ -87,10 +117,6 @@ hr {
 
     position: relative;
     bottom: 10px;
-}
-
-.header ul {
-    padding-right: 85px !important;
 }
 
 .header ul li {
@@ -146,12 +172,12 @@ hr {
 }
 
 #welcome, #concept, #design, #contact {
-    min-height: 100vh;
+    min-height: 95vh;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);    
 }
 
 #welcome {
     background: url('../images/pink-background.png') no-repeat center;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 
     color: #FFFFFF;
 }
@@ -175,32 +201,30 @@ hr {
     color: #FFFFFF;
 }
 
-#welcome a[type="button"] {
-    border: none;
-    border-radius: 2px;
-    font-weight: 300;
-    text-transform: uppercase;
-    padding: 10px 30px;
-    color: #212121;
-
-    background-color: #FFFFFF;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-
-    transition: 0.3s ease-in;
-    -o-transition: 0.3s ease-in;
-    -ms-transition: 0.3s ease-in;
-    -moz-transition: 0.3s ease-in;
-    -webkit-transition: 0.3s ease-in;
+#welcome .arrow {
+    color: #FFFFFF;
 }
 
-#welcome a[type="button"]:hover {
-    color: #ED2253;
-    font-weight: 400;
+#concept {
+    background: url(../images/lowpoly2.png) left no-repeat;
+    color: #FFFFFF;
 }
 
 #concept p {
     font-size: 2em;
     font-weight: 100;
+}
+
+#concept .arrow {
+    color: #FFFFFF;
+}
+
+#design {
+    background: url(../images/lowpoly8.png) center no-repeat;
+    background-size: 100%;
+
+    color: #FFFFFF;
+    text-shadow: 0 0 20px #212121;
 }
 
 #design p {
@@ -210,10 +234,78 @@ hr {
 
 #design .grid-card {
     height: 200px;
-    margin: 5px;
+    margin: 10px;
 
+    padding: 0;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+    color: #212121;
+    text-shadow: none;
+}
+
+#design div {
+    margin: 0;
+}
+
+#design .grid-top {
     background: #ED2253;
+    color: #FFFFFF;
+    height: 60%;
+
+    transition: 0.3s ease-in;
+    -o-transition: 0.3s ease-in;
+    -ms-transition: 0.3s ease-in;
+    -moz-transition: 0.3s ease-in;
+    -webkit-transition: 0.3s ease-in;
+}
+
+#design .grid-top hr {
+    width: 50%;
+}
+
+#design .grid-bottom {
+    height: 40%;
+    padding-top: 10px;
+    font-size: 0.7em;
+
+    background: #FFFFFF;
+    margin: 0;
+}
+
+#design .grid-card h3 {
+    margin: 0;
+    padding-top: 10px;
+}
+
+#design .grid-card:hover {
+    -webkit-animation-duration: 1.5s; 
+    animation-duration: 1.5s; 
+    -webkit-animation-fill-mode: both; 
+    animation-fill-mode: both; 
+    animation-iteration-count:infinite; 
+    -webkit-animation-iteration-count:infinite; 
+    -webkit-animation-name: pulse; 
+    animation-name: pulse;
+}
+
+#design .grid-card:hover .grid-top {
+    background: #D81B60;
+}
+
+#design a {
+    text-shadow: none;
+}
+
+#contact {
+    background: #212121;
+    color: #FFFFFF;
+
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);    
+}
+
+#contact h1 {
+    font-size: 4em;
+    text-transform: uppercase;
 }
 
 #contact p {
@@ -221,11 +313,15 @@ hr {
     font-weight: 100;
 }
 
+#map {
+    height: 300px;
+}
+
 
 
 /* Forms */
 .form-box {
-    background-image: url(../images/background5.jpg);    
+    background-image: url(../images/lowpoly3.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

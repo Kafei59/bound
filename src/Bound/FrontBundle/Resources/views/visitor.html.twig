@@ -8,13 +8,13 @@
 
 {% block header %}
     <div class="header">
-        <nav class="navbar navbar-default">
+        <nav class="col-sm-12 col-md-12 navbar navbar-default">
             <div class="navbar-header">
                 <a href="#welcome" class="navbar-brand">Bound</a>
             </div>
 
             <div>
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="col-md-5 nav navbar-nav navbar-right">
                     <li class="active">
                         <a href="#welcome">Bienvenue</a>
                     </li>
@@ -28,7 +28,7 @@
                     </li>
 
                     <li>
-                        <a href="#contact">Contact</a>                        
+                        <a href="#contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -40,25 +40,25 @@
 
 {% block main %}
     <div class="sections">
-        <section id="welcome" class="col-md-12 table-display">
+        <section id="welcome" class="col-xs-12 col-md-12 table-display">
             <div class="vertical-align text-center">
-                <h1> Bienvenue <i class="twa twa-two-hearts"></i></h1>
+                <h1> Bienvenue </h1>
                 <p class="col-md-12">
                     Tu es tombé ici par hasard ? <br>
-                    Il me semble que le destin a réussi son coup ! <br>
+                    Il me semble que le destin ait réussi son coup ! <br>
                     Madame ou monsieur, bienvenue à toi sur le projet Bound. <br><br>
                 <p>
 
                 <p class="col-md-4 col-md-offset-2 bordered">
-                    <span class="font-bold">En fait, tu connaissais déjà ? <i class="twa twa-smirk"></i></span> <br><br>
-                    <a href="{{ path('fos_user_security_login') }}" type="button" class="btn btn-default">
+                    <span class="font-bold">Tu fais déjà parti de l'aventure ? <i class="twa twa-smirk"></i></span> <br><br>
+                    <a href="{{ path('fos_user_security_login') }}" type="button" class="btn btn-default flat-button">
                         Connexion
                     </a>
                 </p>
 
                 <p class="col-md-4">
                     <span class="font-bold">Sinon, viens agrandir la famille ! <i class="twa twa-heart-eyes"></i></span> <br><br>
-                    <a href="{{ path('fos_user_registration_register') }}" type="button" class="btn btn-default">
+                    <a href="{{ path('fos_user_registration_register') }}" type="button" class="btn btn-default flat-button">
                         Inscription
                     </a>
                 </p>
@@ -73,90 +73,146 @@
 
         <section id="concept" class="col-sm-12 col-md-12 table-display">
             <div class="vertical-align text-center">
-                <h1> Le concept est simple </h1>
+                <div class="col-md-6">
+                    <h1> Le concept est simple </h1>
 
-                <p>
-                    L'objectif est d'obtenir tous les haut-faits. <i class="twa twa-star"></i><br>
-                    C'est comme dans ton jeu vidéo préféré. <br>
-                    Sauf que là, c'est dans la vraie vie ! <i class="twa twa-muscle"></i><br>
-                </p>
+                    <p>
+                        L'objectif est d'obtenir tous les haut-faits. <i class="twa twa-star"></i><br>
+                        C'est comme dans ton jeu vidéo préféré. <br>
+                        Sauf que là, c'est sur Internet et dans la vraie vie ! <i class="twa twa-muscle"></i><br>
+                    </p>
 
-                <p class="col-md-12">
-                    <br>
-                    <span class="font-bold">Inscris-toi, tu verras c'est cool !</span> <br>
-                    <a href="{{ path('fos_user_registration_register') }}" type="button" class="btn btn-default">
-                        Inscription
-                    </a>
+                    <p class="col-md-12">
+                        <br>
+                        <span class="font-bold">Inscris-toi, tu verras c'est cool !</span> <br><br>
+                        <a href="{{ path('fos_user_registration_register') }}" type="button" class="btn btn-default flat-button">
+                            Inscription
+                        </a>
+                    </p>
+                </div>
 
-                    <br><br>
-                    Tu te poses encore quelques questions ?<br><br>
-                    <a href="#design"><i class="fa fa-arrow-down arrow animated pulse"></i></a>
-                </p>
+                <div class="col-md-12">
+                    <p>
+                        <br><br><br><br>
+                        <span class="font-bold">Tu te poses encore quelques questions ?</span> <br><br>
+                        <a href="#design"><i class="fa fa-arrow-down arrow animated pulse"></i></a>
+                    </p>
+                </div>
             </div>
         </section>
-
-        <div class="col-sm-12 col-md-6 col-md-offset-3 delimiter">
-            <img src="{{ asset('public/images/pink-arrow.png') }}">
-        </div>
 
         <section id="design" class="col-sm-12 col-md-12 table-display">
             <div class="vertical-align text-center">
 
                 <div class="col-sm-12 col-md-6">
-                    <h1> Le design reste intuitif </h1>
+                    <h1> Le design doit être intuitif </h1>
 
                     <p>
                         On veut que tu es envie de jouer. <i class="twa twa-see-no-evil"></i><br>
                         C'est pourquoi le design est simple et épuré. <br>
                         On mise tout sur le côté utilisateur ! <i class="twa twa-pray"></i><br>
+
+                        <br>
+                        <span class="font-bold">Alors, on a réussi à te convaincre ? </span> <br><br>
+                        <a href="{{ path('fos_user_registration_register') }}" type="button" class="btn btn-default flat-button">
+                            Inscription
+                        </a>
                     </p>
+
                 </div>
 
                 <div class="col-sm-12 col-md-6 pull-right">
                     <div class="col-sm-12 col-md-4 grid-card">
+                        <div class="grid-top">
+                            <h3> Cheerleader </h3>
+                            <hr>
+                        </div>
+
+                        <div class="grid-bottom">
+                            <p> Avoir 100 amis sur Facebook </p>
+                        </div>
                     </div>
 
                     <div class="col-sm-12 col-md-4 grid-card">
+                        <div class="grid-top">
+                            <h3> Globetrotteur </h3>
+                            <hr>
+                        </div>
+
+                        <div class="grid-bottom">
+                            <p> Visiter 3 pays différents </p>
+                        </div>
                     </div>
 
                     <div class="col-sm-12 col-md-3 grid-card">
+                        <div class="grid-top">
+                            <h3> Professionnel </h3>
+                            <hr>
+                        </div>
+
+                        <div class="grid-bottom">
+                            <p> Avoir 2 ans d'expérience sur LinkedIn </p>
+                        </div>
                     </div>
 
                     <div class="col-sm-12 col-md-3 grid-card">
+                        <div class="grid-top">
+                            <h3> Coqueluche </h3>
+                            <hr>
+                        </div>
+
+                        <div class="grid-bottom">
+                            <p> Avoir 1000 abonnés sur Twitter </p>
+                        </div>
                     </div>
 
                     <div class="col-sm-12 col-md-3 grid-card">
+                        <div class="grid-top">
+                            <h3> Hyperconnecté </h3>
+                            <hr>
+                        </div>
+
+                        <div class="grid-bottom">
+                            <p> Se connecter avec tous les réseaux proposés </p>
+                        </div>
                     </div>
 
                     <div class="col-sm-12 col-md-5 grid-card">
+                        <div class="grid-top">
+                            <h3> Infatigable </h3>
+                            <hr>
+                        </div>
+
+                        <div class="grid-bottom">
+                            <p> Courir 1000km avec Nike+ </p>
+                        </div>
                     </div>
                 </div>
 
                 <p class="col-md-12">
-                    <br>
-                    <span class="font-bold">Alors, on a réussi à te convaincre ? </span> <br>
-                    <a href="{{ path('fos_user_registration_register') }}" type="button" class="btn btn-default">
-                        Inscription
-                    </a>
-
                     <br><br>
-                    Si tu as d'autres questions ou si tu veux juste aller boire une bière ensemble <br><br>
+                    <span class="font-bold">On a pas réussi à répondre à toutes tes questions ?</span> <br><br>
                     <a href="#contact"><i class="fa fa-arrow-down arrow animated pulse"></i></a>
                 </p>
             </div>
         </section>
 
-        <section id="contact" class="col-sm-12 col-md-12 table-display">
+        <section id="contact" class="col-xs-12 col-sm-12 col-md-12 table-display">
             <div class="vertical-align text-center">
-                <h1> Pour nous contacter </h1>
+                <div class="col-xs-12 col-md-12">
+                    <h1> Pour nous contacter </h1>
 
-                <p>
-                    Pierrick GICQUELAIS <i class="twa twa-joy-cat"></i><br>
-                    Etudiant @Epitech Lille - Développeur Web @Pumpkin-app - Auto-entrepreneur @Wulk <br>
-                    06.37.26.95.46 <br>
-                    pierrick.gicquelais@gmail.com <br><br>
-                    (Disponible à toute heure pour boire une bière)
-                </p>
+                    <p>
+                        Pierrick GICQUELAIS <i class="twa twa-joy-cat"></i><br>
+                        Etudiant @Epitech Lille - Développeur Web @Pumpkin-app - Auto-entrepreneur @Wulk <br>
+                        06.37.26.95.46 <br>
+                        pierrick.gicquelais@gmail.com <br><br>
+                        (Disponible à toute heure pour boire une bière)
+                    </p>
+                </div>
+
+                <div id="map" class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+                </div>
             </div>
         </section>
     </div>
@@ -167,5 +223,6 @@
 
 {% block javascripts %}
     <script src="{{ asset('public/js/vendor/jquery.min.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
     <script src="{{ asset('public/js/visitor.js') }}"></script>
 {% endblock %}
