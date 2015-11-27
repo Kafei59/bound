@@ -1,6 +1,12 @@
 <?php
+/**
+ * @Author: gicque_p
+ * @Date:   2015-11-27 14:55:06
+ * @Last Modified by:   gicque_p
+ * @Last Modified time: 2015-11-27 14:59:58
+ */
 
-namespace Bound\UserBundle\Entity;
+namespace Bound\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Entity\User as BaseUser;
@@ -9,7 +15,7 @@ use FOS\UserBundle\Entity\User as BaseUser;
  * User
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Bound\UserBundle\Entity\UserRepository")
+ * @ORM\Entity(repositoryClass="Bound\CoreBundle\Entity\UserRepository")
  */
 class User extends BaseUser {
     /**

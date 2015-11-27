@@ -1,6 +1,12 @@
 <?php
+/**
+ * @Author: gicque_p
+ * @Date:   2015-11-27 14:55:40
+ * @Last Modified by:   gicque_p
+ * @Last Modified time: 2015-11-27 15:00:22
+ */
 
-namespace Bound\UserBundle\Entity;
+namespace Bound\CoreBundle\Entity;
 
 /**
  * UserRepository
