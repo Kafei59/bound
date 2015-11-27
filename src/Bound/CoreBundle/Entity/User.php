@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-11-27 14:55:06
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2015-11-27 14:59:58
+ * @Last Modified time: 2015-11-27 17:19:42
  */
 
 namespace Bound\CoreBundle\Entity;
@@ -39,7 +39,6 @@ class User extends BaseUser {
      * @ORM\JoinColumn(nullable=true)
      */
     private $crew;
-
 
     /**
      * @var array

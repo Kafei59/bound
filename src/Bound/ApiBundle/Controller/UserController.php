@@ -10,28 +10,15 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
-use Bound\UserBundle\Entity\User;
+use Bound\ApiBundle\Controller\PController;
+use Bound\CoreBundle\Entity\User;
 
-class UserController extends Controller {
+class UserController extends PController {
 
     public function allAction() {
-        $entities = $this->getDoctrine()->getRepository('BoundUserBundle:User')->findAll();
+        $entities = $this->getDoctrine()->getRepository('BoundCoreBundle:User')->findAll();
 
-        $users = array();
-        if (!empty($entities)) {
-            foreach ($entities as $entity) {
-                $users[$entity->getSalt()] = $entity->toArray();
-            }
-
-            $status = 200;
-        } else {
-            $status = 500;
-        }
-
-        $response = new JsonResponse($users, $status);
-        $response->setEncodingOptions(JSON_PRETTY_PRINT);
-
-        return $response;
+        return $this->jsonEntitiesResponse($entities);
     }
 
 
@@ -39,32 +26,15 @@ class UserController extends Controller {
      * @ParamConverter("user", options={"mapping": {"username": "username"}})
      */
     public function getAction(User $user) {
-        $response = new JsonResponse($user->toArray(), 200);
-        $response->setEncodingOptions(JSON_PRETTY_PRINT);
-
-        return $response;
+        return $this->jsonEntityResponse($user);
     }
 
     /**
      * @ParamConverter("user", options={"mapping": {"username": "username"}})
      */
     public function friendsAction(User $user) {
-        $entities = $this->getDoctrine()->getRepository('BoundUserBundle:User')->findBy(array('username' => $user->getFriends()));
+        $entities = $this->getDoctrine()->getRepository('BoundCoreBundle:User')->findBy(array('username' => $user->getFriends()));
 
-        $users = array();
-        if (!empty($entities)) {
-            foreach ($entities as $entity) {
-                $users[$entity->getSalt()] = $entity->toArray();
-            }
-
-            $status = 200;
-        } else {
-            $status = 500;
-        }
-
-        $response = new JsonResponse($users, $status);
-        $response->setEncodingOptions(JSON_PRETTY_PRINT);
-
-        return $response;        
+        return $this->jsonEntitiesResponse($entities);
     }
 }
