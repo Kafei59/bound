@@ -21,7 +21,7 @@ class CrewController extends PController {
     }
 
     /**
-     * @ParamConverter("crew", options={"mapping": {"salt": "salt"}})
+     * @ParamConverter("crew", options={"mapping": {"slug": "slug"}})
      */
     public function getAction(Crew $crew) {
         return $this->jsonEntityResponse($crew);

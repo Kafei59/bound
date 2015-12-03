@@ -3,5 +3,5 @@ bound_api_crew_all:
     defaults: { _controller: BoundApiBundle:Crew:all }
 
 bound_api_crew_get:
-    path:     /get/{salt}
+    path:     /get/{slug}
     defaults: { _controller: BoundApiBundle:Crew:get }

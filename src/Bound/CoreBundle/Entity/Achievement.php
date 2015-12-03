@@ -3,6 +3,7 @@
 namespace Bound\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 /**
  * Achievement
@@ -32,9 +33,9 @@ class Achievement
     /**
      * @var string
      *
-     * @ORM\Column(name="salt", type="string", length=255)
+     * @ORM\Column(name="slug", type="string", length=255)
      */
-    private $salt;
+    private $slug;
 
     /**
      * @var string
@@ -52,22 +53,29 @@ class Achievement
 
 
     public function toArray() {
-        return array(
-            'title' => $this->title,
-            'salt' => $this->salt,
-            'content' => $this->content,
-            'points' => $this->points
-        );
+        return get_object_vars($this);
     }
 
     /**
      * @ORM\PrePersist
      */
-    public function saltifyTitle() {
-        $salt = str_replace(' ', '+', $this->title);
-        $salt = mb_strtolower($salt, "utf-8");
+    public function slugifyTitle() {
+        $slug = str_replace(' ', '+', $this->title);
+        $slug = mb_strtolower($slug, "utf-8");
 
-        $this->salt = $salt;
+        $this->slug = $slug;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function assertEntity() {
+        $attrs = get_object_vars($this);
+        foreach ($attrs as $key => $attr) {
+            if ($key != 'id' and $attr == NULL) {
+                throw new HttpException(400, "Entity properties cannot be null.");            
+            }
+        }
     }
 
     /**
@@ -78,6 +86,16 @@ class Achievement
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set id
+     *
+     * @param integer
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
     /**
@@ -153,26 +171,26 @@ class Achievement
     }
 
     /**
-     * Set salt
+     * Set slug
      *
-     * @param string $salt
+     * @param string $slug
      *
      * @return Achievement
      */
-    public function setSalt($salt)
+    public function setSlug($slug)
     {
-        $this->salt = $salt;
+        $this->slug = $slug;
 
         return $this;
     }
 
     /**
-     * Get salt
+     * Get slug
      *
      * @return string
      */
-    public function getSalt()
+    public function getSlug()
     {
-        return $this->salt;
+        return $this->slug;
     }
 }

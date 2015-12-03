@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-11-27 17:20:28
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2015-11-27 17:28:55
+ * @Last Modified time: 2015-12-03 11:28:02
  */
 
 namespace Bound\ApiBundle\Controller;
@@ -11,6 +11,7 @@ namespace Bound\ApiBundle\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -25,7 +26,7 @@ class PController extends Controller {
 
             $status = 200;
         } else {
-            $status = 500;
+            $status = 400;
         }
 
         $response = new JsonResponse($data, $status);
@@ -39,5 +40,18 @@ class PController extends Controller {
         $response->setEncodingOptions(JSON_PRETTY_PRINT);
 
         return $response;        
+    }
+
+    public function assertRequestMethod(Request $request, $method) {
+        if (!$request->isMethod($method)) {
+            throw new HttpException(400, "Bad Request.");
+        }
+    }
+
+    public function createEntityFromContent($content, $entityName) {
+        $serializer = $this->get('jms_serializer');
+        $entity = $serializer->deserialize($content, $entityName, 'json');
+
+        return $entity;
     }
 }

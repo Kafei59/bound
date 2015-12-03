@@ -17,6 +17,8 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+            
             new Bound\CoreBundle\BoundCoreBundle(),
             new Bound\ApiBundle\BoundApiBundle(),
             new Bound\BackOfficeBundle\BoundBackOfficeBundle(),

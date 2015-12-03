@@ -1,4 +1,12 @@
 services:
-#    bound_core.example:
-#        class: Bound\CoreBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    bound.user_manager:
+        class: Bound\CoreBundle\Manager\UserManager
+        arguments: [ @service_container, @doctrine.orm.entity_manager ]
+
+    bound.achievement_manager:
+        class: Bound\CoreBundle\Manager\AchievementManager
+        arguments: [ @service_container, @doctrine.orm.entity_manager ]
+
+    bound.crew_manager:
+        class: Bound\CoreBundle\Manager\CrewManager
+        arguments: [ @service_container, @doctrine.orm.entity_manager ]

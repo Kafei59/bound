@@ -32,9 +32,9 @@ class Crew
     /**
      * @var string
      *
-     * @ORM\Column(name="salt", type="string", length=255)
+     * @ORM\Column(name="slug", type="string", length=255)
      */
-    private $salt;
+    private $slug;
 
     /**
      * @var array
@@ -47,7 +47,7 @@ class Crew
     public function toArray() {
         return array(
             'title' => $this->title,
-            'salt' => $this->salt,
+            'slug' => $this->slug,
             'members' => $this->members
         );
     }
@@ -55,11 +55,11 @@ class Crew
     /**
      * @ORM\PrePersist
      */
-    public function saltifyTitle() {
-        $salt = str_replace(' ', '+', $this->title);
-        $salt = mb_strtolower($salt, "utf-8");
+    public function slugifyTitle() {
+        $slug = str_replace(' ', '+', $this->title);
+        $slug = mb_strtolower($slug, "utf-8");
 
-        $this->salt = $salt;
+        $this->slug = $slug;
     }
 
     /**
@@ -121,26 +121,26 @@ class Crew
     }
 
     /**
-     * Set salt
+     * Set slug
      *
-     * @param string $salt
+     * @param string $slug
      *
      * @return Crew
      */
-    public function setSalt($salt)
+    public function setSlug($slug)
     {
-        $this->salt = $salt;
+        $this->slug = $slug;
 
         return $this;
     }
 
     /**
-     * Get salt
+     * Get slug
      *
      * @return string
      */
-    public function getSalt()
+    public function getSlug()
     {
-        return $this->salt;
+        return $this->slug;
     }
 }
