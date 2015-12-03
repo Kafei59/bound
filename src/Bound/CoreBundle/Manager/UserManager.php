@@ -3,14 +3,14 @@
  * @Author: gicque_p
  * @Date:   2015-10-15 16:31:53
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2015-10-15 16:48:12
+ * @Last Modified time: 2015-11-30 19:40:20
  */
 
 namespace Bound\CoreBundle\Manager;
 
-use Symfony\Component\DependencyInjection\Container;
+use Bound\CoreBundle\Manager\PManager;
 
-class UserManager {
+class UserManager extends PManager {
 
     public function modify() {
         
