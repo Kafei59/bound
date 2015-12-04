@@ -2,7 +2,3 @@ parameters:
 #    parameter_name: value
 
 services:
-
-    bound_core_user_manager:
-        class: Bound\CoreBundle\Manager\UserManager
-        arguments: [ @service_container, @doctrine.orm.entity_manager ]

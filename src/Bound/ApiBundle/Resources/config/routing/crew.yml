@@ -5,3 +5,15 @@ bound_api_crew_all:
 bound_api_crew_get:
     path:     /get/{slug}
     defaults: { _controller: BoundApiBundle:Crew:get }
+
+bound_api_crew_create:
+    path:     /create
+    defaults: { _controller: BoundApiBundle:Crew:post }
+
+bound_api_crew_modify:
+    path:     /modify/{slug}
+    defaults: { _controller: BoundApiBundle:Crew:put }
+
+bound_api_crew_delete:
+    path:     /delete/{slug}
+    defaults: { _controller: BoundApiBundle:Crew:delete }

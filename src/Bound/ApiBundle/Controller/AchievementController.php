@@ -47,12 +47,7 @@ class AchievementController extends PController {
         $this->assertRequestMethod($request, 'PUT');
         $entity = $this->createEntityFromContent($request->getContent(), 'Bound\CoreBundle\Entity\Achievement');
 
-        // Find a better solution
-        $achievement->setTitle($entity->getTitle());
-        $achievement->setContent($entity->getContent());
-        $achievement->setPoints($entity->getPoints());
-
-        $this->get('bound.achievement_manager')->modify($achievement);
+        $this->get('bound.achievement_manager')->modify($achievement, $entity);
 
         return new Response($entity->getTitle(), 200);
     }

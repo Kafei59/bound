@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-11-30 19:18:30
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2015-12-03 12:34:13
+ * @Last Modified time: 2015-12-04 16:08:47
  */
 
 namespace Bound\CoreBundle\Manager;
@@ -29,8 +29,11 @@ class AchievementManager extends PManager {
         }
     }
 
-    public function modify(Achievement $achievement) {
-        $achievement->slugifyTitle();
+    public function modify(Achievement $achievement, Achievement $entity) {
+        $achievement->setTitle($entity->getTitle());
+        $achievement->setContent($entity->getContent());
+        $achievement->setPoints($entity->getPoints());
+
         $this->pflush($achievement);
     }
 

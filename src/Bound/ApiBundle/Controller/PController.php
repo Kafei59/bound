@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-11-27 17:20:28
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2015-12-03 11:28:02
+ * @Last Modified time: 2015-12-04 15:27:28
  */
 
 namespace Bound\ApiBundle\Controller;
@@ -46,6 +46,16 @@ class PController extends Controller {
         if (!$request->isMethod($method)) {
             throw new HttpException(400, "Bad Request.");
         }
+    }
+
+    public function createJsonReponse($content) {
+        $serializer = $this->get('jms_serializer');
+        $json = $serializer->serialize($entities, 'json');
+
+        $response = new JsonResponse($json, 200);
+        $response->setEncodingOptions(JSON_PRETTY_PRINT);
+
+        return $response;
     }
 
     public function createEntityFromContent($content, $entityName) {

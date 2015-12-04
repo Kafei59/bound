@@ -58,6 +58,7 @@ class Achievement
 
     /**
      * @ORM\PrePersist
+     * @ORM\PreUpdate
      */
     public function slugifyTitle() {
         $slug = str_replace(' ', '+', $this->title);
@@ -68,12 +69,13 @@ class Achievement
 
     /**
      * @ORM\PrePersist
+     * @ORM\PreUpdate
      */
     public function assertEntity() {
-        $attrs = get_object_vars($this);
+        $attrs = $this->toArray();
         foreach ($attrs as $key => $attr) {
             if ($key != 'id' and $attr == NULL) {
-                throw new HttpException(400, "Entity properties cannot be null.");            
+                throw new HttpException(400, "Entity properties cannot be null.");
             }
         }
     }
