@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-11-27 17:20:28
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2015-12-04 15:27:28
+ * @Last Modified time: 2015-12-11 10:10:59
  */
 
 namespace Bound\ApiBundle\Controller;
@@ -50,7 +50,7 @@ class PController extends Controller {
 
     public function createJsonReponse($content) {
         $serializer = $this->get('jms_serializer');
-        $json = $serializer->serialize($entities, 'json');
+        $json = $serializer->serialize($content, 'json');
 
         $response = new JsonResponse($json, 200);
         $response->setEncodingOptions(JSON_PRETTY_PRINT);

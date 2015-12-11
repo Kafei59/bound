@@ -66,7 +66,6 @@ class Crew
      */
     public function assertEntity() {
         $attrs = $this->toArray();
-        var_dump($attrs);
         foreach ($attrs as $key => $attr) {
             if ($key != 'id' and $attr == NULL) {
                 throw new HttpException(400, "Entity properties cannot be null.");
