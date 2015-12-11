@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-12-10 14:22:52
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2015-12-10 17:41:57
+ * @Last Modified time: 2015-12-11 10:01:48
  */
 
 namespace Bound\CoreBundle\Tests;
@@ -19,5 +19,9 @@ class PTest extends WebTestCase {
     public function __construct() {
         $client = static::createClient();
         $this->container = $client->getContainer();
+    }
+
+    public function testContainer() {
+        $this->assertNotNull($this->container);
     }
 }

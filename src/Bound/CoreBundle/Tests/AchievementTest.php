@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-12-04 16:15:55
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2015-12-10 17:44:16
+ * @Last Modified time: 2015-12-11 10:00:57
  */
 
 namespace Bound\CoreBundle\Tests;
@@ -47,22 +47,16 @@ class AchievementTest extends PTest {
         $achievement1->setPoints(10);
 
         $achievement2 = new Achievement();
-        $achievement2->setTitle("Globetrotter");
+        $achievement2->setTitle(uniqid());
         $achievement2->setContent("Content");
         $achievement2->setPoints(10);
 
         $achievement3 = new Achievement();
-        $achievement3->setTitle(uniqid());
+        $achievement3->setTitle("Title");
         $achievement3->setContent("Content");
-        $achievement3->setPoints(10);
-
-        $achievement4 = new Achievement();
-        $achievement4->setTitle("Title");
-        $achievement4->setContent("Content");
 
         $this->assertAdd($achievement1);
-        $this->assertAdd($achievement2);
-        $this->notAssertAdd($achievement3);
-        $this->assertAdd($achievement4);
+        $this->notAssertAdd($achievement2);
+        $this->assertAdd($achievement3);
     }
 }
