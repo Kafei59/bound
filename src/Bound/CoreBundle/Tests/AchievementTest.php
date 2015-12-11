@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-12-04 16:15:55
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2015-12-11 10:18:14
+ * @Last Modified time: 2015-12-11 10:23:55
  */
 
 namespace Bound\CoreBundle\Tests;
@@ -35,7 +35,6 @@ class AchievementTest extends PTest {
         } catch (HttpException $e) {
             $this->fail();
         } catch (\Exception $e) {
-            var_dump($e->getMessage());
             $this->fail();
         }
     }
