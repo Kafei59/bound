@@ -68,7 +68,7 @@ class Crew
         $attrs = $this->toArray();
         foreach ($attrs as $key => $attr) {
             if ($key != 'id' and $attr == NULL) {
-                throw new HttpException(400, "Entity properties cannot be null.");
+                throw new HttpException(400, "Entity properties ".$key." cannot be null.");
             }
         }
     }

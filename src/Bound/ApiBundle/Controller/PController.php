@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-11-27 17:20:28
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2015-12-11 10:10:59
+ * @Last Modified time: 2015-12-18 10:37:20
  */
 
 namespace Bound\ApiBundle\Controller;
@@ -39,7 +39,7 @@ class PController extends Controller {
         $response = new JsonResponse($entity->toArray(), 200);
         $response->setEncodingOptions(JSON_PRETTY_PRINT);
 
-        return $response;        
+        return $response;
     }
 
     public function assertRequestMethod(Request $request, $method) {

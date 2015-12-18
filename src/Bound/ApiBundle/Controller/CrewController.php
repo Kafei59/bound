@@ -8,57 +8,58 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use FOS\RestBundle\Controller\Annotations\View;
 
 use Bound\ApiBundle\Controller\PController;
 use Bound\CoreBundle\Entity\Crew;
 
 class CrewController extends PController {
 
-    public function allAction(Request $request) {
-        $this->assertRequestMethod($request, 'GET');
-        $entities = $this->getDoctrine()->getRepository('BoundCoreBundle:Crew')->findAll();
+    /**
+     * Mapping [GET] /api/crews
+     */
+    public function getCrewsAction() {
+        $crews = $this->getDoctrine()->getRepository('BoundCoreBundle:Crew')->findAll();
 
-        return $this->jsonEntitiesResponse($entities);
+        return array('crew' => $crews);
     }
 
     /**
-     * @ParamConverter("crew", options={"mapping": {"slug": "slug"}})
+     * Mapping [GET] /api/crews/{crew}
+     * @ParamConverter("crew", options={"mapping": {"crew": "slug"}})
      */
-    public function getAction(Crew $crew, Request $request) {
-        $this->assertRequestMethod($request, 'GET');
-
-        return $this->jsonEntityResponse($crew);
-    }
-
-    public function postAction(Request $request) {
-        $this->assertRequestMethod($request, 'POST');
-        $entity = $this->createEntityFromContent($request->getContent(), 'Bound\CoreBundle\Entity\Crew');
-
-        $this->get('bound.crew_manager')->add($entity);
-
-        return new Response($entity->getTitle(), 200);
+    public function getCrewAction(Crew $crew) {
+        return array('crew' => $crew);
     }
 
     /**
-     * @ParamConverter("crew", options={"mapping": {"slug": "slug"}})
+     * Mapping [POST] /api/crews
      */
-    public function putAction(Crew $crew, Request $request) {
-        $this->assertRequestMethod($request, 'PUT');
-        $entity = $this->createEntityFromContent($request->getContent(), 'Bound\CoreBundle\Entity\Crew');
+    public function postCrewAction(Request $request) {
+        $crew = $this->createEntityFromContent($request->getContent(), 'Bound\CoreBundle\Entity\Crew');
+        $this->get('bound.crew_manager')->add($crew);
 
+        return array('crew' => $crew);
+    }
+
+    /**
+     * Mapping [PUT] /api/crews/{crew}
+     * @ParamConverter("crew", options={"mapping": {"crew": "slug"}})
+     */
+    public function putCrewAction(Crew $crew, Request $request) {
+        $entity = $this->createEntityFromContent($request->getContent(), 'Bound\CoreBundle\Entity\Crew');
         $this->get('bound.crew_manager')->modify($crew, $entity);
 
-        return new Response(NULL, 200);
+        return array('crew' => $crew);
     }
 
     /**
-     * @ParamConverter("crew", options={"mapping": {"slug": "slug"}})
+     * Mapping [DELETE] /api/crews/{crew}
+     * @ParamConverter("crew", options={"mapping": {"crew": "slug"}})
      */
-    public function deleteAction(Crew $crew, Request $request) {
-        $this->assertRequestMethod($request, 'DELETE');
-
+    public function deleteCrewAction(Crew $crew) {
         $this->get('bound.crew_manager')->delete($crew);
 
-        return new Response(NULL, 200);
+        return array();
     }
 }

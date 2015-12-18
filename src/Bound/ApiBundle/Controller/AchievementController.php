@@ -15,51 +15,51 @@ use JMS\Serializer\SerializerBuilder;
 
 class AchievementController extends PController {
 
-    public function allAction(Request $request) {
-        $this->assertRequestMethod($request, 'GET');
-        $entities = $this->getDoctrine()->getRepository('BoundCoreBundle:Achievement')->findAll();
+    /**
+     * Mapping [GET] /api/achievements
+     */
+    public function getAchievementsAction() {
+        $achievements = $this->getDoctrine()->getRepository('BoundCoreBundle:Achievement')->findAll();
 
-        return $this->jsonEntitiesResponse($entities);
+        return array('achievements' => $achievements);
     }
 
     /**
-     * @ParamConverter("achievement", options={"mapping": {"slug": "slug"}})
+     * Mapping [GET] /api/achievements/{achievement}
+     * @ParamConverter("achievement", options={"mapping": {"achievement": "slug"}})
      */
-    public function getAction(Achievement $achievement, Request $request) {
-        $this->assertRequestMethod($request, 'GET');
-
-        return $this->jsonEntityResponse($achievement);
-    }
-
-    public function postAction(Request $request) {
-        $this->assertRequestMethod($request, 'POST');
-        $entity = $this->createEntityFromContent($request->getContent(), 'Bound\CoreBundle\Entity\Achievement');
-
-        $this->get('bound.achievement_manager')->add($entity);
-
-        return new Response($entity->getTitle(), 200);
+    public function getAchievementAction(Achievement $achievement) {
+        return array('achievement' => $achievement);
     }
 
     /**
-     * @ParamConverter("achievement", options={"mapping": {"slug": "slug"}})
+     * Mapping [POST] /api/achievements
      */
-    public function putAction(Achievement $achievement, Request $request) {
-        $this->assertRequestMethod($request, 'PUT');
-        $entity = $this->createEntityFromContent($request->getContent(), 'Bound\CoreBundle\Entity\Achievement');
+    public function postAchievementAction(Request $request) {
+        $achievement = $this->createEntityFromContent($request->getContent(), 'Bound\CoreBundle\Entity\Achievement');
+        $this->get('bound.achievement_manager')->add($achievement, $request->get('token'));
 
+        return array('achievement' => $achievement);
+    }
+
+    /**
+     * Mapping [PUT] /api/achievements/{achievement}
+     * @ParamConverter("achievement", options={"mapping": {"achievement": "slug"}})
+     */
+    public function putAchievementAction(Achievement $achievement, Request $request) {
+        $entity = $this->createEntityFromContent($request->getContent(), 'Bound\CoreBundle\Entity\Achievement');
         $this->get('bound.achievement_manager')->modify($achievement, $entity);
 
-        return new Response($entity->getTitle(), 200);
+        return array('achievement' => $achievement);
     }
 
     /**
-     * @ParamConverter("achievement", options={"mapping": {"slug": "slug"}})
+     * Mapping [DELETE] /api/achievements/{achievement}
+     * @ParamConverter("achievement", options={"mapping": {"achievement": "slug"}})
      */
-    public function deleteAction(Achievement $achievement, Request $request) {
-        $this->assertRequestMethod($request, 'DELETE');
-
+    public function deleteAchievementAction(Achievement $achievement) {
         $this->get('bound.achievement_manager')->delete($achievement);
 
-        return new Response("toto", 200);
+        return array();
     }
 }

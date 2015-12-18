@@ -5,8 +5,8 @@ services:
 
     bound.achievement_manager:
         class: Bound\CoreBundle\Manager\AchievementManager
-        arguments: [ @service_container, @doctrine.orm.entity_manager ]
+        arguments: [ @service_container, @doctrine.orm.entity_manager, @security.acl.provider, @security.token_storage, @fos_user.user_manager, @security.context ]
 
     bound.crew_manager:
         class: Bound\CoreBundle\Manager\CrewManager
-        arguments: [ @service_container, @doctrine.orm.entity_manager ]
+        arguments: [ @service_container, @doctrine.orm.entity_manager, @security.acl.provider, @security.token_storage, @fos_user.user_manager, @security.context ]

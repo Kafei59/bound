@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-11-30 19:18:30
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2015-12-04 16:08:47
+ * @Last Modified time: 2015-12-18 10:33:26
  */
 
 namespace Bound\CoreBundle\Manager;
@@ -15,12 +15,13 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class AchievementManager extends PManager {
 
-    public function add(Achievement $achievement) {
+    public function add(Achievement $achievement, $token) {
         $achievement->slugifyTitle();
 
         if (!$this->alreadyExists($achievement)) {
             if ($achievement->getId() == NULL) {
                 $this->pflush($achievement);
+                $this->persistAcl($achievement, $token);
             } else {
                 throw new HttpException(400, "Entity ID must be NULL.");
             }
