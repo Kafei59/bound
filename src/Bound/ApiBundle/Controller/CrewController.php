@@ -30,7 +30,7 @@ class CrewController extends PController {
      * Mapping [GET] /api/crews/{crew}
      * @ParamConverter("crew", options={"mapping": {"crew": "slug"}})
      */
-    public function getCrewAction(Crew $crew) {
+    public function getCrewAction(Crew $crew, Request $request) {
         $this->assertToken($request->get('token'));
 
         return array('crew' => $crew);
@@ -63,7 +63,7 @@ class CrewController extends PController {
      * Mapping [DELETE] /api/crews/{crew}
      * @ParamConverter("crew", options={"mapping": {"crew": "slug"}})
      */
-    public function deleteCrewAction(Crew $crew) {
+    public function deleteCrewAction(Crew $crew, Request $request) {
         $this->assertToken($request->get('token'));
         $this->get('bound.crew_manager')->delete($crew);
 

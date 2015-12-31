@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-12-31 17:06:33
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2015-12-31 17:15:48
+ * @Last Modified time: 2015-12-31 18:28:15
  */
 
 namespace Bound\ApiBundle\Controller;
@@ -26,7 +26,6 @@ class SecurityController extends PController {
      * Mapping [GET] /api/login
      */
     public function loginAction(Request $request) {
-        $request = $this->getRequest();
         $username = $request->get('username');
         $password = $request->get('password');
          
@@ -51,7 +50,7 @@ class SecurityController extends PController {
     /**
      * Mapping [GET] /api/registration
      */
-    public function registrationAction(Request $request) {
+    public function registrationAction() {
         return array();
     }
 
