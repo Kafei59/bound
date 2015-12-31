@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-12-04 16:15:55
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2015-12-31 17:20:15
+ * @Last Modified time: 2015-12-31 17:24:07
  */
 
 namespace Bound\CoreBundle\Tests;
@@ -31,7 +31,7 @@ class AchievementTest extends PTest {
 
     private function notAssertAdd(Achievement $achievement) {
         try {
-            $this->container->get('bound.achievement_manager')->add($achievement);
+            $this->container->get('bound.achievement_manager')->add($achievement, NULL);
         } catch (HttpException $e) {
             $this->fail();
         } catch (\Exception $e) {

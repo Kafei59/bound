@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-11-30 19:18:30
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2015-12-18 10:33:26
+ * @Last Modified time: 2015-12-31 17:23:26
  */
 
 namespace Bound\CoreBundle\Manager;
@@ -21,11 +21,13 @@ class AchievementManager extends PManager {
         if (!$this->alreadyExists($achievement)) {
             if ($achievement->getId() == NULL) {
                 $this->pflush($achievement);
-                $this->persistAcl($achievement, $token);
+                // $this->persistAcl($achievement, $token);
             } else {
+                var_dump("ici");
                 throw new HttpException(400, "Entity ID must be NULL.");
             }
         } else {
+            var_dump("ou ici");
             throw new HttpException(409, "Entity already exists.");
         }
     }
