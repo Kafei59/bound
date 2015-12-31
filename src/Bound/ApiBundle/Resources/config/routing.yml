@@ -9,3 +9,8 @@ bound_api_achievement:
 bound_api_crew:
     type: rest
     resource: "Bound\ApiBundle\Controller\CrewController"
+
+bound_api_security:
+    type: rest
+    resource: "Bound\ApiBundle\Controller\SecurityController"
+

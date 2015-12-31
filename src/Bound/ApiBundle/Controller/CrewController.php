@@ -31,6 +31,8 @@ class CrewController extends PController {
      * @ParamConverter("crew", options={"mapping": {"crew": "slug"}})
      */
     public function getCrewAction(Crew $crew) {
+        $this->assertToken($request->get('token'));
+
         return array('crew' => $crew);
     }
 
@@ -38,15 +40,7 @@ class CrewController extends PController {
      * Mapping [POST] /api/crews
      */
     public function postCrewAction(Request $request) {
-        // $crew = new Crew();
-        // $form = $this->createForm(new CrewType(), $crew);
-        // $form->handleRequest($request);
-
-        // if ($form->isValid()) {
-        //     return array('toto' => 'tata');
-        // } else {
-        //     return array('form' => $form->createView());
-        // }
+        $this->assertToken($request->get('token'));
         $crew = $this->createEntityFromContent($request->getContent(), 'Bound\CoreBundle\Entity\Crew');
         $this->get('bound.crew_manager')->add($crew);
 
@@ -58,6 +52,7 @@ class CrewController extends PController {
      * @ParamConverter("crew", options={"mapping": {"crew": "slug"}})
      */
     public function putCrewAction(Crew $crew, Request $request) {
+        $this->assertToken($request->get('token'));
         $entity = $this->createEntityFromContent($request->getContent(), 'Bound\CoreBundle\Entity\Crew');
         $this->get('bound.crew_manager')->modify($crew, $entity);
 
@@ -69,6 +64,7 @@ class CrewController extends PController {
      * @ParamConverter("crew", options={"mapping": {"crew": "slug"}})
      */
     public function deleteCrewAction(Crew $crew) {
+        $this->assertToken($request->get('token'));
         $this->get('bound.crew_manager')->delete($crew);
 
         return array();
