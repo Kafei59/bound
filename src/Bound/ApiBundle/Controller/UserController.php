@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 use Bound\ApiBundle\Controller\PController;
 use Bound\CoreBundle\Entity\User;
@@ -34,22 +35,40 @@ class UserController extends PController {
     }
 
     /**
-     * Mapping [POST] /api/users
+     * Mapping [POST] /api/login
      */
-    public function postUserAction(Request $request) {
-        $user = $this->getUser();
-
-        $registration = $this->container->get('fos_user.registration.form');
-        $registrationHandler = $this->container->get('fos_user.registration.form.handler');
-        $process = $registrationHandler->process($user);
-
-        $this->authenticateUser($request, array(), 200);
-        // var_dump($registrationHandler);
-        if ($process) {
-            var_dump("toto");
+    public function postLoginAction(Request $request) {
+        $request = $this->getRequest();
+        $username = $request->get('username');
+        $password = $request->get('password');
+         
+        $um = $this->get('fos_user.user_manager');
+        $user = $um->findUserByUsername($username);
+        if (!$user) {
+            $user = $um->findUserByEmail($username);
         }
 
-        return array();
+        if (!$user instanceof User) {
+            throw new HttpException(400, "User not found.");
+        }
+
+        if (!$this->checkUserPassword($user, $password)) {
+            throw new HttpException(400, "Wrong credentials.");
+        }
+         
+        $this->get('bound.token_manager')->add($user);
+        return array('user' => $user);
+    }
+
+    private function checkUserPassword(User $user, $password) {
+        $factory = $this->get('security.encoder_factory');
+        $encoder = $factory->getEncoder($user);
+
+        if (!$encoder) {
+            return false;
+        } else {
+            return $encoder->isPasswordValid($user->getPassword(), $password, $user->getSalt());
+        }
     }
 
     // public function allAction() {

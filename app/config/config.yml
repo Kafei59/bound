@@ -81,8 +81,8 @@ swiftmailer:
 
 # FOSUser Configuration
 fos_user:
-    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
-    firewall_name: main
+    db_driver: orm
+    firewall_name: api
     user_class: Bound\CoreBundle\Entity\User
 
 # JMS Serializer Configuration
@@ -91,6 +91,7 @@ jms_serializer:
         json:
             options: JSON_PRETTY_PRINT
 
+# FOSRest Configuration
 fos_rest:
     param_fetcher_listener: true
     body_listener: true
@@ -108,3 +109,14 @@ fos_rest:
         default_engine: twig
     routing_loader:
         default_format: json
+    disable_csrf_role: ROLE_API
+
+# FOSOAuth Configuration
+fos_oauth_server:
+    db_driver: orm
+    client_class:        Bound\CoreBundle\Entity\Client
+    access_token_class:  Bound\CoreBundle\Entity\AccessToken
+    refresh_token_class: Bound\CoreBundle\Entity\RefreshToken
+    auth_code_class:     Bound\CoreBundle\Entity\AuthCode
+    service:
+        user_provider: fos_user.user_manager

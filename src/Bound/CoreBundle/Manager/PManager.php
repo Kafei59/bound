@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-11-30 19:26:09
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2015-12-11 17:28:21
+ * @Last Modified time: 2015-12-31 16:51:08
  */
 
 namespace Bound\CoreBundle\Manager;
@@ -29,12 +29,10 @@ class PManager {
     protected $storage;
     protected $um;
 
-    public function __construct(Container $container, EntityManager $manager, AclProvider $provider, TokenStorage $storage, UserManager $um) {
+    public function __construct(Container $container, EntityManager $manager, AclProvider $provider) {
         $this->container = $container;
         $this->manager = $manager;
         $this->provider = $provider;
-        $this->storage = $storage;
-        $this->um = $um;
     }
 
     public function persist($object) {
