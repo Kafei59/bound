@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-11-27 17:20:28
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2015-12-31 17:01:38
+ * @Last Modified time: 2015-12-31 19:10:59
  */
 
 namespace Bound\ApiBundle\Controller;
@@ -16,6 +16,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Bound\CoreBundle\Entity\Token;
+use Bound\CoreBundle\Entity\User;
 
 class PController extends Controller {
 
@@ -71,7 +72,9 @@ class PController extends Controller {
         $entity = $this->getDoctrine()->getRepository('BoundCoreBundle:Token')->findOneBy(array('data' => $token));
 
         if ($entity instanceof Token) {
-            return $entity->getUser();
+            $id = $entity->getUser()->getId();
+            var_dump($id);
+            return $this->getDoctrine()->getRepository('BoundCoreBundle:User')->findOneBy(array('id' => $id));
         } else {
             throw new HttpException(403, "Access Denied.");
         }

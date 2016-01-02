@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-11-27 14:55:06
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2015-11-27 17:19:42
+ * @Last Modified time: 2016-01-02 16:05:04
  */
 
 namespace Bound\CoreBundle\Entity;
@@ -46,6 +46,10 @@ class User extends BaseUser {
      * @ORM\Column(name="achievements", type="array")
      */
     private $achievements;
+
+    public function isAdmin() {
+        return in_array('ROLE_ADMIN', $this->roles) or in_array('ROLE_SUPER_ADMIN', $this->roles);
+    }
 
     public function toArray() {
         return array (

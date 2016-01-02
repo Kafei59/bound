@@ -30,6 +30,7 @@ class Token
 
      /**
      * @ORM\ManyToOne(targetEntity="Bound\CoreBundle\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 

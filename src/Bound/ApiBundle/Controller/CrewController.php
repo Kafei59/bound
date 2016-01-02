@@ -21,6 +21,7 @@ class CrewController extends PController {
      */
     public function getCrewsAction(Request $request) {
         $user = $this->assertToken($request->get('token'));
+        var_dump($user);
         $crews = $this->getDoctrine()->getRepository('BoundCoreBundle:Crew')->findAll();
 
         return array('crew' => $crews, 'user' => $user);
@@ -54,7 +55,7 @@ class CrewController extends PController {
     public function putCrewAction(Crew $crew, Request $request) {
         $this->assertToken($request->get('token'));
         $entity = $this->createEntityFromContent($request->getContent(), 'Bound\CoreBundle\Entity\Crew');
-        $this->get('bound.crew_manager')->modify($crew, $entity);
+        $this->get('bound.crew_manager')->edit($crew, $entity);
 
         return array('crew' => $crew);
     }

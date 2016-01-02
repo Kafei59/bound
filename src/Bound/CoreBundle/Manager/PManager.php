@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-11-30 19:26:09
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2015-12-31 16:51:08
+ * @Last Modified time: 2015-12-31 18:33:44
  */
 
 namespace Bound\CoreBundle\Manager;
@@ -57,18 +57,12 @@ class PManager {
         $this->flush();
     }
 
-    public function persistAcl($object, $token) {
-        $user = $this->um->findUserByConfirmationToken($token);
-        if ($user instanceof Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken) {
-            $objectIdentity = ObjectIdentity::fromDomainObject($object);
-            $acl = $this->provider->createAcl($objectIdentity);
+    public function persistAcl($object, $user) {
+        $objectIdentity = ObjectIdentity::fromDomainObject($object);
+        $acl = $this->provider->createAcl($objectIdentity);
+        $securityIdentity = UserSecurityIdentity::fromAccount($user);
 
-            $securityIdentity = UserSecurityIdentity::fromAccount($user);
-
-            $acl->insertObjectAce($securityIdentity, MaskBuilder::MASK_OWNER);
-            $this->provider->updateAcl($acl);
-        } else {
-            throw new HttpException("403", "Access Denied.");
-        }
+        $acl->insertObjectAce($securityIdentity, MaskBuilder::MASK_OWNER);
+        $this->provider->updateAcl($acl);
     }
 };

@@ -3,45 +3,55 @@
  * @Author: gicque_p
  * @Date:   2015-11-30 19:18:30
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2015-12-31 17:23:26
+ * @Last Modified time: 2016-01-02 16:32:30
  */
 
 namespace Bound\CoreBundle\Manager;
 
 use Bound\CoreBundle\Manager\PManager;
 use Bound\CoreBundle\Entity\Achievement;
+use Bound\CoreBundle\Entity\User;
 
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class AchievementManager extends PManager {
 
-    public function add(Achievement $achievement, $token) {
-        $achievement->slugifyTitle();
+    public function add(Achievement $achievement, User $user) {
+        if ($user->isAdmin()) {
+            $achievement->slugifyTitle();
 
-        if (!$this->alreadyExists($achievement)) {
-            if ($achievement->getId() == NULL) {
-                $this->pflush($achievement);
-                // $this->persistAcl($achievement, $token);
+            if (!$this->alreadyExists($achievement)) {
+                if ($achievement->getId() == NULL) {
+                    $this->pflush($achievement);
+                } else {
+                    throw new HttpException(400, "Entity ID must be NULL.");
+                }
             } else {
-                var_dump("ici");
-                throw new HttpException(400, "Entity ID must be NULL.");
+                throw new HttpException(409, "Entity already exists.");
             }
         } else {
-            var_dump("ou ici");
-            throw new HttpException(409, "Entity already exists.");
+            throw new HttpException(403, "Access Denied.");
         }
     }
 
-    public function modify(Achievement $achievement, Achievement $entity) {
-        $achievement->setTitle($entity->getTitle());
-        $achievement->setContent($entity->getContent());
-        $achievement->setPoints($entity->getPoints());
+    public function edit(Achievement $achievement, Achievement $entity, User $user) {
+        if ($user->isAdmin()) {        
+            $achievement->setTitle($entity->getTitle());
+            $achievement->setContent($entity->getContent());
+            $achievement->setPoints($entity->getPoints());
 
-        $this->pflush($achievement);
+            $this->pflush($achievement);
+        } else {
+            throw new HttpException(403, "Access Denied.");
+        }
     }
 
-    public function delete(Achievement $achievement) {
-        $this->rflush($achievement);
+    public function delete(Achievement $achievement, User $user) {
+        if ($user->isAdmin()) {
+            $this->rflush($achievement);
+        } else {
+            throw new HttpException(403, "Access Denied.");
+        }
     }
 
     public function alreadyExists(Achievement $achievement) {
