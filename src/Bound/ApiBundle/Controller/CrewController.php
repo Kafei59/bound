@@ -21,7 +21,6 @@ class CrewController extends PController {
      */
     public function getCrewsAction(Request $request) {
         $user = $this->assertToken($request->get('token'));
-        var_dump($user);
         $crews = $this->getDoctrine()->getRepository('BoundCoreBundle:Crew')->findAll();
 
         return array('crew' => $crews, 'user' => $user);

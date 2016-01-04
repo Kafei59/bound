@@ -19,7 +19,7 @@ class AchievementController extends PController {
     /**
      * Mapping [GET] /api/achievements
      */
-    public function getAchievementsAction() {
+    public function getAchievementsAction(Request $request) {
         $this->assertToken($request->get('token'));
         $achievements = $this->getDoctrine()->getRepository('BoundCoreBundle:Achievement')->findAll();
 
@@ -52,7 +52,7 @@ class AchievementController extends PController {
      * @ParamConverter("achievement", options={"mapping": {"achievement": "slug"}})
      */
     public function putAchievementAction(Achievement $achievement, Request $request) {
-        $this->assertToken($request->get('token'));
+        $user = $this->assertToken($request->get('token'));
         $entity = $this->createEntityFromContent($request->getContent(), 'Bound\CoreBundle\Entity\Achievement');
         $this->get('bound.achievement_manager')->edit($achievement, $entity, $user);
 
@@ -63,8 +63,8 @@ class AchievementController extends PController {
      * Mapping [DELETE] /api/achievements/{achievement}
      * @ParamConverter("achievement", options={"mapping": {"achievement": "slug"}})
      */
-    public function deleteAchievementAction(Achievement $achievement) {
-        $this->assertToken($request->get('token'));
+    public function deleteAchievementAction(Achievement $achievement, Request $request) {
+        $user = $this->assertToken($request->get('token'));
         $this->get('bound.achievement_manager')->delete($achievement, $user);
 
         return array();

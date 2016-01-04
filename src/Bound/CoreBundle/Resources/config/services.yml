@@ -1,16 +1,16 @@
 services:
     bound.user_manager:
         class: Bound\CoreBundle\Manager\UserManager
-        arguments: [ @service_container, @doctrine.orm.entity_manager, @security.acl.provider ]
+        arguments: [ @service_container, @doctrine.orm.entity_manager ]
 
     bound.achievement_manager:
         class: Bound\CoreBundle\Manager\AchievementManager
-        arguments: [ @service_container, @doctrine.orm.entity_manager, @security.acl.provider ]
+        arguments: [ @service_container, @doctrine.orm.entity_manager ]
 
     bound.crew_manager:
         class: Bound\CoreBundle\Manager\CrewManager
-        arguments: [ @service_container, @doctrine.orm.entity_manager, @security.acl.provider ]
+        arguments: [ @service_container, @doctrine.orm.entity_manager ]
 
     bound.token_manager:
         class: Bound\CoreBundle\Manager\TokenManager
-        arguments: [ @service_container, @doctrine.orm.entity_manager, @security.acl.provider ]
+        arguments: [ @service_container, @doctrine.orm.entity_manager ]

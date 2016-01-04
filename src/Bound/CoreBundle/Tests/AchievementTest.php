@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-12-04 16:15:55
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-01-02 16:44:10
+ * @Last Modified time: 2016-01-04 10:20:28
  */
 
 namespace Bound\CoreBundle\Tests;

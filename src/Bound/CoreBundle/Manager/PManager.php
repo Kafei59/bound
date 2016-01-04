@@ -3,23 +3,15 @@
  * @Author: gicque_p
  * @Date:   2015-11-30 19:26:09
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2015-12-31 18:33:44
+ * @Last Modified time: 2016-01-04 10:30:27
  */
 
 namespace Bound\CoreBundle\Manager;
 
 use Symfony\Component\DependencyInjection\Container;
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\Security\Acl\Dbal\AclProvider;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
-use FOS\UserBundle\Doctrine\UserManager;
 use Symfony\Component\Security\Core\SecurityContext;
-
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
-use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
-use Symfony\Component\Security\Acl\Permission\MaskBuilder;
 
 class PManager {
 
@@ -29,10 +21,9 @@ class PManager {
     protected $storage;
     protected $um;
 
-    public function __construct(Container $container, EntityManager $manager, AclProvider $provider) {
+    public function __construct(Container $container, EntityManager $manager) {
         $this->container = $container;
         $this->manager = $manager;
-        $this->provider = $provider;
     }
 
     public function persist($object) {
@@ -55,14 +46,5 @@ class PManager {
     public function rflush($object) {
         $this->remove($object);
         $this->flush();
-    }
-
-    public function persistAcl($object, $user) {
-        $objectIdentity = ObjectIdentity::fromDomainObject($object);
-        $acl = $this->provider->createAcl($objectIdentity);
-        $securityIdentity = UserSecurityIdentity::fromAccount($user);
-
-        $acl->insertObjectAce($securityIdentity, MaskBuilder::MASK_OWNER);
-        $this->provider->updateAcl($acl);
     }
 };
