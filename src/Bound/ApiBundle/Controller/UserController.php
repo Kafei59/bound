@@ -20,7 +20,7 @@ class UserController extends PController {
     /**
      * Mapping [GET] /api/users
      */
-    public function getUsersAction() {
+    public function getUsersAction(Request $request) {
         $this->assertToken($request->get('token'));
         $users = $this->getDoctrine()->getRepository('BoundCoreBundle:User')->findAll();
 
@@ -31,7 +31,7 @@ class UserController extends PController {
      * Mapping [GET] /api/users/{user}
      * @ParamConverter("user", options={"mapping": {"user": "username"}})
      */
-    public function getUserAction(User $user) {
+    public function getUserAction(User $user, Request $request) {
         $this->assertToken($request->get('token'));
 
         return array('user' => $user);
