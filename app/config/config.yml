@@ -74,6 +74,7 @@ doctrine:
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
+    encryption: "%mailer_encryption%"
     host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
@@ -84,6 +85,14 @@ fos_user:
     db_driver: orm
     firewall_name: api
     user_class: Bound\CoreBundle\Entity\User
+    registration:
+        confirmation:
+            enabled: true
+    from_email:
+        address: hello@bound-app.com
+        sender_name: Pierrick
+    service:
+        mailer: fos_user.mailer.twig_swift
 
 # JMS Serializer Configuration
 jms_serializer:

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+        <title>Bienvenue chez Bound</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Salut {{ user.username }} !</h1>
+            <h2>
+                Tu t'es enfin décidé à venir rejoindre la grande famille de Bound ?<br>
+                <small>C'est cool ça !</small>
+            </h2>
+
+            <p>
+                Bon, potentiellement, tu nous as rejoint, mais pour des questions de formalités, il faut que tu actives ton compte
+                en cliquant sur ce lien: <a href="http://127.0.0.1{{ url }}">clique ici</a><br>
+                Tu peux aussi rentrer ce lien horrible à la main: http://127.0.0.1{{ url }}
+            </p>
+
+            <p>
+                À très bientôt sur Bound !<br>
+                <i>Bisous de la part de Pierrick et de la team administrative.</i>
+            </p>
+        </div>
+    </body>
+</html>

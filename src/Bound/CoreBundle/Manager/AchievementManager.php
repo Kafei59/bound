@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-11-30 19:18:30
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-01-02 16:32:30
+ * @Last Modified time: 2016-01-20 20:04:52
  */
 
 namespace Bound\CoreBundle\Manager;
@@ -35,7 +35,7 @@ class AchievementManager extends PManager {
     }
 
     public function edit(Achievement $achievement, Achievement $entity, User $user) {
-        if ($user->isAdmin()) {        
+        if ($user->isAdmin()) {
             $achievement->setTitle($entity->getTitle());
             $achievement->setContent($entity->getContent());
             $achievement->setPoints($entity->getPoints());
