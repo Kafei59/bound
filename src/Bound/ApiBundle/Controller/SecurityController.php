@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-12-31 17:06:33
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-01-21 17:18:43
+ * @Last Modified time: 2016-01-21 17:28:41
  */
 
 namespace Bound\ApiBundle\Controller;
@@ -26,7 +26,8 @@ use FOS\UserBundle\Util\TokenGenerator;
 class SecurityController extends PController {
 
     /**
-     * Mapping [GET] /api/login
+     * Mapping [POST] /api/login
+     * @Post("/login")
      */
     public function loginAction(Request $request) {
         $username = $request->get('username');
@@ -77,7 +78,7 @@ class SecurityController extends PController {
                     $fum->updateUser($user);
 
                     $this->sendConfirmationEmail($user, $url);
-                    return array('Email sent.');
+                    return array("Email sent to ".$user->getEmail().".");
                 } else {
                     throw new HttpException(400, "Email already exists.");
                 }
@@ -87,6 +88,10 @@ class SecurityController extends PController {
         } else {
             throw new HttpException(400, "Bad Request.");
         }
+    }
+
+    public function resettingAction(Request $request) {
+
     }
 
     private function checkUserPassword(User $user, $password) {
