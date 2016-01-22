@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-12-31 17:06:33
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-01-21 17:28:41
+ * @Last Modified time: 2016-01-22 17:24:14
  */
 
 namespace Bound\ApiBundle\Controller;
@@ -16,12 +16,16 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 use Bound\ApiBundle\Controller\PController;
 use Bound\CoreBundle\Entity\User;
 
 use FOS\RestBundle\Controller\Annotations\Post;
 use FOS\UserBundle\Util\TokenGenerator;
+use FOS\UserBundle\FOSUserEvents;
+use FOS\UserBundle\Event\GetResponseUserEvent;
+use FOS\UserBundle\Event\FilterUserResponseEvent;
 
 class SecurityController extends PController {
 
@@ -67,7 +71,7 @@ class SecurityController extends PController {
                     $tg = new TokenGenerator();
                     $token = $tg->generateToken();
                     $fum = $this->container->get('fos_user.user_manager');
-                    $url = $this->container->get('router')->generate('fos_user_registration_confirm', array('token' => $token));
+                    $url = $this->container->get('router')->generate('fos_user_registration_confirm', array('token' => $token), UrlGeneratorInterface::ABSOLUTE_URL);
 
                     $user = $fum->createUser();
                     $user->setUsername($username);
@@ -90,8 +94,33 @@ class SecurityController extends PController {
         }
     }
 
+    /**
+     * Mapping [POST] /api/resetting
+     * @Post("/resetting")
+     */
     public function resettingAction(Request $request) {
+        $email = $request->get('email');
+        $fum = $this->get('fos_user.user_manager');
+        $tg = new TokenGenerator();
 
+        $um = $this->get('fos_user.user_manager');
+        $user = $um->findUserByEmail($email);
+        if (!$user instanceof User) {
+            throw new HttpException(400, "User not found.");
+        } else {
+            if ($user->isPasswordRequestNonExpired($this->container->getParameter('fos_user.resetting.token_ttl'))) {
+                throw new HttpException(400, "Password already requested.");
+            } else {
+                $token = $tg->generateToken();
+                $user->setPlainPassword($token);
+                $user->setPasswordRequestedAt(new \DateTime());
+
+                $fum->updateUser($user);
+                $this->sendResetEmail($user, $token);
+
+                return array("Email sent to ".$user->getEmail().".");
+            }
+        }
     }
 
     private function checkUserPassword(User $user, $password) {
@@ -114,5 +143,16 @@ class SecurityController extends PController {
         ;
 
         $this->get('mailer')->send($message);
+    }
+
+    private function sendResetEmail(User $user, $token) {
+        $message = \Swift_Message::newInstance()
+            ->setSubject("Alors, comme ça on a pas de mémoire ?")
+            ->setFrom(array('hello@bound-app.com' => "Pierrick"))
+            ->setTo($user->getEmail())
+            ->setBody($this->renderView('resetting.html.twig', array('user' => $user, 'token' => $token)), 'text/html')
+        ;
+
+        $this->get('mailer')->send($message);        
     }
 }

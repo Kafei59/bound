@@ -3,21 +3,21 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
-        <title>Bienvenue chez Bound</title>
+        <title>Reviens chez Bound</title>
     </head>
 
     <body>
         <div class="container">
             <h1>Salut {{ user.username }} !</h1>
             <h2>
-                Tu t'es enfin décidé à venir rejoindre la grande famille de Bound ?<br>
-                <small>C'est cool ça !</small>
+                Bon, on a perdu son mot de passe ?<br>
+                <small>T'inquiètes, ça arrive même aux meilleurs !</small>
             </h2>
 
             <p>
-                Bon, potentiellement, tu nous as rejoint, mais pour des questions de formalités, il faut que tu actives ton compte
-                en cliquant sur ce lien: <a href="{{ url }}">clique ici</a><br>
-                Tu peux aussi rentrer ce lien horrible à la main: {{ url }}
+                Comme on est gentil chez Bound, on a changé le mot de passe pour toi directement.<br>
+                Ton nouveau mot de passe c'est: <strong>{{ token }}</strong><br>
+                Tu pourras le modifier directement dans ton dashboard sur l'application, mais fais gaffe de plus le perdre cette fois-ci !<br>
             </p>
 
             <p>
