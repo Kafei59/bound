@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-12-31 17:06:33
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-01-22 17:24:14
+ * @Last Modified time: 2016-01-25 11:38:01
  */
 
 namespace Bound\ApiBundle\Controller;
@@ -56,10 +56,10 @@ class SecurityController extends PController {
     }
 
     /**
-     * Mapping [POST] /api/registration
-     * @Post("/registration")
+     * Mapping [POST] /api/register
+     * @Post("/register")
      */
-    public function registrationAction(Request $request) {
+    public function registerAction(Request $request) {
         $username = $request->get('username');
         $email = $request->get('email');
         $password = $request->get('password');
