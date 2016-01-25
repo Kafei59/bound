@@ -44,11 +44,6 @@ class Crew
      */
     private $members;
 
-
-    public function toArray() {
-        return get_object_vars($this);
-    }
-
     /**
      * @ORM\PrePersist
      * @ORM\PreUpdate
@@ -65,10 +60,10 @@ class Crew
      * @ORM\PreUpdate
      */
     public function assertEntity() {
-        $attrs = $this->toArray();
+        $attrs = get_object_vars($this);
         foreach ($attrs as $key => $attr) {
             if ($key != 'id' and $attr == NULL) {
-                throw new HttpException(400, "Entity properties ".$key." cannot be null.");
+                throw new HttpException(400, "Entity property ".$key." cannot be null.");
             }
         }
     }

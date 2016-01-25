@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-12-31 17:06:33
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-01-25 11:38:01
+ * @Last Modified time: 2016-01-25 12:29:12
  */
 
 namespace Bound\ApiBundle\Controller;
@@ -16,16 +16,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 use Bound\ApiBundle\Controller\PController;
 use Bound\CoreBundle\Entity\User;
 
 use FOS\RestBundle\Controller\Annotations\Post;
-use FOS\UserBundle\Util\TokenGenerator;
-use FOS\UserBundle\FOSUserEvents;
-use FOS\UserBundle\Event\GetResponseUserEvent;
-use FOS\UserBundle\Event\FilterUserResponseEvent;
 
 class SecurityController extends PController {
 
@@ -50,7 +45,11 @@ class SecurityController extends PController {
         if (!$this->checkUserPassword($user, $password)) {
             throw new HttpException(400, "Wrong credentials.");
         }
-         
+
+        if (!$user->isEnabled()) {
+            throw new HttpException(403, "Email not checked.");            
+        }
+
         $token = $this->get('bound.token_manager')->add($user);
         return array('token' => $token);
     }
@@ -65,24 +64,12 @@ class SecurityController extends PController {
         $password = $request->get('password');
 
         if ($username and $email and $password) {
-            $um = $this->get('bound.user_manager');
-            if (!$um->usernameExists($username)) {
-                if (!$um->emailExists($email)) {
-                    $tg = new TokenGenerator();
-                    $token = $tg->generateToken();
-                    $fum = $this->container->get('fos_user.user_manager');
-                    $url = $this->container->get('router')->generate('fos_user_registration_confirm', array('token' => $token), UrlGeneratorInterface::ABSOLUTE_URL);
+            $fum = $this->get('fos_user.user_manager');
+            if (!$fum->findUserByUsername($username)) {
+                if (!$fum->findUserByEmail($email)) {
+                    $this->get('bound.user_manager')->add($username, $email, $password);
 
-                    $user = $fum->createUser();
-                    $user->setUsername($username);
-                    $user->setEmail($email);
-                    $user->setPlainPassword($password);
-                    $user->setConfirmationToken($token);
-
-                    $fum->updateUser($user);
-
-                    $this->sendConfirmationEmail($user, $url);
-                    return array("Email sent to ".$user->getEmail().".");
+                    return array("Email sent to ".$email.".");
                 } else {
                     throw new HttpException(400, "Email already exists.");
                 }
@@ -100,23 +87,16 @@ class SecurityController extends PController {
      */
     public function resettingAction(Request $request) {
         $email = $request->get('email');
-        $fum = $this->get('fos_user.user_manager');
-        $tg = new TokenGenerator();
-
         $um = $this->get('fos_user.user_manager');
         $user = $um->findUserByEmail($email);
+
         if (!$user instanceof User) {
             throw new HttpException(400, "User not found.");
         } else {
             if ($user->isPasswordRequestNonExpired($this->container->getParameter('fos_user.resetting.token_ttl'))) {
                 throw new HttpException(400, "Password already requested.");
             } else {
-                $token = $tg->generateToken();
-                $user->setPlainPassword($token);
-                $user->setPasswordRequestedAt(new \DateTime());
-
-                $fum->updateUser($user);
-                $this->sendResetEmail($user, $token);
+                $this->get('bound.user_manager')->changePassword($user);
 
                 return array("Email sent to ".$user->getEmail().".");
             }
@@ -132,27 +112,5 @@ class SecurityController extends PController {
         } else {
             return $encoder->isPasswordValid($user->getPassword(), $password, $user->getSalt());
         }
-    }
-
-    private function sendConfirmationEmail(User $user, $url) {
-        $message = \Swift_Message::newInstance()
-            ->setSubject("Prêt pour l'aventure ?")
-            ->setFrom(array('hello@bound-app.com' => "Pierrick"))
-            ->setTo($user->getEmail())
-            ->setBody($this->renderView('registration.html.twig', array('user' => $user, 'url' => $url)), 'text/html')
-        ;
-
-        $this->get('mailer')->send($message);
-    }
-
-    private function sendResetEmail(User $user, $token) {
-        $message = \Swift_Message::newInstance()
-            ->setSubject("Alors, comme ça on a pas de mémoire ?")
-            ->setFrom(array('hello@bound-app.com' => "Pierrick"))
-            ->setTo($user->getEmail())
-            ->setBody($this->renderView('resetting.html.twig', array('user' => $user, 'token' => $token)), 'text/html')
-        ;
-
-        $this->get('mailer')->send($message);        
     }
 }

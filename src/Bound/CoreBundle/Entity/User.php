@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-11-27 14:55:06
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-01-02 16:05:04
+ * @Last Modified time: 2016-01-25 12:20:11
  */
 
 namespace Bound\CoreBundle\Entity;
@@ -28,34 +28,13 @@ class User extends BaseUser {
     protected $id;
 
     /**
-     * @var array
-     *
-     * @ORM\Column(name="friends", type="array")
+     * @ORM\ManyToOne(targetEntity="Bound\CoreBundle\Entity\Player", cascade={"remove", "persist"})
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $friends;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Bound\CoreBundle\Entity\Crew")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $crew;
-
-    /**
-     * @var array
-     *
-     * @ORM\Column(name="achievements", type="array")
-     */
-    private $achievements;
+    private $player;
 
     public function isAdmin() {
         return in_array('ROLE_ADMIN', $this->roles) or in_array('ROLE_SUPER_ADMIN', $this->roles);
-    }
-
-    public function toArray() {
-        return array (
-            'username' => $this->username,
-            'email' => $this->email
-        );
     }
 
     /**
@@ -68,74 +47,24 @@ class User extends BaseUser {
     }
 
     /**
-     * Set friends
+     * Set player
      *
-     * @param array $friends
+     * @param \Bound\CoreBundle\Entity\Player $player
      *
      * @return User
      */
-    public function setFriends($friends)
-    {
-        $this->friends = $friends;
+    public function setPlayer(\Bound\CoreBundle\Entity\Player $player) {
+        $this->player = $player;
 
         return $this;
     }
 
     /**
-     * Get friends
+     * Get player
      *
-     * @return array
+     * @return \Bound\CoreBundle\Entity\Player
      */
-    public function getFriends()
-    {
-        return $this->friends;
-    }
-
-    /**
-     * Set crew
-     *
-     * @param \Bound\CoreBundle\Entity\Crew $crew
-     *
-     * @return User
-     */
-    public function setCrew(\Bound\CoreBundle\Entity\Crew $crew = null)
-    {
-        $this->crew = $crew;
-
-        return $this;
-    }
-
-    /**
-     * Get crew
-     *
-     * @return \Bound\CoreBundle\Entity\Crew
-     */
-    public function getCrew()
-    {
-        return $this->crew;
-    }
-
-    /**
-     * Set achievements
-     *
-     * @param array $achievements
-     *
-     * @return User
-     */
-    public function setAchievements($achievements)
-    {
-        $this->achievements = $achievements;
-
-        return $this;
-    }
-
-    /**
-     * Get achievements
-     *
-     * @return array
-     */
-    public function getAchievements()
-    {
-        return $this->achievements;
+    public function getPlayer() {
+        return $this->player;
     }
 }

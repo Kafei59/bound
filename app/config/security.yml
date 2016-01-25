@@ -13,24 +13,6 @@ security:
             id: fos_user.user_provider.username
 
     firewalls:
-        # oauth_token:
-        #     pattern:    ^/oauth/v2/token
-        #     security:   false
-
-        # oauth_authorize:
-        #     pattern:    ^/oauth/v2/auth
-        #     form_login:
-        #         provider: fos_userbundle
-        #         check_path: fos_user_security_check
-        #         login_path: fos_user_security_login
-        #     anonymous: true
-
-        # api:
-        #     pattern:    ^/api
-        #     fos_oauth:  true
-        #     stateless:  true
-        #     anonymous:  false
-
         main:
             pattern: ^/
             form_login:
@@ -41,12 +23,6 @@ security:
             anonymous:    true
 
     access_control:
-        - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        # - { path: ^/oauth/v2/, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        # - { path: ^/api, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, role: ROLE_SUPER_ADMIN }
-
-    acl:
-        connection: default

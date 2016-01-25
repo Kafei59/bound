@@ -23,7 +23,6 @@
         "jms/serializer": "^1.1",
         "jms/serializer-bundle": "^1.1",
         "friendsofsymfony/rest-bundle": "^1.7",
-        "friendsofsymfony/oauth-server-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",

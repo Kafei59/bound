@@ -119,13 +119,3 @@ fos_rest:
     routing_loader:
         default_format: json
     disable_csrf_role: ROLE_API
-
-# FOSOAuth Configuration
-fos_oauth_server:
-    db_driver: orm
-    client_class:        Bound\CoreBundle\Entity\Client
-    access_token_class:  Bound\CoreBundle\Entity\AccessToken
-    refresh_token_class: Bound\CoreBundle\Entity\RefreshToken
-    auth_code_class:     Bound\CoreBundle\Entity\AuthCode
-    service:
-        user_provider: fos_user.user_manager
