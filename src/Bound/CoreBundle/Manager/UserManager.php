@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-10-15 16:31:53
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-01-25 12:29:43
+ * @Last Modified time: 2016-01-27 17:51:22
  */
 
 namespace Bound\CoreBundle\Manager;
@@ -12,43 +12,63 @@ use Bound\CoreBundle\Entity\User;
 use Bound\CoreBundle\Entity\Player;
 use Bound\CoreBundle\Manager\PManager;
 
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use FOS\UserBundle\Util\TokenGenerator;
 
 class UserManager extends PManager {
 
     public function add($username, $email, $password) {
-        $tg = new TokenGenerator();
-        $token = $tg->generateToken();
-
         $fum = $this->container->get('fos_user.user_manager');
-        $url = $this->container->get('router')->generate('fos_user_registration_confirm', array('token' => $token), UrlGeneratorInterface::ABSOLUTE_URL);
+        if (!$fum->findUserByUsername($username)) {
+            if (!$fum->findUserByEmail($email)) {
+                $tg = new TokenGenerator();
+                $token = $tg->generateToken();
 
-        $player = new Player();
-        $this->persist($player);
+                $fum = $this->container->get('fos_user.user_manager');
+                $url = $this->container->get('router')->generate('fos_user_registration_confirm', array('token' => $token), UrlGeneratorInterface::ABSOLUTE_URL);
 
-        $user = $fum->createUser();
-        $user->setUsername($username);
-        $user->setEmail($email);
-        $user->setPlainPassword($password);
-        $user->setConfirmationToken($token);
-        $user->setPlayer($player);
+                $player = new Player();
+                $this->persist($player);
 
-        $fum->updateUser($user);
+                $user = $fum->createUser();
+                $user->setUsername($username);
+                $user->setEmail($email);
+                $user->setPlainPassword($password);
+                $user->setConfirmationToken($token);
+                $user->setPlayer($player);
 
-        $this->sendConfirmationEmail($user, $url);
+                $fum->updateUser($user);
+
+                $this->sendConfirmationEmail($user, $url);
+            } else {
+                throw new HttpException(400, "Email already exists.");
+            }
+        } else {
+            throw new HttpException(400, "Username already exists.");
+        }
     }
 
-    public function changePassword(User $user) {
-        $tg = new TokenGenerator();
-        $token = $tg->generateToken();
+    public function changePassword($email) {
         $fum = $this->container->get('fos_user.user_manager');
+        $user = $fum->findUserByEmail($email);
 
-        $user->setPlainPassword($token);
-        $user->setPasswordRequestedAt(new \DateTime());
-        $fum->updateUser($user);
+        if (!$user instanceof User) {
+            throw new HttpException(400, "User not found.");
+        } else {
+            if ($user->isPasswordRequestNonExpired($this->container->getParameter('fos_user.resetting.token_ttl'))) {
+                throw new HttpException(400, "Password already requested.");
+            } else {
+                $tg = new TokenGenerator();
+                $token = $tg->generateToken();
 
-        $this->sendResetEmail($user, $token);
+                $user->setPlainPassword($token);
+                $user->setPasswordRequestedAt(new \DateTime());
+                $fum->updateUser($user);
+
+                $this->sendResetEmail($user, $token);
+            }
+        }
     }
 
     private function sendConfirmationEmail(User $user, $url) {
