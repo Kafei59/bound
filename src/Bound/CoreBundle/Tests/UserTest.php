@@ -3,12 +3,14 @@
  * @Author: gicque_p
  * @Date:   2015-12-04 16:16:29
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-01-27 18:14:18
+ * @Last Modified time: 2016-01-28 09:38:27
  */
 
 namespace Bound\CoreBundle\Tests;
 
 use Bound\CoreBundle\Tests\PTest;
+
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class UserTest extends PTest {
 
@@ -67,10 +69,8 @@ class UserTest extends PTest {
                     break;
             }
         } catch (HttpException $e) {
-            var_dump($e->getMessage());
             $this->fail();
         } catch (\Exception $e) {
-            var_dump($e->getMessage());
             $this->fail();
         }
     }
