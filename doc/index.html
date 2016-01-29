@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Freelancer - Start Bootstrap Theme</title>
+
+    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#page-top">Bound-App</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#about">à propos</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#api">Api</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#documentation">Documentation</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="img/profile.png" alt="">
+                    <div class="intro-text">
+                        <span class="name">Bound-App</span>
+                        <hr class="star-light">
+                        <span class="skills">API Documentation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Portfolio Grid Section -->
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>à propos</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p>
+                        Bound qu'est ce que c'est ?<br>
+                        En quelques mots: il s'agit d'une application web et mobile qui regroupe les principaux réseaux sociaux pour en faire un jeu.<br>
+                        Le but principal étant d'obtenir le plus de points ! *étoiles dans les yeux*<br><br>
+
+                        Seul ou en crew, essayez d'accomplir le plus d'objectifs pour monter en top du leaderboard<br>
+                        Montrez que vous êtes LE roi des réseaux sociaux.<br><br>
+
+                        Baser sur un système orienté utilisateur, le but est d'obtenir la meilleure expérience utilisateur possible.<br>
+                        De ce fait, le projet se tourne vers un framework Javascript: Angular.js
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="success" id="api">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Api</h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2">
+                    <p>
+                        L'application se base essentiellement sur un système appelé "web services".<br>
+                        Chaque requête, chaque bouton, chaque chargement de page se fait via une demande API.<br><br>
+
+                        Ainsi aucune redirection de page ne sera faite sur l'ensemble de l'application.<br>
+                        Toutes manipulations pourra se faire via une unique page.
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <p>
+                        Pour créer cette API, l'utilisation de FOSApiRest a été nécessaire.<br>
+                        Cela permet entre autres de gagner énormément de temps et de simplifier chaque requêtes.<br><br>
+
+                        De ce fait, l'application se base sur les différentes méthodes de requêtes HTTP pour connaître l'action à éxécuter.
+                    </p>
+                </div>
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <a href="#" class="btn btn-lg btn-outline">
+                        <i class="fa fa-download"></i> Voir le projet sur GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="documentation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Documentation</h2>
+                    <hr class="star-primary">
+
+                    <span class="page-scroll">
+                        <a href="#security"><h3>Sécurité</h3></a>
+                    </span>
+
+                    <span class="page-scroll">
+                        <a href="#users"><h3>Utilisateur</h3></a>
+                    </span>
+
+                    <span class="page-scroll">
+                        <a href="#achievements"><h3>Haut-Fait</h3></a>
+                    </span>
+
+                    <span class="page-scroll">
+                        <a href="#crews"><h3>Crew</h3></a>
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-primary panel-yellow">
+                        <div class="panel-heading">
+                            <h3 id="security" class="panel-title">Sécurité</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            <h3>Connexion</h3>
+                            <p>
+                                <i>
+                                    Connexion d'un utilisateur à l'application en envoyant le nom d'utilisateur et le mot de passe.<br>
+                                    Retourne un token pour pouvoir utiliser l'API.
+                                </i>
+                                <br>
+
+                                <strong>Route:</strong> /api/login<br>
+                                <strong>Méthode:</strong> POST<br>
+                                <strong>Arguments:</strong> username | password<br>
+                                <strong>Retour:</strong> token
+                            </p>
+
+                            <pre>
+                                <code>
+                                    <span class="a">#</span> <span class="b">Connexion</span> <span class="c">POST [/api/login]</span>
+                                    <span class="a">+</span> <span class="b">Arguments:</span>
+                                        <span class="a">{</span>
+                                            <span class="d">"username": "toto",
+                                            "password": "tata"</span>
+                                        <span class="a">}</span>
+                                    <span class="a">+</span> <span class="e">Réponse</span> <span class="f">200</span> <span class="c">(application/json)</span>
+                                </code>
+                            </pre>
+                            <hr>
+
+                            <h3>Inscription</h3>
+                            <p>
+                                <i>
+                                    Inscription d'un utilisateur à l'application en envoyant le nom d'utilisateur, l'email et le mot de passe.<br>
+                                    Retourne une réponse indiquant qu'un mail de confirmation a été envoyé.
+                                </i>
+                                <br>
+
+                                <strong>Route:</strong> /api/register<br>
+                                <strong>Méthode:</strong> POST<br>
+                                <strong>Arguments:</strong> username | email | password<br>
+                                <strong>Retour:</strong> Réponse personnalisée
+                            </p>
+
+                            <pre>
+                                <code>
+                                    <span class="a">#</span> <span class="b">Inscription</span> <span class="c">POST [/api/register]</span>
+                                    <span class="a">+</span> <span class="b">Arguments:</span>
+                                        <span class="a">{</span>
+                                            <span class="d">"username": "toto",
+                                            "email": "toto@mail.com",
+                                            "password": "tata"</span>
+                                        <span class="a">}</span>
+                                    <span class="a">+</span> <span class="e">Réponse</span> <span class="f">200</span> <span class="c">(application/json)</span>
+                                </code>
+                            </pre>
+                            <hr>
+
+                            <h3>Oubli de mot de passe</h3>
+                            <p>
+                                <i>
+                                    Envoi de mot de passe à l'adresse mail renseigné.<br>
+                                    Retourne une réponse indiquant qu'un mail de confirmation a été envoyé.
+                                </i>
+                                <br>
+
+                                <strong>Route:</strong> /api/resetting<br>
+                                <strong>Méthode:</strong> POST<br>
+                                <strong>Arguments:</strong> email<br>
+                                <strong>Retour:</strong> Réponse personnalisée
+                            </p>
+
+                            <pre>
+                                <code>
+                                    <span class="a">#</span> <span class="b">Reset mot de passe</span> <span class="c">POST [/api/resetting]</span>
+                                    <span class="a">+</span> <span class="b">Arguments:</span>
+                                        <span class="a">{</span>
+                                            <span class="d">"email": "toto@mail.com"</span>
+                                        <span class="a">}</span>
+                                    <span class="a">+</span> <span class="e">Réponse</span> <span class="f">200</span> <span class="c">(application/json)</span>
+                                </code>
+                            </pre>
+                            <hr>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-primary panel-green">
+                        <div class="panel-heading">
+                            <h3 id="users" class="panel-title">Utilisateur</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            <h3>Récupérer la liste entière</h3>
+                            <p>
+                                <i>
+                                    Récupère la liste de tous les utilisateurs utilisant l'application.<br>
+                                    Retourne une liste de classe User.
+                                </i>
+                                <br>
+
+                                <strong>Route:</strong> /api/users?token<br>
+                                <strong>Méthode:</strong> GET<br>
+                                <strong>Arguments:</strong> token<br>
+                                <strong>Retour:</strong> list(User)
+                            </p>
+
+                            <pre>
+                                <code>
+                                    <span class="a">#</span> <span class="b">Tous utilisateurs</span> <span class="c">GET [/api/users?token="token"]</span>
+                                    <span class="a">+</span> <span class="e">Réponse</span> <span class="f">200</span> <span class="c">(application/json)</span>
+                                </code>
+                            </pre>
+                            <hr>
+
+                            <h3>Récupérer une info</h3>
+                            <p>
+                                <i>
+                                    Récupère un utilisateur utilisant l'application en indiquant son nom d'utilisateur<br>
+                                    Retourne une entité de classe User.
+                                </i>
+                                <br>
+
+                                <strong>Route:</strong> /api/users/{username}?token<br>
+                                <strong>Méthode:</strong> GET<br>
+                                <strong>Arguments:</strong> username | token<br>
+                                <strong>Retour:</strong> User
+                            </p>
+
+                            <pre>
+                                <code>
+                                    <span class="a">#</span> <span class="b">Récupérer un utilisateur</span> <span class="c">GET [/api/users/{username}?token="token"]</span>
+                                    <span class="a">+</span> <span class="e">Réponse</span> <span class="f">200</span> <span class="c">(application/json)</span>
+                                </code>
+                            </pre>
+                            <hr>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-primary panel-yellow">
+                        <div class="panel-heading">
+                            <h3 id="achievements" class="panel-title">Haut-Fait</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            <h3>Récupérer la liste entière</h3>
+                            <p>
+                                <i>
+                                    Récupère la liste de tous les haut-fait sur l'application.<br>
+                                    Retourne une liste de classe Achievement.
+                                </i>
+                                <br>
+
+                                <strong>Route:</strong> /api/achievements?token<br>
+                                <strong>Méthode:</strong> GET<br>
+                                <strong>Arguments:</strong> token<br>
+                                <strong>Retour:</strong> list(Achievement)
+                            </p>
+
+                            <pre>
+                                <code>
+                                    <span class="a">#</span> <span class="b">Tous haut-faits</span> <span class="c">GET [/api/achievements?token="token"]</span>
+                                    <span class="a">+</span> <span class="e">Réponse</span> <span class="f">200</span> <span class="c">(application/json)</span>
+                                </code>
+                            </pre>
+                            <hr>
+
+                            <h3>Récupérer une info</h3>
+                            <p>
+                                <i>
+                                    Récupère un haut-fait en indiquant son nom slug<br>
+                                    Retourne une entité de classe Achievement.
+                                </i>
+                                <br>
+
+                                <strong>Route:</strong> /api/achievements/{slug}?token<br>
+                                <strong>Méthode:</strong> GET<br>
+                                <strong>Arguments:</strong> slug | token<br>
+                                <strong>Retour:</strong> Achievement
+                            </p>
+
+                            <pre>
+                                <code>
+                                    <span class="a">#</span> <span class="b">Récupérer un haut-fait</span> <span class="c">GET [/api/achievements/{slug}?token="token"]</span>
+                                    <span class="a">+</span> <span class="e">Réponse</span> <span class="f">200</span> <span class="c">(application/json)</span>
+                                </code>
+                            </pre>
+                            <hr>
+
+                            <h3>Ajouter un élément</h3>
+                            <p>
+                                <i>
+                                    Ajoute un nouvel haut-fait dans l'application <strong>(ADMIN ONLY)</strong>.<br>
+                                    Retourne le nouvel haut-fait créé.
+                                </i>
+                                <br>
+
+                                <strong>Route:</strong> /api/achievements?token<br>
+                                <strong>Méthode:</strong> POST<br>
+                                <strong>Arguments:</strong> token -- title | content | points<br>
+                                <strong>Retour:</strong> Achievement
+                            </p>
+
+                            <pre>
+                                <code>
+                                    <span class="a">#</span> <span class="b">Ajout haut-fait</span> <span class="c">POST [/api/achievements?token="token"]</span>
+                                    <span class="a">+</span> <span class="b">Arguments:</span>
+                                        <span class="a">{</span>
+                                            <span class="d">"title": "titre",
+                                            "content": "contenu",
+                                            "points": "100"</span>
+                                        <span class="a">}</span>
+                                    <span class="a">+</span> <span class="e">Réponse</span> <span class="f">200</span> <span class="c">(application/json)</span>
+                                </code>
+                            </pre>
+                            <hr>
+
+                            <h3>Modifier un élément</h3>
+                            <p>
+                                <i>
+                                    Modifier un haut-fait dans l'application en utilisant son slug <strong>(ADMIN ONLY)</strong>.<br>
+                                    Retourne le nouvel haut-fait modifié.
+                                </i>
+                                <br>
+
+                                <strong>Route:</strong> /api/achievements/{slug}?token<br>
+                                <strong>Méthode:</strong> PUT<br>
+                                <strong>Arguments:</strong> slug | token -- title | content | points<br>
+                                <strong>Retour:</strong> Achievement
+                            </p>
+
+                            <pre>
+                                <code>
+                                    <span class="a">#</span> <span class="b">Modification haut-fait</span> <span class="c">PUT [/api/achievements/{slug}?token="token"]</span>
+                                    <span class="a">+</span> <span class="b">Arguments:</span>
+                                        <span class="a">{</span>
+                                            <span class="d">"title": "titre",
+                                            "content": "contenu",
+                                            "points": "100"</span>
+                                        <span class="a">}</span>
+                                    <span class="a">+</span> <span class="e">Réponse</span> <span class="f">200</span> <span class="c">(application/json)</span>
+                                </code>
+                            </pre>
+                            <hr>
+
+                            <h3>Supprimer un élément</h3>
+                            <p>
+                                <i>
+                                    Supprime un haut-fait dans l'application en utilisant son slug<strong>(ADMIN ONLY)</strong>.<br>
+                                    Ne retourne rien.
+                                </i>
+                                <br>
+
+                                <strong>Route:</strong> /api/achievements/{slug}?token<br>
+                                <strong>Méthode:</strong> DELETE<br>
+                                <strong>Arguments:</strong> slug | token<br>
+                                <strong>Retour:</strong> 
+                            </p>
+
+                            <pre>
+                                <code>
+                                    <span class="a">#</span> <span class="b">Suppression haut-fait</span> <span class="c">DELETE [/api/achievements/{slug}?token="token"]</span>
+                                    <span class="a">+</span> <span class="e">Réponse</span> <span class="f">200</span> <span class="c">(application/json)</span>
+                                </code>
+                            </pre>
+                            <hr>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-primary panel-green">
+                        <div class="panel-heading">
+                            <h3 id="crews" class="panel-title">Crew</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            <h3>Récupérer la liste entière</h3>
+                            <p>
+                                <i>
+                                    Récupère la liste de toutes les crew sur l'application.<br>
+                                    Retourne une liste de classe Crew.
+                                </i>
+                                <br>
+
+                                <strong>Route:</strong> /api/crews?token<br>
+                                <strong>Méthode:</strong> GET<br>
+                                <strong>Arguments:</strong> token<br>
+                                <strong>Retour:</strong> list(Crew)
+                            </p>
+
+                            <pre>
+                                <code>
+                                    <span class="a">#</span> <span class="b">Toutes crews</span> <span class="c">GET [/api/crews?token="token"]</span>
+                                    <span class="a">+</span> <span class="e">Réponse</span> <span class="f">200</span> <span class="c">(application/json)</span>
+                                </code>
+                            </pre>
+                            <hr>
+
+                            <h3>Récupérer une info</h3>
+                            <p>
+                                <i>
+                                    Récupère une crew en indiquant son nom slug<br>
+                                    Retourne une entité de classe Crew.
+                                </i>
+                                <br>
+
+                                <strong>Route:</strong> /api/crews/{slug}?token<br>
+                                <strong>Méthode:</strong> GET<br>
+                                <strong>Arguments:</strong> slug | token<br>
+                                <strong>Retour:</strong> Crew
+                            </p>
+
+                            <pre>
+                                <code>
+                                    <span class="a">#</span> <span class="b">Récupérer une crew</span> <span class="c">GET [/api/crews/{slug}?token="token"]</span>
+                                    <span class="a">+</span> <span class="e">Réponse</span> <span class="f">200</span> <span class="c">(application/json)</span>
+                                </code>
+                            </pre>
+                            <hr>
+
+                            <h3>Ajouter un élément</h3>
+                            <p>
+                                <i>
+                                    Ajoute une nouvelle crew dans l'application.<br>
+                                    Retourne la nouvelle crew créée.
+                                </i>
+                                <br>
+
+                                <strong>Route:</strong> /api/crews?token<br>
+                                <strong>Méthode:</strong> POST<br>
+                                <strong>Arguments:</strong> token -- title<br>
+                                <strong>Retour:</strong> Crew
+                            </p>
+
+                            <pre>
+                                <code>
+                                    <span class="a">#</span> <span class="b">Ajout crew</span> <span class="c">POST [/api/crews?token="token"]</span>
+                                    <span class="a">+</span> <span class="b">Arguments:</span>
+                                        <span class="a">{</span>
+                                            <span class="d">"title": "titre"</span>
+                                        <span class="a">}</span>
+                                    <span class="a">+</span> <span class="e">Réponse</span> <span class="f">200</span> <span class="c">(application/json)</span>
+                                </code>
+                            </pre>
+                            <hr>
+
+                            <h3>Modifier un élément</h3>
+                            <p>
+                                <i>
+                                    Modifier une crew dans l'application en utilisant son slug.<br>
+                                    Retourne la nouvelle crew modifiée.
+                                </i>
+                                <br>
+
+                                <strong>Route:</strong> /api/crews/{slug}?token<br>
+                                <strong>Méthode:</strong> PUT<br>
+                                <strong>Arguments:</strong> slug | token -- title<br>
+                                <strong>Retour:</strong> Crew
+                            </p>
+
+                            <pre>
+                                <code>
+                                    <span class="a">#</span> <span class="b">Modification crew</span> <span class="c">PUT [/api/crews/{slug}?token="token"]</span>
+                                    <span class="a">+</span> <span class="b">Arguments:</span>
+                                        <span class="a">{</span>
+                                            <span class="d">"title": "titre"</span>
+                                        <span class="a">}</span>
+                                    <span class="a">+</span> <span class="e">Réponse</span> <span class="f">200</span> <span class="c">(application/json)</span>
+                                </code>
+                            </pre>
+                            <hr>
+
+                            <h3>Supprimer un élément</h3>
+                            <p>
+                                <i>
+                                    Supprime une crew dans l'application en utilisant son slug.<br>
+                                    Ne retourne rien.
+                                </i>
+                                <br>
+
+                                <strong>Route:</strong> /api/crews/{slug}?token<br>
+                                <strong>Méthode:</strong> DELETE<br>
+                                <strong>Arguments:</strong> slug | token<br>
+                                <strong>Retour:</strong> 
+                            </p>
+
+                            <pre>
+                                <code>
+                                    <span class="a">#</span> <span class="b">Suppression haut-fait</span> <span class="c">DELETE [/api/crews/{slug}?token="token"]</span>
+                                    <span class="a">+</span> <span class="e">Réponse</span> <span class="f">200</span> <span class="c">(application/json)</span>
+                                </code>
+                            </pre>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
+                        <h3>Location</h3>
+                        <p>
+                            5-9 rue du Palais Rihour<br>
+                            59000 LILLE
+                        </p>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>Retrouvez-nous</h3>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>à propos de Bound</h3>
+                        <p>
+                            Bound est une application web et mobile dans lequel vous devez réaliser des succès via différents réseaux sociaux.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright 2016 - Pierrick Gicquelais
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll visible-xs visible-sm">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
