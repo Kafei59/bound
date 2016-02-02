@@ -2,10 +2,14 @@
 * @Author: gicque_p
 * @Date:   2015-10-23 15:18:42
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2015-11-10 12:13:27
+* @Last Modified time: 2016-02-02 13:45:47
 */
 
 app.controller('MainController', ['$scope', '$routeParams', 'httpResponse', function($scope, $routeParams) {
+    httpResponse.get('127.0.0.1/~gicque_p/bound/web/app_dev.php/api/achievements').success(function(data) {
+        $scope.achievements = data;
+    })
+
     $scope.isShow = true;
 
     $scope.toggleSidebar = function () {

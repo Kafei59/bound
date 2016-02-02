@@ -66,7 +66,7 @@ class FOSUBUserProvider extends BaseClass {
 
             return $user;
         } else {
-            $user = parent::loadUserByOAuthUserResponse($response);
+            // $user = parent::loadUserByOAuthUserResponse($response);
             $serviceName = $response->getResourceOwner()->getName();
             $setter = 'set' . ucfirst($serviceName) . 'AccessToken';
 
