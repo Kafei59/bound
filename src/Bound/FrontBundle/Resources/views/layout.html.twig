@@ -64,8 +64,8 @@
                     <i class="fa fa-heart-o"></i>Mes amis
                 </a>
 
-                {% if app.user.crew is not null %}
-                    <a href="#/crew/{{ app.user.crew.slug }}" class="list-group-item" angular-ripple>
+                {% if app.user.player.crew is not null %}
+                    <a href="#/crew/{{ app.user.player.crew.slug }}" class="list-group-item" angular-ripple>
                         <i class="fa fa-users"></i>Ma Crew
                     </a>
                 {% endif %}

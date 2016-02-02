@@ -3,14 +3,15 @@
  * @Author: gicque_p
  * @Date:   2015-10-15 16:31:53
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-01-27 17:51:22
+ * @Last Modified time: 2016-02-02 12:03:39
  */
 
 namespace Bound\CoreBundle\Manager;
 
+use Bound\CoreBundle\Manager\PManager;
 use Bound\CoreBundle\Entity\User;
 use Bound\CoreBundle\Entity\Player;
-use Bound\CoreBundle\Manager\PManager;
+use Bound\CoreBundle\Entity\Client;
 
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -31,16 +32,22 @@ class UserManager extends PManager {
                 $player = new Player();
                 $this->persist($player);
 
+                $client = new Client();
+                $this->persist($client);
+
                 $user = $fum->createUser();
                 $user->setUsername($username);
                 $user->setEmail($email);
                 $user->setPlainPassword($password);
                 $user->setConfirmationToken($token);
                 $user->setPlayer($player);
+                $user->setClient($client);
 
                 $fum->updateUser($user);
 
                 $this->sendConfirmationEmail($user, $url);
+
+                return $user;
             } else {
                 throw new HttpException(400, "Email already exists.");
             }
@@ -67,6 +74,8 @@ class UserManager extends PManager {
                 $fum->updateUser($user);
 
                 $this->sendResetEmail($user, $token);
+
+                return $user;
             }
         }
     }

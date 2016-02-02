@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-10-17 18:22:12
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-01-25 12:39:43
+ * @Last Modified time: 2016-02-02 12:02:48
  */
 
 namespace Bound\CoreBundle\DataFixtures\ORM;
@@ -14,6 +14,7 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 
 use Bound\CoreBundle\Entity\User;
 use Bound\CoreBundle\Entity\Player;
+use Bound\CoreBundle\Entity\Client;
 use Bound\CoreBundle\Entity\Crew;
 
 class LoadUserData extends ContainerAware implements FixtureInterface {
@@ -25,6 +26,7 @@ class LoadUserData extends ContainerAware implements FixtureInterface {
         $fum = $this->container->get('fos_user.user_manager');
 
         $player = new Player();
+        $client = new Client();
         $user = $fum->createUser();
         $user->setUsername("Madvenger");
         $user->setEmail("toto@mail.com");
@@ -32,11 +34,14 @@ class LoadUserData extends ContainerAware implements FixtureInterface {
         $user->setEnabled(true);
         $user->setRoles(array('ROLE_USER'));
         $user->setPlayer($player);
+        $user->setClient($client);
 
         $manager->persist($player);
+        $manager->persist($client);
         $fum->updateUser($user);
 
         $player = new Player();
+        $client = new Client();
         $user = $fum->createUser();
         $user->setUsername("Kafei");
         $user->setEmail("email@mail.com");
@@ -44,6 +49,7 @@ class LoadUserData extends ContainerAware implements FixtureInterface {
         $user->setEnabled(true);
         $user->setRoles(array('ROLE_SUPER_ADMIN'));
         $user->setPlayer($player);
+        $user->setClient($client);
 
         $crew = new Crew();
         $crew->setTitle("My special crew, bae");
@@ -56,6 +62,7 @@ class LoadUserData extends ContainerAware implements FixtureInterface {
         $player->setCrew($crew);
 
         $manager->persist($player);
+        $manager->persist($client);
         $fum->updateUser($user);
     }
 };

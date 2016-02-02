@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-11-27 14:55:06
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-01-25 12:20:11
+ * @Last Modified time: 2016-02-02 11:54:52
  */
 
 namespace Bound\CoreBundle\Entity;
@@ -28,10 +28,16 @@ class User extends BaseUser {
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Bound\CoreBundle\Entity\Player", cascade={"remove", "persist"})
+     * @ORM\OneToOne(targetEntity="Bound\CoreBundle\Entity\Player", cascade={"remove", "persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $player;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Bound\CoreBundle\Entity\Client", cascade={"remove", "persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $client;
 
     public function isAdmin() {
         return in_array('ROLE_ADMIN', $this->roles) or in_array('ROLE_SUPER_ADMIN', $this->roles);
@@ -66,5 +72,27 @@ class User extends BaseUser {
      */
     public function getPlayer() {
         return $this->player;
+    }
+
+    /**
+     * Set client
+     *
+     * @param \Bound\CoreBundle\Entity\Client $client
+     *
+     * @return User
+     */
+    public function setClient(\Bound\CoreBundle\Entity\Client $client) {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    /**
+     * Get client
+     *
+     * @return \Bound\CoreBundle\Entity\Client
+     */
+    public function getClient() {
+        return $this->client;
     }
 }
