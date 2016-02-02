@@ -31,21 +31,16 @@ class FOSUBUserProvider extends BaseClass {
         $setter_id = $setter.'Id';
         $setter_token = $setter.'AccessToken';
 
-        $previousUser = $this->userManager->findUserBy(array($property => $username));
-        $client = $previous->getClient();
+        $previousUser = $this->userManager->findUserByUsername($username);
+
         if ($previousUser != NULL) {
-            $client->$setter_id(null);
-            $client->$setter_token(null);
+            $client = $previousUser->getClient();
+            $client->$setter_id($username);
+            $client->$setter_token($response->getAccessToken());
 
             $this->manager->persist($client);
             $this->manager->flush();
         }
-
-        $client->$setter_id($username);
-        $client->$setter_token($response->getAccessToken());
-
-        $this->manager->persist($client);
-        $this->manager->flush();
     }
 
     public function loadUserByOAuthUserResponse(UserResponseInterface $response) {
