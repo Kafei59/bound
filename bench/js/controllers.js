@@ -2,21 +2,36 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:42:51
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-02 15:18:33
+* @Last Modified time: 2016-02-05 17:54:11
 */
 
-app.controller('MainController', ['$scope', '$routeParams', 'httpResponse', function($scope, $routeParams) {
+app.controller('MainController', ['$scope', '$routeParams', '$cookies', 'httpResponse', function($scope, $routeParams, $cookies, $cfpLoadingBar) {
+}]);
 
-    var datas = {'username': "Kafei", 'password': "toto"};
+app.controller('LoginController', ['$scope', '$routeParams', '$cookies', '$window', 'httpResponse', function($scope, $routeParams, $cookies, $window, $cfpLoadingBar) {
+    $scope.login = function() {
+        if ($scope.username && $scope.password) {
+            $value = {'username': $scope.username, 'password': $scope.password};
 
-    $scope.token = {};
-    httpResponse.post('http://127.0.0.1/~gicque_p/bound/desk/web/app_dev.php/api/login', datas).success(function(data, status) {
-        $scope.token = data;
-    })
+            httpResponse.post('http://127.0.0.1/~gicque_p/bound/desk/web/app_dev.php/api/login', $value)
+            .success(function(data, status) {
+                $cookies.put('token', data.token.data);
+                $window.location.href = '#/';
+                location.reload();
+            })
+            .error(function(data, status) {
+                alert('Auth failed.');
+            });
+        }
+    };
+}]);
 
-    $scope.achievements = {};
-    httpResponse.get('http://127.0.0.1/~gicque_p/bound/desk/web/app_dev.php/api/achievements?token=-IqzP-9yp0p2i6mVDuOwut8ZNVqqeBr33OAMbNk8-nY').success(function(data, status) {
-        $scope.achievements = data;
-    })
+app.controller('LogoutController', ['$scope', '$routeParams', '$cookies', '$window', 'httpResponse', function($scope, $routeParams, $cookies, $window, $cfpLoadingBar) {
+    $cookies.remove('token');
+    $window.location.href = '#/';
+    location.reload();
+}]);
 
+app.controller('RegisterController', ['$scope', '$routeParams', '$cookies', 'httpResponse', function($scope, $routeParams, $cookies, $cfpLoadingBar) {
+    $scope.display = true;
 }]);

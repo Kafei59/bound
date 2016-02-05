@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:44:37
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-02 14:03:02
+* @Last Modified time: 2016-02-04 17:34:59
 */
 
 app.factory('httpResponse', ['$http', function($http) {

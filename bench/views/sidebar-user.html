@@ -1,0 +1,30 @@
+<li class="sidebar-brand">
+    <figure>
+        <img src="img/avatar.png" class="img-responsive img-circle">
+        <figcaption>{{ user.username }}</figcaption>
+    </figure>
+</li>
+
+<li>
+    <a href="#/" ng-class="{active: tab == 'index'}" angular-ripple>
+        <i class="fa fa-home"></i>Accueil
+    </a>
+</li>
+<li>
+    <a href="#/dashboard" ng-class="{active: tab == 'dashboard'}" angular-ripple><i class="fa fa-user"></i>Mon dashboard</a>
+</li>
+<li>
+    <a href="#/mail" ng-class="{active: tab == 'mail'}" angular-ripple><i class="fa fa-paper-plane-o"></i>Ma messagerie</a>
+</li>
+<li>
+    <a href="#/achievement" ng-class="{active: tab == 'achievement'}" angular-ripple><i class="fa fa-star-o"></i>Mes haut-faits</a>
+</li>
+<li>
+    <a href="#/friends" ng-class="{active: tab == 'friends'}" angular-ripple><i class="fa fa-heart-o"></i>Mes amis</a>
+</li>
+<li>
+    <a href="#/crew" ng-class="{active: tab == 'crew'}" angular-ripple><i class="fa fa-users"></i>Ma crew</a>
+</li>
+<li>
+    <a href="#/logout" ng-class="{active: tab == 'logout'}" angular-ripple><i class="fa fa-power-off"></i>Se déconnecter</a>
+</li>

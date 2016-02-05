@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2015-10-23 15:18:42
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-02 13:45:47
+* @Last Modified time: 2016-02-04 17:25:55
 */
 
 app.controller('MainController', ['$scope', '$routeParams', 'httpResponse', function($scope, $routeParams) {
