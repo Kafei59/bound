@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-04 16:07:30
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-05 17:40:43
+* @Last Modified time: 2016-02-11 18:10:57
 */
 
 body {
@@ -85,9 +85,51 @@ footer {
     font-size: 1.3em;
 }
 
+#loading-bar {
+    z-index: 2 !important;
+    position: fixed !important;
+}
+
+video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translateX(-50%) translateY(-50%);
+    background: url(../img/bg4.png) no-repeat;
+    background-size: cover;
+    transition: 1s opacity;
+}
+
+#menu-toggle {
+    z-index: 1;
+    position: fixed;
+}
+
+.video-pattern {
+    z-index: 1;
+    position: fixed;
+    min-width: 100%;
+    min-height: 100%;
+
+    background: url(../img/pattern.png) repeat;
+}
+
+.overlay-video {
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 10vh;
+    color: #fff;
+}
+
 /* Sidebar Styles */
 #sidebar-wrapper {
-    z-index: 1000;
+    z-index: 1;
     position: fixed;
     left: 250px;
     width: 0;
@@ -232,6 +274,10 @@ footer {
         padding: 20px;
     }
 
+    .overlay-video {
+        top: 30vh;
+    }
+
     #wrapper.toggled #page-content-wrapper {
         position: relative;
         margin-right: 0;
@@ -240,34 +286,6 @@ footer {
     #page-wrapper-header {
         display: block;
     }
-}
-
-/* Login */
-#login-layout {
-    height: 100vh;
-    background: url(../img/bg3.jpg) center;
-    background-size: cover;
-}
-
-#login-layout h2 {
-    padding-top: 300px;
-    color: #fff;
-    margin: 0;
-}
-
-#login-layout form {
-    text-align: center;
-}
-
-#login-layout form div {
-    margin: auto;
-}
-
-/* Register */
-#register-layout {
-    height: 100vh;
-    background: url(../img/bg3.jpg) center;
-    background-size: cover;
 }
 
 /* Animations */

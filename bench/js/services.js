@@ -2,8 +2,23 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:44:37
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-04 17:34:59
+* @Last Modified time: 2016-02-11 17:20:52
 */
+
+app.factory('promiseResponse', function($q) {
+    return {
+        getPromiseHttpResult: function (httpPromise) {
+            var deferred = $q.defer();
+            httpPromise.success(function (data) {
+                deferred.resolve(data);
+            }).error(function () {
+                deferred.reject(arguments);
+            });
+
+            return deferred.promise;
+        }
+    }
+});
 
 app.factory('httpResponse', ['$http', function($http) {
 

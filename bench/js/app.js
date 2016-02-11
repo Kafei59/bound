@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:23:24
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-05 17:42:34
+* @Last Modified time: 2016-02-11 17:53:45
 */
 
 var app = angular.module('BoundApp', [
@@ -11,7 +11,7 @@ var app = angular.module('BoundApp', [
     'ngCookies', 
     'angularRipple', 
     'angular-scroll-animate', 
-    'angular-loading-bar'
+    'chieffancypants.loadingBar'
 ]);
 
 app.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
@@ -22,11 +22,20 @@ app.config(function($routeProvider) {
     $routeProvider
         .when('/', {
             controller: 'MainController',
-            templateUrl: 'views/index.html',
+            templateUrl: 'views/visitor.html',
             
             title: 'Accueil',
             subtitle: 'Bienvenue à toi, jeune star',
             tab: 'index'
+        })
+
+        .when('/home', {
+            controller: 'HomeController',
+            templateUrl: 'views/home.html',
+            
+            title: 'Accueil',
+            subtitle: 'Bienvenue à toi, jeune star',
+            tab: 'home'
         })
 
         .when('/login', {

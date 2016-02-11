@@ -1,15 +1,19 @@
-<section id="login-layout">
-    <h2 class="text-uppercase text-center">Connexion</h2>
+<!-- <video autoplay loop poster="img/bg4.png">
+    <source src="img/video-bg.mp4" type="video/mp4">
+</video>
+ -->
+<div class="overlay-video">
+    <h2 class="text-uppercase">Connexion</h2>
 
-    <form class="container" ng-submit="login()" novalidate>
-        <div class="input-group">
-            <input type="text" ng-model="username" placeholder="Nom d'utilisateur">
+    <form ng-submit="login()" novalidate>
+        <div class="form-group">
+            <input type="text" ng-model="username" class="form-control" placeholder="Nom d'utilisateur">
         </div>
 
-        <div class="input-group">
-            <input type="password" ng-model="password" placeholder="Mot de passe">
+        <div class="form-group">
+            <input type="password" ng-model="password" class="form-control" placeholder="Mot de passe">
         </div>
 
-        <input type="submit">
+        <input class="btn btn-default" type="submit">
     </form>
-</section>
+</div>
