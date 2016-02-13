@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:42:51
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-13 17:37:57
+* @Last Modified time: 2016-02-13 18:42:48
 */
 
 app.controller('MainController', ['$rootScope', 'cookieService', function($rootScope, $cookieService) {
@@ -46,4 +46,24 @@ app.controller('LogoutController', ['$location', 'userService', function($locati
 }]);
 
 app.controller('RegisterController', function() {
+});
+
+app.controller('DashboardController', ['$rootScope', 'cookieService', function($rootScope, $cookieService) {
+    $rootScope.token = $cookieService.getToken();
+}]);
+
+app.controller('MailController', ['$rootScope', 'cookieService', function($rootScope, $cookieService) {
+    $rootScope.token = $cookieService.getToken();
+}]);
+
+app.controller('AchievementsController', ['$rootScope', 'cookieService', function($rootScope, $cookieService) {
+    $rootScope.token = $cookieService.getToken();
+}]);
+
+app.controller('FriendsController', ['$rootScope', 'cookieService', function($rootScope, $cookieService) {
+    $rootScope.token = $cookieService.getToken();
+}]);
+
+app.controller('CrewController', ['$rootScope', 'cookieService', function($rootScope, $cookieService) {
+    $rootScope.token = $cookieService.getToken();
 }]);

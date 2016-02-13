@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:23:24
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-13 17:33:30
+* @Last Modified time: 2016-02-13 18:43:44
 */
 
 var app = angular.module('BoundApp', [
@@ -48,6 +48,36 @@ app.config(function($routeProvider) {
             controller: 'RegisterController',
             templateUrl: 'views/register.html',
             tab: 'register'
+        })
+
+        .when('/dashboard', {
+            controller: 'DashboardController',
+            templateUrl: 'views/dashboard.html',
+            tab: 'dashboard'
+        })
+
+        .when('/mail', {
+            controller: 'MailController',
+            templateUrl: 'views/mail.html',
+            tab: 'mail'
+        })
+
+        .when('/achievements', {
+            controller: 'AchievementsController',
+            templateUrl: 'views/achievements.html',
+            tab: 'achievements'
+        })
+
+        .when('/friends', {
+            controller: 'FriendsController',
+            templateUrl: 'views/friends.html',
+            tab: 'friends'
+        })
+
+        .when('/crew', {
+            controller: 'CrewController',
+            templateUrl: 'views/crew.html',
+            tab: 'crew'
         })
     ;
 });
