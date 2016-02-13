@@ -19,13 +19,19 @@
     <body>
         <div id="wrapper">
             <div id="sidebar-wrapper">
-                <ul class="sidebar-nav" sidebar>
+                <ul class="sidebar-nav" ng-switch on="token || 'null'" sidebar>
                 </ul>
             </div>
 
             <div id="page-content-wrapper">
-                <div background></div>
-                <button id="menu-toggle" class="btn btn-default">Toggle Menu</button>
+                <div ng-switch on="token || 'null'" background>
+                </div>
+
+                <div id="menu-toggle" class="open">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
                 <div id="main" ng-view></div>
             </div>
         </div>
@@ -50,6 +56,7 @@
         <script>
             $(document).on('click', "#menu-toggle", function(e) {
                 $("#wrapper").toggleClass("toggled");
+                $(this).toggleClass('open');
             });
         </script>
         </body>

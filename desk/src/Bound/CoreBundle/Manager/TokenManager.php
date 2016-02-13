@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-12-31 16:48:01
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-01-27 17:47:56
+ * @Last Modified time: 2016-02-11 20:47:30
  */
 
 namespace Bound\CoreBundle\Manager;
@@ -30,7 +30,7 @@ class TokenManager extends PManager {
         }
 
         if (!$this->checkUserPassword($user, $password)) {
-            throw new HttpException(400, "Wrong credentials.");
+            throw new HttpException(403, "Wrong credentials.");
         }
 
         if (!$user->isEnabled()) {

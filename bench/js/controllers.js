@@ -2,39 +2,48 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:42:51
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-11 17:53:03
+* @Last Modified time: 2016-02-13 17:37:57
 */
 
-app.controller('MainController', ['$scope', '$routeParams', '$cookies', '$window', '$http', 'promiseResponse', function($scope, $routeParams, $cookies, $http, promiseResponse) {
+app.controller('MainController', ['$rootScope', 'cookieService', function($rootScope, $cookieService) {
+    $rootScope.token = $cookieService.getToken();
+    $rootScope.date = new Date();
 }]);
 
-app.controller('HomeController', ['$scope', '$routeParams', '$cookies', '$window', '$http', 'promiseResponse', function($scope, $routeParams, $cookies, $http, promiseResponse) {
+app.controller('HomeController', ['$rootScope', '$scope', 'cookieService', function($rootScope, $scope, $cookieService) {
+    $rootScope.token = $cookieService.getToken();
 }]);
 
-app.controller('LoginController', ['$scope', '$routeParams', '$cookies', '$window', 'httpResponse', function($scope, $routeParams, $cookies, $window, $cfpLoadingBar) {
+app.controller('LoginController', ['$rootScope', '$scope', '$location', 'userService', 'cookieService', function($rootScope, $scope, $location, $userService, $cookieService) {
     $scope.login = function() {
-        if ($scope.username && $scope.password) {
-            $value = {'username': $scope.username, 'password': $scope.password};
+        var form = {
+            username: $scope.username,
+            password: $scope.password
+        };
 
-            httpResponse.post('http://127.0.0.1/~gicque_p/bound/desk/web/app_dev.php/api/login', $value)
-            .success(function(data, status) {
-                $cookies.put('token', data.token.data);
-                location.reload();
-                $window.location.href = '#/home';
+        $userService.login(form)
+            .success(function(data) {
+                function callback() {
+                    $location.path('/home');
+                    $location.replace();
+                }
+
+                $cookieService.addToken(data.token.data);
+                $rootScope.token = $cookieService.getToken();
+                callback();
             })
-            .error(function(data, status) {
-                alert('Auth failed.');
-            });
-        }
+            .error(function(data) {
+                alert('Auth Failed');
+            })
+        ;
     };
 }]);
 
-app.controller('LogoutController', ['$scope', '$routeParams', '$cookies', '$window', 'httpResponse', function($scope, $routeParams, $cookies, $window, $cfpLoadingBar) {
-    $cookies.remove('token');
-    location.reload();
-    $window.location.href = '#/';
+app.controller('LogoutController', ['$location', 'userService', function($location, $userService) {
+    $userService.logout();
+    $location.path('/');
+    $location.replace();
 }]);
 
-app.controller('RegisterController', ['$scope', '$routeParams', '$cookies', 'httpResponse', function($scope, $routeParams, $cookies, $cfpLoadingBar) {
-    $scope.display = true;
+app.controller('RegisterController', function() {
 }]);

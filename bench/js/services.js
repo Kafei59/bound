@@ -2,43 +2,88 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:44:37
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-11 17:20:52
+* @Last Modified time: 2016-02-13 17:30:49
 */
 
-app.factory('promiseResponse', function($q) {
-    return {
-        getPromiseHttpResult: function (httpPromise) {
-            var deferred = $q.defer();
-            httpPromise.success(function (data) {
-                deferred.resolve(data);
-            }).error(function () {
-                deferred.reject(arguments);
-            });
-
-            return deferred.promise;
-        }
+app.factory('apiService', function() {
+    var defaultIP = window.location.hostname;
+    if (defaultIP != 'localhost' && defaultIP != '127.0.0.1') {
+        var serverIP = defaultIP + '/~gicque_p/bound/desk/web';
+    } else {
+        var serverIP = defaultIP + '/~gicque_p/bound/desk/web/app_dev.php';        
     }
+
+    var serverPath = location.protocol + '//' + serverIP + '/api';
+    var service = {
+        serverPath: serverPath,
+        LOGIN: serverPath + '/login',
+        REGISTER: serverPath + '/register',
+        RESETTING: serverPath + '/resetting',
+        TOKEN: serverPath + '/token',
+        ACHIVEMENTS_GET: serverPath + '/achievements',
+        ACHIVEMENTS_ADD: serverPath + '/achievements',
+        ACHIVEMENTS_EDIT: serverPath + '/achievements',
+        ACHIVEMENTS_DELETE: serverPath + '/achievements',
+        CREWS_GET: serverPath + '/crews',
+        CREWS_ADD: serverPath + '/crews',
+        CREWS_EDIT: serverPath + '/crews',
+        CREWS_DELETE: serverPath + '/crews',
+        USERS_GET: serverPath + '/users',
+        USERS_ADD: serverPath + '/users',
+        USERS_EDIT: serverPath + '/users',
+        USERS_DELETE: serverPath + '/users'
+    };
+
+    return service;
 });
 
-app.factory('httpResponse', ['$http', function($http) {
+app.factory('cookieService', ['$cookies', function($cookies) {
 
-    httpResponse = {};
+    function addToken($token) {
+        $cookies.put('token', $token);
+    }
 
-    httpResponse.get = function(url) {
-        return $http.get(url);
+    function removeToken() {
+        $cookies.remove('token');
+    }
+
+    function getToken() {
+        return $cookies.get('token');
+    }
+
+    function isLogged() {
+        $token = $cookies.get('token');
+        if ($token != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    var service = {
+        addToken: addToken,
+        removeToken: removeToken,
+        getToken: getToken,
+        isLogged: isLogged
     };
 
-    httpResponse.post = function(url, data) {
-        return $http.post(url, data);
+    return service;
+}]);
+
+app.factory('userService', ['$http', 'apiService', 'cookieService', function($http, $apiService, $cookieService) {
+
+    function login($data) {
+        return $http.post($apiService.LOGIN, $data);
+    }
+
+    function logout() {
+        $cookieService.removeToken();
+    }
+
+    var service = {
+        login: login,
+        logout: logout
     };
 
-    httpResponse.put = function(url, data) {
-        return $http.put(url, data);
-    };
-
-    httpResponse.delete = function(url) {
-        return $http.delete(url);
-    };
-
-    return httpResponse;
+    return service;
 }]);
