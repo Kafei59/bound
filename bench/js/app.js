@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:23:24
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-13 19:14:50
+* @Last Modified time: 2016-02-13 19:18:16
 */
 
 var app = angular.module('BoundApp', [
@@ -23,24 +23,28 @@ app.config(function($routeProvider) {
         .when('/', {
             controller: 'MainController',
             templateUrl: 'views/visitor.html',
+            pageTitle: 'Accueil',
             tab: 'index'
         })
 
         .when('/login', {
             controller: 'LoginController',
             templateUrl: 'views/login.html',
+            pageTitle: 'Connexion',
             tab: 'login'
         })
 
         .when('/logout', {
             controller: 'LogoutController',
             template: '',
+            pageTitle: 'Déconnexion',
             tab: 'logout'
         })
 
         .when('/register', {
             controller: 'RegisterController',
             templateUrl: 'views/register.html',
+            pageTitle: 'Inscription',
             tab: 'register'
         })
 
