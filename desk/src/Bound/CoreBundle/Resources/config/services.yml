@@ -1,7 +1,6 @@
 services:
     my_user_provider:
         class: Bound\CoreBundle\Provider\FOSUBUserProvider
-        #this is the place where the properties are passed to the UserProvider - see config.yml
         arguments: [ @service_container, @doctrine.orm.entity_manager, @fos_user.user_manager, {facebook: facebook_id, google: google_id}]
 
     bound.user_manager:
