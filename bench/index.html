@@ -24,14 +24,15 @@
             </div>
 
             <div id="page-content-wrapper">
-                <div ng-switch on="token || 'null'" background>
-                </div>
-
                 <div id="menu-toggle" class="open">
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
+
+                <div ng-switch on="token || 'null'" background>
+                </div>
+
                 <div id="main" ng-view></div>
             </div>
         </div>

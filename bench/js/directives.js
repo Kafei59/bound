@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-05 15:38:58
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-13 17:12:32
+* @Last Modified time: 2016-02-13 19:04:19
 */
 
 app.directive('sidebar', function() {
@@ -13,6 +13,6 @@ app.directive('sidebar', function() {
 
 app.directive('background', function() {
     return {
-        templateUrl: 'views/partials/video.html'
+        templateUrl: 'views/partials/background.html'
     };
 });

@@ -1,0 +1,27 @@
+<div ng-switch-when="null">
+    <video autoplay loop poster="img/bg4.png">
+        <source src="img/video-bg.mp4" type="video/mp4">
+    </video>
+
+    <div class="pattern-video">
+    </div>
+
+    <div class="footer-video">
+        Pierrick Gicquelais - {{ date | date:'yyyy' }} - No copyrights ©
+    </div>
+</div>
+
+<div ng-switch-default>
+    <header>
+        <div id="page-wrapper-header">
+            <div id="page-wrapper-header-previous">
+                <a href="#/"><i class="fa fa-angle-left"></i></a>
+            </div>
+
+            <div id="page-wrapper-header-title">
+                <h1 ng-bind="pageTitle"></h1>
+                <h2 ng-bind="pageSubtitle"></h2>
+            </div>
+        </div>
+    </header>
+</div>
