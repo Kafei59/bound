@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-10-15 16:31:53
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-02 12:03:39
+ * @Last Modified time: 2016-02-14 18:44:26
  */
 
 namespace Bound\CoreBundle\Manager;
@@ -45,7 +45,9 @@ class UserManager extends PManager {
 
                 $fum->updateUser($user);
 
-                $this->sendConfirmationEmail($user, $url);
+                if ($this->container->get('kernel')->getEnvironment() != "test") {
+                    $this->sendConfirmationEmail($user, $url);
+                }
 
                 return $user;
             } else {
@@ -73,7 +75,9 @@ class UserManager extends PManager {
                 $user->setPasswordRequestedAt(new \DateTime());
                 $fum->updateUser($user);
 
-                $this->sendResetEmail($user, $token);
+                if ($this->container->get('kernel')->getEnvironment() != "test") {
+                    $this->sendResetEmail($user, $token);
+                }
 
                 return $user;
             }
