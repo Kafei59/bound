@@ -13,4 +13,3 @@ bound_api_crew:
 bound_api_security:
     type: rest
     resource: "Bound\ApiBundle\Controller\SecurityController"
-
