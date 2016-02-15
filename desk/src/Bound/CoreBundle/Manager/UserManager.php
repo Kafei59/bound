@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-10-15 16:31:53
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-15 17:15:15
+ * @Last Modified time: 2016-02-15 17:51:39
  */
 
 namespace Bound\CoreBundle\Manager;
@@ -63,6 +63,10 @@ class UserManager extends PManager {
         } else {
             throw new HttpException(400, "Username already exists.");
         }
+    }
+
+    public function delete(User $user) {
+        $this->rflush($user);
     }
 
     public function changePassword($email) {
