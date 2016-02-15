@@ -4,6 +4,7 @@ namespace Bound\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Achievement
@@ -27,6 +28,7 @@ class Achievement
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $title;
 
@@ -41,6 +43,7 @@ class Achievement
      * @var string
      *
      * @ORM\Column(name="content", type="text")
+     * @Assert\NotBlank()
      */
     private $content;
 
@@ -48,6 +51,8 @@ class Achievement
      * @var integer
      *
      * @ORM\Column(name="points", type="integer")
+     * @Assert\NotBlank()
+     * @Assert\GreaterThanOrEqual(0)
      */
     private $points;
 
@@ -60,19 +65,6 @@ class Achievement
         $slug = mb_strtolower($slug, "utf-8");
 
         $this->slug = $slug;
-    }
-
-    /**
-     * @ORM\PrePersist
-     * @ORM\PreUpdate
-     */
-    public function assertEntity() {
-        $attrs = get_object_vars($this);
-        foreach ($attrs as $key => $attr) {
-            if ($key != 'id' and $attr == NULL) {
-                throw new HttpException(400, "Entity property ".$key." cannot be null.");
-            }
-        }
     }
 
     /**

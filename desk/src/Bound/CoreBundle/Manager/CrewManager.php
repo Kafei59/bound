@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-11-30 19:18:36
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-01-02 16:33:03
+ * @Last Modified time: 2016-02-15 14:39:56
  */
 
 namespace Bound\CoreBundle\Manager;
@@ -29,10 +29,7 @@ class CrewManager extends PManager {
         }
     }
 
-    public function edit(Crew $crew, Crew $entity) {
-        $crew->setTitle($entity->getTitle());
-        $crew->setMembers($entity->getMembers());
-
+    public function edit(Crew $crew) {
         $this->pflush($crew);
     }
 

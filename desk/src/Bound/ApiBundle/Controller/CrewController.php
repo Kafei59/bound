@@ -23,7 +23,7 @@ class CrewController extends PController {
         $user = $this->assertToken($request->get('token'));
         $crews = $this->getDoctrine()->getRepository('BoundCoreBundle:Crew')->findAll();
 
-        return array('crew' => $crews, 'user' => $user);
+        return array('crews' => $crews, 'user' => $user);
     }
 
     /**
@@ -41,10 +41,17 @@ class CrewController extends PController {
      */
     public function postCrewAction(Request $request) {
         $this->assertToken($request->get('token'));
-        $crew = $this->createEntityFromContent($request->getContent(), 'Bound\CoreBundle\Entity\Crew');
-        $this->get('bound.crew_manager')->add($crew);
 
-        return array('crew' => $crew);
+        $crew = new Crew();
+        $form = $this->createForm(new CrewType(), $crew, array('method' => "POST"));
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $this->get('bound.crew_manager')->add($crew);
+
+            return array('crew' => $crew);
+        } else {
+            return array('errors' => $form->getErrors());
+        }
     }
 
     /**
@@ -53,10 +60,16 @@ class CrewController extends PController {
      */
     public function putCrewAction(Crew $crew, Request $request) {
         $this->assertToken($request->get('token'));
-        $entity = $this->createEntityFromContent($request->getContent(), 'Bound\CoreBundle\Entity\Crew');
-        $this->get('bound.crew_manager')->edit($crew, $entity);
 
-        return array('crew' => $crew);
+        $form = $this->createForm(new CrewType(), $crew, array('method' => "PUT"));
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $this->get('bound.crew_manager')->edit($crew);
+
+            return array('crew' => $crew);
+        } else {
+            return array('errors' => $form->getErrors());
+        }
     }
 
     /**

@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-10-15 16:31:53
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-14 18:44:26
+ * @Last Modified time: 2016-02-15 14:54:15
  */
 
 namespace Bound\CoreBundle\Manager;
@@ -46,7 +46,12 @@ class UserManager extends PManager {
                 $fum->updateUser($user);
 
                 if ($this->container->get('kernel')->getEnvironment() != "test") {
-                    $this->sendConfirmationEmail($user, $url);
+                    $subject = "Prêt pour l'aventure ?";
+                    $from = array('hello@bound-app.com' => "Pierrick");
+                    $to = $user->getEmail();
+                    $body = $this->container->get('templating')->render('registration.html.twig', array('user' => $user, 'url' => $url));
+
+                    $this->container->get('bound.email_listener')->send($subject, $from, $to, $body);
                 }
 
                 return $user;
@@ -76,33 +81,16 @@ class UserManager extends PManager {
                 $fum->updateUser($user);
 
                 if ($this->container->get('kernel')->getEnvironment() != "test") {
-                    $this->sendResetEmail($user, $token);
+                    $subject = "Alors, comme ça on a pas de mémoire ?";
+                    $from = array('hello@bound-app.com' => "Pierrick");
+                    $to = $user->getEmail();
+                    $body = $this->container->get('templating')->render('resetting.html.twig', array('user' => $user, 'token' => $token));
+
+                    $this->container->get('bound.email_listener')->send($subject, $from, $to, $body);
                 }
 
                 return $user;
             }
         }
-    }
-
-    private function sendConfirmationEmail(User $user, $url) {
-        $message = \Swift_Message::newInstance()
-            ->setSubject("Prêt pour l'aventure ?")
-            ->setFrom(array('hello@bound-app.com' => "Pierrick"))
-            ->setTo($user->getEmail())
-            ->setBody($this->container->get('templating')->render('registration.html.twig', array('user' => $user, 'url' => $url)), 'text/html')
-        ;
-
-        $this->container->get('mailer')->send($message);
-    }
-
-    private function sendResetEmail(User $user, $token) {
-        $message = \Swift_Message::newInstance()
-            ->setSubject("Alors, comme ça on a pas de mémoire ?")
-            ->setFrom(array('hello@bound-app.com' => "Pierrick"))
-            ->setTo($user->getEmail())
-            ->setBody($this->container->get('templating')->render('resetting.html.twig', array('user' => $user, 'token' => $token)), 'text/html')
-        ;
-
-        $this->container->get('mailer')->send($message);
     }
 };

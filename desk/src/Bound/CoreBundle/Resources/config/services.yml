@@ -3,6 +3,7 @@ services:
         class: Bound\CoreBundle\Provider\FOSUBUserProvider
         arguments: [ @service_container, @doctrine.orm.entity_manager, @fos_user.user_manager, {facebook: facebook_id, google: google_id}]
 
+
     bound.user_manager:
         class: Bound\CoreBundle\Manager\UserManager
         arguments: [ @service_container, @doctrine.orm.entity_manager ]
@@ -18,3 +19,8 @@ services:
     bound.token_manager:
         class: Bound\CoreBundle\Manager\TokenManager
         arguments: [ @service_container, @doctrine.orm.entity_manager ]
+
+
+    bound.email_listener:
+        class: Bound\CoreBundle\Listener\EmailListener
+        arguments: [ @service_container ]

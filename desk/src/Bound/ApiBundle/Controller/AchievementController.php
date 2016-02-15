@@ -11,6 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 use Bound\ApiBundle\Controller\PController;
 use Bound\CoreBundle\Entity\Achievement;
+use Bound\CoreBundle\Form\Type\AchievementType;
 
 use JMS\Serializer\SerializerBuilder;
 
@@ -41,10 +42,17 @@ class AchievementController extends PController {
      */
     public function postAchievementAction(Request $request) {
         $user = $this->assertToken($request->get('token'));
-        $achievement = $this->createEntityFromContent($request->getContent(), 'Bound\CoreBundle\Entity\Achievement');
-        $this->get('bound.achievement_manager')->add($achievement, $user);
 
-        return array('achievement' => $achievement);
+        $achievement = new Achievement();
+        $form = $this->createForm(new AchievementType(), $achievement, array('method' => "POST"));
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $this->get('bound.achievement_manager')->add($achievement, $user);
+
+            return array('achievement' => $achievement);
+        } else {
+            return array('errors' => $form->getErrors());
+        }
     }
 
     /**
@@ -53,10 +61,16 @@ class AchievementController extends PController {
      */
     public function putAchievementAction(Achievement $achievement, Request $request) {
         $user = $this->assertToken($request->get('token'));
-        $entity = $this->createEntityFromContent($request->getContent(), 'Bound\CoreBundle\Entity\Achievement');
-        $this->get('bound.achievement_manager')->edit($achievement, $entity, $user);
 
-        return array('achievement' => $achievement);
+        $form = $this->createForm(new AchievementType(), $achievement, array('method' => "PUT"));
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $this->get('bound.achievement_manager')->edit($achievement, $user);
+
+            return array('achievement' => $achievement);
+        } else {
+            return array('errors' => $form->getErrors());
+        }
     }
 
     /**

@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-11-30 19:18:30
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-01-20 20:04:52
+ * @Last Modified time: 2016-02-14 20:02:20
  */
 
 namespace Bound\CoreBundle\Manager;
@@ -34,12 +34,8 @@ class AchievementManager extends PManager {
         }
     }
 
-    public function edit(Achievement $achievement, Achievement $entity, User $user) {
+    public function edit(Achievement $achievement, User $user) {
         if ($user->isAdmin()) {
-            $achievement->setTitle($entity->getTitle());
-            $achievement->setContent($entity->getContent());
-            $achievement->setPoints($entity->getPoints());
-
             $this->pflush($achievement);
         } else {
             throw new HttpException(403, "Access Denied.");
