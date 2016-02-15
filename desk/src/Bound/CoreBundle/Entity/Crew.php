@@ -56,7 +56,7 @@ class Crew
     }
 
     public function __construct() {
-        $this->players = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->members = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
