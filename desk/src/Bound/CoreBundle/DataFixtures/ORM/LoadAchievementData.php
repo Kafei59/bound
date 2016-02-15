@@ -3,17 +3,19 @@
  * @Author: gicque_p
  * @Date:   2015-10-17 18:22:12
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2015-10-19 11:41:21
+ * @Last Modified time: 2016-02-15 15:27:02
  */
 
 namespace Bound\CoreBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\DependencyInjection\ContainerAware;
 
 use Bound\CoreBundle\Entity\Achievement;
+use Bound\CoreBundle\Entity\User;
 
-class LoadAchievementData implements FixtureInterface {
+class LoadAchievementData extends ContainerAware implements FixtureInterface {
 
     /**
      * {@inheritDoc}
@@ -30,8 +32,10 @@ class LoadAchievementData implements FixtureInterface {
         $achievement2->setContent("Visiter 3 pays différents");
         $achievement2->setPoints(20);
 
-        $manager->persist($achievement1);
-        $manager->persist($achievement2);
-        $manager->flush();
+        $user = new User();
+        $user->setRoles(array('ROLE_ADMIN'));
+
+        $this->container->get('bound.achievement_manager')->add($achievement1, $user);
+        $this->container->get('bound.achievement_manager')->add($achievement2, $user);
     }
 };

@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-11-30 19:18:30
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-14 20:02:20
+ * @Last Modified time: 2016-02-15 15:28:10
  */
 
 namespace Bound\CoreBundle\Manager;
@@ -23,6 +23,8 @@ class AchievementManager extends PManager {
             if (!$this->alreadyExists($achievement)) {
                 if ($achievement->getId() == NULL) {
                     $this->pflush($achievement);
+
+                    return $achievement;
                 } else {
                     throw new HttpException(400, "Entity ID must be NULL.");
                 }
@@ -37,6 +39,8 @@ class AchievementManager extends PManager {
     public function edit(Achievement $achievement, User $user) {
         if ($user->isAdmin()) {
             $this->pflush($achievement);
+
+            return $achievement;
         } else {
             throw new HttpException(403, "Access Denied.");
         }

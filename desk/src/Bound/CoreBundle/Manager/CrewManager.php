@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-11-30 19:18:36
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-15 14:39:56
+ * @Last Modified time: 2016-02-15 15:28:22
  */
 
 namespace Bound\CoreBundle\Manager;
@@ -21,6 +21,8 @@ class CrewManager extends PManager {
         if (!$this->alreadyExists($crew)) {
             if ($crew->getId() == NULL) {
                 $this->pflush($crew);
+
+                return $crew;
             } else {
                 throw new HttpException(400, "Entity ID must be NULL.");
             }
@@ -31,6 +33,8 @@ class CrewManager extends PManager {
 
     public function edit(Crew $crew) {
         $this->pflush($crew);
+
+        return $crew;
     }
 
     public function delete(Crew $crew) {
