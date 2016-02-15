@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-10-17 18:22:12
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-15 15:31:25
+ * @Last Modified time: 2016-02-15 17:13:39
  */
 
 namespace Bound\CoreBundle\DataFixtures\ORM;
@@ -16,6 +16,7 @@ use Bound\CoreBundle\Entity\User;
 use Bound\CoreBundle\Entity\Player;
 use Bound\CoreBundle\Entity\Client;
 use Bound\CoreBundle\Entity\Crew;
+use Bound\CoreBundle\Entity\Achievement;
 
 class LoadUserData extends ContainerAware implements FixtureInterface {
 
@@ -29,6 +30,14 @@ class LoadUserData extends ContainerAware implements FixtureInterface {
         $manager->persist($admin);
         $manager->flush();
 
-        $this->container->get('bound.user_manager')->add("Madvenger", "toto@mail.com", "toto");
+        $notAdmin = $this->container->get('bound.user_manager')->add("Madvenger", "toto@mail.com", "toto");
+
+        $player = $admin->getPlayer();
+        $player2 = $notAdmin->getPlayer();
+
+        $player->addFriend($player2);
+
+        $manager->persist($player);
+        $manager->flush();
     }
 };

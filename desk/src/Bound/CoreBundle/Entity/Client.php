@@ -21,6 +21,11 @@ class Client
      */
     private $id;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Bound\CoreBundle\Entity\User", inversedBy="client")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $owner;
 
     /** @ORM\Column(name="facebook_id", type="string", length=255, nullable=true) */
     protected $facebook_id;
@@ -36,6 +41,30 @@ class Client
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set owner
+     *
+     * @param \Bound\CoreBundle\Entity\User $owner
+     *
+     * @return Client
+     */
+    public function setOwner(\Bound\CoreBundle\Entity\User $owner = null)
+    {
+        $this->owner = $owner;
+
+        return $this;
+    }
+
+    /**
+     * Get owner
+     *
+     * @return \Bound\CoreBundle\Entity\User
+     */
+    public function getOwner()
+    {
+        return $this->owner;
     }
 
     /**

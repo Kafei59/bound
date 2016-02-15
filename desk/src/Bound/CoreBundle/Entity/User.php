@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-11-27 14:55:06
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-02 11:54:52
+ * @Last Modified time: 2016-02-15 17:15:46
  */
 
 namespace Bound\CoreBundle\Entity;
@@ -28,14 +28,12 @@ class User extends BaseUser {
     protected $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="Bound\CoreBundle\Entity\Player", cascade={"remove", "persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToOne(targetEntity="Bound\CoreBundle\Entity\Player", mappedBy="owner", cascade={"remove", "persist"})
      */
     private $player;
 
     /**
-     * @ORM\OneToOne(targetEntity="Bound\CoreBundle\Entity\Client", cascade={"remove", "persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToOne(targetEntity="Bound\CoreBundle\Entity\Client", mappedBy="owner", cascade={"remove", "persist"})
      */
     private $client;
 

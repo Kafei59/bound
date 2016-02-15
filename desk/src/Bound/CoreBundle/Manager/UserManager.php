@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-10-15 16:31:53
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-15 14:54:15
+ * @Last Modified time: 2016-02-15 17:15:15
  */
 
 namespace Bound\CoreBundle\Manager;
@@ -29,20 +29,22 @@ class UserManager extends PManager {
                 $fum = $this->container->get('fos_user.user_manager');
                 $url = $this->container->get('router')->generate('fos_user_registration_confirm', array('token' => $token), UrlGeneratorInterface::ABSOLUTE_URL);
 
-                $player = new Player();
-                $this->persist($player);
-
-                $client = new Client();
-                $this->persist($client);
-
                 $user = $fum->createUser();
                 $user->setUsername($username);
                 $user->setEmail($email);
                 $user->setPlainPassword($password);
                 $user->setConfirmationToken($token);
+
+                $player = new Player();
+                $player->setOwner($user);
+                $this->persist($player);
+
+                $client = new Client();
+                $client->setOwner($user);
+                $this->persist($client);
+
                 $user->setPlayer($player);
                 $user->setClient($client);
-
                 $fum->updateUser($user);
 
                 if ($this->container->get('kernel')->getEnvironment() != "test") {

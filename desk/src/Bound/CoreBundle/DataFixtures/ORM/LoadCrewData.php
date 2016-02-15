@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-10-17 18:22:12
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-15 15:29:54
+ * @Last Modified time: 2016-02-15 16:36:37
  */
 
 namespace Bound\CoreBundle\DataFixtures\ORM;
@@ -25,15 +25,14 @@ class LoadCrewData extends ContainerAware implements FixtureInterface {
         $crew2 = new Crew();
 
         $crew1->setTitle("The Clou");
-        $crew1->setMembers(array("Kafei", "Madvenger"));
-
         $crew2->setTitle("Against All Authority");
-        $crew2->setMembers(array("Noob1", "Noob2"));
 
         $user = new User();
         $user->setRoles(array('ROLE_ADMIN'));
 
         $this->container->get('bound.crew_manager')->add($crew1, $user);
         $this->container->get('bound.crew_manager')->add($crew2, $user);
+
+        $crew = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Crew')->findOneBySlug('the+clou');
     }
 };

@@ -40,9 +40,7 @@ class Crew
     private $slug;
 
     /**
-     * @var array
-     *
-     * @ORM\Column(name="members", type="array")
+     * @ORM\OneToMany(targetEntity="Bound\CoreBundle\Entity\Player", mappedBy="crew")
      */
     private $members;
 
@@ -55,6 +53,10 @@ class Crew
         $slug = mb_strtolower($slug, "utf-8");
 
         $this->slug = $slug;
+    }
+
+    public function __construct() {
+        $this->players = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -92,30 +94,6 @@ class Crew
     }
 
     /**
-     * Set members
-     *
-     * @param array $members
-     *
-     * @return Crew
-     */
-    public function setMembers($members)
-    {
-        $this->members = $members;
-
-        return $this;
-    }
-
-    /**
-     * Get members
-     *
-     * @return array
-     */
-    public function getMembers()
-    {
-        return $this->members;
-    }
-
-    /**
      * Set slug
      *
      * @param string $slug
@@ -137,5 +115,39 @@ class Crew
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Add member
+     *
+     * @param \Bound\CoreBundle\Entity\Player $member
+     *
+     * @return Crew
+     */
+    public function addMember(\Bound\CoreBundle\Entity\Player $member)
+    {
+        $this->members[] = $member;
+
+        return $this;
+    }
+
+    /**
+     * Remove member
+     *
+     * @param \Bound\CoreBundle\Entity\Player $member
+     */
+    public function removeMember(\Bound\CoreBundle\Entity\Player $member)
+    {
+        $this->members->removeElement($member);
+    }
+
+    /**
+     * Get members
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMembers()
+    {
+        return $this->members;
     }
 }
