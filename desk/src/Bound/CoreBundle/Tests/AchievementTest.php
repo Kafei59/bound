@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-12-04 16:15:55
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-01-04 10:20:28
+ * @Last Modified time: 2016-02-15 15:15:34
  */
 
 namespace Bound\CoreBundle\Tests;
@@ -100,7 +100,7 @@ class AchievementTest extends PTest {
                     $this->container->get('bound.achievement_manager')->add($achievement, $user);
                     break;
                 case self::EDIT:
-                    $this->container->get('bound.achievement_manager')->edit($achievement, $achievement, $user);
+                    $this->container->get('bound.achievement_manager')->edit($achievement, $user);
                     break;
                 case self::DELETE:
                     $this->container->get('bound.achievement_manager')->delete($achievement, $user);
@@ -122,7 +122,7 @@ class AchievementTest extends PTest {
                     $this->container->get('bound.achievement_manager')->add($achievement, $user);
                     break;
                 case self::EDIT:
-                    $this->container->get('bound.achievement_manager')->edit($achievement, $achievement, $user);
+                    $this->container->get('bound.achievement_manager')->edit($achievement, $user);
                     break;
                 case self::DELETE:
                     $this->container->get('bound.achievement_manager')->delete($achievement, $user);
