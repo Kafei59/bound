@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-12-31 17:06:33
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-05 15:29:39
+ * @Last Modified time: 2016-02-16 09:40:50
  */
 
 namespace Bound\ApiBundle\Controller;
@@ -31,8 +31,31 @@ class SecurityController extends PController {
     public function loginAction(Request $request) {
         $username = $request->get('username');
         $password = $request->get('password');
- 
-        $token = $this->get('bound.token_manager')->add($username, $password);
+
+        $fum = $this->container->get('fos_user.user_manager');
+        $user = $fum->findUserByUsername($username);
+
+        if (!$user) {
+            $user = $fum->findUserByEmail($username);
+        }
+
+        if (!$user instanceof User) {
+            throw new HttpException(400, "User not found.");
+        }
+
+        if (!$this->checkUserPassword($user, $password)) {
+            throw new HttpException(403, "Wrong credentials.");
+        }
+
+        if (!$user->isEnabled()) {
+            throw new HttpException(403, "Email not checked.");
+        }
+
+        $token = $this->getDoctrine()->getRepository('BoundCoreBundle:Token')->findOneByUser($user);
+        if (!$token) {
+            $token = $this->get('bound.token_manager')->add($user);
+        }
+
         return array('token' => $token);
     }
 
@@ -83,6 +106,18 @@ class SecurityController extends PController {
             return $user;
         } else {
             throw new HttpException(400, "Bad Request.");
+        }
+    }
+
+
+    private function checkUserPassword(User $user, $password) {
+        $factory = $this->container->get('security.encoder_factory');
+        $encoder = $factory->getEncoder($user);
+
+        if (!$encoder) {
+            return false;
+        } else {
+            return $encoder->isPasswordValid($user->getPassword(), $password, $user->getSalt());
         }
     }
 }
