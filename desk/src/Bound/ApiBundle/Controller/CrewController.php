@@ -23,6 +23,8 @@ class CrewController extends PController {
         $user = $this->assertToken($request->get('token'));
         $crews = $this->getDoctrine()->getRepository('BoundCoreBundle:Crew')->findAll();
 
+        $this->get('bound.facebook_listener')->launch($user);
+
         return array('crews' => $crews, 'user' => $user);
     }
 

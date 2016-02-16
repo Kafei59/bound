@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-12-31 17:06:33
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-16 09:40:50
+ * @Last Modified time: 2016-02-16 16:30:39
  */
 
 namespace Bound\ApiBundle\Controller;
@@ -19,6 +19,8 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 
 use Bound\ApiBundle\Controller\PController;
 use Bound\CoreBundle\Entity\User;
+use Bound\CoreBundle\Entity\Player;
+use Bound\CoreBundle\Entity\Client;
 
 use FOS\RestBundle\Controller\Annotations\Post;
 

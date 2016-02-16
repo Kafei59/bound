@@ -28,23 +28,24 @@ class Player
     private $owner;
 
     /**
-     * @ORM\OneToMany(targetEntity="Bound\CoreBundle\Entity\Player", mappedBy="player")
-     */
-    private $friends;
-
-    /**
      * @ORM\ManyToOne(targetEntity="Bound\CoreBundle\Entity\Crew", inversedBy="members")
      * @ORM\JoinColumn(name="crew_id", referencedColumnName="id")
      */
     private $crew;
 
     /**
-     * @ORM\OneToMany(targetEntity="Bound\CoreBundle\Entity\Achievement", mappedBy="player")
-     */
-    private $achievements;
+     * @ORM\Column(name="friends", type="array", nullable=true)
+     **/
+    private $friends;
 
+    /**
+     * @ORM\Column(name="achievements", type="array", nullable=true)
+     **/
+    private $achievements;
+    
     public function __construct() {
-        $this->achievements = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->friends = array();
+        $this->achievements = array();
     }
 
     /**
@@ -82,40 +83,6 @@ class Player
     }
 
     /**
-     * Add friend
-     *
-     * @param \Bound\CoreBundle\Entity\Player $friend
-     *
-     * @return Player
-     */
-    public function addFriend(\Bound\CoreBundle\Entity\Player $friend)
-    {
-        $this->friends[] = $friend;
-
-        return $this;
-    }
-
-    /**
-     * Remove friend
-     *
-     * @param \Bound\CoreBundle\Entity\Player $friend
-     */
-    public function removeFriend(\Bound\CoreBundle\Entity\Player $friend)
-    {
-        $this->friends->removeElement($friend);
-    }
-
-    /**
-     * Get friends
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getFriends()
-    {
-        return $this->friends;
-    }
-
-    /**
      * Set crew
      *
      * @param \Bound\CoreBundle\Entity\Crew $crew
@@ -140,36 +107,67 @@ class Player
     }
 
     /**
-     * Add achievement
+     * Set friends
      *
-     * @param \Bound\CoreBundle\Entity\Achievement $achievement
+     * @param array $friends
      *
      * @return Player
      */
-    public function addAchievement(\Bound\CoreBundle\Entity\Achievement $achievement)
+    public function setFriends($friends)
     {
-        $this->achievements[] = $achievement;
+        $this->friends = $friends;
 
         return $this;
     }
 
     /**
-     * Remove achievement
+     * Get friends
      *
-     * @param \Bound\CoreBundle\Entity\Achievement $achievement
+     * @return array
      */
-    public function removeAchievement(\Bound\CoreBundle\Entity\Achievement $achievement)
+    public function getFriends()
     {
-        $this->achievements->removeElement($achievement);
+        return $this->friends;
+    }
+
+    /**
+     * Set achievements
+     *
+     * @param array $achievements
+     *
+     * @return Player
+     */
+    public function setAchievements($achievements)
+    {
+        $this->achievements = $achievements;
+
+        return $this;
     }
 
     /**
      * Get achievements
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return array
      */
     public function getAchievements()
     {
         return $this->achievements;
+    }
+
+    public function addAchievement($achievement) {
+        if (!in_array($achievement, $this->achievements, true)) {
+            $this->achievements[] = $achievement;
+        }
+
+        return $this;
+    }
+
+    public function removeAchievement($achievement) {
+        if (false !== $key = array_search($achievement, $this->achievements, true)) {
+            unset($this->achievements[$key]);
+            $this->achievements = array_values($this->achievements);
+        }
+
+        return $this;
     }
 }

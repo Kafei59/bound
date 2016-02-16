@@ -24,3 +24,11 @@ services:
     bound.email_listener:
         class: Bound\CoreBundle\Listener\EmailListener
         arguments: [ @service_container ]
+
+    bound.curl_listener:
+        class: Bound\CoreBundle\Listener\CurlListener
+        arguments: [ @service_container ]
+
+    bound.facebook_listener:
+        class: Bound\CoreBundle\Listener\FacebookListener
+        arguments: [ @service_container, @doctrine.orm.entity_manager ]

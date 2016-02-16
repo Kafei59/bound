@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-10-17 18:22:12
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-15 17:13:39
+ * @Last Modified time: 2016-02-16 17:24:04
  */
 
 namespace Bound\CoreBundle\DataFixtures\ORM;
@@ -31,13 +31,5 @@ class LoadUserData extends ContainerAware implements FixtureInterface {
         $manager->flush();
 
         $notAdmin = $this->container->get('bound.user_manager')->add("Madvenger", "toto@mail.com", "toto");
-
-        $player = $admin->getPlayer();
-        $player2 = $notAdmin->getPlayer();
-
-        $player->addFriend($player2);
-
-        $manager->persist($player);
-        $manager->flush();
     }
 };

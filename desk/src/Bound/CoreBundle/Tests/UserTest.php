@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-12-04 16:16:29
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-15 17:56:50
+ * @Last Modified time: 2016-02-16 15:04:54
  */
 
 namespace Bound\CoreBundle\Tests;
@@ -42,11 +42,6 @@ class UserTest extends PTest {
 
         $this->assertNotNull($player);
         $this->assertNotNull($client);
-        $this->assertNotNull($player->getOwner());
-        $this->assertNotNull($client->getOwner());
-
-        $this->assertEquals($player->getOwner()->getId(), $user->getId());
-        $this->assertEquals($client->getOwner()->getId(), $user->getId());
     }
 
     public function testDelete() {
