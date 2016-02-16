@@ -3,13 +3,14 @@
  * @Author: gicque_p
  * @Date:   2016-01-27 17:53:36
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-15 15:31:36
+ * @Last Modified time: 2016-02-16 11:11:45
  */
 
 namespace Bound\CoreBundle\Tests;
 
 use Bound\CoreBundle\Tests\PTest;
 
+use Bound\CoreBundle\Entity\User;
 use Bound\CoreBundle\Entity\Token;
 use Bound\CoreBundle\Manager\TokenManager;
 
@@ -18,19 +19,15 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 class TokenTest extends PTest {
 
     public function testAdd() {
-        /* Username doesn't exists */
-        $this->assert("titi", "tutu");
-
-        /* Wrong password */
-        $this->assert("Kafei", "lol");
+        $user = $this->container->get('bound.user_manager')->add("lol", "lool@mail.com", "lol");
 
         /* Not failing */
-        $this->notAssert("Kafei", "toto");
+        $this->notAssert($user);
     }
 
-    private function assert($username, $password) {
+    private function assert($user) {
         try {
-            $this->container->get('bound.token_manager')->add($username, $password);
+            $this->container->get('bound.token_manager')->add($user);
         } catch (HttpException $e) {
             return ;
         } catch (\Exception $e) {
@@ -40,9 +37,9 @@ class TokenTest extends PTest {
         $this->fail();
     }
 
-    private function notAssert($username, $password) {
+    private function notAssert($user) {
         try {
-            $this->container->get('bound.token_manager')->add($username, $password);
+            $this->container->get('bound.token_manager')->add($user);
         } catch (HttpException $e) {
             $this->fail();
         } catch (\Exception $e) {
