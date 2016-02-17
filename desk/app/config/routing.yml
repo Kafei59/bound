@@ -34,17 +34,22 @@ fos_user_resetting:
 
 
 #HWIOAuthRoutes
-hwi_oauth_redirect:
-    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
-    prefix:   /login
+hwi_oauth_service_redirect:
+    path: /login/{service}/{token}
+    defaults: { _controller: BoundCoreBundle:Provider:redirectToService, token: null }
 
-hwi_oauth_connect:
-    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
-    prefix: /login
+# hwi_oauth_redirect:
+#     resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+#     prefix:   /login
 
-hwi_oauth_security:
-    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
-    prefix:   /login
+# hwi_oauth_connect:
+#     resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
+#     prefix: /login
 
-facebook_login:
-    path: /login/facebook
+# hwi_oauth_security:
+#     resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+#     prefix:   /login
+
+# facebook_login:
+#     path: /login/check-facebook
+#     defaults: { _controller: BoundCoreBundle:Security:facebook }

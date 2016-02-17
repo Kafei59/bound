@@ -9,9 +9,11 @@ use FOS\UserBundle\Doctrine\UserManager;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseClass;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 use Bound\CoreBundle\Entity\User;
 use Bound\CoreBundle\Entity\Client;
+use Bound\CoreBundle\Entity\Token;
 
 class FOSUBUserProvider extends BaseClass {
 
@@ -25,35 +27,54 @@ class FOSUBUserProvider extends BaseClass {
         $this->manager = $manager;
     }
 
-    // public function connect(UserInterface $user, UserResponseInterface $response) {
-    //     $property = $this->getProperty($response);
-    //     $username = $response->getUsername();
-
-    //     $service = $response->getResourceOwner()->getName();
-    //     $setter = 'set'.ucfirst($service);
-    //     $setter_id = $setter.'Id';
-    //     $setter_token = $setter.'AccessToken';
-
-    //     $previousUser = $this->userManager->findUserByUsername($username);
-
-    //     if ($previousUser != NULL) {
-    //         $client = $previousUser->getClient();
-    //         $client->$setter_id($username);
-    //         $client->$setter_token($response->getAccessToken());
-
-    //         $this->manager->persist($client);
-    //         $this->manager->flush();
-    //     }
-    // }
-
     public function loadUserByOAuthUserResponse(UserResponseInterface $response) {
-        $email = $response->getEmail();
+        $token = $this->container->get('request')->getSession()->get('token');
 
-        $user = $this->userManager->findUserByEmail($email);
-        if ($user instanceof User) {
-            return $this->login($response, $user);
+        if ($token != NULL) {        
+            $token = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Token')->findOneByData($token);
+            if ($token instanceof Token) {
+                return $this->associate($response, $token->getUser());
+            } else {
+                throw new HttpException(403, "Access Denied.");
+            }
         } else {
-            return $this->register($response);
+            $email = $response->getEmail();
+
+            $user = $this->container->get('doctrine')->getRepository('BoundCoreBundle:User')->findOneByEmail($email);
+            if ($user instanceof User) {
+                return $user;
+            } else {
+                return $this->register($response);
+            }
+        }
+    }
+
+    private function associate(UserResponseInterface $response, User $user) {
+        $client = $user->getClient();
+        if ($client instanceof Client) {
+            $property = $this->getProperty($response);
+            $username = $response->getUsername();
+
+            $service = $response->getResourceOwner()->getName();
+            $setter = 'set'.ucfirst($service);
+
+            $entity = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Client')->findOneBy(array($service.'_id' => $username));
+            if ($entity instanceof Client and $entity != $client) {
+                throw new HttpException(409, "Client ID already bound");
+            } else {
+                $setter_id = $setter.'Id';
+                $setter_token = $setter.'AccessToken';
+
+                $client->$setter_id($username);
+                $client->$setter_token($response->getAccessToken());
+
+                $this->manager->persist($client);
+                $this->manager->flush();
+
+                return $user;
+            }
+        } else {
+            throw new HttpException(404, "Client not found");
         }
     }
 
@@ -67,9 +88,9 @@ class FOSUBUserProvider extends BaseClass {
         $setter_id = $setter.'Id';
         $setter_token = $setter.'AccessToken';
 
-        $client = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Client')->findOneBy(array('facebook_id' => $password));
+        $client = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Client')->findOneBy(array($service.'_id' => $password));
         if ($client instanceof Client) {
-            throw new Exception(409, "Account already exists");
+            throw new HttpException(409, "Client ID already bound.");
         } else {
             $user = $this->container->get('bound.user_manager')->add($username, $email, $password);
             $client = $user->getClient();
@@ -81,29 +102,6 @@ class FOSUBUserProvider extends BaseClass {
             $this->manager->flush();
 
             return $user;
-        }
-    }
-
-    private function login(UserResponseInterface $response, User $user) {
-        $client = $user->getClient();
-        if ($client instanceof Client) {
-            $property = $this->getProperty($response);
-            $username = $response->getUsername();
-
-            $service = $response->getResourceOwner()->getName();
-            $setter = 'set'.ucfirst($service);
-            $setter_id = $setter.'Id';
-            $setter_token = $setter.'AccessToken';
-
-            $client->$setter_id($username);
-            $client->$setter_token($response->getAccessToken());
-
-            $this->manager->persist($client);
-            $this->manager->flush();
-
-            return $user;
-        } else {
-            throw new Exception(404, "Client not found");
         }
     }
 }
