@@ -20,12 +20,10 @@ class CrewController extends PController {
      * Mapping [GET] /api/crews
      */
     public function getCrewsAction(Request $request) {
-        $user = $this->assertToken($request->get('token'));
+        $this->assertToken($request->get('token'));
         $crews = $this->getDoctrine()->getRepository('BoundCoreBundle:Crew')->findAll();
 
-        $this->get('bound.facebook_listener')->launch($user);
-
-        return array('crews' => $crews, 'user' => $user);
+        return array('crews' => $crews);
     }
 
     /**

@@ -57,6 +57,22 @@ class Achievement
     private $points;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $type;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="function_id", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $functionId;
+
+    /**
      * @ORM\PrePersist
      * @ORM\PreUpdate
      */
@@ -181,5 +197,53 @@ class Achievement
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return Achievement
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set functionId
+     *
+     * @param string $functionId
+     *
+     * @return Achievement
+     */
+    public function setFunctionId($functionId)
+    {
+        $this->functionId = $functionId;
+
+        return $this;
+    }
+
+    /**
+     * Get functionId
+     *
+     * @return string
+     */
+    public function getFunctionId()
+    {
+        return $this->functionId;
     }
 }

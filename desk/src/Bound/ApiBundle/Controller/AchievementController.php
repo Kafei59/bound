@@ -21,7 +21,7 @@ class AchievementController extends PController {
      * Mapping [GET] /api/achievements
      */
     public function getAchievementsAction(Request $request) {
-        $this->assertToken($request->get('token'));
+        $user = $this->assertToken($request->get('token'));
         $achievements = $this->getDoctrine()->getRepository('BoundCoreBundle:Achievement')->findAll();
 
         return array('achievements' => $achievements);

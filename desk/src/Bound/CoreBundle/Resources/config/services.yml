@@ -29,6 +29,10 @@ services:
         class: Bound\CoreBundle\Listener\CurlListener
         arguments: [ @service_container ]
 
+    bound.achievement_listener:
+        class: Bound\CoreBundle\Listener\AchievementListener
+        arguments: [ @service_container, @doctrine.orm.entity_manager ]
+
     bound.facebook_listener:
         class: Bound\CoreBundle\Listener\FacebookListener
         arguments: [ @service_container, @doctrine.orm.entity_manager ]
