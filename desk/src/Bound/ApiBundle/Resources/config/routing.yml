@@ -1,3 +1,7 @@
+bound_api_index:
+    path:     /
+    defaults: { _controller: BoundApiBundle:Default:index }
+
 bound_api_user:
     type: rest
     resource: "Bound\ApiBundle\Controller\UserController"
