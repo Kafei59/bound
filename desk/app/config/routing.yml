@@ -4,7 +4,7 @@ bound_back_office:
 
 bound_api:
     resource: "@BoundApiBundle/Resources/config/routing.yml"
-    prefix:   /api
+    prefix:   /
 
 app:
     resource: "@BoundBackOfficeBundle/Controller/"
