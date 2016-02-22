@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-12-04 16:15:55
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-15 15:15:34
+ * @Last Modified time: 2016-02-22 19:56:05
  */
 
 namespace Bound\CoreBundle\Tests;
@@ -32,29 +32,39 @@ class AchievementTest extends PTest {
         $achievement1->setTitle("Title");
         $achievement1->setContent("Content");
         $achievement1->setPoints(10);
+        $achievement1->setType("test");
+        $achievement1->setFunctionId("test");
 
         /* Access Denied */
         $achievement2 = new Achievement();
         $achievement2->setTitle(uniqid());
         $achievement2->setContent("Content");
         $achievement2->setPoints(10);
+        $achievement2->setType("test");
+        $achievement2->setFunctionId("test");
 
         /* Not failing */
         $achievement3 = new Achievement();
         $achievement3->setTitle(uniqid());
         $achievement3->setContent("Content");
         $achievement3->setPoints(10);
+        $achievement3->setType("test");
+        $achievement3->setFunctionId("test");
 
         /* No points set */
         $achievement4 = new Achievement();
         $achievement4->setTitle("Title");
         $achievement4->setContent("Content");
+        $achievement4->setType("test");
+        $achievement4->setFunctionId("test");
 
         /* Title already exists */
         $achievement5 = new Achievement();
         $achievement5->setTitle("Globetrotter");
         $achievement5->setContent("Content");
         $achievement5->setPoints(10);
+        $achievement5->setType("test");
+        $achievement5->setFunctionId("test");
 
         $this->assert($achievement1, $notAdmin, self::ADD);
         $this->assert($achievement2, $notAdmin, self::ADD);
@@ -83,6 +93,8 @@ class AchievementTest extends PTest {
         $achievement->setTitle(uniqid());
         $achievement->setContent("Content");
         $achievement->setPoints(10);
+        $achievement->setType("test");
+        $achievement->setFunctionId("test");
 
         $this->container->get('bound.achievement_manager')->add($achievement, $admin);
 
