@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:23:24
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-13 19:18:16
+* @Last Modified time: 2016-02-20 12:23:03
 */
 
 var app = angular.module('BoundApp', [
@@ -94,6 +94,10 @@ app.config(function($routeProvider) {
             pageTitle: 'Crew',
             pageSubtitle: 'On s\'amouse toujours mieux à plusieurs',
             tab: 'crew'
+        })
+
+        .otherwise({
+            redirectTo: '/'
         })
     ;
 });

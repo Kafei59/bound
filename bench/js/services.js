@@ -2,18 +2,18 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:44:37
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-13 17:30:49
+* @Last Modified time: 2016-02-23 09:47:40
 */
 
 app.factory('apiService', function() {
     var defaultIP = window.location.hostname;
     if (defaultIP != 'localhost' && defaultIP != '127.0.0.1') {
-        var serverIP = defaultIP + '/~gicque_p/bound/desk/web';
+        var serverIP = 'api.bound-app.com';
     } else {
         var serverIP = defaultIP + '/~gicque_p/bound/desk/web/app_dev.php';        
     }
 
-    var serverPath = location.protocol + '//' + serverIP + '/api';
+    var serverPath = location.protocol + '//' + serverIP;
     var service = {
         serverPath: serverPath,
         LOGIN: serverPath + '/login',
