@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-11-30 19:26:09
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-01-04 10:30:27
+ * @Last Modified time: 2016-02-23 11:09:37
  */
 
 namespace Bound\CoreBundle\Manager;
@@ -13,7 +13,7 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
-class PManager {
+abstract class AManager {
 
     protected $container;
     protected $manager;

@@ -9,13 +9,13 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
-use Bound\ApiBundle\Controller\PController;
+use Bound\ApiBundle\Controller\AController;
 use Bound\CoreBundle\Entity\Achievement;
 use Bound\CoreBundle\Form\Type\AchievementType;
 
 use JMS\Serializer\SerializerBuilder;
 
-class AchievementController extends PController {
+class AchievementController extends AController {
 
     /**
      * Mapping [GET] /api/achievements

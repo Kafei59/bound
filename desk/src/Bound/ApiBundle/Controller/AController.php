@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-11-27 17:20:28
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-14 19:44:03
+ * @Last Modified time: 2016-02-23 11:13:08
  */
 
 namespace Bound\ApiBundle\Controller;
@@ -18,7 +18,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Bound\CoreBundle\Entity\Token;
 use Bound\CoreBundle\Entity\User;
 
-class PController extends Controller {
+abstract class AController extends Controller {
 
     public function jsonEntitiesResponse($entities) {
         $data = array();

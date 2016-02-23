@@ -3,12 +3,12 @@
  * @Author: gicque_p
  * @Date:   2015-10-15 16:31:53
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-15 17:51:39
+ * @Last Modified time: 2016-02-23 11:11:07
  */
 
 namespace Bound\CoreBundle\Manager;
 
-use Bound\CoreBundle\Manager\PManager;
+use Bound\CoreBundle\Manager\AManager;
 use Bound\CoreBundle\Entity\User;
 use Bound\CoreBundle\Entity\Player;
 use Bound\CoreBundle\Entity\Client;
@@ -17,7 +17,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use FOS\UserBundle\Util\TokenGenerator;
 
-class UserManager extends PManager {
+class UserManager extends AManager {
 
     public function add($username, $email, $password) {
         $fum = $this->container->get('fos_user.user_manager');

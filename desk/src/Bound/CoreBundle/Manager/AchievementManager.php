@@ -3,18 +3,18 @@
  * @Author: gicque_p
  * @Date:   2015-11-30 19:18:30
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-15 15:28:10
+ * @Last Modified time: 2016-02-23 11:09:50
  */
 
 namespace Bound\CoreBundle\Manager;
 
-use Bound\CoreBundle\Manager\PManager;
+use Bound\CoreBundle\Manager\AManager;
 use Bound\CoreBundle\Entity\Achievement;
 use Bound\CoreBundle\Entity\User;
 
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
-class AchievementManager extends PManager {
+class AchievementManager extends AManager {
 
     public function add(Achievement $achievement, User $user) {
         if ($user->isAdmin()) {

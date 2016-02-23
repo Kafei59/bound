@@ -12,10 +12,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
-use Bound\ApiBundle\Controller\PController;
+use Bound\ApiBundle\Controller\AController;
 use Bound\CoreBundle\Entity\User;
 
-class UserController extends PController {
+class UserController extends AController {
 
     /**
      * Mapping [GET] /api/users

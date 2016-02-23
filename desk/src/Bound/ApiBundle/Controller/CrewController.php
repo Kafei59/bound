@@ -10,11 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use FOS\RestBundle\Controller\Annotations\View;
 
-use Bound\ApiBundle\Controller\PController;
+use Bound\ApiBundle\Controller\AController;
 use Bound\CoreBundle\Entity\Crew;
 use Bound\CoreBundle\Form\Type\CrewType;
 
-class CrewController extends PController {
+class CrewController extends AController {
 
     /**
      * Mapping [GET] /api/crews

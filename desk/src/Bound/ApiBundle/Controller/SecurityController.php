@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-12-31 17:06:33
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-16 16:30:39
+ * @Last Modified time: 2016-02-23 11:13:40
  */
 
 namespace Bound\ApiBundle\Controller;
@@ -17,14 +17,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
-use Bound\ApiBundle\Controller\PController;
+use Bound\ApiBundle\Controller\AController;
 use Bound\CoreBundle\Entity\User;
 use Bound\CoreBundle\Entity\Player;
 use Bound\CoreBundle\Entity\Client;
 
 use FOS\RestBundle\Controller\Annotations\Post;
 
-class SecurityController extends PController {
+class SecurityController extends AController {
 
     /**
      * Mapping [POST] /api/login
