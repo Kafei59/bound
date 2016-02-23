@@ -42,6 +42,11 @@ class Player
      * @ORM\Column(name="achievements", type="array", nullable=true)
      **/
     private $achievements;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Bound\CoreBundle\Entity\Notification", mappedBy="owner")
+     */
+    private $notifications;
     
     public function __construct() {
         $this->friends = array();

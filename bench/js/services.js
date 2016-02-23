@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:44:37
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-23 09:47:40
+* @Last Modified time: 2016-02-23 12:09:53
 */
 
 app.factory('apiService', function() {
@@ -21,13 +21,17 @@ app.factory('apiService', function() {
         RESETTING: serverPath + '/resetting',
         TOKEN: serverPath + '/token',
         ACHIVEMENTS_GET: serverPath + '/achievements',
-        ACHIVEMENTS_ADD: serverPath + '/achievements',
-        ACHIVEMENTS_EDIT: serverPath + '/achievements',
-        ACHIVEMENTS_DELETE: serverPath + '/achievements',
+        ACHIVEMENT_ADD: serverPath + '/achievements',
+        ACHIVEMENT_EDIT: serverPath + '/achievements',
+        ACHIVEMENT_DELETE: serverPath + '/achievements',
         CREWS_GET: serverPath + '/crews',
         CREWS_ADD: serverPath + '/crews',
         CREWS_EDIT: serverPath + '/crews',
         CREWS_DELETE: serverPath + '/crews',
+        NOTIFICATIONS_GET: serverPath + '/notifications',
+        NOTIFICATION_ADD: serverPath + '/notifications',
+        NOTIFICATION_EDIT: serverPath + '/notifications',
+        NOTIFICATION_DELETE: serverPath + '/notifications',
         USERS_GET: serverPath + '/users',
         USERS_ADD: serverPath + '/users',
         USERS_EDIT: serverPath + '/users',

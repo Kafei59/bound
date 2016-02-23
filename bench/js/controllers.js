@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:42:51
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-13 18:42:48
+* @Last Modified time: 2016-02-23 12:14:56
 */
 
 app.controller('MainController', ['$rootScope', 'cookieService', function($rootScope, $cookieService) {
@@ -10,8 +10,13 @@ app.controller('MainController', ['$rootScope', 'cookieService', function($rootS
     $rootScope.date = new Date();
 }]);
 
-app.controller('HomeController', ['$rootScope', '$scope', 'cookieService', function($rootScope, $scope, $cookieService) {
+app.controller('HomeController', ['$rootScope', '$scope', 'cookieService', 'apiService', '$http', function($rootScope, $scope, $cookieService, $apiService, $http) {
     $rootScope.token = $cookieService.getToken();
+
+    $url = $apiService.NOTIFICATIONS_GET + '?token=' + $rootScope.token;
+    $http.get($url).success(function(data) {
+        $scope.notifications = data.notifications;
+    });
 }]);
 
 app.controller('LoginController', ['$rootScope', '$scope', '$location', 'userService', 'cookieService', function($rootScope, $scope, $location, $userService, $cookieService) {

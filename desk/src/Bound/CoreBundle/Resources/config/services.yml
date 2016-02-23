@@ -20,6 +20,10 @@ services:
         class: Bound\CoreBundle\Manager\TokenManager
         arguments: [ @service_container, @doctrine.orm.entity_manager ]
 
+    bound.notification_manager:
+        class: Bound\CoreBundle\Manager\NotificationManager
+        arguments: [ @service_container, @doctrine.orm.entity_manager ]
+
 
     bound.email_listener:
         class: Bound\CoreBundle\Listener\EmailListener
@@ -31,8 +35,4 @@ services:
 
     bound.achievement_listener:
         class: Bound\CoreBundle\Listener\AchievementListener
-        arguments: [ @service_container, @doctrine.orm.entity_manager ]
-
-    bound.facebook_listener:
-        class: Bound\CoreBundle\Listener\FacebookListener
         arguments: [ @service_container, @doctrine.orm.entity_manager ]
