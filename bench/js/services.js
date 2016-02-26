@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:44:37
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-26 11:05:43
+* @Last Modified time: 2016-02-26 12:02:01
 */
 
 app.factory('apiService', function() {
@@ -88,7 +88,7 @@ app.factory('userService', ['$http', 'apiService', 'cookieService', function($ht
 
     function register($data) {
         return $http.post($apiService.REGISTER, $data, {
-            headers: { 'Content-Type': undefined }
+            headers: { 'Content-Type': 'application/json' }
         });
     }
 

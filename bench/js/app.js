@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:23:24
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-26 11:06:12
+* @Last Modified time: 2016-02-26 11:43:17
 */
 
 var app = angular.module('BoundApp', [
@@ -102,7 +102,7 @@ app.config(function($routeProvider) {
             controller: 'CrewController',
             templateUrl: 'views/crew.html',
             pageTitle: 'Crew',
-            pageSubtitle: 'On s\'amouse toujours mieux à plusieurs',
+            pageSubtitle: 'On s\'amuse toujours plus à plusieurs',
             tab: 'crew'
         })
 
