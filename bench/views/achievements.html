@@ -1,9 +1,36 @@
 <div class="panel-body">
-    <ul ng-repeat="(key, achievement) in achievements">
+    <ul class="achievement-list text-center" ng-repeat="(key, achievement) in achievements">
         <li>
-            <p>{{ achievement.title }}</p>
-            <p>{{ achievement.content }}</p>
-            <p>{{ achievement.points }}</p>
+            <div class="achievement-badge pull-left" ng-switch on="achievement.type">
+                <div ng-switch-when="facebook" class="badge-facebook">
+                    <i class="fa fa-facebook"></i>
+                </div>
+
+                <div ng-switch-when="achievement" class="badge-star">
+                    <i class="fa fa-star"></i>
+                </div>
+
+                <div ng-switch-default class="badge-default">
+                    <i class="fa fa-link"></i>
+                </div>
+            </div>
+
+            <div>
+                <div class="achievement-badge pull-right">
+                    <div style="background: #282828">
+                        {{ achievement.points }}
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-left: 50px">
+                <h3>{{ achievement.title }}</h3>
+            </div>
+
+            <div style="margin-left: 50px">
+                <p>{{ achievement.content }}</p>
+            </div>
+
         </li>
     </ul>
 </div>

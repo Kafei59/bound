@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-04 16:07:30
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-25 18:59:00
+* @Last Modified time: 2016-02-26 12:23:45
 */
 
 body {
@@ -16,6 +16,10 @@ footer {
     padding: 20px 0;
     border-top: 3px solid #40405a;
     bottom: 0;
+}
+
+ul {
+    list-style-type: none;
 }
 
 #wrapper {
@@ -147,6 +151,25 @@ video {
 
 .panel-center .panel-content a {
     font-size: 3em;
+}
+
+.achievement-list {
+    padding: 40px;
+    border-bottom: 3px solid #40405a;
+}
+
+.achievement-badge {
+    width: 50px;
+    height: 50px;
+    margin-left: -25px;
+    text-align: center;
+    font-size: 1.4em;
+    line-height: 50px;
+    color: #fff;
+}
+
+.achievement-badge > div {
+    border-radius: 50% 50% 50% 50%;
 }
 
 /* Sidebar Styles */
