@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
+            new Nelmio\CorsBundle\NelmioCorsBundle(),
 
             new Bound\CoreBundle\BoundCoreBundle(),
             new Bound\ApiBundle\BoundApiBundle(),

@@ -120,7 +120,7 @@ fos_rest:
         default_format: json
     disable_csrf_role: ROLE_API
 
-#HWIOAuth Configurationhwi_oauth:
+#HWIOAuth Configuration:
 hwi_oauth:
     firewall_names: [secured_area]
     resource_owners:
@@ -130,3 +130,21 @@ hwi_oauth:
             client_secret: %facebook_secret%
             scope: "email"
             infos_url: "https://graph.facebook.com/me?fields=id,name,email,picture.type(square),age_range,link,gender,timezone"
+
+#CORS Configuration:
+nelmio_cors:
+    defaults:
+        allow_credentials: false
+        allow_origin: []
+        allow_headers: []
+        allow_methods: []
+        expose_headers: []
+        max_age: 0
+        hosts: []
+        origin_regex: false
+    paths:
+        '^/':
+            allow_origin: ['*']
+            allow_headers: ['X-Custom-Auth']
+            allow_methods: ['POST', 'PUT', 'GET', 'DELETE']
+            max_age: 3600
