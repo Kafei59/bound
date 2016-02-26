@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:23:24
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-25 22:45:55
+* @Last Modified time: 2016-02-26 11:06:12
 */
 
 var app = angular.module('BoundApp', [
@@ -22,6 +22,11 @@ app.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
 app.run(function(amMoment) {
     amMoment.changeLocale('fr');
 });
+
+app.config(['$httpProvider', function($httpProvider) {
+    $httpProvider.defaults.useXDomain = true
+    delete $httpProvider.defaults.headers.common['X-Requested-With']
+}]);
 
 app.config(function($routeProvider) {
     $routeProvider

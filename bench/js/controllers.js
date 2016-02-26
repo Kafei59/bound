@@ -2,31 +2,12 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:42:51
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-26 10:04:16
+* @Last Modified time: 2016-02-26 11:05:27
 */
 
 app.controller('MainController', ['$rootScope', 'cookieService', '$location', 'userService', '$http', function($rootScope, $cookieService, $location, $userService, $http) {
     $rootScope.token = $cookieService.getToken();
     $rootScope.date = new Date();
-
-    // $req = {    
-    //     method: 'POST',
-    //     url: 'http://bound-app.com/token',
-    //     headers: {
-    //         'Content-Type': undefined
-    //     },
-
-    //     data: { token: 'test' }
-    // };
-
-    // $form = { token: 'toto' };
-
-    // $http.post('http://127.0.0.1/~gicque_p/bound/desk/web/', $form, {
-    // })
-    // .then(function() {
-    //     alert('OUI !');
-    // });
-
     $userService.getUser($rootScope.token).success(function(data) {
         $location.path('/home');
         $location.replace();

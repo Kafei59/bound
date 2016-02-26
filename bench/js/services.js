@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:44:37
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-26 10:04:08
+* @Last Modified time: 2016-02-26 11:05:43
 */
 
 app.factory('apiService', function() {
@@ -82,7 +82,7 @@ app.factory('userService', ['$http', 'apiService', 'cookieService', function($ht
 
     function login($data) {
         return $http.post($apiService.LOGIN, $data, {
-            headers: { 'Content-Type': undefined }
+            headers: { 'Content-Type': 'application/json' }
         });
     }
 
@@ -102,7 +102,7 @@ app.factory('userService', ['$http', 'apiService', 'cookieService', function($ht
         };
 
         return $http.post($apiService.TOKEN, $data, {
-            headers: { 'Content-Type': undefined }
+            headers: { 'Content-Type': 'application/json' }
         });
     }
 

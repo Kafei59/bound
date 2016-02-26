@@ -66,5 +66,5 @@ namespace :cache do
 end
 
 # after 'deploy:updated', 'database:update'
-after 'deploy:finishing', 'cache:clear'
+# after 'deploy:finishing', 'cache:clear'
 after 'deploy:finishing', 'deploy:cleanup'
