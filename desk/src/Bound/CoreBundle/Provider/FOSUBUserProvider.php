@@ -102,7 +102,7 @@ class FOSUBUserProvider extends BaseClass {
             $this->manager->persist($client);
             $this->manager->flush();
 
-            $this->container->get('bound.notification_manager')->add($user->getPlayer(), "Compte associé", "Vous avez associé votre compte Facebook !", "facebbok");
+            $this->container->get('bound.notification_manager')->add($user->getPlayer(), "Compte associé", "Vous avez associé votre compte Facebook !", "facebook");
 
             return $user;
         }
