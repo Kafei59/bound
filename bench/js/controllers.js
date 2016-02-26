@@ -2,16 +2,36 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:42:51
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-26 01:01:43
+* @Last Modified time: 2016-02-26 09:57:10
 */
 
-app.controller('MainController', ['$rootScope', 'cookieService', '$location', 'userService', function($rootScope, $cookieService, $location, $userService) {
+app.controller('MainController', ['$rootScope', 'cookieService', '$location', 'userService', '$http', function($rootScope, $cookieService, $location, $userService, $http) {
     $rootScope.token = $cookieService.getToken();
     $rootScope.date = new Date();
-    $userService.getUser($rootScope.token).success(function(data) {
-        $location.path('/home');
-        $location.replace();
+
+    // $req = {    
+    //     method: 'POST',
+    //     url: 'http://bound-app.com/token',
+    //     headers: {
+    //         'Content-Type': undefined
+    //     },
+
+    //     data: { token: 'test' }
+    // };
+
+    $form = { token: 'toto' };
+
+    $http.post('http://127.0.0.1/~gicque_p/bound/desk/web/', $form, {
+        headers: { 'Content-Type': undefined }
+    })
+    .then(function() {
+        alert('OUI !');
     });
+
+    // $userService.getUser($rootScope.token).success(function(data) {
+    //     $location.path('/home');
+    //     $location.replace();
+    // });
 }]);
 
 app.controller('LoginController', ['$rootScope', '$scope', '$location', 'apiService', 'userService', 'cookieService', function($rootScope, $scope, $location, $apiService, $userService, $cookieService) {
