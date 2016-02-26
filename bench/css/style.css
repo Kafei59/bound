@@ -2,11 +2,14 @@
 * @Author: gicque_p
 * @Date:   2016-02-04 16:07:30
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-23 10:08:03
+* @Last Modified time: 2016-02-25 18:59:00
 */
 
 body {
     font-family: Raleway;
+    width: 100%;
+    height: 100vh;
+    background: #ededed;
 }
 
 footer {
@@ -38,12 +41,8 @@ footer {
     width: 100%;
     position: absolute;
     overflow: hidden;
-    background: #ededed;
 }
 
-#main {
-    min-height: 100vh;
-}
 
 #main > div {
     padding: 15px;
@@ -72,6 +71,7 @@ footer {
 }
 
 #page-wrapper-header-title {
+    padding-top: 150px;
     padding-left: 50px;
     color: #fff;
 }
@@ -108,12 +108,22 @@ video {
     position: fixed;
 }
 
+.overlay-container {
+    min-height: 100vh;
+    width: 100%;
+}
+
 .overlay-video {
     z-index: 2;
     position: absolute;
     top: 15vh;
     width: 100%;
+    padding: 50px;
     text-align: center;
+    color: #fff;
+}
+
+.overlay-video form a {
     color: #fff;
 }
 
@@ -133,6 +143,10 @@ video {
     color: #fff;
     width: 100%;
     text-align: center;
+}
+
+.panel-center .panel-content a {
+    font-size: 3em;
 }
 
 /* Sidebar Styles */
@@ -262,6 +276,7 @@ video {
     position: relative;
     padding: 20px 0 20px;
     list-style: none;
+    margin: 0;
 }
 
 .timeline:before {
@@ -307,16 +322,16 @@ video {
     padding: 20px;
     border: 1px solid #d4d4d4;
     border-radius: 2px;
-    -webkit-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     background-color: #fff;
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
 }
 
 .timeline > li > .timeline-panel:hover {
-    -webkit-box-show: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    -webkit-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .timeline > li > .timeline-panel:before {
@@ -351,12 +366,14 @@ video {
     width: 50px;
     height: 50px;
     margin-left: -25px;
-    border-radius: 50% 50% 50% 50%;
     text-align: center;
     font-size: 1.4em;
     line-height: 50px;
     color: #fff;
-    background-color: #999999;
+}
+
+.timeline > li > .timeline-badge > div {
+    border-radius: 50% 50% 50% 50%;
 }
 
 .timeline > li.timeline-inverted > .timeline-panel {
@@ -445,6 +462,18 @@ video {
         border-right-width: 14px;
         border-left-width: 0;
     }
+}
+
+.badge-star {
+    background: #fbc02d;
+}
+
+.badge-facebook {
+    background: #6d84b4;
+}
+
+.badge-default {
+    background: #999;
 }
 
 /* Media queries */

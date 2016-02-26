@@ -21,3 +21,7 @@ bound_api_notification:
 bound_api_security:
     type: rest
     resource: "Bound\ApiBundle\Controller\SecurityController"
+
+bound_api_token:
+    type: rest
+    resource: "Bound\ApiBundle\Controller\TokenController"

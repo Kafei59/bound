@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-10-15 16:31:53
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-23 11:11:07
+ * @Last Modified time: 2016-02-25 18:18:33
  */
 
 namespace Bound\CoreBundle\Manager;
@@ -54,6 +54,7 @@ class UserManager extends AManager {
                     $body = $this->container->get('templating')->render('registration.html.twig', array('user' => $user, 'url' => $url));
 
                     $this->container->get('bound.email_listener')->send($subject, $from, $to, $body);
+                    $this->container->get('bound.notification_manager')->add($player, "Inscription", "Bienvenue, amuses-toi bien sur Bound", "bound");
                 }
 
                 return $user;

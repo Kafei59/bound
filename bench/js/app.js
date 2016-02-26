@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:23:24
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-20 12:23:03
+* @Last Modified time: 2016-02-25 22:45:55
 */
 
 var app = angular.module('BoundApp', [
@@ -11,12 +11,17 @@ var app = angular.module('BoundApp', [
     'ngCookies', 
     'angularRipple', 
     'angular-scroll-animate', 
+    'angularMoment',
     'chieffancypants.loadingBar'
 ]);
 
 app.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
 }]);
+
+app.run(function(amMoment) {
+    amMoment.changeLocale('fr');
+});
 
 app.config(function($routeProvider) {
     $routeProvider

@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2016-02-17 17:10:49
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-23 12:21:53
+ * @Last Modified time: 2016-02-26 01:10:00
  */
 
 namespace Bound\CoreBundle\Loader;
@@ -29,8 +29,10 @@ class FacebookLoader {
 
         if ($friends >= 50) {
             $achievement = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Achievement')->findOneByTitle("Inconnu");
-            $player->addAchievement($achievement);
-            $this->container->get('bound.notification_manager')->add($player, "Haut-Fait débloqué", "Bravo, tu as débloqué le succès 'Inconnu' !", "facebook");
+            if (!array_key_exists($achievement->getId(), $player->getAchievements())) {
+                $player->addAchievement($achievement);
+                $this->container->get('bound.notification_manager')->add($player, "Haut-Fait débloqué", "Bravo, tu as débloqué le succès 'Inconnu' !", "achievement");
+            }
         }
     }
 
@@ -42,8 +44,10 @@ class FacebookLoader {
         
         if ($friends >= 300) {
             $achievement = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Achievement')->findOneByTitle("Fréquenté");
-            $player->addAchievement($achievement);
-            $this->container->get('bound.notification_manager')->add($player, "Haut-Fait débloqué", "Bravo, tu as débloqué le succès 'Fréquenté' !", "facebook");
+            if (!array_key_exists($achievement->getId(), $player->getAchievements())) {
+                $player->addAchievement($achievement);
+                $this->container->get('bound.notification_manager')->add($player, "Haut-Fait débloqué", "Bravo, tu as débloqué le succès 'Fréquenté' !", "achievement");
+            }
         }
     }
 
@@ -55,8 +59,10 @@ class FacebookLoader {
 
         if ($friends >= 1000) {
             $achievement = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Achievement')->findOneByTitle("Cheerleader");
-            $player->addAchievement($achievement);
-            $this->container->get('bound.notification_manager')->add($player, "Haut-Fait débloqué", "Bravo, tu as débloqué le succès 'Cheerleader' !", "facebook");
+            if (!array_key_exists($achievement->getId(), $player->getAchievements())) {
+                $player->addAchievement($achievement);
+                $this->container->get('bound.notification_manager')->add($player, "Haut-Fait débloqué", "Bravo, tu as débloqué le succès 'Cheerleader' !", "achievement");
+            }
         }
     }
 
@@ -68,8 +74,10 @@ class FacebookLoader {
         
         if ($friends >= 2500) {
             $achievement = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Achievement')->findOneByTitle("Star");
-            $player->addAchievement($achievement);
-            $this->container->get('bound.notification_manager')->add($player, "Haut-Fait débloqué", "Bravo, tu as débloqué le succès 'Star' !", "facebook");
+            if (!array_key_exists($achievement->getId(), $player->getAchievements())) {
+                $player->addAchievement($achievement);
+                $this->container->get('bound.notification_manager')->add($player, "Haut-Fait débloqué", "Bravo, tu as débloqué le succès 'Star' !", "achievement");
+            }
         }
     }
 }

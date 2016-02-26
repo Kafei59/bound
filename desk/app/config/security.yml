@@ -19,10 +19,11 @@ security:
             anonymous: ~
             oauth:
                 resource_owners:
-                    facebook: "/login/check-facebook"
-                login_path: /login
+                    facebook: "/oauth/v2.0/login/check-facebook"
                 use_forward: false
-                failure_path: /login
+                login_path: hwi_oauth_service_back
+                failure_path: hwi_oauth_service_back
+                default_target_path: hwi_oauth_service_back
 
                 oauth_user_provider:
                     service: my_user_provider

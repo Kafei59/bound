@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2016-02-17 16:58:32
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-23 11:40:44
+ * @Last Modified time: 2016-02-26 01:11:24
  */
 
 namespace Bound\CoreBundle\Listener;
@@ -30,12 +30,14 @@ class AchievementListener {
         $client = $user->getClient();
         $achievements = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Achievement')->findAll();
 
-        foreach ($achievements as $achievement) {
-            $this->load($achievement, $player, $client);
-        }
+        if ($client instanceof Client) {        
+            foreach ($achievements as $achievement) {
+                $this->load($achievement, $player, $client);
+            }
 
-        $this->manager->persist($player);
-        $this->manager->flush();
+            $this->manager->persist($player);
+            $this->manager->flush();
+        }
 
         return $player;
     }
@@ -45,12 +47,14 @@ class AchievementListener {
         $client = $user->getClient();
         $achievements = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Achievement')->findByType($type);
 
-        foreach ($achievements as $achievement) {
-            $this->load($achievement, $player, $client);
-        }
+        if ($client instanceof Client) {        
+            foreach ($achievements as $achievement) {
+                $this->load($achievement, $player, $client);
+            }
 
-        $this->manager->persist($player);
-        $this->manager->flush();
+            $this->manager->persist($player);
+            $this->manager->flush();
+        }
 
         return $player;
     }
@@ -59,11 +63,13 @@ class AchievementListener {
         $player = $user->getPlayer();
         $client = $user->getClient();
 
-        $achievement = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Achievement')->findOneByFunctionId($functionId);
-        $this->load($achievement, $player, $client);
+        if ($client instanceof Client) {        
+            $achievement = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Achievement')->findOneByFunctionId($functionId);
+            $this->load($achievement, $player, $client);
 
-        $this->manager->persist($player);
-        $this->manager->flush();
+            $this->manager->persist($player);
+            $this->manager->flush();
+        }
 
         return $player;
     }

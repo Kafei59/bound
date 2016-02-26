@@ -1,2 +1,31 @@
-<div>
+<div class="panel-body">
+    <div class="panel-center col-md-8 col-md-offset-2">
+        <div class="panel-content">
+            <h3>Nom d'utilisateur:</h3> <span ng-bind="user.username"></span><br>
+            <h3>Email:</h3> <span ng-bind="user.email"></span><br>
+        </div>
+
+        <h3> Rafraîchir la liste des haut-faits obtenus:&nbsp;&nbsp;<i ng-click="refresh()" class="fa fa-spinner fa-spin" style="cursor: pointer"></i></h3>
+
+        <br><br>
+        <div class="panel-content text-center">
+            <h4 style="color: red" ng-bind="error"></h4>
+            <h4 style="color: green" ng-bind="redirect"></h4>
+            <h3>Ajouter un compte Facebook</h3>
+            <a href="{{ facebookLogin }}">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+            <hr>
+
+            <h3>Ajouter un compte Twitter (non disponible)</h3>
+            <a href="" class="disabled">
+                <i class="fa fa-twitter-square"></i>
+            </a>
+            <hr>
+        </div>
+    </div>
 </div>
+
+<footer class="text-center">
+    Pierrick Gicquelais - No copyrights
+</footer>

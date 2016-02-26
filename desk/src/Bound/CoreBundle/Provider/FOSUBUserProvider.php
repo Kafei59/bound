@@ -19,6 +19,7 @@ class FOSUBUserProvider extends BaseClass {
 
     private $container;
     private $manager;
+    private $session;
 
     public function __construct(Container $container, EntityManager $manager, UserManager $userManager, $options) {
         parent::__construct($userManager, $options);
@@ -28,53 +29,53 @@ class FOSUBUserProvider extends BaseClass {
     }
 
     public function loadUserByOAuthUserResponse(UserResponseInterface $response) {
-        $token = $this->container->get('request')->getSession()->get('token');
+        $this->session = $this->container->get('request')->getSession();
 
-        if ($token != NULL) {        
-            $token = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Token')->findOneByData($token);
-            if ($token instanceof Token) {
-                return $this->associate($response, $token->getUser());
-            } else {
-                throw new HttpException(403, "Access Denied.");
-            }
-        } else {
-            $email = $response->getEmail();
+        $action = $this->session->getFlashBag()->get('action');
+        $this->session->getFlashBag()->set('action', $action);
 
-            $user = $this->container->get('doctrine')->getRepository('BoundCoreBundle:User')->findOneByEmail($email);
-            if ($user instanceof User) {
-                return $user;
-            } else {
-                return $this->register($response);
-            }
+        switch ($action[0]) {
+            case 'login':
+                $this->login($response);
+                break;
+            case 'register':
+                $this->register($response);
+                break;
+            case 'associate':
+                $this->associate($response);
+                break;
         }
     }
 
-    private function associate(UserResponseInterface $response, User $user) {
-        $client = $user->getClient();
-        if ($client instanceof Client) {
-            $property = $this->getProperty($response);
-            $username = $response->getUsername();
+    private function login(UserResponseInterface $response) {
+        $password = $response->getUsername();
+        $email = $response->getEmail();
+        $service = $response->getResourceOwner()->getName();
 
-            $service = $response->getResourceOwner()->getName();
-            $setter = 'set'.ucfirst($service);
+        $user = $this->container->get('doctrine')->getRepository('BoundCoreBundle:User')->findOneByEmail($email);
+        if ($user instanceof User) {
+            $client = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Client')->findOneBy(array($service.'_id' => $password));
+            if ($client instanceof Client) {
+                if ($user->getClient() and $user->getClient()->getId() == $client->getId()) {
+                    if ($user->isEnabled()) {                    
+                        $token = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Token')->findOneByUser($user);
+                        if (!$token) {
+                            $token = $this->container->get('bound.token_manager')->add($user);
+                        }
+                        $this->session->getFlashBag()->add('token', $token->getData());
 
-            $entity = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Client')->findOneBy(array($service.'_id' => $username));
-            if ($entity instanceof Client and $entity != $client) {
-                throw new HttpException(409, "Client ID already bound");
+                        return $user;
+                    } else {
+                        $this->session->getFlashBag()->add('error', "Check out your mails to enable your account.");
+                    }
+                } else {
+                    $this->session->getFlashBag()->add('error', "Client and user are not bound.");
+                }
             } else {
-                $setter_id = $setter.'Id';
-                $setter_token = $setter.'AccessToken';
-
-                $client->$setter_id($username);
-                $client->$setter_token($response->getAccessToken());
-
-                $this->manager->persist($client);
-                $this->manager->flush();
-
-                return $user;
+                $this->session->getFlashBag()->add('error', "Client not found.");
             }
         } else {
-            throw new HttpException(404, "Client not found");
+            $this->session->getFlashBag()->add('error', "User not found.");
         }
     }
 
@@ -90,7 +91,7 @@ class FOSUBUserProvider extends BaseClass {
 
         $client = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Client')->findOneBy(array($service.'_id' => $password));
         if ($client instanceof Client) {
-            throw new HttpException(409, "Client ID already bound.");
+            $this->session->getFlashBag()->add('error', "Client ID already bound.");
         } else {
             $user = $this->container->get('bound.user_manager')->add($username, $email, $password);
             $client = $user->getClient();
@@ -101,7 +102,55 @@ class FOSUBUserProvider extends BaseClass {
             $this->manager->persist($client);
             $this->manager->flush();
 
+            $this->container->get('bound.notification_manager')->add($user->getPlayer(), "Compte associé", "Vous avez associé votre compte Facebook !", "facebbok");
+
             return $user;
+        }
+    }
+
+    private function associate(UserResponseInterface $response) {
+        $token = $this->session->getFlashBag()->get('token');
+        if (array_key_exists(0, $token)) {
+            $token = $token[0];
+        }
+
+        if ($token != NULL) {
+            $token = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Token')->findOneByData($token);
+            if ($token instanceof Token) {
+                $user = $token->getUser();
+                $client = $user->getClient();
+                if ($client instanceof Client) {
+                    $property = $this->getProperty($response);
+                    $username = $response->getUsername();
+
+                    $service = $response->getResourceOwner()->getName();
+                    $setter = 'set'.ucfirst($service);
+
+                    $entity = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Client')->findOneBy(array($service.'_id' => $username));
+                    if ($entity instanceof Client and $entity != $client) {
+                        $this->session->getFlashBag()->add('error', "Client ID already bound.");
+                    } else {
+                        $setter_id = $setter.'Id';
+                        $setter_token = $setter.'AccessToken';
+
+                        $client->$setter_id($username);
+                        $client->$setter_token($response->getAccessToken());
+
+                        $this->manager->persist($client);
+                        $this->manager->flush();
+
+                        $this->container->get('bound.notification_manager')->add($user->getPlayer(), "Compte associé", "Vous avez associé votre compte Facebook !", "facebook");
+
+                        return $user;
+                    }
+                } else {
+                    $this->session->getFlashBag()->add('error', "Client not found.");
+                }
+            } else {
+                $this->session->getFlashBag()->add('error', "Access Denied.");
+            }
+        } else {
+            $this->session->getFlashBag()->add('error', "Token not found.");
         }
     }
 }

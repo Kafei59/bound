@@ -35,5 +35,9 @@ fos_user_resetting:
 
 #HWIOAuthRoutes
 hwi_oauth_service_redirect:
-    path: /login/{service}/{token}
-    defaults: { _controller: BoundCoreBundle:Provider:redirectToService, token: null }
+    path: /oauth/v2.0/login/{service}/{action}/{token}
+    defaults: { _controller: BoundCoreBundle:Provider:redirectToService, action: null, token: null }
+
+hwi_oauth_service_back:
+    path: /ouath/v2.0/back
+    defaults: { _controller: BoundCoreBundle:Provider:backFromService }

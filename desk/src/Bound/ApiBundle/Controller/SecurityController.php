@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-12-31 17:06:33
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-23 11:13:40
+ * @Last Modified time: 2016-02-25 17:16:57
  */
 
 namespace Bound\ApiBundle\Controller;
@@ -90,22 +90,6 @@ class SecurityController extends AController {
             $this->get('bound.user_manager')->changePassword($email);
 
             return array("Email sent to ".$email.".");
-        } else {
-            throw new HttpException(400, "Bad Request.");
-        }
-    }
-
-    /**
-     * Mapping [POST] /api/token
-     * @Post("/token")
-     */
-    public function tokenAction(Request $request) {
-        $token = $request->get('token');
-
-        if ($token) {
-            $user = $this->assertToken($token);
-
-            return $user;
         } else {
             throw new HttpException(400, "Bad Request.");
         }

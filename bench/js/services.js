@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:44:37
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-23 12:09:53
+* @Last Modified time: 2016-02-26 00:57:44
 */
 
 app.factory('apiService', function() {
@@ -10,20 +10,24 @@ app.factory('apiService', function() {
     if (defaultIP != 'localhost' && defaultIP != '127.0.0.1') {
         var serverIP = 'api.bound-app.com';
     } else {
-        var serverIP = defaultIP + '/~gicque_p/bound/desk/web/app_dev.php';        
+        var serverIP = defaultIP + '/~gicque_p/bound/desk/web/app_dev.php';
     }
 
     var serverPath = location.protocol + '//' + serverIP;
     var service = {
         serverPath: serverPath,
         LOGIN: serverPath + '/login',
+        LOGIN_FACEBOOK: serverPath + '/oauth/v2.0/login/facebook/login',
+        REGISTER_FACEBOOK: serverPath + '/oauth/v2.0/login/facebook/register',
+        ASSOCIATE_FACEBOOK: serverPath + '/oauth/v2.0/login/facebook/associate',
         REGISTER: serverPath + '/register',
         RESETTING: serverPath + '/resetting',
         TOKEN: serverPath + '/token',
-        ACHIVEMENTS_GET: serverPath + '/achievements',
-        ACHIVEMENT_ADD: serverPath + '/achievements',
-        ACHIVEMENT_EDIT: serverPath + '/achievements',
-        ACHIVEMENT_DELETE: serverPath + '/achievements',
+        ACHIEVEMENTS_GET: serverPath + '/achievements',
+        ACHIEVEMENT_ADD: serverPath + '/achievements',
+        ACHIEVEMENT_EDIT: serverPath + '/achievements',
+        ACHIEVEMENT_DELETE: serverPath + '/achievements',
+        ACHIEVEMENT_LOAD: serverPath + '/achievements/load',
         CREWS_GET: serverPath + '/crews',
         CREWS_ADD: serverPath + '/crews',
         CREWS_EDIT: serverPath + '/crews',
@@ -35,7 +39,7 @@ app.factory('apiService', function() {
         USERS_GET: serverPath + '/users',
         USERS_ADD: serverPath + '/users',
         USERS_EDIT: serverPath + '/users',
-        USERS_DELETE: serverPath + '/users'
+        USERS_DELETE: serverPath + '/users',
     };
 
     return service;
@@ -80,13 +84,27 @@ app.factory('userService', ['$http', 'apiService', 'cookieService', function($ht
         return $http.post($apiService.LOGIN, $data);
     }
 
+    function register($data) {
+        return $http.post($apiService.REGISTER, $data);
+    }
+
     function logout() {
         $cookieService.removeToken();
     }
 
+    function getUser($token) {
+        $data = {
+            token: $token
+        };
+
+        return $http.post($apiService.TOKEN, $data);
+    }
+
     var service = {
         login: login,
-        logout: logout
+        register: register,
+        logout: logout,
+        getUser: getUser
     };
 
     return service;

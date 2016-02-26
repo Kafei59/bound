@@ -160,9 +160,7 @@ class Player
     }
 
     public function addAchievement($achievement) {
-        if (!in_array($achievement, $this->achievements, true)) {
-            $this->achievements[] = $achievement;
-        }
+        $this->achievements[$achievement->getId()] = $achievement;
 
         return $this;
     }
@@ -174,5 +172,39 @@ class Player
         }
 
         return $this;
+    }
+
+    /**
+     * Add notification
+     *
+     * @param \Bound\CoreBundle\Entity\Notification $notification
+     *
+     * @return Player
+     */
+    public function addNotification(\Bound\CoreBundle\Entity\Notification $notification)
+    {
+        $this->notifications[] = $notification;
+
+        return $this;
+    }
+
+    /**
+     * Remove notification
+     *
+     * @param \Bound\CoreBundle\Entity\Notification $notification
+     */
+    public function removeNotification(\Bound\CoreBundle\Entity\Notification $notification)
+    {
+        $this->notifications->removeElement($notification);
+    }
+
+    /**
+     * Get notifications
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNotifications()
+    {
+        return $this->notifications;
     }
 }

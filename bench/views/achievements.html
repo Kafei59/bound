@@ -1,2 +1,9 @@
-<div>
+<div class="panel-body">
+    <ul ng-repeat="(key, achievement) in achievements">
+        <li>
+            <p>{{ achievement.title }}</p>
+            <p>{{ achievement.content }}</p>
+            <p>{{ achievement.points }}</p>
+        </li>
+    </ul>
 </div>

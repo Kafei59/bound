@@ -49,9 +49,9 @@ class Notification
     private $type;
 
     /**
-     * @var date
+     * @var datetime
      *
-     * @ORM\Column(name="date", type="date")
+     * @ORM\Column(name="date", type="datetime")
      */
     private $date;
 

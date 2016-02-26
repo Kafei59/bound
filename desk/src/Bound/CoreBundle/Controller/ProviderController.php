@@ -2,8 +2,8 @@
 /**
  * @Author: root
  * @Date:   2016-02-17 11:39:22
- * @Last Modified by:   root
- * @Last Modified time: 2016-02-17 11:40:39
+ * @Last Modified by:   gicque_p
+ * @Last Modified time: 2016-02-26 00:50:41
  */
 
 namespace Bound\CoreBundle\Controller;
@@ -20,13 +20,15 @@ class ProviderController extends Controller {
     public function redirectToServiceAction(Request $request, $service) {
         $authorizationUrl = $this->container->get('hwi_oauth.security.oauth_utils')->getAuthorizationUrl($request, $service);
 
-        // Check for a return path and store it before redirect
         if ($request->hasSession()) {
-            // initialize the session for preventing SessionUnavailableException
             $session = $request->getSession();
             $session->start();
 
-            $session->set('token', $request->get('token'));
+            if ($request->get('token')) {
+                $session->getFlashBag()->add('token', $request->get('token'));
+            }
+
+            $session->getFlashBag()->add('action', $request->get('action'));
             foreach ($this->container->getParameter('hwi_oauth.firewall_names') as $providerKey) {
                 $sessionKey = '_security.'.$providerKey.'.target_path';
 
@@ -42,5 +44,48 @@ class ProviderController extends Controller {
         }
 
         return $this->redirect($authorizationUrl);
+    }
+
+    public function backFromServiceAction(Request $request) {
+        $error = $request->getSession()->getFlashBag()->get('error');
+        $action = $request->getSession()->getFlashBag()->get('action')[0];
+
+        if (array_key_exists(0, $error)) {
+            $error = $error[0];
+
+            $uri = "/#/?";
+            switch ($action) {
+                case 'login':
+                    $uri = "/#login/?error=";
+                    break;
+                case 'register':
+                    $uri = "/#register/?error=";
+                    break;
+                case 'associate':
+                    $uri = "/#dashboard/?error=";
+                    break;
+            }
+
+            return $this->redirect($this->container->getParameter('redirect_uri').$uri.$error);
+        } else {
+            $uri = "/#/?";
+            switch ($action) {
+                case 'login':
+                    $token = $request->getSession()->getFlashBag()->get('token')[0];
+                    $uri = "/#login/?token=";
+                    $value = $token;
+                    break;
+                case 'register':
+                    $uri = "/#login/?redirect=";
+                    $value = "Check out your mails and log in.";
+                    break;
+                case 'associate':
+                    $uri = "/#dashboard/?redirect=";
+                    $value = "Account associate.";
+                    break;
+            }
+
+            return $this->redirect($this->container->getParameter('redirect_uri').$uri.$value);
+        }
     }
 }

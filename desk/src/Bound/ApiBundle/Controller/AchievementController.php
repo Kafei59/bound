@@ -83,4 +83,11 @@ class AchievementController extends AController {
 
         return array();
     }
+
+    public function loadAchievementsAction(Request $request) {
+        $user = $this->assertToken($request->get('token'));
+        $this->get('bound.achievement_listener')->loadAll($user);
+
+        return array();
+    }
 }
