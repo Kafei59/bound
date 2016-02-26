@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:44:37
 * @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-26 00:57:44
+* @Last Modified time: 2016-02-26 10:04:08
 */
 
 app.factory('apiService', function() {
@@ -81,11 +81,15 @@ app.factory('cookieService', ['$cookies', function($cookies) {
 app.factory('userService', ['$http', 'apiService', 'cookieService', function($http, $apiService, $cookieService) {
 
     function login($data) {
-        return $http.post($apiService.LOGIN, $data);
+        return $http.post($apiService.LOGIN, $data, {
+            headers: { 'Content-Type': undefined }
+        });
     }
 
     function register($data) {
-        return $http.post($apiService.REGISTER, $data);
+        return $http.post($apiService.REGISTER, $data, {
+            headers: { 'Content-Type': undefined }
+        });
     }
 
     function logout() {
@@ -97,7 +101,9 @@ app.factory('userService', ['$http', 'apiService', 'cookieService', function($ht
             token: $token
         };
 
-        return $http.post($apiService.TOKEN, $data);
+        return $http.post($apiService.TOKEN, $data, {
+            headers: { 'Content-Type': undefined }
+        });
     }
 
     var service = {
