@@ -33,6 +33,11 @@ fos_user_resetting:
     prefix: /resetting
 
 
+#NelmioDocumentation
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /doc
+
 #HWIOAuthRoutes
 hwi_oauth_service_redirect:
     path: /oauth/v2.0/login/{service}/{action}/{token}

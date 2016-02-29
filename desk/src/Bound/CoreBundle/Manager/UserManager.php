@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-10-15 16:31:53
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-25 18:18:33
+ * @Last Modified time: 2016-02-29 14:08:41
  */
 
 namespace Bound\CoreBundle\Manager;
@@ -59,10 +59,10 @@ class UserManager extends AManager {
 
                 return $user;
             } else {
-                throw new HttpException(400, "Email already exists.");
+                throw new HttpException(409, "Email already exists.");
             }
         } else {
-            throw new HttpException(400, "Username already exists.");
+            throw new HttpException(409, "Username already exists.");
         }
     }
 

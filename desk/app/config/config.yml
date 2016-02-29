@@ -118,7 +118,7 @@ fos_rest:
         default_engine: twig
     routing_loader:
         default_format: json
-    # disable_csrf_role: ROLE_API
+        include_format: false
 
 #HWIOAuth Configuration:
 hwi_oauth:
@@ -143,3 +143,9 @@ nelmio_cors:
             max_age: 3600
             hosts: []
             origin_regex: false
+
+#Documentation Configuration:
+nelmio_api_doc:
+    sandbox:
+        request_format:
+            method: accept_header

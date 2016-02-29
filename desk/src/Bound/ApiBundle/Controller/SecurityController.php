@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-12-31 17:06:33
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-25 17:16:57
+ * @Last Modified time: 2016-02-29 14:12:34
  */
 
 namespace Bound\ApiBundle\Controller;
@@ -22,13 +22,41 @@ use Bound\CoreBundle\Entity\User;
 use Bound\CoreBundle\Entity\Player;
 use Bound\CoreBundle\Entity\Client;
 
+use FOS\RestBundle\Controller\Annotations\QueryParam;
+use FOS\RestBundle\Controller\Annotations\RequestParam;
 use FOS\RestBundle\Controller\Annotations\Post;
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use JMS\Serializer\SerializerBuilder;
 
 class SecurityController extends AController {
 
     /**
-     * Mapping [POST] /api/login
+     * Mapping [POST] api.bound-app.com/login"
      * @Post("/login")
+     * @ApiDoc(
+     *  description="Connexion à l'application",
+     *  output="Bound\CoreBundle\Entity\Token",
+     *  parameters={
+     *      {
+     *          "name"="username",
+     *          "dataType"="string",
+     *          "description"="Nom d'utilisateur ou email",
+     *          "required"="true"
+     *      },
+     *      {
+     *          "name"="password",
+     *          "dataType"="string",
+     *          "description"="Mot de passe en clair",
+     *          "required"="true"
+     *      }
+     *     
+     *  },
+     *  statusCodes={
+     *     200="Retourner lorsque tout est OK",
+     *     400="Retourner si le nom d'utilisateur ou l'email n'existe pas",
+     *     403="Retourner si le mot de passe est incorrect ou si l'adresse mail n'est pas vérifiée",
+     *  }
+     * )
      */
     public function loginAction(Request $request) {
         $username = $request->get('username');
@@ -62,8 +90,37 @@ class SecurityController extends AController {
     }
 
     /**
-     * Mapping [POST] /api/register
+     * Mapping [POST] api.bound-app.com/register"
      * @Post("/register")
+     * @ApiDoc(
+     *  description="Inscription à l'application",
+     *  output="array",
+     *  parameters={
+     *      {
+     *          "name"="username",
+     *          "dataType"="string",
+     *          "description"="Nom d'utilisateur",
+     *          "required"="true"
+     *      },
+     *      {
+     *          "name"="email",
+     *          "dataType"="string",
+     *          "description"="Email",
+     *          "required"="true"
+     *      },
+     *      {
+     *          "name"="password",
+     *          "dataType"="string",
+     *          "description"="Mot de passe en clair",
+     *          "required"="true"
+     *      }
+     *     
+     *  },
+     *  statusCodes={
+     *     200="Retourner lorsque tout est OK",
+     *     409="Retourner si le nom d'utilisateur ou l'email existe déjà"
+     *  }
+     * )
      */
     public function registerAction(Request $request) {
         $username = $request->get('username');
@@ -80,8 +137,25 @@ class SecurityController extends AController {
     }
 
     /**
-     * Mapping [POST] /api/resetting
+     * Mapping [POST] api.bound-app.com/resetting"
      * @Post("/resetting")
+     * @ApiDoc(
+     *  description="Oubli de mot de passe",
+     *  output="array",
+     *  parameters={
+     *      {
+     *          "name"="email",
+     *          "dataType"="string",
+     *          "description"="Email",
+     *          "required"="true"
+     *      }
+     *     
+     *  },
+     *  statusCodes={
+     *     200="Retourner lorsque tout est OK",
+     *     400="Retourner si l'utilisateur n'existe pas ou que la requête a déjà été faite"
+     *  }
+     * )
      */
     public function resettingAction(Request $request) {
         $email = $request->get('email');

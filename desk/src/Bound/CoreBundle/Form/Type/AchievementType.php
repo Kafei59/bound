@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2016-02-14 19:13:04
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-15 14:22:48
+ * @Last Modified time: 2016-02-29 13:56:26
  */
 
 namespace Bound\CoreBundle\Form\Type;
@@ -12,8 +12,16 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use FOS\RestBundle\Controller\Annotations\QueryParam;
+use FOS\RestBundle\Controller\Annotations\RequestParam;
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use JMS\Serializer\SerializerBuilder;
+
 class AchievementType extends AbstractType {
 
+    /**
+     * {@inheritdoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add('title', "text", array(
@@ -27,6 +35,14 @@ class AchievementType extends AbstractType {
             ->add('points', "number", array(
                 'label' => "Nombre de points du haut-fait",
                 'attr' => array('class' => "form-control", 'placeholder' => "Points")
+            ))
+            ->add('type', "text", array(
+                'label' => "Type du Loader du haut-fait",
+                'attr' => array('class' => "form-control", 'placeholder' => "Type")
+            ))
+            ->add('functionId', "text", array(
+                'label' => "ID de la function de check du haut-fait",
+                'attr' => array('class' => "form-control", 'placeholder' => "ID Fonction")
             ))
         ;
     }
