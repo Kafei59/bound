@@ -93,7 +93,7 @@ class FOSUBUserProvider extends BaseClass {
         if ($client instanceof Client) {
             $this->session->getFlashBag()->add('error', "Client ID already bound.");
         } else {
-            $user = $this->container->get('bound.user_manager')->add($username, $email, $password);
+            $user = $this->container->get('bound.user_manager')->add($username, $email, $password, true);
             $client = $user->getClient();
 
             $client->$setter_id($password);

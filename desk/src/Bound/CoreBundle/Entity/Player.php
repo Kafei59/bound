@@ -22,12 +22,6 @@ class Player
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="Bound\CoreBundle\Entity\User", inversedBy="player")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     */
-    private $owner;
-
-    /**
      * @ORM\ManyToOne(targetEntity="Bound\CoreBundle\Entity\Crew", inversedBy="members")
      * @ORM\JoinColumn(name="crew_id", referencedColumnName="id")
      */
@@ -44,7 +38,7 @@ class Player
     private $achievements;
 
     /**
-     * @ORM\OneToMany(targetEntity="Bound\CoreBundle\Entity\Notification", mappedBy="owner")
+     * @ORM\OneToMany(targetEntity="Bound\CoreBundle\Entity\Notification", mappedBy="owner", cascade={"persist", "remove"})
      */
     private $notifications;
     
@@ -61,30 +55,6 @@ class Player
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set owner
-     *
-     * @param \Bound\CoreBundle\Entity\User $owner
-     *
-     * @return Player
-     */
-    public function setOwner(\Bound\CoreBundle\Entity\User $owner = null)
-    {
-        $this->owner = $owner;
-
-        return $this;
-    }
-
-    /**
-     * Get owner
-     *
-     * @return \Bound\CoreBundle\Entity\User
-     */
-    public function getOwner()
-    {
-        return $this->owner;
     }
 
     /**
@@ -159,12 +129,22 @@ class Player
         return $this->achievements;
     }
 
+    /**
+     * Add achievement
+     *
+     * @return Player
+     */
     public function addAchievement($achievement) {
         $this->achievements[$achievement->getId()] = $achievement;
 
         return $this;
     }
 
+    /**
+     * Remove achievement
+     *
+     * @return Player
+     */
     public function removeAchievement($achievement) {
         if (false !== $key = array_search($achievement, $this->achievements, true)) {
             unset($this->achievements[$key]);

@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2015-10-15 16:31:53
  * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-29 14:08:41
+ * @Last Modified time: 2016-02-29 14:55:40
  */
 
 namespace Bound\CoreBundle\Manager;
@@ -19,7 +19,7 @@ use FOS\UserBundle\Util\TokenGenerator;
 
 class UserManager extends AManager {
 
-    public function add($username, $email, $password) {
+    public function add($username, $email, $password, $enabled = false) {
         $fum = $this->container->get('fos_user.user_manager');
         if (!$fum->findUserByUsername($username)) {
             if (!$fum->findUserByEmail($email)) {
@@ -34,27 +34,26 @@ class UserManager extends AManager {
                 $user->setEmail($email);
                 $user->setPlainPassword($password);
                 $user->setConfirmationToken($token);
+                $user->setEnabled($enabled);
 
                 $player = new Player();
-                $player->setOwner($user);
                 $this->persist($player);
 
                 $client = new Client();
-                $client->setOwner($user);
                 $this->persist($client);
 
                 $user->setPlayer($player);
                 $user->setClient($client);
                 $fum->updateUser($user);
 
-                if ($this->container->get('kernel')->getEnvironment() != "test") {
+                $this->container->get('bound.notification_manager')->add($player, "Inscription", "Bienvenue, amuses-toi bien sur Bound", "bound");
+                if ($this->container->get('kernel')->getEnvironment() != "test" and !$user->isEnabled()) {
                     $subject = "Prêt pour l'aventure ?";
                     $from = array('hello@bound-app.com' => "Pierrick");
                     $to = $user->getEmail();
                     $body = $this->container->get('templating')->render('registration.html.twig', array('user' => $user, 'url' => $url));
 
                     $this->container->get('bound.email_listener')->send($subject, $from, $to, $body);
-                    $this->container->get('bound.notification_manager')->add($player, "Inscription", "Bienvenue, amuses-toi bien sur Bound", "bound");
                 }
 
                 return $user;
