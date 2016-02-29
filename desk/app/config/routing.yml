@@ -1,9 +1,11 @@
-bound_back_office:
-    resource: "@BoundBackOfficeBundle/Resources/config/routing.yml"
-    prefix:   /admin
-
 bound_api:
     resource: "@BoundApiBundle/Resources/config/routing.yml"
+    host: api.bound-app.com
+    prefix:   /
+
+bound_back_office:
+    resource: "@BoundBackOfficeBundle/Resources/config/routing.yml"
+    host: admin.bound-app.com
     prefix:   /
 
 app:
