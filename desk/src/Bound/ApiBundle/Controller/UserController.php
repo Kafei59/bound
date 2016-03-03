@@ -35,7 +35,11 @@ class UserController extends AController {
      * )
      */
     public function getUsersAction(Request $request) {
-        $this->assertToken($request->get('token'));
+        $user = $this->assertToken($request->get('token'));
+        if (!$user->isAdmin()) {
+            throw new HttpException(403, "Access Denied.");
+        }
+
         $users = $this->getDoctrine()->getRepository('BoundCoreBundle:User')->findAll();
 
         return array('users' => $users);
@@ -63,7 +67,10 @@ class UserController extends AController {
      * )
      */
     public function getUserAction(User $user, Request $request) {
-        $this->assertToken($request->get('token'));
+        $user = $this->assertToken($request->get('token'));
+        if (!$user->isAdmin()) {
+            throw new HttpException(403, "Access Denied.");
+        }
 
         return array('user' => $user);
     }
