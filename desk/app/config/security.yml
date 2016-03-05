@@ -32,9 +32,8 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_provider: security.csrf.token_manager
-                check_path: /login_check
             logout:       true
             anonymous:    true
 
     access_control:
-        - { path: ^/admin, role: ROLE_SUPER_ADMIN }
+        # - { path: ^/admin, role: ROLE_SUPER_ADMIN }

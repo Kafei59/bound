@@ -16,3 +16,11 @@ _errors:
 
 _main:
     resource: routing.yml
+
+bound_api:
+    resource: "@BoundApiBundle/Resources/config/routing.yml"
+    prefix: /api
+
+bound_back_office:
+    resource: "@BoundBackOfficeBundle/Resources/config/routing.yml"
+    prefix: /admin

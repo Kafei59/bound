@@ -1,3 +1,7 @@
-bound_back_office_homepage:
+bound_backoffice_index:
     path:     /
     defaults: { _controller: BoundBackOfficeBundle:Default:index }
+
+bound_backoffice_achievement_list:
+    path:     /achievement/list
+    defaults: { _controller: BoundBackOfficeBundle:Achievement:list }
