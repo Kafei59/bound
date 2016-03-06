@@ -1,0 +1,9 @@
+{% extends 'BoundBackOfficeBundle::layout.html.twig' %}
+
+{% block body %}
+    {% for crew in crews %}
+        <pre>
+            {{ crew.title }}
+        </pre>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,19 @@
+bound_backoffice_crew_list:
+    path:     /list
+    defaults: { _controller: BoundBackOfficeBundle:Crew:list }
+
+bound_backoffice_crew_detail:
+    path:     /detail/{crew}
+    defaults: { _controller: BoundBackOfficeBundle:Crew:detail }
+
+bound_backoffice_crew_create:
+    path:     /create
+    defaults: { _controller: BoundBackOfficeBundle:Crew:create }
+
+bound_backoffice_crew_edit:
+    path:     /edit/{crew}
+    defaults: { _controller: BoundBackOfficeBundle:Crew:edit }
+
+bound_backoffice_crew_delete:
+    path:     /delete/{crew}
+    defaults: { _controller: BoundBackOfficeBundle:Crew:delete }

@@ -1,14 +1,12 @@
 {% extends 'BoundBackOfficeBundle::layout.html.twig' %}
 
 {% block body %}
-    <div id="page-wrapper">
-        {% for achievement in achievements %}
-            <pre>
-                {{ achievement.title }}
-                {{ achievement.content }}
-                {{ achievement.points }}
-                {{ achievement.type }}
-            </pre>
-        {% endfor %}
-    </div>
+    {% for achievement in achievements %}
+        <pre>
+            {{ achievement.title }}
+            {{ achievement.content }}
+            {{ achievement.points }}
+            {{ achievement.type }}
+        </pre>
+    {% endfor %}
 {% endblock %}

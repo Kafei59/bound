@@ -46,14 +46,21 @@
 
                         <ul class="dropdown-menu dropdown-user">
                             <li>
-                                <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                                <a href="#">
+                                {# <a href="{{ path('fos_user_profile') }}"> #}
+                                    <i class="fa fa-user fa-fw"></i>&nbsp;&nbsp;User Profile
+                                </a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                                <a href="#">
+                                    <i class="fa fa-gear fa-fw"></i>&nbsp;&nbsp;Settings
+                                </a>
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                                <a href="{{ path('fos_user_security_logout') }}">
+                                    <i class="fa fa-sign-out fa-fw"></i>&nbsp;&nbsp;Logout
+                                </a>
                             </li>
                         </ul>
                     </li>
@@ -80,27 +87,55 @@
                             </li>
 
                             <li>
-                                <a href="{{ path('bound_backoffice_achievement_list') }}">
-                                    <i class="fa fa-star fa-fw"></i>&nbsp;&nbsp;Haut-faits
+                                <a href="#">
+                                    <i class="fa fa-star fa-fw"></i>&nbsp;&nbsp;Haut-faits<span class="fa arrow"></span>
                                 </a>
-                            </li>
-
-                            <li>
-                                <a href="#"><i class="fa fa-users fa-fw"></i>&nbsp;&nbsp;Utilisateurs</a>
-                            </li>
-
-                            <li>
-                                <a href="#"><i class="fa fa-home fa-fw"></i>&nbsp;&nbsp;Crews</a>
-                            </li>
-
-                            <li>
-                                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>&nbsp;&nbsp;Charts<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="#">Charts 1</a>
+                                        <a href="{{ path('bound_backoffice_achievement_list') }}">
+                                            <i class="fa fa-star-o fa-fw"></i>&nbsp;&nbsp;Liste
+                                        </a>
                                     </li>
                                     <li>
-                                        <a href="#">Charts 2</a>
+                                        <a href="{{ path('bound_backoffice_achievement_create') }}">
+                                            <i class="fa fa-star-o fa-fw"></i>&nbsp;&nbsp;Ajouter
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-users fa-fw"></i>&nbsp;&nbsp;Utilisateurs<span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="{{ path('bound_backoffice_user_list') }}">
+                                            <i class="fa fa-users fa-fw"></i>&nbsp;&nbsp;Liste
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('bound_backoffice_user_create') }}">
+                                            <i class="fa fa-users fa-fw"></i>&nbsp;&nbsp;Ajouter
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-home fa-fw"></i>&nbsp;&nbsp;Crews<span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="{{ path('bound_backoffice_crew_list') }}">
+                                            <i class="fa fa-home fa-fw"></i>&nbsp;&nbsp;Liste
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('bound_backoffice_crew_create') }}">
+                                            <i class="fa fa-home fa-fw"></i>&nbsp;&nbsp;Ajouter
+                                        </a>
                                     </li>
                                 </ul>
                             </li>
@@ -109,8 +144,10 @@
                 </div>
             </nav>
 
-            {% block body %}
-            {% endblock %}
+            <div id="page-wrapper">
+                {% block body %}
+                {% endblock %}
+            </div>
         </div>
 
         <script src="{{ asset('bundles/boundbackoffice/js/jquery.min.js') }}"></script>

@@ -2,6 +2,14 @@ bound_backoffice_index:
     path:     /
     defaults: { _controller: BoundBackOfficeBundle:Default:index }
 
-bound_backoffice_achievement_list:
-    path:     /achievement/list
-    defaults: { _controller: BoundBackOfficeBundle:Achievement:list }
+bound_backoffice_achievement:
+    resource: "@BoundBackOfficeBundle/Resources/config/Achievement/routing.yml"
+    prefix:   /achievement
+
+bound_backoffice_crew:
+    resource: "@BoundBackOfficeBundle/Resources/config/Crew/routing.yml"
+    prefix:   /crew
+
+bound_backoffice_user:
+    resource: "@BoundBackOfficeBundle/Resources/config/User/routing.yml"
+    prefix:   /user

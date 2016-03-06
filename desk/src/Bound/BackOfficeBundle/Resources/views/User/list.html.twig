@@ -1,0 +1,10 @@
+{% extends 'BoundBackOfficeBundle::layout.html.twig' %}
+
+{% block body %}
+    {% for user in users %}
+        <pre>
+            {{ user.username }}
+            {{ user.email }}
+        </pre>
+    {% endfor %}
+{% endblock %}

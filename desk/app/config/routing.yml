@@ -34,6 +34,10 @@ fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
     host: admin.bound-app.com
 
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    host: admin-bound-app.com
+
 #NelmioDocumentation
 NelmioApiDocBundle:
     resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
