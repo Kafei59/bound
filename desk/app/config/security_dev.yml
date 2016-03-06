@@ -1,0 +1,33 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+    firewalls:
+        api:
+            host: false
+            pattern: ^/api
+            anonymous: ~
+            oauth:
+                resource_owners:
+                    facebook: "/oauth/v2.0/login/check-facebook"
+                use_forward: false
+                login_path: hwi_oauth_service_back
+                check_path: false
+                failure_path: hwi_oauth_service_back
+                default_target_path: hwi_oauth_service_back
+
+                oauth_user_provider:
+                    service: my_user_provider
+
+        admin:
+            host: false
+            pattern: ^/admin
+            anonymous: true
+            form_login:
+                provider: fos_userbundle
+                csrf_provider: security.csrf.token_manager
+                login_path: /admin/login
+                check_path: /admin/login_check
+                default_target_path: /admin
+            logout:
+                path: /admin/logout
+                target: /admin

@@ -15,7 +15,8 @@ security:
             id: hwi_oauth.user.provider
 
     firewalls:
-        secured_area:
+        api:
+            host: api.bound-app.com
             anonymous: ~
             oauth:
                 resource_owners:
@@ -27,13 +28,24 @@ security:
 
                 oauth_user_provider:
                     service: my_user_provider
-        main:
-            pattern: ^/
+
+        admin:
+            host: admin.bound-app.com
+            anonymous: true
             form_login:
                 provider: fos_userbundle
                 csrf_provider: security.csrf.token_manager
-            logout:       true
-            anonymous:    true
+                login_path: /login
+                check_path: /login_check
+            logout:
+                path: /logout
+                target: /
 
     access_control:
-        # - { path: ^/admin, role: ROLE_SUPER_ADMIN }
+        - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY, host: admin.bound-app.com }
+        - { path: ^/login_check, role: IS_AUTHENTICATED_ANONYMOUSLY, host: admin.bound-app.com }
+        - { path: ^/, role: ROLE_ADMIN, host: admin.bound-app.com }
+
+        - { path: ^/admin/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login_check, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, role: ROLE_ADMIN }

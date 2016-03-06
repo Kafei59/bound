@@ -17,6 +17,7 @@ _errors:
 _main:
     resource: routing.yml
 
+# Redirect hostnames in route
 bound_api:
     resource: "@BoundApiBundle/Resources/config/routing.yml"
     prefix: /api
@@ -24,3 +25,17 @@ bound_api:
 bound_back_office:
     resource: "@BoundBackOfficeBundle/Resources/config/routing.yml"
     prefix: /admin
+
+# Enable FOS Login in Admin
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    prefix: /admin
+
+# Enable OAuth routes in Api
+hwi_oauth_service_redirect:
+    path: /api/oauth/v2.0/login/{service}/{action}/{token}
+    defaults: { _controller: BoundCoreBundle:Provider:redirectToService, action: null, token: null }
+
+hwi_oauth_service_back:
+    path: /api/ouath/v2.0/back
+    defaults: { _controller: BoundCoreBundle:Provider:backFromService }

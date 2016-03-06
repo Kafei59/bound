@@ -122,7 +122,7 @@ fos_rest:
 
 #HWIOAuth Configuration:
 hwi_oauth:
-    firewall_names: [secured_area]
+    firewall_names: [api]
     resource_owners:
         facebook:
             type: facebook
