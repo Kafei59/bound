@@ -2,8 +2,8 @@
 /**
  * @Author: gicque_p
  * @Date:   2015-12-27 15:44:57
- * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-15 14:38:28
+ * @Last Modified by:   Kafei59
+ * @Last Modified time: 2016-03-06 16:30:38
  */
 
 namespace Bound\CoreBundle\Form\Type;
@@ -24,6 +24,7 @@ class CrewType extends AbstractType {
                 'label' => "Nom des membres",
                 'attr' => array('class' => "form-control", 'placeholder' => "Membres")
             ))
+            ->add('submit', "submit")
         ;
     }
 
