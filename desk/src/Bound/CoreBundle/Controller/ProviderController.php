@@ -2,8 +2,8 @@
 /**
  * @Author: root
  * @Date:   2016-02-17 11:39:22
- * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-26 00:50:41
+ * @Last Modified by:   Kafei59
+ * @Last Modified time: 2016-03-09 16:31:00
  */
 
 namespace Bound\CoreBundle\Controller;
@@ -77,7 +77,7 @@ class ProviderController extends Controller {
                     break;
                 case 'register':
                     $uri = "/#login/?redirect=";
-                    $value = "Check out your mails and log in.";
+                    $value = "You can now log in.";
                     break;
                 case 'associate':
                     $uri = "/#dashboard/?redirect=";
