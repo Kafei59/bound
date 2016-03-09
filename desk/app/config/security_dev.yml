@@ -8,7 +8,7 @@ security:
             anonymous: ~
             oauth:
                 resource_owners:
-                    facebook: "/oauth/v2.0/login/check-facebook"
+                    facebook: "/api/oauth/v2.0/login/check-facebook"
                 use_forward: false
                 login_path: hwi_oauth_service_back
                 check_path: false

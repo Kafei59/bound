@@ -1,49 +1,79 @@
 <div ng-switch-when="null">
-    <li class="sidebar-brand">
-        Bound-App
-    </li>
-    <li>
-        <a href="#/" ng-class="{active: tab == 'index'}" angular-ripple>
-            <i class="fa fa-home"></i>Accueil
-        </a>
-    </li>
-    <li>
-        <a href="#/login" ng-class="{active: tab == 'login'}" angular-ripple><i class="fa fa-unlock"></i>Se connecter</a>
-    </li>
-    <li>
-        <a href="#/register" ng-class="{active: tab == 'register'}" angular-ripple><i class="fa fa-user-plus"></i>S'inscrire</a>
-    </li>
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+            Bound-App
+        </li>
+        <li>
+            <a href="#/" ng-class="{active: tab == 'index'}" angular-ripple>
+                <i class="fa fa-home"></i>Accueil
+            </a>
+        </li>
+        <li>
+            <a href="#/login" ng-class="{active: tab == 'login'}" angular-ripple><i class="fa fa-unlock"></i>Se connecter</a>
+        </li>
+        <li>
+            <a href="#/register" ng-class="{active: tab == 'register'}" angular-ripple><i class="fa fa-user-plus"></i>S'inscrire</a>
+        </li>
+    </ul>
+
+    <ul class="sidebar-nav bottom">
+        <li>
+            <a href="#/cgu" ng-class="{active: tab == 'cgu'}" angular-ripple><i class="fa fa-life-ring"></i>CGU</a>
+        </li>
+
+        <li>
+            <a href="#/privacy" ng-class="{active: tab == 'privacy'}" angular-ripple>
+                <i class="fa fa-user-secret"></i>Politique de confidentialité
+            </a>
+        </li>
+    </ul>
 </div>
 
 <div ng-switch-default>
-    <li class="sidebar-brand">
-        <figure>
-            <img src="img/avatar.png" class="img-responsive img-circle">
-            <figcaption ng-bind="user.username"></figcaption>
-        </figure>
-    </li>
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+            <figure>
+                <img src="img/avatar.png" class="img-responsive img-circle">
+                <figcaption ng-bind="user.username"></figcaption>
+            </figure>
+        </li>
 
-    <li>
-        <a href="#/home" ng-class="{active: tab == 'home'}" angular-ripple>
-            <i class="fa fa-home"></i>Accueil
-        </a>
-    </li>
-    <li>
-        <a href="#/dashboard" ng-class="{active: tab == 'dashboard'}" angular-ripple><i class="fa fa-user"></i>Mon dashboard</a>
-    </li>
-    <li>
-        <a href="#/mail" ng-class="{active: tab == 'mail'}" angular-ripple><i class="fa fa-paper-plane-o"></i>Ma messagerie</a>
-    </li>
-    <li>
-        <a href="#/achievements" ng-class="{active: tab == 'achievements'}" angular-ripple><i class="fa fa-star-o"></i>Mes haut-faits</a>
-    </li>
-    <li>
-        <a href="#/friends" ng-class="{active: tab == 'friends'}" angular-ripple><i class="fa fa-heart-o"></i>Mes amis</a>
-    </li>
-    <li>
-        <a href="#/crew" ng-class="{active: tab == 'crew'}" angular-ripple><i class="fa fa-users"></i>Ma crew</a>
-    </li>
-    <li>
-        <a href="#/logout" ng-class="{active: tab == 'logout'}" angular-ripple><i class="fa fa-power-off"></i>Se déconnecter</a>
-    </li>
+        <li>
+            <a href="#/home" ng-class="{active: tab == 'home'}" angular-ripple>
+                <i class="fa fa-home"></i>Accueil
+            </a>
+        </li>
+        <li>
+            <a href="#/dashboard" ng-class="{active: tab == 'dashboard'}" angular-ripple><i class="fa fa-user"></i>Mon dashboard</a>
+        </li>
+        <li>
+            <a href="#/mail" ng-class="{active: tab == 'mail'}" angular-ripple><i class="fa fa-paper-plane-o"></i>Ma messagerie</a>
+        </li>
+        <li>
+            <a href="#/achievements" ng-class="{active: tab == 'achievements'}" angular-ripple><i class="fa fa-star-o"></i>Mes haut-faits</a>
+        </li>
+        <li>
+            <a href="#/friends" ng-class="{active: tab == 'friends'}" angular-ripple><i class="fa fa-heart-o"></i>Mes amis</a>
+        </li>
+        <li>
+            <a href="#/crew" ng-class="{active: tab == 'crew'}" angular-ripple><i class="fa fa-users"></i>Ma crew</a>
+        </li>
+        <li>
+            <a href="#/logout" ng-class="{active: tab == 'logout'}" angular-ripple><i class="fa fa-power-off"></i>Se déconnecter</a>
+        </li>
+
+        <li>
+    </ul>
+
+    <ul class="sidebar-nav bottom">
+        <li>
+            <a href="#/cgu" ng-class="{active: tab == 'cgu'}" angular-ripple><i class="fa fa-life-ring"></i>CGU</a>
+        </li>
+
+        <li>
+            <a href="#/privacy" ng-class="{active: tab == 'privacy'}" angular-ripple>
+                <i class="fa fa-user-secret"></i>Politique de confidentialité
+            </a>
+        </li>
+    </ul>
 </div>

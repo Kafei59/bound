@@ -1,8 +1,8 @@
 /* 
 * @Author: gicque_p
 * @Date:   2016-02-04 16:07:30
-* @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-26 12:23:45
+* @Last Modified by:   Kafei59
+* @Last Modified time: 2016-03-09 16:05:33
 */
 
 body {
@@ -94,14 +94,10 @@ ul {
 }
 
 video {
-    position: fixed;
-    top: 50%;
-    left: 50%;
+    position: absolute;
+    top: 0;
     min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translateX(-50%) translateY(-50%);
+    min-height: 100vh;
     background: url(../img/bg4.png) no-repeat;
     background-size: cover;
     transition: 1s opacity;
@@ -118,8 +114,8 @@ video {
 }
 
 .overlay-video {
-    z-index: 2;
     position: absolute;
+    z-index: 2;
     top: 15vh;
     width: 100%;
     padding: 50px;
@@ -132,8 +128,8 @@ video {
 }
 
 .pattern-video {
+    position: absolute;
     z-index: 1;
-    position: fixed;
     min-width: 100%;
     min-height: 100%;
 
@@ -151,6 +147,14 @@ video {
 
 .panel-center .panel-content a {
     font-size: 3em;
+}
+
+.panel-public {
+    position: relative;
+    z-index: 2;
+    min-width: 100%;
+    min-height: 100vh;
+    background: #ededed;
 }
 
 .achievement-list {
@@ -197,8 +201,13 @@ video {
     list-style: none;
 }
 
+.sidebar-nav.bottom {
+    bottom: 0;
+    top: initial;
+}
+
 .sidebar-nav li {
-    text-indent: 20px;
+    text-indent: 10px;
     line-height: 40px;
 }
 

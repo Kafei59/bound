@@ -1,8 +1,8 @@
 /* 
 * @Author: gicque_p
 * @Date:   2016-02-02 13:23:24
-* @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-26 11:43:17
+* @Last Modified by:   Kafei59
+* @Last Modified time: 2016-03-09 15:27:11
 */
 
 var app = angular.module('BoundApp', [
@@ -106,8 +106,24 @@ app.config(function($routeProvider) {
             tab: 'crew'
         })
 
+        .when('/cgu', {
+            controller: 'CguController',
+            templateUrl: 'views/cgu.html',
+            pageTitle: 'CGU',
+            pageSubtitle: 'Parce qu\'il faut bien être sérieux à un moment',
+            tab: 'cgu'
+        })
+
+        .when('/privacy', {
+            controller: 'PrivacyController',
+            templateUrl: 'views/privacy.html',
+            pageTitle: 'Polique de confidentialité',
+            pageSubtitle: 'Parce que l\'on ne fait pas n\'importe quoi avec les données',
+            tab: 'privacy'
+        })
+
         .otherwise({
-            redirectTo: '/'
+            redirectTo: '/home'
         })
     ;
 });

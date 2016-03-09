@@ -1,8 +1,8 @@
 /* 
 * @Author: gicque_p
 * @Date:   2016-02-02 13:42:51
-* @Last Modified by:   gicque_p
-* @Last Modified time: 2016-02-26 11:05:27
+* @Last Modified by:   Kafei59
+* @Last Modified time: 2016-03-09 15:44:46
 */
 
 app.controller('MainController', ['$rootScope', 'cookieService', '$location', 'userService', '$http', function($rootScope, $cookieService, $location, $userService, $http) {
@@ -205,4 +205,12 @@ app.controller('CrewController', ['$rootScope', 'cookieService', 'userService', 
         $location.path('/');
         $location.replace();
     });
+}]);
+
+app.controller('CguController', ['$rootScope', 'cookieService', function($rootScope, $cookieService) {
+    $rootScope.token = $cookieService.getToken();
+}]);
+
+app.controller('PrivacyController', ['$rootScope', 'cookieService', function($rootScope, $cookieService) {
+    $rootScope.token = $cookieService.getToken();
 }]);
