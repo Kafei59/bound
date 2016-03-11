@@ -128,8 +128,12 @@ hwi_oauth:
             type: facebook
             client_id: %facebook_id%
             client_secret: %facebook_secret%
-            scope: "email"
+            scope: "email, public_profile, user_friends"
             infos_url: "https://graph.facebook.com/me?fields=id,name,email,picture.type(square),age_range,link,gender,timezone"
+        twitter:
+            type: twitter
+            client_id: %twitter_id%
+            client_secret: %twitter_secret%
 
 #CORS Configuration:
 nelmio_cors:
