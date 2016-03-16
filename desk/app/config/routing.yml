@@ -51,3 +51,9 @@ hwi_oauth_service_redirect:
 hwi_oauth_service_back:
     path: /ouath/v2.0/back
     defaults: { _controller: BoundCoreBundle:Provider:backFromService }
+
+hwi_oauth_check_facebook:
+    path: /oauth/v2.0/check-facebook
+
+hwi_oauth_check_twitter:
+    path: /oauth/v2.0/check-twitter
