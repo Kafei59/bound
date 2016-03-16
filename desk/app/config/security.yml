@@ -20,8 +20,8 @@ security:
             anonymous: ~
             oauth:
                 resource_owners:
-                    facebook: "/oauth/v2.0/login/check-facebook"
-                    twitter: "/oauth/v2.0/login/check-twitter"
+                    facebook: hwi_oauth_check_facebook
+                    twitter: hwi_oauth_check_facebook
                 use_forward: false
                 login_path: hwi_oauth_service_back
                 failure_path: hwi_oauth_service_back
