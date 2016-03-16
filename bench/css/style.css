@@ -2,13 +2,11 @@
 * @Author: gicque_p
 * @Date:   2016-02-04 16:07:30
 * @Last Modified by:   Kafei59
-* @Last Modified time: 2016-03-09 16:05:33
+* @Last Modified time: 2016-03-16 17:35:08
 */
 
 body {
     font-family: Raleway;
-    width: 100%;
-    height: 100vh;
     background: #ededed;
 }
 
@@ -22,6 +20,11 @@ ul {
     list-style-type: none;
 }
 
+.to-bottom {
+    position: absolute;
+    bottom: 0;
+}
+
 #wrapper {
     width: 100%;
     overflow: hidden;
@@ -33,10 +36,6 @@ ul {
     transition: all 0.5s ease;
 }
 
-#wrapper.toggled {
-    padding-left: 250px;
-}
-
 #wrapper.toggled #sidebar-wrapper {
     width: 250px;
 }
@@ -45,6 +44,7 @@ ul {
     width: 100%;
     position: absolute;
     overflow: hidden;
+    background: #ededed;
 }
 
 
@@ -103,9 +103,14 @@ video {
     transition: 1s opacity;
 }
 
+video::-webkit-media-controls {
+    display:none !important;
+}
+
 #menu-toggle {
-    z-index: 2;
+    z-index: 5;
     position: fixed;
+    top: 0;
 }
 
 .overlay-container {
@@ -178,7 +183,7 @@ video {
 
 /* Sidebar Styles */
 #sidebar-wrapper {
-    z-index: 1;
+    z-index: 5;
     position: fixed;
     left: 250px;
     width: 0;
@@ -202,6 +207,7 @@ video {
 }
 
 .sidebar-nav.bottom {
+    position: absolute;
     bottom: 0;
     top: initial;
 }
@@ -391,7 +397,7 @@ video {
 }
 
 .timeline > li > .timeline-badge {
-    z-index: 100;
+    /*z-index: 1;*/
     position: absolute;
     top: 16px;
     left: 50%;
@@ -580,7 +586,6 @@ video {
 #menu-toggle {
     width: 60px;
     height: 45px;
-    position: absolute;
     margin: 30px;
     zoom: 0.5;
     -webkit-transform: rotate(0deg);

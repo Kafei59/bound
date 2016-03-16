@@ -21,6 +21,7 @@ security:
             oauth:
                 resource_owners:
                     facebook: "/oauth/v2.0/login/check-facebook"
+                    twitter: "/oauth/v2.0/login/check-twitter"
                 use_forward: false
                 login_path: hwi_oauth_service_back
                 failure_path: hwi_oauth_service_back

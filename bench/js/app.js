@@ -2,13 +2,14 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:23:24
 * @Last Modified by:   Kafei59
-* @Last Modified time: 2016-03-09 15:27:11
+* @Last Modified time: 2016-03-11 11:18:42
 */
 
 var app = angular.module('BoundApp', [
     'ngAnimate', 
     'ngRoute', 
     'ngCookies', 
+    'ngMaterial',
     'angularRipple', 
     'angular-scroll-animate', 
     'angularMoment',

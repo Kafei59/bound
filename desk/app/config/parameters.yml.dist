@@ -22,3 +22,5 @@ parameters:
     redirect_uri: /
     facebook_id: facebookId
     facebook_secret: facebookSecret
+    twitter_id: twitterId
+    twitter_secret: twitterSecret

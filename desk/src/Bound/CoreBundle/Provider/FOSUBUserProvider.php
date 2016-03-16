@@ -34,7 +34,7 @@ class FOSUBUserProvider extends BaseClass {
         $action = $this->session->getFlashBag()->get('action');
         $this->session->getFlashBag()->set('action', $action);
 
-        if ($response->getEmail()) {        
+        // if ($response->getEmail()) {
             switch ($action[0]) {
                 case 'login':
                     $this->login($response);
@@ -46,9 +46,9 @@ class FOSUBUserProvider extends BaseClass {
                     $this->associate($response);
                     break;
             }
-        } else {
-            $this->session->getFlashBag()->add('error', "You must provider user_email information");
-        }
+        // } else {
+        //     $this->session->getFlashBag()->add('error', "You must provider user_email information");
+        // }
     }
 
     private function login(UserResponseInterface $response) {
