@@ -21,11 +21,10 @@ security:
             oauth:
                 resource_owners:
                     facebook: hwi_oauth_check_facebook
-                    twitter: hwi_oauth_check_facebook
+                    twitter: hwi_oauth_check_twitter
 
                 use_forward: false
                 login_path: hwi_oauth_service_back
-                check_path: false
                 failure_path: hwi_oauth_service_back
                 default_target_path: hwi_oauth_service_back
 
