@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-04 16:07:30
 * @Last Modified by:   Kafei59
-* @Last Modified time: 2016-03-16 17:35:08
+* @Last Modified time: 2016-03-18 16:31:25
 */
 
 body {
@@ -555,6 +555,12 @@ video::-webkit-media-controls {
     .overlay-video form input {
         width: 15%;
         margin: auto;
+    }
+}
+
+@media(max-width:768px) {
+    #wrapper.toggled #page-content-wrapper {
+        max-height: 100vh;
     }
 }
 
