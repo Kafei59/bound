@@ -15,6 +15,8 @@ use Bound\CoreBundle\Form\Type\AchievementType;
 
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Controller\Annotations\RequestParam;
+use FOS\RestBundle\Controller\Annotations\Get;
+
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use JMS\Serializer\SerializerBuilder;
 
@@ -35,6 +37,26 @@ class AchievementController extends AController {
     public function getAchievementsAction(Request $request) {
         $user = $this->assertToken($request->get('token'));
         $achievements = $this->getDoctrine()->getRepository('BoundCoreBundle:Achievement')->findAll();
+
+        return array('achievements' => $achievements);
+    }
+
+    /**
+     * Mapping [GET] api.bound-app.com/achievements/type/{type}?token="token"
+     * @QueryParam(name="token", description="Token de l'utilisateur")
+     * @Get("/achievements/type/{type}")
+     * @ApiDoc(
+     *  description="Retourne la liste de tous les haut-faits du type en question",
+     *  output="Bound\CoreBundle\Entity\Achievement",
+     *  statusCodes={
+     *     200="Retourner lorsque tout est OK",
+     *     403="Retourner si l'utilisateur n'existe pas ou n'est pas admin"
+     *  }
+     * )
+     */
+    public function getAchievementsByTypeAction($type, Request $request) {
+        $this->assertToken($request->get('token'));
+        $achievements = $this->getDoctrine()->getRepository('BoundCoreBundle:Achievement')->findByType($type);
 
         return array('achievements' => $achievements);
     }

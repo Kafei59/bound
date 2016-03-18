@@ -18,23 +18,25 @@
     </head>
 
     <body>
-        <div id="wrapper">
-            <div id="sidebar-wrapper" ng-switch on="token || 'null'" sidebar>
-            </div>
-
-            <div id="page-content-wrapper">
-                <div id="menu-toggle" class="open">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+        <div ng-cloak>
+            <div id="wrapper">
+                <div id="sidebar-wrapper" ng-switch on="token || 'null'" sidebar>
                 </div>
 
-                <div ng-switch on="token || 'null'" background>
-                </div>
+                <div id="page-content-wrapper">
+                    <div id="menu-toggle" class="open">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
 
-                <div id="main" ng-view></div>
+                    <div ng-switch on="token || 'null'" background>
+                    </div>
+
+                    <div id="main" ng-view></div>
+                </div>
             </div>
-        </div>
+        </body>
 
         <script src="dist/jquery.min.js"></script>
         <script src="dist/moment.min.js"></script>

@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:42:51
 * @Last Modified by:   Kafei59
-* @Last Modified time: 2016-03-09 15:44:46
+* @Last Modified time: 2016-03-18 17:39:55
 */
 
 app.controller('MainController', ['$rootScope', 'cookieService', '$location', 'userService', '$http', function($rootScope, $cookieService, $location, $userService, $http) {
@@ -181,6 +181,19 @@ app.controller('AchievementsController', ['$rootScope', '$scope', 'cookieService
     $http.get($url).success(function(data) {
         $scope.achievements = data.achievements;
     });
+
+    $scope.loadAchievementsByType = function(type) {
+        if (type != undefined) {
+            $url = $apiService.ACHIEVEMENTS_GET + '/type/' + type + '?token=' + $rootScope.token;
+        } else {
+            $url = $apiService.ACHIEVEMENTS_GET + '?token=' + $rootScope.token;
+        }
+
+        $http.get($url).success(function(data) {
+            $scope.achievements = data.achievements;
+        });
+    }
+
 }]);
 
 app.controller('FriendsController', ['$rootScope', 'cookieService', 'userService', '$location', function($rootScope, $cookieService, $userService, $location) {
