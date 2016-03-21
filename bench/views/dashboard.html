@@ -1,39 +1,72 @@
 <div class="panel-body">
-    <div class="container padding-top-medium">
-        <div class="panel-header background-blue">
-            <h3 class="font-white"><i class="fa fa-cog"></i>&nbsp;Configuration</h3>
-        </div>
+    <div class="panel-tab">
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Profil">
+                <md-content class="md-padding padding-top-medium container" ng-cloak>
+                    <div class="panel-header background-aubergine">
+                        <h3 class="font-white"><i class="fa fa-cog"></i>&nbsp;Configuration</h3>
+                    </div>
 
-        <div class="panel-content text-center background-white padding-medium">
-            <md-content class="md-no-momentum">
-                <md-input-container class="md-icon-float md-block">
-                    <label>Nom d'utilisateur</label>
-                    <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="username"></md-icon>
-                    <input ng-model="user.username" type="text" ng-required="true">
-                </md-input-container>
-                
-                <md-input-container md-no-float class="md-block">
-                    <label>Email</label>
-                    <md-icon md-svg-src="img/icons/ic_phone_24px.svg"></md-icon>
-                    <input ng-model="user.email" type="text" placeholder="email" ng-required="true">
-                </md-input-container>
-            </md-content>
+                    <div class="panel-content text-center background-white padding-medium">
+                        <md-content class="md-no-momentum">
+                            <md-input-container class="md-icon-float md-block">
+                                <label>Nom d'utilisateur</label>
+                                <input ng-model="user.username" type="text" ng-required="true">
+                            </md-input-container>
+                            
+                            <md-input-container md-no-float class="md-block">
+                                <label>Email</label>
+                                <input ng-model="user.email" type="text" placeholder="email" ng-required="true">
+                            </md-input-container>
+                        </md-content>
 
-            <h3>
-                Associer Facebook
-                <a href="{{ facebookLogin }}">
-                    <i class="fa fa-facebook-official"></i>
-                </a>
-            </h3>
+                        <h4>Choisir son avatar</h4>
+                        <h4>Choisir son background header</h4>
 
-            <h3>
-                Associer Twitter
-                <a href="" class="disabled">
-                    <i class="fa fa-twitter-square"></i>
-                </a>
-            </h3>
+                        <md-button class="md-raised md-primary" ng-click="refresh()">Rafraîchir les haut-faits obtenus</md-button>
+                    </div>
+                </md-content>
+            </md-tab>
 
-            <md-button class="md-raised md-primary" ng-click="refresh()">Rafraîchir les haut-faits obtenus</md-button>
-        </div>
+            <md-tab label="Réseaux Sociaux">
+                <md-content class="md-padding padding-top-medium container" ng-cloak>
+                    <div class="panel-header background-aubergine">
+                        <h3 class="font-white"><i class="fa fa-share-alt"></i>&nbsp;Comptes associés</h3>
+                    </div>
+
+                    <div class="panel-content text-center background-white padding-medium">
+                        <div ng-switch on="user.client.facebook_id || 'null'">
+                            <div ng-switch-when="null">
+                                <h3>
+                                    Associer Facebook
+                                    <a href="{{ facebookLogin }}">
+                                        <i class="fa fa-facebook-official"></i>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div ng-switch-default>
+                                FacebookID: <span ng-bind="user.client.facebook_id"></span><br>
+                                FacebookAccessToken: <span ng-bind="user.client.facebook_access_token"></span><br>
+                            </div>
+                        </div>
+
+                        <div ng-switch on="user.client.twitter_id || 'null'">
+                            <div ng-switch-when="null">
+                                <h3>
+                                    Associer Twitter
+                                    <a href="" class="disabled">
+                                        <i class="fa fa-twitter-square"></i>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div ng-switch-default>
+                                TwitterID: <span ng-bind="user.client.twitter_id"></span><br>
+                                TwitterAccessToken: <span ng-bind="user.client.twitter_access_token"></span><br>
+                            </div>
+                        </div>
+                    </div>
+                </md-content>
+            </md-tab>
+        </md-tabs>
     </div>
 </div>

@@ -2,15 +2,15 @@
     <ul class="timeline" ng-repeat="(key, notification) in notifications">
         <li ng-class="key % 3 == 1 ? 'timeline-inverted' : ''">
             <div class="timeline-badge" ng-switch on="notification.type">
-                <div ng-switch-when="facebook" class="badge-facebook">
+                <div ng-switch-when="facebook" class="background-facebook">
                     <i class="fa fa-facebook"></i>
                 </div>
 
-                <div ng-switch-when="achievement" class="badge-star">
+                <div ng-switch-when="achievement" class="background-yellow">
                     <i class="fa fa-star"></i>
                 </div>
 
-                <div ng-switch-default class="badge-default">
+                <div ng-switch-default class="background-aubergine">
                     <i class="fa fa-link"></i>
                 </div>
             </div>

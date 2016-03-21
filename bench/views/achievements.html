@@ -2,7 +2,7 @@
     <div class="panel-tab text-center">
         <md-tabs md-dynamic-height md-border-bottom>
             <md-tab label="Tous" md-on-select="loadAchievementsByType()">
-                <md-content class="md-padding container">
+                <md-content class="md-padding container" ng-cloak>
                     <h1 class="md-display-2">Tous les haut-faits</h1>
 
                     <div class="achievement-header text-left text-uppercase font-white">
@@ -12,10 +12,17 @@
 
                     <div class="achievement-content" ng-repeat="achievement in achievements">
                         <div>
-                            <img src="img/avatar.png" class="square-img">
-                            <h4>{{ achievement.title }}</h4>
-                            <p>{{ achievement.content }}</p>
-                            <p>{{ achievement.points }} points</p>
+                            <div class="pull-left">
+                                <img src="img/star.jpg" class="square-img">
+                            </div>
+
+                            <div class="text-left">
+                                <h4>{{ achievement.title }}</h4>
+                                <p>{{ achievement.content }}</p>
+                            </div>
+
+                            <p class="text-uppercase">{{ achievement.points }} points</p>
+                            <p class="text-right">{{ achievement.type }}</p>
                         </div>
                         <md-divider></md-divider>
                     </div>
@@ -23,7 +30,7 @@
             </md-tab>
 
             <md-tab label="Facebook" md-on-select="loadAchievementsByType('facebook')">
-                <md-content class="md-padding container">
+                <md-content class="md-padding container" ng-cloak>
                     <h1 class="md-display-2">Haut-faits Facebook</h1>
                     <div class="achievement-header text-left text-uppercase font-white">
                         <h3 class="pull-right">0% terminé</h3>
@@ -32,10 +39,17 @@
 
                     <div class="achievement-content" ng-repeat="achievement in achievements">
                         <div>
-                            <img src="img/avatar.png" class="square-img">
-                            <h4>{{ achievement.title }}</h4>
-                            <p>{{ achievement.content }}</p>
-                            <p>{{ achievement.points }} points</p>
+                            <div class="pull-left">
+                                <img src="img/star.jpg" class="square-img">
+                            </div>
+
+                            <div class="text-left">
+                                <h4>{{ achievement.title }}</h4>
+                                <p>{{ achievement.content }}</p>
+                            </div>
+
+                            <p class="text-uppercase">{{ achievement.points }} points</p>
+                            <p class="text-right">{{ achievement.type }}</p>
                         </div>
                         <md-divider></md-divider>
                     </div>
@@ -43,7 +57,7 @@
             </md-tab>
 
             <md-tab label="Twitter" md-on-select="loadAchievementsByType('twitter')">
-                <md-content class="md-padding container">
+                <md-content class="md-padding container" ng-cloak>
                     <h1 class="md-display-2">Haut-faits Twitter</h1>
                     <div class="achievement-header text-left text-uppercase font-white">
                         <h3 class="pull-right">0% terminé</h3>
@@ -52,10 +66,17 @@
 
                     <div class="achievement-content" ng-repeat="achievement in achievements">
                         <div>
-                            <img src="img/avatar.png" class="square-img">
-                            <h4>{{ achievement.title }}</h4>
-                            <p>{{ achievement.content }}</p>
-                            <p>{{ achievement.points }} points</p>
+                            <div class="pull-left">
+                                <img src="img/star.jpg" class="square-img">
+                            </div>
+
+                            <div class="text-left">
+                                <h4>{{ achievement.title }}</h4>
+                                <p>{{ achievement.content }}</p>
+                            </div>
+
+                            <p class="text-uppercase">{{ achievement.points }} points</p>
+                            <p class="text-right">{{ achievement.type }}</p>
                         </div>
                         <md-divider></md-divider>
                     </div>
@@ -63,7 +84,7 @@
             </md-tab>
 
             <md-tab label="Bound" md-on-select="loadAchievementsByType('bound')">
-                <md-content class="md-padding container">
+                <md-content class="md-padding container" ng-cloak>
                     <h1 class="md-display-2">Haut-faits Bound</h1>
                     <div class="achievement-header text-left text-uppercase font-white">
                         <h3 class="pull-right">0% terminé</h3>
@@ -72,10 +93,17 @@
 
                     <div class="achievement-content" ng-repeat="achievement in achievements">
                         <div>
-                            <img src="img/avatar.png" class="square-img">
-                            <h4>{{ achievement.title }}</h4>
-                            <p>{{ achievement.content }}</p>
-                            <p>{{ achievement.points }} points</p>
+                            <div class="pull-left">
+                                <img src="img/star.jpg" class="square-img">
+                            </div>
+
+                            <div class="text-left">
+                                <h4>{{ achievement.title }}</h4>
+                                <p>{{ achievement.content }}</p>
+                            </div>
+
+                            <p class="text-uppercase">{{ achievement.points }} points</p>
+                            <p class="text-right">{{ achievement.type }}</p>
                         </div>
                         <md-divider></md-divider>
                     </div>
