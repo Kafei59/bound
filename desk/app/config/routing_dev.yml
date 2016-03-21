@@ -37,7 +37,7 @@ fos_user_profile:
 
 # Enable OAuth routes in Api
 hwi_oauth_service_redirect:
-    path: /api/oauth/v2.0/login/{service}/{action}/{token}
+    path: /api/oauth/v2.0/{service}/{action}/{token}
     defaults: { _controller: BoundCoreBundle:Provider:redirectToService, token: null }
 
 hwi_oauth_service_back:

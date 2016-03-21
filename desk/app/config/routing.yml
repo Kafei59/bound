@@ -45,7 +45,7 @@ NelmioApiDocBundle:
 
 #HWIOAuthRoutes
 hwi_oauth_service_redirect:
-    path: /oauth/v2.0/login/{service}/{action}/{token}
+    path: /oauth/v2.0/{service}/{action}/{token}
     defaults: { _controller: BoundCoreBundle:Provider:redirectToService, token: null }
 
 hwi_oauth_service_back:

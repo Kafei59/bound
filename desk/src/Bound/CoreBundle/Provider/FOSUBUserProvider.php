@@ -34,21 +34,32 @@ class FOSUBUserProvider extends BaseClass {
         $action = $this->session->getFlashBag()->get('action');
         $this->session->getFlashBag()->set('action', $action);
 
-        // if ($response->getEmail()) {
-            switch ($action[0]) {
-                case 'login':
-                    $this->login($response);
-                    break;
-                case 'register':
+        $token = $this->session->getFlashBag()->get('token');
+        if (array_key_exists(0, $token)) {
+            $token = $token[0];
+        }
+
+        switch ($action[0]) {
+            case 'login':
+                $this->login($response);
+                break;
+            case 'register':
+                if ($response->getEmail()) {
                     $this->register($response);
-                    break;
-                case 'associate':
-                    $this->associate($response);
-                    break;
-            }
-        // } else {
-        //     $this->session->getFlashBag()->add('error', "You must provider user_email information");
-        // }
+                } else {
+                    $this->session->getFlashBag()->add('error', "You must provide user_email information");
+                }
+
+                break;
+            case 'associate':
+                if ($token != NULL) {
+                    $this->associate($response, $token);
+                } else {
+                    $this->session->getFlashBag()->add('error', "Token not found.");
+                }
+
+                break;
+        }
     }
 
     private function login(UserResponseInterface $response) {
@@ -59,24 +70,16 @@ class FOSUBUserProvider extends BaseClass {
         $user = $this->container->get('doctrine')->getRepository('BoundCoreBundle:User')->findOneByEmail($email);
         if ($user instanceof User) {
             $client = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Client')->findOneBy(array($service.'_id' => $password));
-            if ($client instanceof Client) {
-                if ($user->getClient() and $user->getClient()->getId() == $client->getId()) {
-                    if ($user->isEnabled()) {                    
-                        $token = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Token')->findOneByUser($user);
-                        if (!$token) {
-                            $token = $this->container->get('bound.token_manager')->add($user);
-                        }
-                        $this->session->getFlashBag()->add('token', $token->getData());
-
-                        return $user;
-                    } else {
-                        $this->session->getFlashBag()->add('error', "Check out your mails to enable your account.");
-                    }
-                } else {
-                    $this->session->getFlashBag()->add('error', "Client and user are not bound.");
+            if ($user->isEnabled() and $client instanceof Client and $user->getClient()->getId() == $client->getId()) {
+                $token = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Token')->findOneByUser($user);
+                if (!$token) {
+                    $token = $this->container->get('bound.token_manager')->add($user);
                 }
+                $this->session->getFlashBag()->add('token', $token->getData());
+
+                return $user;
             } else {
-                $this->session->getFlashBag()->add('error', "Client not found.");
+                $this->session->getFlashBag()->add('error', "Error while login");
             }
         } else {
             $this->session->getFlashBag()->add('error', "User not found.");
@@ -87,74 +90,58 @@ class FOSUBUserProvider extends BaseClass {
         $username = $response->getRealName();
         $email = $response->getEmail();
         $password = $response->getUsername();
-
         $service = $response->getResourceOwner()->getName();
-        $setter = 'set'.ucfirst($service);
-        $setter_id = $setter.'Id';
-        $setter_token = $setter.'AccessToken';
 
         $client = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Client')->findOneBy(array($service.'_id' => $password));
         if ($client instanceof Client) {
             $this->session->getFlashBag()->add('error', "Client ID already bound.");
         } else {
             $user = $this->container->get('bound.user_manager')->add($username, $email, $password, true);
-            $client = $user->getClient();
-
-            $client->$setter_id($password);
-            $client->$setter_token($response->getAccessToken());
-
-            $this->manager->persist($client);
-            $this->manager->flush();
-
-            $this->container->get('bound.notification_manager')->add($user->getPlayer(), "Compte associé", "Vous avez associé votre compte Facebook !", "facebook");
+            $this->link($response, $user);
 
             return $user;
         }
     }
 
-    private function associate(UserResponseInterface $response) {
-        $token = $this->session->getFlashBag()->get('token');
-        if (array_key_exists(0, $token)) {
-            $token = $token[0];
-        }
+    private function associate(UserResponseInterface $response, $token) {
+        $password = $response->getUsername();
+        $service = $response->getResourceOwner()->getName();
 
-        if ($token != NULL) {
-            $token = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Token')->findOneByData($token);
-            if ($token instanceof Token) {
-                $user = $token->getUser();
-                $client = $user->getClient();
-                if ($client instanceof Client) {
-                    $property = $this->getProperty($response);
-                    $username = $response->getUsername();
-
-                    $service = $response->getResourceOwner()->getName();
-                    $setter = 'set'.ucfirst($service);
-
-                    $entity = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Client')->findOneBy(array($service.'_id' => $username));
-                    if ($entity instanceof Client and $entity != $client) {
-                        $this->session->getFlashBag()->add('error', "Client ID already bound.");
-                    } else {
-                        $setter_id = $setter.'Id';
-                        $setter_token = $setter.'AccessToken';
-
-                        $client->$setter_id($username);
-                        $client->$setter_token($response->getAccessToken());
-
-                        $this->manager->persist($client);
-                        $this->manager->flush();
-
-                        $this->container->get('bound.notification_manager')->add($user->getPlayer(), "Compte associé", "Vous avez associé votre compte Facebook !", "facebook");
-
-                        return $user;
-                    }
+        $token = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Token')->findOneByData($token);
+        if ($token instanceof Token) {
+            $user = $token->getUser();
+            $client = $user->getClient();
+            if ($client instanceof Client) {
+                $entity = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Client')->findOneBy(array($service.'_id' => $password));
+                if ($entity instanceof Client and $entity != $client) {
+                    $this->session->getFlashBag()->add('error', "Client ID already bound.");
                 } else {
-                    $this->session->getFlashBag()->add('error', "Client not found.");
+                    $this->link($response, $user);
+
+                    return $user;
                 }
             } else {
-                $this->session->getFlashBag()->add('error', "Access Denied.");
+                $this->session->getFlashBag()->add('error', "Client not found.");
             }
         } else {
-            $this->session->getFlashBag()->add('error', "Token not found.");
+            $this->session->getFlashBag()->add('error', "Access Denied.");
         }
+    }
+
+    private function link(UserResponseInterface $response, User $user) {
+        $service = $response->getResourceOwner()->getName();
+        $password = $response->getUsername();
+        $setter = 'set'.ucfirst($service);
+        $setter_id = $setter.'Id';
+        $setter_token = $setter.'AccessToken';
+
+        $client = $user->getClient();
+        $client->$setter_id($password);
+        $client->$setter_token($response->getAccessToken());
+
+        $this->manager->persist($client);
+        $this->manager->flush();
+
+        $this->container->get('bound.notification_manager')->add($user->getPlayer(), "Compte associé", "Vous avez associé votre compte ".ucfirst($service)." !", $service);
     }
 }

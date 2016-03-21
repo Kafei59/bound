@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:44:37
 * @Last Modified by:   Kafei59
-* @Last Modified time: 2016-03-06 18:06:50
+* @Last Modified time: 2016-03-21 15:17:49
 */
 
 app.factory('apiService', function() {
@@ -16,26 +16,36 @@ app.factory('apiService', function() {
     var serverPath = location.protocol + '//' + serverIP;
     var service = {
         serverPath: serverPath,
+
         LOGIN: serverPath + '/login',
-        LOGIN_FACEBOOK: serverPath + '/oauth/v2.0/login/facebook/login',
-        REGISTER_FACEBOOK: serverPath + '/oauth/v2.0/login/facebook/register',
-        ASSOCIATE_FACEBOOK: serverPath + '/oauth/v2.0/login/facebook/associate',
         REGISTER: serverPath + '/register',
         RESETTING: serverPath + '/resetting',
         TOKEN: serverPath + '/token',
+
+        LOGIN_TWITTER: serverPath + '/oauth/v2.0/twitter/login',
+        REGISTER_TWITTER: serverPath + '/oauth/v2.0/twitter/register',
+        ASSOCIATE_TWITTER: serverPath + '/oauth/v2.0/twitter/associate',
+
+        LOGIN_FACEBOOK: serverPath + '/oauth/v2.0/facebook/login',
+        REGISTER_FACEBOOK: serverPath + '/oauth/v2.0/facebook/register',
+        ASSOCIATE_FACEBOOK: serverPath + '/oauth/v2.0/facebook/associate',
+
         ACHIEVEMENTS_GET: serverPath + '/achievements',
         ACHIEVEMENT_ADD: serverPath + '/achievements',
         ACHIEVEMENT_EDIT: serverPath + '/achievements',
         ACHIEVEMENT_DELETE: serverPath + '/achievements',
         ACHIEVEMENT_LOAD: serverPath + '/achievements/load',
+
         CREWS_GET: serverPath + '/crews',
         CREWS_ADD: serverPath + '/crews',
         CREWS_EDIT: serverPath + '/crews',
         CREWS_DELETE: serverPath + '/crews',
+
         NOTIFICATIONS_GET: serverPath + '/notifications',
         NOTIFICATION_ADD: serverPath + '/notifications',
         NOTIFICATION_EDIT: serverPath + '/notifications',
         NOTIFICATION_DELETE: serverPath + '/notifications',
+
         USERS_GET: serverPath + '/users',
         USERS_ADD: serverPath + '/users',
         USERS_EDIT: serverPath + '/users',

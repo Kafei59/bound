@@ -48,12 +48,12 @@ class Player
     private $playername;
 
     /**
-     * @ORM\Column(name="avatar_id", type="integer")
+     * @ORM\Column(name="avatar_id", type="integer", nullable=true)
      **/
     private $avatar_id;
 
     /**
-     * @ORM\Column(name="background_id", type="integer")
+     * @ORM\Column(name="background_id", type="integer", nullable=true)
      **/
     private $background_id;
 
