@@ -23,7 +23,7 @@ class Notification
 
     /**
      * @ORM\ManyToOne(targetEntity="Bound\CoreBundle\Entity\Player", inversedBy="notifications")
-     * @ORM\JoinColumn(name="player_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="player_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $owner;
 
