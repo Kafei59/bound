@@ -2,8 +2,8 @@
 /**
  * @Author: gicque_p
  * @Date:   2015-10-15 16:31:53
- * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-29 14:55:40
+ * @Last Modified by:   Kafei59
+ * @Last Modified time: 2016-03-21 14:55:57
  */
 
 namespace Bound\CoreBundle\Manager;
@@ -37,6 +37,7 @@ class UserManager extends AManager {
                 $user->setEnabled($enabled);
 
                 $player = new Player();
+                $player->setPlayername($user->getUsername());
                 $this->persist($player);
 
                 $client = new Client();

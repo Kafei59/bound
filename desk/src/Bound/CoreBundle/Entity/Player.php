@@ -42,6 +42,21 @@ class Player
      */
     private $notifications;
     
+    /**
+     * @ORM\Column(name="playername", type="string")
+     **/
+    private $playername;
+
+    /**
+     * @ORM\Column(name="avatar_id", type="integer")
+     **/
+    private $avatar_id;
+
+    /**
+     * @ORM\Column(name="background_id", type="integer")
+     **/
+    private $background_id;
+
     public function __construct() {
         $this->friends = array();
         $this->achievements = array();
@@ -186,5 +201,77 @@ class Player
     public function getNotifications()
     {
         return $this->notifications;
+    }
+
+    /**
+     * Set playername
+     *
+     * @param string $playername
+     *
+     * @return Player
+     */
+    public function setPlayername($playername)
+    {
+        $this->playername = $playername;
+
+        return $this;
+    }
+
+    /**
+     * Get playername
+     *
+     * @return string
+     */
+    public function getPlayername()
+    {
+        return $this->playername;
+    }
+
+    /**
+     * Set avatarId
+     *
+     * @param integer $avatarId
+     *
+     * @return Player
+     */
+    public function setAvatarId($avatarId)
+    {
+        $this->avatar_id = $avatarId;
+
+        return $this;
+    }
+
+    /**
+     * Get avatarId
+     *
+     * @return integer
+     */
+    public function getAvatarId()
+    {
+        return $this->avatar_id;
+    }
+
+    /**
+     * Set backgroundId
+     *
+     * @param integer $backgroundId
+     *
+     * @return Player
+     */
+    public function setBackgroundId($backgroundId)
+    {
+        $this->background_id = $backgroundId;
+
+        return $this;
+    }
+
+    /**
+     * Get backgroundId
+     *
+     * @return integer
+     */
+    public function getBackgroundId()
+    {
+        return $this->background_id;
     }
 }
