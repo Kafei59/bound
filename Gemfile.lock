@@ -33,4 +33,5 @@ PLATFORMS
 DEPENDENCIES
   capistrano (~> 3.4.0)
   capistrano-composer
+  capistrano-file-permissions
   capistrano-symfony (~> 0.1)!
