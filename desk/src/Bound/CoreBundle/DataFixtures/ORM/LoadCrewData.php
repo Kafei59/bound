@@ -2,8 +2,8 @@
 /**
  * @Author: gicque_p
  * @Date:   2015-10-17 18:22:12
- * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-15 16:36:37
+ * @Last Modified by:   Kafei59
+ * @Last Modified time: 2016-03-22 14:28:51
  */
 
 namespace Bound\CoreBundle\DataFixtures\ORM;
@@ -32,7 +32,5 @@ class LoadCrewData extends ContainerAware implements FixtureInterface {
 
         $this->container->get('bound.crew_manager')->add($crew1, $user);
         $this->container->get('bound.crew_manager')->add($crew2, $user);
-
-        $crew = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Crew')->findOneBySlug('the+clou');
     }
 };

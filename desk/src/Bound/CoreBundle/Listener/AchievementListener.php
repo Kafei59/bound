@@ -2,8 +2,8 @@
 /**
  * @Author: gicque_p
  * @Date:   2016-02-17 16:58:32
- * @Last Modified by:   gicque_p
- * @Last Modified time: 2016-02-26 01:11:24
+ * @Last Modified by:   Kafei59
+ * @Last Modified time: 2016-03-22 14:32:42
  */
 
 namespace Bound\CoreBundle\Listener;
@@ -19,6 +19,7 @@ use Bound\CoreBundle\Entity\Client;
 class AchievementListener {
 
     protected $container;
+    protected $manager;
 
     public function __construct(Container $container, EntityManager $manager) {
         $this->container = $container;
@@ -59,11 +60,11 @@ class AchievementListener {
         return $player;
     }
 
-    public function loadFunction($functionId) {
+    public function loadFunction(User $user, $functionId) {
         $player = $user->getPlayer();
         $client = $user->getClient();
 
-        if ($client instanceof Client) {        
+        if ($client instanceof Client) {
             $achievement = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Achievement')->findOneByFunctionId($functionId);
             $this->load($achievement, $player, $client);
 

@@ -3,7 +3,7 @@
  * @Author: root
  * @Date:   2016-02-17 11:39:22
  * @Last Modified by:   Kafei59
- * @Last Modified time: 2016-03-09 16:31:00
+ * @Last Modified time: 2016-03-22 14:28:07
  */
 
 namespace Bound\CoreBundle\Controller;
@@ -69,6 +69,7 @@ class ProviderController extends Controller {
             return $this->redirect($this->container->getParameter('redirect_uri').$uri.$error);
         } else {
             $uri = "/#/?";
+            $value = "";
             switch ($action) {
                 case 'login':
                     $token = $request->getSession()->getFlashBag()->get('token')[0];

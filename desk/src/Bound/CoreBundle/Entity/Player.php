@@ -53,9 +53,15 @@ class Player
     private $avatar_id;
 
     /**
+     * @ORM\Column(name="banner_id", type="integer", nullable=true)
+     **/
+    private $banner_id;
+
+    /**
      * @ORM\Column(name="background_id", type="integer", nullable=true)
      **/
     private $background_id;
+
 
     public function __construct() {
         $this->friends = array();
@@ -249,6 +255,30 @@ class Player
     public function getAvatarId()
     {
         return $this->avatar_id;
+    }
+
+    /**
+     * Set bannerId
+     *
+     * @param integer $bannerId
+     *
+     * @return Player
+     */
+    public function setBannerId($bannerId)
+    {
+        $this->banner_id = $bannerId;
+
+        return $this;
+    }
+
+    /**
+     * Get bannerId
+     *
+     * @return integer
+     */
+    public function getBannerId()
+    {
+        return $this->banner_id;
     }
 
     /**

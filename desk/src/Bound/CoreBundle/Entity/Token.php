@@ -106,7 +106,7 @@ class Token
      *
      * @return Token
      */
-    public function setDate($date)
+    public function setDate(\Datetime $date)
     {
         $this->date = $date;
 

@@ -168,7 +168,7 @@ class Notification
      *
      * @return Notification
      */
-    public function setDate($date)
+    public function setDate(\Datetime $date)
     {
         $this->date = $date;
 

@@ -3,7 +3,7 @@
  * @Author: Kafei59
  * @Date:   2016-03-06 16:16:49
  * @Last Modified by:   Kafei59
- * @Last Modified time: 2016-03-06 17:51:12
+ * @Last Modified time: 2016-03-22 14:27:28
  */
 
 namespace Bound\BackOfficeBundle\Controller;
@@ -30,10 +30,7 @@ class UserController extends Controller {
     }
 
     public function createAction() {
-        $user = new User();
-        $form = $this->createForm();
-
-        return $this->render('BoundBackOfficeBundle:User:form.html.twig', array('form' => $form->createView()));
+        return $this->render('BoundBackOfficeBundle:User:form.html.twig', array('form' => array()));
     }
 
     /**

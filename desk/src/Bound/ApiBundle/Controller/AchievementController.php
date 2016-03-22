@@ -35,7 +35,7 @@ class AchievementController extends AController {
      * )
      */
     public function getAchievementsAction(Request $request) {
-        $user = $this->assertToken($request->get('token'));
+        $this->assertToken($request->get('token'));
         $achievements = $this->getDoctrine()->getRepository('BoundCoreBundle:Achievement')->findAll();
 
         return array('achievements' => $achievements);
