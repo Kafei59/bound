@@ -3,7 +3,7 @@
  * @Author: Kafei59
  * @Date:   2016-03-06 16:16:44
  * @Last Modified by:   Kafei59
- * @Last Modified time: 2016-03-06 17:49:27
+ * @Last Modified time: 2016-03-22 14:38:38
  */
 
 namespace Bound\BackOfficeBundle\Controller;
@@ -50,6 +50,8 @@ class CrewController extends Controller {
      * @ParamConverter("crew", options={"mapping": {"crew": "slug"}})
     */
     public function deleteAction(Crew $crew) {
+        $this->get('bound.crew_manager')->delete($crew);
+
         return $this->redirect($this->generateUrl('bound_backoffice_crew_list'));        
     }
 }

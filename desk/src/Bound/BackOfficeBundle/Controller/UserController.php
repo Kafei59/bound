@@ -3,7 +3,7 @@
  * @Author: Kafei59
  * @Date:   2016-03-06 16:16:49
  * @Last Modified by:   Kafei59
- * @Last Modified time: 2016-03-22 14:27:28
+ * @Last Modified time: 2016-03-22 14:41:06
  */
 
 namespace Bound\BackOfficeBundle\Controller;
@@ -37,15 +37,17 @@ class UserController extends Controller {
      * @ParamConverter("user", options={"mapping": {"user": "slug"}})
     */
     public function editAction(User $user) {
-        $form = $this->createForm();
+        $user = $user;
 
-        return $this->render('BoundBackOfficeBundle:User:form.html.twig', array('form' => $form->createView()));
+        return $this->render('BoundBackOfficeBundle:User:form.html.twig', array('form' => array()));
     }
 
     /**
      * @ParamConverter("user", options={"mapping": {"user": "slug"}})
     */
     public function deleteAction(User $user) {
+        $user = $user;
+
         return $this->redirect($this->generateUrl('bound_backoffice_user_list'));        
     }
 }

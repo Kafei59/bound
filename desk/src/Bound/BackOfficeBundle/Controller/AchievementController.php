@@ -3,7 +3,7 @@
  * @Author: Kafei59
  * @Date:   2016-03-05 21:10:59
  * @Last Modified by:   Kafei59
- * @Last Modified time: 2016-03-06 16:27:02
+ * @Last Modified time: 2016-03-22 14:37:33
  */
 
 namespace Bound\BackOfficeBundle\Controller;
@@ -50,6 +50,9 @@ class AchievementController extends Controller {
      * @ParamConverter("achievement", options={"mapping": {"achievement": "slug"}})
     */
     public function deleteAction(Achievement $achievement) {
+        $user = $this->getUser();
+        $this->get('bound.achievement_manager')->delete($achievement, $user);
+
         return $this->redirect($this->generateUrl('bound_backoffice_achievement_list'));        
     }
 }

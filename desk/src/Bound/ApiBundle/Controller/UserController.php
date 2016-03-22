@@ -67,8 +67,8 @@ class UserController extends AController {
      * )
      */
     public function getUserAction(User $user, Request $request) {
-        $user = $this->assertToken($request->get('token'));
-        if (!$user->isAdmin()) {
+        $entity = $this->assertToken($request->get('token'));
+        if (!$entity->isAdmin()) {
             throw new HttpException(403, "Access Denied.");
         }
 
