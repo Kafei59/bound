@@ -1,12 +1,45 @@
 {% extends 'BoundBackOfficeBundle::layout.html.twig' %}
 
 {% block body %}
-    {% for achievement in achievements %}
-        <pre>
-            {{ achievement.title }}
-            {{ achievement.content }}
-            {{ achievement.points }}
-            {{ achievement.type }}
-        </pre>
-    {% endfor %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Liste des haut-faits</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <a href="{{ path('bound_backoffice_achievement_create') }}" class="btn btn-success btn-lg">Ajouter un haut-fait</a>
+        <br><br>
+
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <th>#</th>
+                    <th>Titre</th>
+                    <th>Contenu</th>
+                    <th>Points</th>
+                    <th>Type</th>
+                    <th>Fonction</th>
+                    <th>Gestion</th>
+                </thead>
+
+                <tbody>
+                    {% for achievement in achievements %}
+                        <tr>
+                            <td>{{ achievement.id }}</td>
+                            <td>{{ achievement.title }}</td>
+                            <td>{{ achievement.content }}</td>
+                            <td>{{ achievement.points }}</td>
+                            <td>{{ achievement.type }}</td>
+                            <td>{{ achievement.functionId }}</td>
+                            <td>
+                                <a href="{{ path('bound_backoffice_achievement_edit', {'id': achievement.id}) }}" class="btn btn-info btn-sm">Modifier</a>
+                                <a href="{{ path('bound_backoffice_achievement_delete', {'id': achievement.id}) }}" class="btn btn-danger btn-sm">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

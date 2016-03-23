@@ -3,7 +3,7 @@ bound_backoffice_achievement_list:
     defaults: { _controller: BoundBackOfficeBundle:Achievement:list }
 
 bound_backoffice_achievement_detail:
-    path:     /detail/{achievement}
+    path:     /detail/{id}
     defaults: { _controller: BoundBackOfficeBundle:Achievement:detail }
 
 bound_backoffice_achievement_create:
@@ -11,9 +11,9 @@ bound_backoffice_achievement_create:
     defaults: { _controller: BoundBackOfficeBundle:Achievement:create }
 
 bound_backoffice_achievement_edit:
-    path:     /edit/{achievement}
+    path:     /edit/{id}
     defaults: { _controller: BoundBackOfficeBundle:Achievement:edit }
 
 bound_backoffice_achievement_delete:
-    path:     /delete/{achievement}
+    path:     /delete/{id}
     defaults: { _controller: BoundBackOfficeBundle:Achievement:delete }

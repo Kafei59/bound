@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2016-02-14 19:13:04
  * @Last Modified by:   Kafei59
- * @Last Modified time: 2016-03-06 16:30:34
+ * @Last Modified time: 2016-03-23 17:29:41
  */
 
 namespace Bound\CoreBundle\Form\Type;
@@ -44,7 +44,10 @@ class AchievementType extends AbstractType {
                 'label' => "ID de la function de check du haut-fait",
                 'attr' => array('class' => "form-control", 'placeholder' => "ID Fonction")
             ))
-            ->add('submit', "submit")
+            ->add('submit', "submit", array(
+                'label' => "Envoyer",
+                'attr' => array('class' => "btn btn-primary")
+            ))
         ;
     }
 
