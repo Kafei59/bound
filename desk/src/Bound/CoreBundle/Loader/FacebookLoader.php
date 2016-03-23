@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2016-02-17 17:10:49
  * @Last Modified by:   Kafei59
- * @Last Modified time: 2016-03-22 15:54:50
+ * @Last Modified time: 2016-03-23 17:01:34
  */
 
 namespace Bound\CoreBundle\Loader;
@@ -30,9 +30,9 @@ class FacebookLoader {
         $this->responses['friends'] = $response['summary']['total_count'];
     }
 
-    public function LoadUnknown(Player $player, Client $client) {
+    public function LoadUnknown(Player $player) {
         if ($this->responses['friends'] >= 50) {
-            $achievement = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Achievement')->findOneBySlug("inconnu");
+            $achievement = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Achievement')->findOneByFunctionId("unknown");
             if (!array_key_exists($achievement->getId(), $player->getAchievements())) {
                 $player->addAchievement($achievement);
                 $this->container->get('bound.notification_manager')->add($player, "Haut-Fait débloqué", "Bravo, tu as débloqué le succès 'Inconnu' !", "achievement");
@@ -40,9 +40,9 @@ class FacebookLoader {
         }
     }
 
-    public function LoadCommon(Player $player, Client $client) {
+    public function LoadCommon(Player $player) {
         if ($this->responses['friends'] >= 300) {
-            $achievement = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Achievement')->findOneBySlug("fréquenté");
+            $achievement = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Achievement')->findOneByFunctionId("common");
             if (!array_key_exists($achievement->getId(), $player->getAchievements())) {
                 $player->addAchievement($achievement);
                 $this->container->get('bound.notification_manager')->add($player, "Haut-Fait débloqué", "Bravo, tu as débloqué le succès 'Fréquenté' !", "achievement");
@@ -50,9 +50,9 @@ class FacebookLoader {
         }
     }
 
-    public function LoadCheerleader(Player $player, Client $client) {
+    public function LoadCheerleader(Player $player) {
         if ($this->responses['friends'] >= 1000) {
-            $achievement = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Achievement')->findOneBySlug("cheerleader");
+            $achievement = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Achievement')->findOneByFunctionId("cheerleader");
             if (!array_key_exists($achievement->getId(), $player->getAchievements())) {
                 $player->addAchievement($achievement);
                 $this->container->get('bound.notification_manager')->add($player, "Haut-Fait débloqué", "Bravo, tu as débloqué le succès 'Cheerleader' !", "achievement");
@@ -60,9 +60,9 @@ class FacebookLoader {
         }
     }
 
-    public function LoadStar(Player $player, Client $client) {
+    public function LoadStar(Player $player) {
         if ($this->responses['friends'] >= 2500) {
-            $achievement = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Achievement')->findOneBySlug("star");
+            $achievement = $this->container->get('doctrine')->getRepository('BoundCoreBundle:Achievement')->findOneByFunctionId("star");
             if (!array_key_exists($achievement->getId(), $player->getAchievements())) {
                 $player->addAchievement($achievement);
                 $this->container->get('bound.notification_manager')->add($player, "Haut-Fait débloqué", "Bravo, tu as débloqué le succès 'Star' !", "achievement");

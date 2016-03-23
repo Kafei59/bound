@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2016-02-17 16:58:32
  * @Last Modified by:   Kafei59
- * @Last Modified time: 2016-03-22 15:53:11
+ * @Last Modified time: 2016-03-23 17:01:42
  */
 
 namespace Bound\CoreBundle\Listener;
@@ -84,7 +84,7 @@ class AchievementListener {
                 $loader = new $type($this->container, $client);
 
                 if (method_exists($loader, $function)) {
-                    $loader->$function($player, $client);
+                    $loader->$function($player);
                 }
             }
         }
