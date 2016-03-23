@@ -20,7 +20,11 @@ parameters:
     secret: ThisTokenIsNotSoSecretChangeIt
 
     redirect_uri: /
+
     facebook_id: facebookId
     facebook_secret: facebookSecret
-    twitter_id: twitterId
-    twitter_secret: twitterSecret
+
+    twitter_consumer_key: twitterConsumerKey
+    twitter_consumer_secret: twitterConsumerSecret
+    twitter_access_token: twitterAccessToken
+    twitter_access_token_secret: twitterAccessTokenSecret

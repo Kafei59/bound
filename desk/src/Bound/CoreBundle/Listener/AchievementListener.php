@@ -3,7 +3,7 @@
  * @Author: gicque_p
  * @Date:   2016-02-17 16:58:32
  * @Last Modified by:   Kafei59
- * @Last Modified time: 2016-03-22 14:32:42
+ * @Last Modified time: 2016-03-22 15:53:11
  */
 
 namespace Bound\CoreBundle\Listener;
@@ -81,7 +81,7 @@ class AchievementListener {
             $function = "Load".ucfirst($achievement->getFunctionId());
 
             if (class_exists($type)) {
-                $loader = new $type($this->container);
+                $loader = new $type($this->container, $client);
 
                 if (method_exists($loader, $function)) {
                     $loader->$function($player, $client);

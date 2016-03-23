@@ -14,5 +14,7 @@ parameters:
     redirect_uri: 'http://127.0.0.1/~gicque_p/bound/bench'
     facebook_id: 148621102184106
     facebook_secret: 3902c98a51aa5900cd4de336275e4b52
-    twitter_id: z4fq2eP6x6ejPzkQ8tQnOb5hh
-    twitter_secret: ItzZzAy0YiGrb1yYDxTcUwm2382hHSI8Q4rxPUM5P536pJt6dP
+    twitter_access_token: 769875932-ZsoDxxTFAnfjyWRySAMc1jD7iMCnlGM9xPDhBcht
+    twitter_access_token_secret: M5l5kMcRgXWoW5cx1L0qTJ00gU2HvhGM41SLz2emtEUCy
+    twitter_consumer_key: z4fq2eP6x6ejPzkQ8tQnOb5hh
+    twitter_consumer_secret: ItzZzAy0YiGrb1yYDxTcUwm2382hHSI8Q4rxPUM5P536pJt6dP
