@@ -33,6 +33,18 @@ class Client
     /** @ORM\Column(name="twitter_access_token", type="string", length=255, nullable=true) */
     protected $twitter_access_token;
 
+    /** @ORM\Column(name="instagram_id", type="string", length=255, nullable=true) */
+    protected $instagram_id;
+
+    /** @ORM\Column(name="instagram_access_token", type="string", length=255, nullable=true) */
+    protected $instagram_access_token;
+
+    /** @ORM\Column(name="linkedin_id", type="string", length=255, nullable=true) */
+    protected $linkedin_id;
+
+    /** @ORM\Column(name="linkedin_access_token", type="string", length=255, nullable=true) */
+    protected $linkedin_access_token;
+
     /**
      * Get id
      *
@@ -137,5 +149,101 @@ class Client
     public function getTwitterAccessToken()
     {
         return $this->twitter_access_token;
+    }
+
+    /**
+     * Set instagramId
+     *
+     * @param string $instagramId
+     *
+     * @return Client
+     */
+    public function setInstagramId($instagramId)
+    {
+        $this->instagram_id = $instagramId;
+
+        return $this;
+    }
+
+    /**
+     * Get instagramId
+     *
+     * @return string
+     */
+    public function getInstagramId()
+    {
+        return $this->instagram_id;
+    }
+
+    /**
+     * Set instagramAccessToken
+     *
+     * @param string $instagramAccessToken
+     *
+     * @return Client
+     */
+    public function setInstagramAccessToken($instagramAccessToken)
+    {
+        $this->instagram_access_token = $instagramAccessToken;
+
+        return $this;
+    }
+
+    /**
+     * Get instagramAccessToken
+     *
+     * @return string
+     */
+    public function getInstagramAccessToken()
+    {
+        return $this->instagram_access_token;
+    }
+
+    /**
+     * Set linkedinId
+     *
+     * @param string $linkedinId
+     *
+     * @return Client
+     */
+    public function setLinkedinId($linkedinId)
+    {
+        $this->linkedin_id = $linkedinId;
+
+        return $this;
+    }
+
+    /**
+     * Get linkedinId
+     *
+     * @return string
+     */
+    public function getLinkedinId()
+    {
+        return $this->linkedin_id;
+    }
+
+    /**
+     * Set linkedinAccessToken
+     *
+     * @param string $linkedinAccessToken
+     *
+     * @return Client
+     */
+    public function setLinkedinAccessToken($linkedinAccessToken)
+    {
+        $this->linkedin_access_token = $linkedinAccessToken;
+
+        return $this;
+    }
+
+    /**
+     * Get linkedinAccessToken
+     *
+     * @return string
+     */
+    public function getLinkedinAccessToken()
+    {
+        return $this->linkedin_access_token;
     }
 }

@@ -49,3 +49,9 @@ hwi_oauth_check_facebook:
 
 hwi_oauth_check_twitter:
     path: /api/oauth/v2.0/check-twitter
+
+hwi_oauth_check_instagram:
+    path: /api/oauth/v2.0/check-instagram
+
+hwi_oauth_check_linkedin:
+    path: /api/oauth/v2.0/check-linkedin

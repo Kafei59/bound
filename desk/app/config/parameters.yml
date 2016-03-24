@@ -18,3 +18,7 @@ parameters:
     twitter_access_token_secret: M5l5kMcRgXWoW5cx1L0qTJ00gU2HvhGM41SLz2emtEUCy
     twitter_consumer_key: z4fq2eP6x6ejPzkQ8tQnOb5hh
     twitter_consumer_secret: ItzZzAy0YiGrb1yYDxTcUwm2382hHSI8Q4rxPUM5P536pJt6dP
+    instagram_id: bafecddebbe440dca02c1bac3a191897
+    instagram_secret: 68decf85326d47b59132bc0ff98c5f4a
+    linkedin_id: 77t4nr2sxfrm6j
+    linkedin_secret: gq63PAVTvMKs5fsJ

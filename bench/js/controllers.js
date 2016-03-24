@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:42:51
 * @Last Modified by:   Kafei59
-* @Last Modified time: 2016-03-21 15:18:20
+* @Last Modified time: 2016-03-24 12:32:14
 */
 
 app.controller('MainController', ['$rootScope', 'cookieService', '$location', 'userService', '$http', function($rootScope, $cookieService, $location, $userService, $http) {
@@ -149,6 +149,8 @@ app.controller('DashboardController', ['$rootScope', '$scope', 'cookieService', 
 
     $rootScope.facebookLogin = $apiService.ASSOCIATE_FACEBOOK + '/' + $rootScope.token;
     $rootScope.twitterLogin = $apiService.ASSOCIATE_TWITTER + '/' + $rootScope.token;
+    $rootScope.instagramLogin = $apiService.ASSOCIATE_INSTAGRAM + '/' + $rootScope.token;
+    $rootScope.linkedinLogin = $apiService.ASSOCIATE_LINKEDIN + '/' + $rootScope.token;
 
     $scope.refresh = function() {
         $http.get($apiService.ACHIEVEMENT_LOAD + '?token=' + $rootScope.token);

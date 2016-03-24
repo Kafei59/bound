@@ -134,6 +134,15 @@ hwi_oauth:
             type: twitter
             client_id: %twitter_consumer_key%
             client_secret: %twitter_consumer_secret%
+        instagram:
+            type: instagram
+            client_id: %instagram_id%
+            client_secret: %instagram_secret%
+        linkedin:
+            type: linkedin
+            client_id: %linkedin_id%
+            client_secret: %linkedin_secret%
+            scope: "r_basicprofile, r_emailaddress"
 
 #CORS Configuration:
 nelmio_cors:

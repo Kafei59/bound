@@ -64,6 +64,36 @@
                                 TwitterAccessToken: <span ng-bind="user.client.twitter_access_token"></span><br>
                             </div>
                         </div>
+
+                        <div ng-switch on="user.client.instagram_id || 'null'">
+                            <div ng-switch-when="null">
+                                <h3>
+                                    Associer Instagram
+                                    <a href="{{ instagramLogin }}">
+                                        <i class="fa fa-instagram"></i>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div ng-switch-default>
+                                InstagramID: <span ng-bind="user.client.instagram_id"></span><br>
+                                InstagramAccessToken: <span ng-bind="user.client.instagram_access_token"></span><br>
+                            </div>
+                        </div>
+
+                        <div ng-switch on="user.client.linkedin_id || 'null'">
+                            <div ng-switch-when="null">
+                                <h3>
+                                    Associer LinkedIn
+                                    <a href="{{ linkedinLogin }}">
+                                        <i class="fa fa-linkedin"></i>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div ng-switch-default>
+                                LinkedInID: <span ng-bind="user.client.linkedin_id"></span><br>
+                                LinkedInAccessToken: <span ng-bind="user.client.linkedin_access_token"></span><br>
+                            </div>
+                        </div>
                     </div>
                 </md-content>
             </md-tab>

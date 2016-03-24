@@ -1,7 +1,7 @@
 services:
     my_user_provider:
         class: Bound\CoreBundle\Provider\FOSUBUserProvider
-        arguments: [ @service_container, @doctrine.orm.entity_manager, @fos_user.user_manager, {facebook: facebook_id, twitter: twitter_id, google: google_id}]
+        arguments: [ @service_container, @doctrine.orm.entity_manager, @fos_user.user_manager, {facebook: facebook_id, twitter: twitter_id, instagram: instagram_id, linkedin: linkedin_id}]
 
 
     bound.user_manager:

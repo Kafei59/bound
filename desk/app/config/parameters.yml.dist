@@ -28,3 +28,9 @@ parameters:
     twitter_consumer_secret: twitterConsumerSecret
     twitter_access_token: twitterAccessToken
     twitter_access_token_secret: twitterAccessTokenSecret
+
+    instagram_id: instagramId
+    instagram_secret: instagramSecret
+
+    linkedin_id: linkedInId
+    linkedin_secret: linkedInSecret

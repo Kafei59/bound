@@ -10,6 +10,8 @@ security:
                 resource_owners:
                     facebook: hwi_oauth_check_facebook
                     twitter: hwi_oauth_check_twitter
+                    instagram: hwi_oauth_check_instagram
+                    linkedin: hwi_oauth_check_linkedin
 
                 use_forward: false
                 login_path: hwi_oauth_service_back
