@@ -23,14 +23,13 @@ parameters:
 
     facebook_id: facebookId
     facebook_secret: facebookSecret
-
     twitter_consumer_key: twitterConsumerKey
     twitter_consumer_secret: twitterConsumerSecret
     twitter_access_token: twitterAccessToken
     twitter_access_token_secret: twitterAccessTokenSecret
-
     instagram_id: instagramId
     instagram_secret: instagramSecret
-
     linkedin_id: linkedInId
     linkedin_secret: linkedInSecret
+    strava_id: stravaId
+    strava_secret: stravaSecret

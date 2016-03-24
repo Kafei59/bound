@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:44:37
 * @Last Modified by:   Kafei59
-* @Last Modified time: 2016-03-24 12:32:45
+* @Last Modified time: 2016-03-24 16:30:36
 */
 
 app.factory('apiService', function() {
@@ -26,17 +26,10 @@ app.factory('apiService', function() {
         REGISTER_FACEBOOK: serverPath + '/oauth/v2.0/facebook/register',
         ASSOCIATE_FACEBOOK: serverPath + '/oauth/v2.0/facebook/associate',
 
-        LOGIN_TWITTER: serverPath + '/oauth/v2.0/twitter/login',
-        REGISTER_TWITTER: serverPath + '/oauth/v2.0/twitter/register',
         ASSOCIATE_TWITTER: serverPath + '/oauth/v2.0/twitter/associate',
-
-        LOGIN_INSTAGRAM: serverPath + '/oauth/v2.0/instagram/login',
-        REGISTER_INSTAGRAM: serverPath + '/oauth/v2.0/instagram/register',
         ASSOCIATE_INSTAGRAM: serverPath + '/oauth/v2.0/instagram/associate',
-
-        LOGIN_LINKEDIN: serverPath + '/oauth/v2.0/linkedin/login',
-        REGISTER_LINKEDIN: serverPath + '/oauth/v2.0/linkedin/register',
         ASSOCIATE_LINKEDIN: serverPath + '/oauth/v2.0/linkedin/associate',
+        ASSOCIATE_STRAVA: serverPath + '/oauth/v2.0/strava/associate',
 
         ACHIEVEMENTS_GET: serverPath + '/achievements',
         ACHIEVEMENT_ADD: serverPath + '/achievements',

@@ -45,6 +45,12 @@ class Client
     /** @ORM\Column(name="linkedin_access_token", type="string", length=255, nullable=true) */
     protected $linkedin_access_token;
 
+    /** @ORM\Column(name="strava_id", type="string", length=255, nullable=true) */
+    protected $strava_id;
+
+    /** @ORM\Column(name="strava_access_token", type="string", length=255, nullable=true) */
+    protected $strava_access_token;
+
     /**
      * Get id
      *
@@ -245,5 +251,53 @@ class Client
     public function getLinkedinAccessToken()
     {
         return $this->linkedin_access_token;
+    }
+
+    /**
+     * Set stravaId
+     *
+     * @param string $stravaId
+     *
+     * @return Client
+     */
+    public function setStravaId($stravaId)
+    {
+        $this->strava_id = $stravaId;
+
+        return $this;
+    }
+
+    /**
+     * Get stravaId
+     *
+     * @return string
+     */
+    public function getStravaId()
+    {
+        return $this->strava_id;
+    }
+
+    /**
+     * Set stravaAccessToken
+     *
+     * @param string $stravaAccessToken
+     *
+     * @return Client
+     */
+    public function setStravaAccessToken($stravaAccessToken)
+    {
+        $this->strava_access_token = $stravaAccessToken;
+
+        return $this;
+    }
+
+    /**
+     * Get stravaAccessToken
+     *
+     * @return string
+     */
+    public function getStravaAccessToken()
+    {
+        return $this->strava_access_token;
     }
 }

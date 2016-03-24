@@ -94,6 +94,21 @@
                                 LinkedInAccessToken: <span ng-bind="user.client.linkedin_access_token"></span><br>
                             </div>
                         </div>
+
+                        <div ng-switch on="user.client.strava_id || 'null'">
+                            <div ng-switch-when="null">
+                                <h3>
+                                    Associer Strava
+                                    <a href="{{ stravaLogin }}">
+                                        <i class="fa fa-angle-up"></i>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div ng-switch-default>
+                                StravaID: <span ng-bind="user.client.strava_id"></span><br>
+                                StravaAccessToken: <span ng-bind="user.client.strava_access_token"></span><br>
+                            </div>
+                        </div>
                     </div>
                 </md-content>
             </md-tab>

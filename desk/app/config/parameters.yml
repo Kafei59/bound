@@ -22,3 +22,5 @@ parameters:
     instagram_secret: 68decf85326d47b59132bc0ff98c5f4a
     linkedin_id: 77t4nr2sxfrm6j
     linkedin_secret: gq63PAVTvMKs5fsJ
+    strava_id: 10759
+    strava_secret: ba0806aeec73a1231409f0abfb32afeef3d73bef

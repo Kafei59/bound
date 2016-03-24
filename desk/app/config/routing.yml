@@ -63,3 +63,6 @@ hwi_oauth_check_instagram:
 
 hwi_oauth_check_linkedin:
     path: /oauth/v2.0/check-linkedin
+
+hwi_oauth_check_strava:
+    path: /oauth/v2.0/check-linkedin
