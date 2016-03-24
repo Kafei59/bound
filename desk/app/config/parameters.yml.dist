@@ -33,3 +33,5 @@ parameters:
     linkedin_secret: linkedInSecret
     strava_id: stravaId
     strava_secret: stravaSecret
+    deezer_id: deezerId
+    deezer_secret: deezerSecret

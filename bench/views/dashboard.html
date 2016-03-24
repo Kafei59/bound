@@ -109,6 +109,21 @@
                                 StravaAccessToken: <span ng-bind="user.client.strava_access_token"></span><br>
                             </div>
                         </div>
+
+                        <div ng-switch on="user.client.deezer_id || 'null'">
+                            <div ng-switch-when="null">
+                                <h3>
+                                    Associer Deezer
+                                    <a href="{{ deezerLogin }}">
+                                        <i class="fa fa-dashcube"></i>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div ng-switch-default>
+                                DeezerID: <span ng-bind="user.client.deezer_id"></span><br>
+                                DeezerAccessToken: <span ng-bind="user.client.deezer_access_token"></span><br>
+                            </div>
+                        </div>
                     </div>
                 </md-content>
             </md-tab>

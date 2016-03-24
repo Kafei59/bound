@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-04 16:07:30
 * @Last Modified by:   Kafei59
-* @Last Modified time: 2016-03-24 16:42:19
+* @Last Modified time: 2016-03-24 17:00:09
 */
 
 body {
@@ -196,6 +196,10 @@ video::-webkit-media-controls {
 
 .background-strava {
     background-color: #fc4c02;
+}
+
+.background-deezer {
+    background-color: #23232C;
 }
 
 .background-white {

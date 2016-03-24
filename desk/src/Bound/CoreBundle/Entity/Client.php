@@ -51,6 +51,12 @@ class Client
     /** @ORM\Column(name="strava_access_token", type="string", length=255, nullable=true) */
     protected $strava_access_token;
 
+    /** @ORM\Column(name="deezer_id", type="string", length=255, nullable=true) */
+    protected $deezer_id;
+
+    /** @ORM\Column(name="deezer_access_token", type="string", length=255, nullable=true) */
+    protected $deezer_access_token;
+
     /**
      * Get id
      *
@@ -299,5 +305,53 @@ class Client
     public function getStravaAccessToken()
     {
         return $this->strava_access_token;
+    }
+
+    /**
+     * Set deezerId
+     *
+     * @param string $deezerId
+     *
+     * @return Client
+     */
+    public function setDeezerId($deezerId)
+    {
+        $this->deezer_id = $deezerId;
+
+        return $this;
+    }
+
+    /**
+     * Get deezerId
+     *
+     * @return string
+     */
+    public function getDeezerId()
+    {
+        return $this->deezer_id;
+    }
+
+    /**
+     * Set deezerAccessToken
+     *
+     * @param string $deezerAccessToken
+     *
+     * @return Client
+     */
+    public function setDeezerAccessToken($deezerAccessToken)
+    {
+        $this->deezer_access_token = $deezerAccessToken;
+
+        return $this;
+    }
+
+    /**
+     * Get deezerAccessToken
+     *
+     * @return string
+     */
+    public function getDeezerAccessToken()
+    {
+        return $this->deezer_access_token;
     }
 }

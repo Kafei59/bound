@@ -24,3 +24,5 @@ parameters:
     linkedin_secret: gq63PAVTvMKs5fsJ
     strava_id: 10759
     strava_secret: ba0806aeec73a1231409f0abfb32afeef3d73bef
+    deezer_id: 175461
+    deezer_secret: f582700e4548a47e9f741bbb64f2d346

@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:44:37
 * @Last Modified by:   Kafei59
-* @Last Modified time: 2016-03-24 16:30:36
+* @Last Modified time: 2016-03-24 16:53:05
 */
 
 app.factory('apiService', function() {
@@ -30,6 +30,7 @@ app.factory('apiService', function() {
         ASSOCIATE_INSTAGRAM: serverPath + '/oauth/v2.0/instagram/associate',
         ASSOCIATE_LINKEDIN: serverPath + '/oauth/v2.0/linkedin/associate',
         ASSOCIATE_STRAVA: serverPath + '/oauth/v2.0/strava/associate',
+        ASSOCIATE_DEEZER: serverPath + '/oauth/v2.0/deezer/associate',
 
         ACHIEVEMENTS_GET: serverPath + '/achievements',
         ACHIEVEMENT_ADD: serverPath + '/achievements',

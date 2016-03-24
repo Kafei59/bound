@@ -147,6 +147,11 @@ hwi_oauth:
             type: strava
             client_id: %strava_id%
             client_secret: %strava_secret%
+        deezer:
+            type: deezer
+            client_id: %deezer_id%
+            client_secret: %deezer_secret%
+
 
 #CORS Configuration:
 nelmio_cors:

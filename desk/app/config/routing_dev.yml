@@ -58,3 +58,6 @@ hwi_oauth_check_linkedin:
 
 hwi_oauth_check_strava:
     path: /api/oauth/v2.0/check-strava
+
+hwi_oauth_check_deezer:
+    path: /api/oauth/v2.0/check-deezer
