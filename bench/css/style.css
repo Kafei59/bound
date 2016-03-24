@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-04 16:07:30
 * @Last Modified by:   Kafei59
-* @Last Modified time: 2016-03-24 12:17:20
+* @Last Modified time: 2016-03-24 16:42:19
 */
 
 body {
@@ -188,6 +188,14 @@ video::-webkit-media-controls {
 
 .background-instagram {
     background-color: #3f729b;
+}
+
+.background-linkedin {
+    background-color: #0077b5;
+}
+
+.background-strava {
+    background-color: #fc4c02;
 }
 
 .background-white {
