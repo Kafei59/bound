@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-04 16:07:30
 * @Last Modified by:   Kafei59
-* @Last Modified time: 2016-03-29 15:48:42
+* @Last Modified time: 2016-03-29 16:01:45
 */
 
 @media all and (max-width: 767px) {
@@ -21,6 +21,7 @@ body {
     font-family: Raleway;
     background: #ededed;
     overflow-x: hidden;
+    overflow-y: scroll !important;
 }
 
 footer {
