@@ -2,7 +2,7 @@
 * @Author: Kafei59
 * @Date:   2016-03-29 15:38:40
 * @Last Modified by:   Kafei59
-* @Last Modified time: 2016-03-29 15:54:41
+* @Last Modified time: 2016-03-29 16:20:07
 */
 
 function menuToggle() {
@@ -41,7 +41,10 @@ $wrapper.swipe( {
     swipeRight:function() {
         Cookies.set('menu-toggled', true);
         menuToggle();
-    }
+    },
+
+    allowPageScroll: "vertical",
+    preventDefaultEvents: false
 });
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
