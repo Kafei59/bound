@@ -2,12 +2,25 @@
 * @Author: gicque_p
 * @Date:   2016-02-04 16:07:30
 * @Last Modified by:   Kafei59
-* @Last Modified time: 2016-03-24 17:00:09
+* @Last Modified time: 2016-03-29 15:48:42
 */
+
+@media all and (max-width: 767px) {
+
+    .container, #main > div, .panel-body {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .timeline {
+        padding: 20px 0 20px !important;
+    }
+}
 
 body {
     font-family: Raleway;
     background: #ededed;
+    overflow-x: hidden;
 }
 
 footer {
@@ -33,15 +46,11 @@ ul {
     width: 100%;
     overflow: hidden;
 
-    padding-left: 0;
+    padding-left: 250px;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
-}
-
-#wrapper.toggled #sidebar-wrapper {
-    width: 250px;
 }
 
 #page-content-wrapper {
@@ -49,11 +58,6 @@ ul {
     position: absolute;
     overflow: hidden;
     background: #ededed;
-}
-
-
-#main > div {
-    padding: 0 0 80px 0!important;
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -125,7 +129,6 @@ video::-webkit-media-controls {
 .overlay-video {
     position: absolute;
     z-index: 2;
-    top: 15vh;
     width: 100%;
     padding: 50px;
     text-align: center;
@@ -229,10 +232,6 @@ video::-webkit-media-controls {
 .panel-header h3 {
     padding: 0 0 0 20px;
     margin: 0;
-}
-
-.panel-content {
-    /*padding: 50px 0;*/
 }
 
 .panel-tab md-content {
@@ -391,8 +390,7 @@ video::-webkit-media-controls {
 /* Timeline */
 .timeline {
     position: relative;
-    /*padding: 20px 0 20px;*/
-    padding: 30px !important;
+    padding: 1px 30px;
     list-style: none;
     margin: 0;
 }
@@ -411,6 +409,10 @@ video::-webkit-media-controls {
 .timeline > li {
     position: relative;
     margin-bottom: 20px;
+}
+
+.timeline li:nth-child(1) {
+    padding-top: 10px;
 }
 
 .timeline > li:before,
@@ -477,7 +479,6 @@ video::-webkit-media-controls {
 }
 
 .timeline > li > .timeline-badge {
-    /*z-index: 1;*/
     position: absolute;
     top: 16px;
     left: 50%;
@@ -582,38 +583,39 @@ video::-webkit-media-controls {
     }
 }
 
+#sidebar-wrapper {
+    width: 250px;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#wrapper.toggled {
+    padding-left: 0;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 0;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: relative;
+    margin-right: 0;
+}
+
 /* Media queries */
-@media(min-width:768px) {
-    #wrapper {
-        padding-left: 250px;
-    }
-
-    #wrapper.toggled {
-        padding-left: 0;
-    }
-
-    #sidebar-wrapper {
-        width: 250px;
-    }
-
-    #wrapper.toggled #sidebar-wrapper {
-        width: 0;
-    }
-
-    #wrapper.toggled #page-content-wrapper {
-        position: relative;
-        margin-right: 0;
-    }
-
+@media all and (min-width:768px) {
     #page-wrapper-header {
         display: block;
     }
+
     #page-content-wrapper {
         position: relative;
     }
 
-    #main > div {
-        padding: 20px;
+    .panel-body {
+        padding: 0 !important;
     }
 
     .overlay-video {
@@ -627,8 +629,12 @@ video::-webkit-media-controls {
 }
 
 @media(max-width:768px) {
-    #wrapper.toggled #page-content-wrapper {
+    #wrapper #page-content-wrapper {
         max-height: 100vh;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        max-height: none;
     }
 }
 
