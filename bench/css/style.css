@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-04 16:07:30
 * @Last Modified by:   Kafei59
-* @Last Modified time: 2016-03-29 16:01:45
+* @Last Modified time: 2016-03-29 16:09:53
 */
 
 @media all and (max-width: 767px) {
@@ -13,7 +13,7 @@
     }
 
     .timeline {
-        padding: 20px 0 20px !important;
+        padding: 20px 5px 20px 0 !important;
     }
 }
 
@@ -22,6 +22,8 @@ body {
     background: #ededed;
     overflow-x: hidden;
     overflow-y: scroll !important;
+    position: relative;
+    height: 100%;
 }
 
 footer {
