@@ -33,7 +33,7 @@
     <ul class="sidebar-nav">
         <li class="sidebar-brand">
             <figure>
-                <img src="img/avatar.png" class="img-responsive img-circle">
+                <img src="img/avatar.png" class="img-responsive img-circle img-avatar">
                 <figcaption ng-bind="user.player.playername"></figcaption>
             </figure>
         </li>
@@ -51,6 +51,9 @@
         </li>
         <li>
             <a href="#/achievements" ng-class="{active: tab == 'achievements'}" angular-ripple><i class="fa fa-star-o"></i>Mes haut-faits</a>
+        </li>
+        <li>
+            <a href="#/leaderboard" ng-class="{active: tab == 'leaderboard'}" angular-ripple><i class="fa fa-trophy"></i>Mon classement</a>
         </li>
         <li>
             <a href="#/friends" ng-class="{active: tab == 'friends'}" angular-ripple><i class="fa fa-heart-o"></i>Mes amis</a>

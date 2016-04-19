@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-04 16:07:30
 * @Last Modified by:   Kafei59
-* @Last Modified time: 2016-03-29 16:09:53
+* @Last Modified time: 2016-03-29 17:07:59
 */
 
 @media all and (max-width: 767px) {
@@ -14,6 +14,14 @@
 
     .timeline {
         padding: 20px 5px 20px 0 !important;
+    }
+
+    #page-wrapper-header {
+        height: 200px !important;
+    }
+
+    #page-wrapper-header-title {
+        padding-top: 40px !important;
     }
 }
 
@@ -212,12 +220,16 @@ video::-webkit-media-controls {
     background-color: #fff;
 }
 
+.padding-medium {
+    padding: 20px;
+}
+
 .padding-top-medium {
     padding-top: 50px;
 }
 
-.padding-medium {
-    padding: 20px;
+.margin-top-medium {
+    margin-top: 20px;
 }
 
 .panel-public {
@@ -334,7 +346,7 @@ video::-webkit-media-controls {
     width: 100%;
 }
 
-.sidebar-nav .sidebar-brand img {
+.img-avatar {
     width: 64px;
     height: 64px;
     border: 4px solid #343549;
@@ -370,6 +382,10 @@ video::-webkit-media-controls {
     color: #efdd4b;
 }
 
+.sidebar-nav li a:hover i.fa-trophy, .sidebar-nav li a.active i.fa-trophy {
+    color: #ff5722;
+}
+
 .sidebar-nav li a:hover i.fa-heart-o, .sidebar-nav li a.active i.fa-heart-o {
     color: #ff4081;
 }
@@ -389,7 +405,7 @@ video::-webkit-media-controls {
 .sidebar-nav li a:hover i.fa-user-plus, .sidebar-nav li a.active i.fa-user-plus {
     color: #85cbc3;
 }
-    
+
 /* Timeline */
 .timeline {
     position: relative;

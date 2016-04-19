@@ -48,17 +48,17 @@ class Player
     private $playername;
 
     /**
-     * @ORM\Column(name="avatar_id", type="integer", nullable=true)
+     * @ORM\Column(name="avatar_id", type="integer")
      **/
     private $avatar_id;
 
     /**
-     * @ORM\Column(name="banner_id", type="integer", nullable=true)
+     * @ORM\Column(name="banner_id", type="integer")
      **/
     private $banner_id;
 
     /**
-     * @ORM\Column(name="background_id", type="integer", nullable=true)
+     * @ORM\Column(name="background_id", type="integer")
      **/
     private $background_id;
 
@@ -66,6 +66,10 @@ class Player
     public function __construct() {
         $this->friends = array();
         $this->achievements = array();
+
+        $this->avatar_id = 1;
+        $this->banner_id = 1;
+        $this->background_id = 1;
     }
 
     /**
@@ -124,6 +128,31 @@ class Player
     public function getFriends()
     {
         return $this->friends;
+    }
+
+    /**
+     * Add friend
+     *
+     * @return Player
+     */
+    public function addFriend($friend) {
+        $this->friends[$friend->getId()] = $friend;
+
+        return $this;
+    }
+
+    /**
+     * Remove friend
+     *
+     * @return Player
+     */
+    public function removeFriend($friend) {
+        if (false !== $key = array_search($friend, $this->friends, true)) {
+            unset($this->friends[$key]);
+            $this->friends = array_values($this->friends);
+        }
+
+        return $this;
     }
 
     /**

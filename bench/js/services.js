@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:44:37
 * @Last Modified by:   Kafei59
-* @Last Modified time: 2016-03-24 16:53:05
+* @Last Modified time: 2016-03-29 16:50:14
 */
 
 app.factory('apiService', function() {
@@ -33,25 +33,11 @@ app.factory('apiService', function() {
         ASSOCIATE_DEEZER: serverPath + '/oauth/v2.0/deezer/associate',
 
         ACHIEVEMENTS_GET: serverPath + '/achievements',
-        ACHIEVEMENT_ADD: serverPath + '/achievements',
-        ACHIEVEMENT_EDIT: serverPath + '/achievements',
-        ACHIEVEMENT_DELETE: serverPath + '/achievements',
         ACHIEVEMENT_LOAD: serverPath + '/achievements/load',
-
         CREWS_GET: serverPath + '/crews',
-        CREWS_ADD: serverPath + '/crews',
-        CREWS_EDIT: serverPath + '/crews',
-        CREWS_DELETE: serverPath + '/crews',
-
         NOTIFICATIONS_GET: serverPath + '/notifications',
-        NOTIFICATION_ADD: serverPath + '/notifications',
-        NOTIFICATION_EDIT: serverPath + '/notifications',
-        NOTIFICATION_DELETE: serverPath + '/notifications',
-
-        USERS_GET: serverPath + '/users',
-        USERS_ADD: serverPath + '/users',
-        USERS_EDIT: serverPath + '/users',
-        USERS_DELETE: serverPath + '/users',
+        FRIENDS_GET: serverPath + '/friends',
+        USERS_GET: serverPath + '/users'
     };
 
     return service;

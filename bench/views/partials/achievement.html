@@ -1,0 +1,21 @@
+<div class="achievement-header text-left text-uppercase font-white">
+    <h3 class="pull-right">0% terminé</h3>
+    <h3>Facile</h3>
+</div>
+
+<div class="achievement-content" ng-repeat="achievement in achievements">
+    <div>
+        <div class="pull-left">
+            <img src="img/star.jpg" class="square-img">
+        </div>
+
+        <div class="text-left">
+            <h4>{{ achievement.title }}</h4>
+            <p>{{ achievement.content }}</p>
+        </div>
+
+        <p class="text-uppercase">{{ achievement.points }} points</p>
+        <p class="text-right">{{ achievement.type }}</p>
+    </div>
+    <md-divider></md-divider>
+</div>

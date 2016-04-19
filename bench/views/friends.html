@@ -1,3 +1,58 @@
 <div class="panel-body">
-    <h1>Page non disponible</h1>
+    <div class="panel-tab">
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Amis">
+                <md-content class="md-padding margin-top-medium container" ng-cloak>
+
+                    <div class="panel-content text-center background-white padding-medium">
+                        <div ng-repeat="friend in friends">
+                            <div>
+                                <div class="pull-left">
+                                    <img src="img/avatar.png" class="img-circle img-avatar">
+                                </div>
+
+                                <div class="text-left">
+                                    <h2>{{ friend.playername }}</h2>
+                                    <p>C'est mon ami !</p>
+                                </div>
+                            </div>
+                            <br>
+
+                            <md-divider></md-divider>
+                        </div>
+
+                        <div ng-if="friends.length == 0" class="text-center">
+                            <h2>Tristesse, vous n'avez aucun ami</h2>
+                        </div>
+                    </div>
+                </md-content>
+            </md-tab>
+
+            <md-tab label="En attente">
+                <md-content class="md-padding margin-top-medium container" ng-cloak>
+                    <div class="panel-content text-center background-white padding-medium">
+                        <div ng-repeat="friend in friends">
+                            <div>
+                                <div class="pull-left">
+                                    <img src="img/avatar.png" class="img-circle img-avatar">
+                                </div>
+
+                                <div class="text-left">
+                                    <h2>{{ friend.playername }}</h2>
+                                    <p>C'est mon ami !</p>
+                                </div>
+                            </div>
+                            <br>
+
+                            <md-divider></md-divider>
+                        </div>
+
+                        <div ng-if="friends.length == 0" class="text-center">
+                            <h2>Tristesse, vous n'avez aucun ami</h2>
+                        </div>
+                    </div>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </div>
 </div>

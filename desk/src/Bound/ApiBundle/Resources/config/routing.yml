@@ -14,6 +14,10 @@ bound_api_crew:
     type: rest
     resource: "Bound\ApiBundle\Controller\CrewController"
 
+bound_api_friends:
+    type: rest
+    resource: "Bound\ApiBundle\Controller\FriendsController"
+
 bound_api_notification:
     type: rest
     resource: "Bound\ApiBundle\Controller\\NotificationController"

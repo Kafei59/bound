@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:42:51
 * @Last Modified by:   Kafei59
-* @Last Modified time: 2016-03-24 16:52:55
+* @Last Modified time: 2016-03-29 17:09:18
 */
 
 app.controller('MainController', ['$rootScope', 'cookieService', '$location', 'userService', '$http', function($rootScope, $cookieService, $location, $userService, $http) {
@@ -201,7 +201,7 @@ app.controller('AchievementsController', ['$rootScope', '$scope', 'cookieService
 
 }]);
 
-app.controller('FriendsController', ['$rootScope', 'cookieService', 'userService', '$location', function($rootScope, $cookieService, $userService, $location) {
+app.controller('LeaderboardController', ['$rootScope', 'cookieService', 'userService', '$location', function($rootScope, $cookieService, $userService, $location) {
     $rootScope.token = $cookieService.getToken();
     $userService.getUser($rootScope.token)
     .success(function(data) {
@@ -210,6 +210,23 @@ app.controller('FriendsController', ['$rootScope', 'cookieService', 'userService
     .error(function(err) {
         $location.path('/');
         $location.replace();
+    });
+}]);
+
+app.controller('FriendsController', ['$rootScope', '$scope', 'cookieService', 'userService', '$location', 'apiService', '$http', function($rootScope, $scope, $cookieService, $userService, $location, $apiService, $http) {
+    $rootScope.token = $cookieService.getToken();
+    $userService.getUser($rootScope.token)
+    .success(function(data) {
+        $rootScope.user = data;
+    })
+    .error(function(err) {
+        $location.path('/');
+        $location.replace();
+    });
+
+    $url = $apiService.FRIENDS_GET + '?token=' + $rootScope.token;
+    $http.get($url).success(function(data) {
+        $scope.friends = data.friends;
     });
 }]);
     

@@ -41,6 +41,10 @@ class Token
      */
     private $date;
 
+    public function __construct() {
+        $this->date = new \Datetime();
+    }
+
     /**
      * Get id
      *

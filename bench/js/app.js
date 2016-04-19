@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:23:24
 * @Last Modified by:   Kafei59
-* @Last Modified time: 2016-03-11 11:18:42
+* @Last Modified time: 2016-03-29 17:14:38
 */
 
 var app = angular.module('BoundApp', [
@@ -87,8 +87,16 @@ app.config(function($routeProvider) {
             controller: 'AchievementsController',
             templateUrl: 'views/achievements.html',
             pageTitle: 'Haut-faits',
-            pageSubtitle: 'Qui est la nouvelle star des réseaux sociaux ?',
+            pageSubtitle: 'Des étoiles pleins les yeux ?',
             tab: 'achievements'
+        })
+
+        .when('/leaderboard', {
+            controller: 'LeaderboardController',
+            templateUrl: 'views/leaderboard.html',
+            pageTitle: 'Classement',
+            pageSubtitle: 'Qui est la nouvelle star des réseaux sociaux ?',
+            tab: 'leaderboard'
         })
 
         .when('/friends', {
@@ -103,7 +111,7 @@ app.config(function($routeProvider) {
             controller: 'CrewController',
             templateUrl: 'views/crew.html',
             pageTitle: 'Crew',
-            pageSubtitle: 'On s\'amuse toujours plus à plusieurs',
+            pageSubtitle: 'On s\'amuse toujours plus en groupe',
             tab: 'crew'
         })
 
