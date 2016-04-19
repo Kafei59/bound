@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:44:37
 * @Last Modified by:   Kafei59
-* @Last Modified time: 2016-03-29 16:50:14
+* @Last Modified time: 2016-04-19 16:57:12
 */
 
 app.factory('apiService', function() {
@@ -37,6 +37,7 @@ app.factory('apiService', function() {
         CREWS_GET: serverPath + '/crews',
         NOTIFICATIONS_GET: serverPath + '/notifications',
         FRIENDS_GET: serverPath + '/friends',
+        FRIEND_REQUEST_GET: serverPath + '/friends/request',
         USERS_GET: serverPath + '/users'
     };
 

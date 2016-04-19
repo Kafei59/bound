@@ -19,6 +19,10 @@ services:
         class: Bound\CoreBundle\Manager\NotificationManager
         arguments: [ @service_container, @doctrine.orm.entity_manager ]
 
+    bound.friends_manager:
+        class: Bound\CoreBundle\Manager\FriendsManager
+        arguments: [ @service_container, @doctrine.orm.entity_manager ]
+
 
     bound.email_listener:
         class: Bound\CoreBundle\Listener\EmailListener

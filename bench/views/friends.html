@@ -22,7 +22,7 @@
                         </div>
 
                         <div ng-if="friends.length == 0" class="text-center">
-                            <h2>Tristesse, vous n'avez aucun ami</h2>
+                            <h2>Tristesse, vous n'avez aucun ami ... :(</h2>
                         </div>
                     </div>
                 </md-content>
@@ -31,15 +31,22 @@
             <md-tab label="En attente">
                 <md-content class="md-padding margin-top-medium container" ng-cloak>
                     <div class="panel-content text-center background-white padding-medium">
-                        <div ng-repeat="friend in friends">
+                        <div ng-repeat="request in requests">
                             <div>
                                 <div class="pull-left">
                                     <img src="img/avatar.png" class="img-circle img-avatar">
                                 </div>
 
                                 <div class="text-left">
-                                    <h2>{{ friend.playername }}</h2>
+                                    <h2>{{ request.to.playername }}</h2>
                                     <p>C'est mon ami !</p>
+                                    <p>{{ request.status }}</p>
+                                    <div ng-if="user.player.id == request.from.id">
+                                        DEMANDE ENVOYÉE
+                                    </div>
+                                    <div ng-if="user.player.id == request.to.id">
+                                        DEMANDE REÇUE
+                                    </div>
                                 </div>
                             </div>
                             <br>
@@ -47,8 +54,8 @@
                             <md-divider></md-divider>
                         </div>
 
-                        <div ng-if="friends.length == 0" class="text-center">
-                            <h2>Tristesse, vous n'avez aucun ami</h2>
+                        <div ng-if="requests.length == 0" class="text-center">
+                            <h2>Tristesse, vous n'avez aucune demande d'ami ... :(</h2>
                         </div>
                     </div>
                 </md-content>

@@ -17,6 +17,9 @@ use FOS\RestBundle\Controller\Annotations\Post;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use JMS\Serializer\SerializerBuilder;
 
+use Bound\CoreBundle\Entity\FriendRequest;
+use Bound\CoreBundle\Entity\Player;
+
 class FriendsController extends AController {
 
     /**
@@ -39,11 +42,32 @@ class FriendsController extends AController {
     }
 
     /**
-     * Mapping [POST] api.bound-app.com/friends?token="token"
+     * Mapping [GET] api.bound-app.com/friends/request?token="token"
      * @QueryParam(name="token", description="Token de l'utilisateur")
-     * @Post("/friends")
      * @ApiDoc(
-     *  description="Fait une demande d'ami",
+     *  description="Retourne la liste des demandes d'amis de l'utilisateur",
+     *  output="Bound\CoreBundle\Entity\FriendRequest",
+     *  statusCodes={
+     *     200="Retourner lorsque tout est OK",
+     *     403="Retourner si l'utilisateur n'existe pas",
+     *  }
+     * )
+     */
+    public function getFriendsRequestAction(Request $request) {
+        $user = $this->assertToken($request->get('token'));
+        $player = $user->getPlayer();
+        $requests = $this->getDoctrine()->getRepository("BoundCoreBundle:FriendRequest")->findAllRequests($player);
+
+        return array('requests' => $requests);
+    }
+
+    /**
+     * Mapping [GET] api.bound-app.com/friends/request/{player}?token="token"
+     * @ParamConverter("player", options={"mapping": {"player": "playername"}})
+     * @QueryParam(name="token", description="Token de l'utilisateur")
+     * @Get("/friends/request/{player}")
+     * @ApiDoc(
+     *  description="Crée une demande d'ami",
      *  output="Bound\CoreBundle\Entity\FriendRequest",
      *  requirements={
      *      {
@@ -60,13 +84,12 @@ class FriendsController extends AController {
      *  }
      * )
      */
-    public function requestAction(Request $request) {
+    public function requestAction(Player $player, Request $request) {
         $user = $this->assertToken($request->get('token'));
-        $from = $user->getPlayer();
+        $entity = $user->getPlayer();
 
-        $playername = $request->get('player');
-        $to = $this->getDoctrine()->getRepository('BoundCoreBundle:Player')->findOneByPlayername($playername);
+        $request = $this->get('bound.friends_manager')->request($entity, $player);
 
-        return array('to' => $to);
+        return array('request' => $request);
     }
 }

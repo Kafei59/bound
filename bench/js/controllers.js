@@ -2,7 +2,7 @@
 * @Author: gicque_p
 * @Date:   2016-02-02 13:42:51
 * @Last Modified by:   Kafei59
-* @Last Modified time: 2016-03-29 17:09:18
+* @Last Modified time: 2016-04-19 16:58:09
 */
 
 app.controller('MainController', ['$rootScope', 'cookieService', '$location', 'userService', '$http', function($rootScope, $cookieService, $location, $userService, $http) {
@@ -228,6 +228,14 @@ app.controller('FriendsController', ['$rootScope', '$scope', 'cookieService', 'u
     $http.get($url).success(function(data) {
         $scope.friends = data.friends;
     });
+
+    $url = $apiService.FRIEND_REQUEST_GET + '?token=' + $rootScope.token;
+    $http.get($url).success(function(data) {
+        $scope.requests = data.requests;
+    console.log($scope.requests);
+    console.log($scope.token);
+    });
+
 }]);
     
 app.controller('CrewController', ['$rootScope', 'cookieService', 'userService', '$location', function($rootScope, $cookieService, $userService, $location) {

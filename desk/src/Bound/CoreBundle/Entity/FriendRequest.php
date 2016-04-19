@@ -22,19 +22,19 @@ class FriendRequest
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="Bound\CoreBundle\Entity\Player")
+     * @ORM\ManyToOne(targetEntity="Bound\CoreBundle\Entity\Player")
      */
     private $from;
 
     /**
-     * @ORM\OneToOne(targetEntity="Bound\CoreBundle\Entity\Player")
+     * @ORM\ManyToOne(targetEntity="Bound\CoreBundle\Entity\Player")
      */
     private $to;
 
     /**
-     * @var boolean
+     * @var string
      *
-     * @ORM\Column(name="status", type="boolean")
+     * @ORM\Column(name="status", type="string")
      */
     private $status;
 
